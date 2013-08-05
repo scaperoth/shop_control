@@ -4,10 +4,13 @@ class AdminController extends Controller
 {
 	public function actionIndex()
 	{
-            
-		$this->render('index');
+		if(!Yii::app()->user->checkAccess('admin'))
+                $this->redirect(array('/site/login'));
+                else
+                    $this->render('index');
 	}
-         public function filters()
+        //commented out because the filters haven't been setup properly
+        /* public function filters()
         {
             return array(
                 'accessControl'           // required to enable accessRules
@@ -17,14 +20,13 @@ class AdminController extends Controller
         public function accessRules(){
             return array(
                 array('allow', // allow anyone to register
-                      'actions'=>array('Index'), 
                       'users'=>array('admin') // all users
                 ),
                 array('deny', // deny anything else
                       'users'=>array('*')
                 )
             );
-        }
+        }*/
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()

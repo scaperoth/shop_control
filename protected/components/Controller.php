@@ -20,4 +20,24 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+        
+         public function filters()
+        {
+            return array(
+                'accessControl'           // required to enable accessRules
+            );
+        }
+
+        public function accessRules(){
+            return array(
+               
+                array('allow',
+                    'ips'=>array('127.0.0.1')
+                ),
+                array('deny',
+                    'ips'=>array('*'),
+                     'message'=>'<h1>You are not Allowed to access this page.</h1><div hidden>'
+                )
+            );
+        }
 }
