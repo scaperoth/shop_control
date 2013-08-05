@@ -1,7 +1,9 @@
 <?php
-/* @var $this SiteController */
+/* @var $this HomeController */
+?>
+<?php
 
-$this->pageTitle=Yii::app()->name;
+$this->pageTitle=Yii::app()->name ;
 ?>
 
 <h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
