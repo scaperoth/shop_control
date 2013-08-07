@@ -1,0 +1,56 @@
+/* 
+    Document   : style
+    Created on : Aug 4, 2013, 7:48:21 PM
+    Author     : mscapero
+    Description:
+        Custom styles for page.
+*/
+
+/*Misc
+==================*/
+a{
+    text-decoration: none;
+}
+
+/*header
+==================*/
+#header{
+    font-family:'Quicksand',sans-serif;
+    font-size:6em;
+    font-weight:300;
+}
+
+/*MAIN MENU
+==================*/
+#mainmenu{
+    padding:0;
+    margin:0;
+}
+#mainmenu ul{
+   list-style: none;
+   height:20px;
+   padding:5px 0;
+}
+#mainmenu ul li{
+    float:left;
+    font-family:'Quicksand',sans-serif;
+    font-weight: 400;
+    font-size:1.2em;
+    padding:0 40px 0 0 ;
+}
+#mainmenu ul li.active{
+    font-weight: bold;
+    text-decoration:underline;
+}
+
+/*BreadCrumb
+==================*/
+.breadcrumbs{
+    font-weight: 100;
+}
+
+/*Footer
+==================*/
+#footer{
+    text-align: center;
+}
