@@ -39,4 +39,5 @@ create table `AuthAssignment`
    `data`                 text,
    primary key (`itemname`,`userid`),
    foreign key (`itemname`) references `AuthItem` (`name`) on delete cascade on update cascade
+   
 ) engine InnoDB;
