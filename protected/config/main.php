@@ -93,5 +93,14 @@ return array(
 	'params'=>array(
 		// this is used in contact page
 		'adminEmail'=>'webmaster@example.com',
-	),
+                'ldap' => array(
+                    'host' => 'fbwndc22.cats.gwu.edu',
+                    'port' => 389,
+                    'domain'=>"@cats.gwu.edu",
+                    'oustaff' => 'staff', // such as "people" or "users"
+                    'oupeople' => 'people', // such as "people" or "users"
+                    'dc' => array('cats','gwu','edu'),  
+            ),
+        
+        ),
 );

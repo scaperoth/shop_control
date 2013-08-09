@@ -27,16 +27,18 @@ class Controller extends CController
                 'accessControl'           // required to enable accessRules
             );
         }
-
+        
         public function accessRules(){
             return array(
                
                 array('allow',
-                    'ips'=>array('127.0.0.1')
+                    'ips'=>array('127.0.0.4')
                 ),
                 array('deny',
                     'ips'=>array('*'),
-                     'message'=>'<h1>You are not Allowed to access this site from this location.</h1><div hidden>'
+                    'actions'=>array('index','admin'),
+                    'message'=>"You cannot access this app from your current location."
+                    
                 )
             );
         }
