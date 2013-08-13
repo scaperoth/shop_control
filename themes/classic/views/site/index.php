@@ -1,14 +1,14 @@
 <?php
-/* @var $this HomeController */
+/* @var $this SiteController */
 ?>
 <?php
-
-$this->pageTitle=Yii::app()->name ;
+$this->pageTitle = Yii::app()->name;
+echo  Yii::app()->name;
 ?>
 
-<h1 id="page-title"><?php echo CHtml::encode(Yii::app()->name); ?>: User Page <i>(Shop based on IP Address)</i></h1>
+<h1 id="page-title"><?php echo CHtml::encode(Yii::app()->name); ?>: User Page <i>(<?php echo Yii::app()->params->ip; ?>)</i></h1>
 <div>
-        <h3 id="statusUpdate">This shop is now</h3>
+    <h3 id="statusUpdate">This shop is now</h3>
 </div>
 <div class="center" id="buttonControl">
     <input type="button" id="statusToggle" value="closed"/>

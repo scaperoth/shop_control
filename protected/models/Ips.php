@@ -1,20 +1,19 @@
 <?php
 
 /**
- * This is the model class for table "User".
+ * This is the model class for table "Ips".
  *
- * The followings are the available columns in table 'User':
- * @property integer $id
- * @property string $username
- * @property string $password
- * @property string $admin
+ * The followings are the available columns in table 'Ips':
+ * @property integer $ip_id
+ * @property string $ip_address
+ * @property integer $ip_location
  */
-class User extends CActiveRecord
+class Ips extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return User the static model class
+	 * @return Ips the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -26,7 +25,7 @@ class User extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'User';
+		return 'Ips';
 	}
 
 	/**
@@ -37,12 +36,12 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, username, password, role', 'required'),
-			array('id', 'numerical', 'integerOnly'=>true),
-			array('username, role', 'length', 'max'=>45),
+			array('ip_id, ip_address, ip_location', 'required'),
+			array('ip_id, ip_location', 'numerical', 'integerOnly'=>true),
+			array('ip_address', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			//array('id, username, password', 'safe', 'on'=>'search'),
+			array('ip_id, ip_address, ip_location', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,10 +62,9 @@ class User extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'username' => 'Username',
-			'password' => 'Password',
-                        'role' => 'Role'
+			'ip_id' => 'Ip',
+			'ip_address' => 'Ip Address',
+			'ip_location' => 'Ip Location',
 		);
 	}
 
@@ -81,10 +79,9 @@ class User extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('username',$this->username,true);
-		$criteria->compare('password',$this->password,true);
-                $criteria->compare('role',$this->password,true);
+		$criteria->compare('ip_id',$this->ip_id);
+		$criteria->compare('ip_address',$this->ip_address,true);
+		$criteria->compare('ip_location',$this->ip_location);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
