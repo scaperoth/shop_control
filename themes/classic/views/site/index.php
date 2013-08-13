@@ -3,7 +3,6 @@
 ?>
 <?php
 $this->pageTitle = Yii::app()->name;
-echo  Yii::app()->name;
 ?>
 
 <h1 id="page-title"><?php echo CHtml::encode(Yii::app()->name); ?>: User Page <i>(<?php echo Yii::app()->params->ip; ?>)</i></h1>
