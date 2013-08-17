@@ -8,7 +8,7 @@
 $location= Yii::app()->db->createCommand()
         ->select('loc_name')
         ->from('Locations l')
-        ->join('Ips ip', 'l.loc_id=ip.ip_location')
+        ->join('Ips ip', 'l.loc_id=ip.ip_loc_id')
         ->where('ip.ip_address=:ip', array(':ip' => Yii::app()->params['ip']))
         ->queryRow();
 
@@ -33,6 +33,7 @@ Yii::app()->params['location']= $location['loc_name'];
         <![endif]-->
         <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/normalize.css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/js/jonthornton-jquery-timepicker-ced5953/jquery.timepicker.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/main.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css">
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
@@ -97,6 +98,7 @@ Yii::app()->params['location']= $location['loc_name'];
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/plugins.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jonthornton-jquery-timepicker-ced5953/jquery.timepicker.min.js"></script>
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

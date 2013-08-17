@@ -15,6 +15,10 @@ a{
 a:hover{
     text-decoration: underline;
 }
+dfn.description{
+    color:#999;
+    font-size:.8em;
+}
 
 /*Wrap Text
 ==================*/
@@ -113,10 +117,8 @@ body{
 /*Shop Status Toggle Button
 ==================*/
 #statusToggle{
-    color:#555;
     font-family:'Quicksand',sans-serif;
     font-size:4em;
-    background:none;
     border:1px solid #aaa;
     border-radius:15px;
     width:400px;
@@ -128,16 +130,58 @@ body{
 #statusToggle:active{
     border:1px solid #000;
 }
+.isopen{
+    color:#555;
+    background:#76C376
+}
+.isclosed{
+    background:#C00;
+    color:#fff;
+}
 /*Button Instructions
 ==================*/
-#buttonControl dfn{
-    color:#999;
-    font-size:.8em;
-}
+
 /*Status Update
 ==================*/
 #statusUpdate{
     text-align: center;
     color:#777;
     margin-bottom:0;
+}
+
+/*Clock
+==================*/
+#clock p{
+    text-align: center;
+    color:#777;
+}
+
+/***************************
+        ADMIN PAGE
+
+==========================*/
+.classroomDataForm{
+}
+
+#timeTable{
+    position:relative;
+    width:80%;
+    margin:20px 0;
+
+}
+#timeTable td{
+    padding:10px;
+}
+.timepicker{
+    width:100px;
+    border:none;
+    padding:15px 5px;
+}.timepicker:hover{
+    border:1px solid #aaa;
+    border-radius:5px;
+    padding:13px 4px;
+    cursor: pointer;
+}
+.date_hover{
+    padding:0;
 }

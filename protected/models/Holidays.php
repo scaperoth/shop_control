@@ -1,20 +1,20 @@
 <?php
 
 /**
- * This is the model class for table "Ips".
+ * This is the model class for table "Holidays".
  *
- * The followings are the available columns in table 'Ips':
- * @property integer $ip_id
- * @property string $ip_address
- * @property string $ip_compname
- * @property integer $ip_loc_id
+ * The followings are the available columns in table 'Holidays':
+ * @property integer $hol_id
+ * @property string $hol_name
+ * @property string $hol_date
+ * @property string $hol_description
  */
-class Ips extends CActiveRecord
+class Holidays extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Ips the static model class
+	 * @return Holidays the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -26,7 +26,7 @@ class Ips extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'Ips';
+		return 'Holidays';
 	}
 
 	/**
@@ -37,12 +37,12 @@ class Ips extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('ip_id, ip_address, ip_loc_id', 'required'),
-			array('ip_id, ip_loc_id', 'numerical', 'integerOnly'=>true),
-			array('ip_address, ip_compname', 'length', 'max'=>45),
+			array('hol_id, hol_name, hol_date', 'required'),
+			array('hol_id', 'numerical', 'integerOnly'=>true),
+			array('hol_name, hol_description', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('ip_id, ip_address, ip_compname, ip_loc_id', 'safe', 'on'=>'search'),
+			array('hol_id, hol_name, hol_date, hol_description', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,10 +63,10 @@ class Ips extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'ip_id' => 'Ip',
-			'ip_address' => 'Ip Address',
-			'ip_compname' => 'Ip Compname',
-			'ip_loc_id' => 'Ip Loc',
+			'hol_id' => 'Hol',
+			'hol_name' => 'Hol Name',
+			'hol_date' => 'Hol Date',
+			'hol_description' => 'Hol Description',
 		);
 	}
 
@@ -81,10 +81,10 @@ class Ips extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('ip_id',$this->ip_id);
-		$criteria->compare('ip_address',$this->ip_address,true);
-		$criteria->compare('ip_compname',$this->ip_compname,true);
-		$criteria->compare('ip_loc_id',$this->ip_loc_id);
+		$criteria->compare('hol_id',$this->hol_id);
+		$criteria->compare('hol_name',$this->hol_name,true);
+		$criteria->compare('hol_date',$this->hol_date,true);
+		$criteria->compare('hol_description',$this->hol_description,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

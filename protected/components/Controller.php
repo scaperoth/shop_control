@@ -33,11 +33,13 @@ class Controller extends CController {
     public function accessRules() {
 
         //get all ip addresses from ips table
-        $model = Ips::model();
-        $ips = $model->getCommandBuilder()
-                ->createFindCommand($model->tableSchema, $model->dbCriteria)
+        $ips = Yii::app()->db->createCommand()
+                ->select('ip_address')
+                ->from('Ips ip')
+                ->join('Locations l', 'l.loc_id=ip.ip_loc_id')
+                ->where('l.loc_flag=:active', array(':active' => 1))
                 ->queryAll();
-
+        
         //add ips to array
         foreach ($ips as $ip) {
             $ip_filter[] = $ip['ip_address'];
@@ -48,7 +50,7 @@ class Controller extends CController {
                 'ips' => $ip_filter,
             ),
             //disallow ips on only index and admin actions so that error page can show.
-            array('allow',
+            array('deny',
                 'ips' => array('*'),
                 'actions' => array('index', 'admin'),
                 'message' => "You cannot access this application from your current location."
