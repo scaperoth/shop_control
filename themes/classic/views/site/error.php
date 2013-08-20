@@ -3,11 +3,9 @@
 /* @var $error array */
 
 $this->pageTitle=Yii::app()->name . ' - Error';
-$this->breadcrumbs=array(
-	'Error',
-);
-?>
 
+?>
+<style>#mainmenu{display:none;}</style>
 <h2>Error <?php echo $code;  ?></h2>
 
 <div class="error">
