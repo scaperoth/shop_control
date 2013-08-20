@@ -13,9 +13,8 @@ a{
     text-decoration: none;
 }
 a:hover{
-    text-decoration: underline;
 }
-dfn.description{
+.description{
     color:#999;
     font-size:.8em;
 }
@@ -34,11 +33,16 @@ body{
     padding:10px 0;
 }
 
+/*limiter
+==================*/
+.limiter{
+    margin:0 auto;
+    width:80%;
+}
+
 /*Page
 ==================*/
 #page{
-    margin:0 auto;
-    width:80%;
     border:1px solid #ccc;
     padding:20px;
     border-radius:10px;
@@ -56,6 +60,10 @@ body{
 ==================*/
 #page-title{
     font-weight:normal;
+    text-align: center;
+    font-family:'Quicksand',sans-serif;
+    font-weight:bold;
+    font-size:2.3em;
 }
 
 /*All Menus
@@ -79,9 +87,13 @@ body{
     font-weight: normal;
     padding:0 40px 0 0 ;
 }
-#mainmenu ul li.active{
-    font-weight: bold;
-    text-decoration:underline;
+#mainmenu ul li a{
+    color:#555;
+}
+#mainmenu ul li:hover a{
+    color:#222;
+}
+#mainmenu ul li.active a{
 }
 #mainmenu ul li a{
 }
@@ -105,7 +117,12 @@ body{
 /*Footer
 ==================*/
 #footer{
+    font-size:.8em;
     text-align: center;
+    color:#555;
+}
+#footer a{
+    color:#0062a7;
 }
 
 /*Status Button Container
@@ -146,6 +163,7 @@ body{
 #statusUpdate{
     text-align: center;
     color:#777;
+    font-weight: normal;
     margin-bottom:0;
 }
 
@@ -160,20 +178,45 @@ body{
         ADMIN PAGE
 
 ==========================*/
+
+/*admin-form
+==================*/
+.admin-form{
+    padding-bottom:20px;
+    margin-bottom:10px;
+    border-bottom:1px dotted #bbb;
+}
+
+/*Section title
+==================*/
+.section-title{
+    color:#555;
+    font-weight:normal;
+    padding:0;
+    margin:0;
+    font-size:1.9em;
+}
+
+/*classroom hours form
+==================*/
 .classroomDataForm{
 }
 
+/*hours table
+==================*/
 #timeTable{
     position:relative;
-    width:80%;
+    width:100%;
     margin:20px 0;
-
-}
-#timeTable td{
+}#timeTable td{
     padding:10px;
 }
+
+/*time picker
+==================*/
 .timepicker{
-    width:100px;
+    font-size:.8em;
+    width:50px;
     border:none;
     padding:15px 5px;
 }.timepicker:hover{
@@ -182,6 +225,10 @@ body{
     padding:13px 4px;
     cursor: pointer;
 }
+
+/*time hover action
+==================*/
 .date_hover{
     padding:0;
 }
+

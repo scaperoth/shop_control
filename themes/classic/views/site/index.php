@@ -19,7 +19,7 @@ $this->pageTitle = Yii::app()->name;
     <input type="submit" id="statusToggle" value="closed"/>
 <?php $this->endWidget(); ?>
 <div>
-    <dfn class="description">click to change state</dfn>
+    <span class="description">{ click to change state }</span>
 </div>
 
 <div id="clock">

@@ -5,18 +5,26 @@
 $this->pageTitle = Yii::app()->name;
 ?>
 
-<h1>Admin Page</h1>
+<h1 id="page-title">Admin Page</h1>
+
 
 <div>
-    <dfn class="description">Click times to edit.</dfn>
-    <div id="classroomDataForm">
+
+    <div id="classroomDataForm" class="admin-form">
+        <h3 class="section-title">Shop Hours</h3>
+        <dfn class="description">Click times to edit.</dfn>
         <form id="classroomDateForm">
             <fieldset>
                 <table id="timeTable" align="center" border="1">
                     <thead>
                     <td>Location</td>
-                    <td>Open time</td>
-                    <td>Close time</td>
+                    <td>Monday</td>
+                    <td>Tuesday</td>
+                    <td>Wednesday</td>
+                    <td>Thursday</td>
+                    <td>Friday</td>
+                    <td>Saturday</td>
+                    <td>Sunday</td>
                     </thead>
                     <?php
                     $locations = Locations::model()->findAll();
@@ -30,12 +38,40 @@ $this->pageTitle = Yii::app()->name;
                                 echo $location['loc_name'];
                                 ?>
                             </td>
-                            <td class="date_hover">
-                                <input title="Click to edit" class="timepicker open" name="<?php echo $location['loc_name'] . '_open'; ?>" value="<?php echo $location['loc_open_hrs']; ?>">
+                            <td class="date_hover" id="monday">
+                                <input title="Click to edit" class="timepicker open" name="<?php echo $location['loc_name'] . '_open'; ?>" value="<?php echo $location['loc_mon_open_hrs']; ?>">
+                                <span> to </span>
+                                <input title="Click to edit" class="timepicker close" name="<?php echo $location['loc_name'] . '_close'; ?>" value="<?php echo $location['loc_mon_closed_hrs']; ?>">
                             </td>
-
-                            <td class="date_hover">
-                                <input title="Click to edit" class="timepicker close" name="<?php echo $location['loc_name'] . '_close'; ?>" value="<?php echo $location['loc_closed_hrs']; ?>">
+                            <td class="date_hover" id="tuesday">
+                                <input title="Click to edit" class="timepicker open" name="<?php echo $location['loc_name'] . '_open'; ?>" value="<?php echo $location['loc_tue_open_hrs']; ?>">
+                                <span> to </span>
+                                <input title="Click to edit" class="timepicker close" name="<?php echo $location['loc_name'] . '_close'; ?>" value="<?php echo $location['loc_tue_closed_hrs']; ?>">
+                            </td>
+                            <td class="date_hover" id="wednesday">
+                                <input title="Click to edit" class="timepicker open" name="<?php echo $location['loc_name'] . '_open'; ?>" value="<?php echo $location['loc_wed_open_hrs']; ?>">
+                                <span> to </span>
+                                <input title="Click to edit" class="timepicker close" name="<?php echo $location['loc_name'] . '_close'; ?>" value="<?php echo $location['loc_wed_closed_hrs']; ?>">
+                            </td>
+                            <td class="date_hover" id="thursday">
+                                <input title="Click to edit" class="timepicker open" name="<?php echo $location['loc_name'] . '_open'; ?>" value="<?php echo $location['loc_thu_open_hrs']; ?>">
+                                <span> to </span>
+                                <input title="Click to edit" class="timepicker close" name="<?php echo $location['loc_name'] . '_close'; ?>" value="<?php echo $location['loc_thu_closed_hrs']; ?>">
+                            </td>
+                            <td class="date_hover" id="friday">
+                                <input title="Click to edit" class="timepicker open" name="<?php echo $location['loc_name'] . '_open'; ?>" value="<?php echo $location['loc_fri_open_hrs']; ?>">
+                                <span> to </span>
+                                <input title="Click to edit" class="timepicker close" name="<?php echo $location['loc_name'] . '_close'; ?>" value="<?php echo $location['loc_fri_closed_hrs']; ?>">
+                            </td>
+                            <td class="date_hover" id="saturday">
+                                <input title="Click to edit" class="timepicker open" name="<?php echo $location['loc_name'] . '_open'; ?>" value="<?php echo $location['loc_sat_open_hrs']; ?>">
+                                <span> to </span>
+                                <input title="Click to edit" class="timepicker close" name="<?php echo $location['loc_name'] . '_close'; ?>" value="<?php echo $location['loc_sat_closed_hrs']; ?>">
+                            </td>
+                            <td class="date_hover" id="sunday">
+                                <input title="Click to edit" class="timepicker open" name="<?php echo $location['loc_name'] . '_open'; ?>" value="<?php echo $location['loc_sun_open_hrs']; ?>">
+                                <span> to </span>
+                                <input title="Click to edit" class="timepicker close" name="<?php echo $location['loc_name'] . '_close'; ?>" value="<?php echo $location['loc_sun_closed_hrs']; ?>">
                             </td>
 
                         </tr>
@@ -48,7 +84,8 @@ $this->pageTitle = Yii::app()->name;
         </form>
     </div>
 
-    <div id="holidayForm">
+    <div id="holidayForm" class="admin-form">
+        <h3 class="section-title">Holidays</h3>
         <form>
             <fieldset>
                 <table id="timeTable" align="center" border="1">
@@ -73,41 +110,41 @@ $this->pageTitle = Yii::app()->name;
                             <td>
                                 <!--option for each location. "selected" if holiday applies to location-->
                                 <select multiple>
-                                <?php
-                                //get all locations
-                                foreach($locations as $location){
-                                    //reset "selected" value
-                                    $selected ='';
-                                    
-                                    //check loc in shop holiday list and compare to all locations
-                                    //if they match, set "selected" to true
-                                    foreach ($shop_holidays as $sh) {
-                                        if($sh['loc_id'] == $location['loc_id']){
-                                            $selected = 'selected';
-                                        }
-                                    }//end sh foreach
-                                    ?>
-                                    
-                                    <option <?php echo $selected?> value='<?php echo $location['loc_name']?>'><?php echo $location['loc_name']?></option>
                                     <?php
-                                }//end location foreach
-                                ?>
+                                    //get all locations
+                                    foreach ($locations as $location) {
+                                        //reset "selected" value
+                                        $selected = '';
+
+                                        //check loc in shop holiday list and compare to all locations
+                                        //if they match, set "selected" to true
+                                        foreach ($shop_holidays as $sh) {
+                                            if ($sh['loc_id'] == $location['loc_id']) {
+                                                $selected = 'selected';
+                                            }
+                                        }//end sh foreach
+                                        ?>
+
+                                        <option <?php echo $selected ?> value='<?php echo $location['loc_name'] ?>'><?php echo $location['loc_name'] ?></option>
+                                        <?php
+                                    }//end location foreach
+                                    ?>
                                 </select>
                             </td>
                             <td>
                                 <?php
-                                    echo $holiday['hol_name'];
+                                echo $holiday['hol_name'];
                                 ?>
                             </td>
                             <td>
                                 <?php
-                                    $hol_date = strtotime($holiday['hol_date']);
-                                    echo date('M d', $hol_date);
+                                $hol_date = strtotime($holiday['hol_date']);
+                                echo date('M d', $hol_date);
                                 ?>
                             </td>
                             <td>
                                 <?php
-                                    echo $holiday['hol_description'];
+                                echo $holiday['hol_description'];
                                 ?>
                             </td>
                         </tr>

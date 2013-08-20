@@ -119,19 +119,20 @@ class SiteController extends Controller {
      */
     public function actionOpenShop() {
 
-
 //get curr location
         $location = Yii::app()->params['location'];
-
+//get current day of the week
+        $dayofweek = strtolower(date('D'));
+        $table_col = 'loc_'.$dayofweek.'_open_hrs';
 //check open hours
         $check_query = Yii::app()->db->createCommand()
-                ->select('loc_open_hrs')
+                ->select($table_col)
                 ->from('Locations l')
                 ->where('l.loc_name=:name', array(':name' => $location))
                 ->queryRow();
 
 //translate databse open hours into php time()
-        $openHrsTime = strtotime($check_query['loc_open_hrs']);
+        $openHrsTime = strtotime($check_query[$table_col]);
 
 //get current time
         $currtime = date('d-m-Y H:i:s');
@@ -147,7 +148,7 @@ class SiteController extends Controller {
             $openDateTime = new DateTime($open_upper_bound);
             $difference = $currtime->diff($openDateTime, True);
 
-            $message = 'Opened late</br>' . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds';
+            $message = 'Opened late</br>Latest opening time is '.date('H:ia', $openHrsTime + 600).'.<br/>Late by: ' . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds';
         }
 
 //if current time is less than the open - 10 minutes
@@ -167,7 +168,6 @@ class SiteController extends Controller {
 
         $to = 'scaperoth@gmail.com';
         $subject = 'Test email using PHP';
-        $message = 'This is a test email message';
         $headers = 'From: scaperoth@gmail.com' . "\r\n" .
                 'Reply-To: scaperoth@gmail.com' . "\r\n" .
                 'X-Mailer: PHP/' . phpversion();

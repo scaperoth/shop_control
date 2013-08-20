@@ -27,7 +27,8 @@ Yii::app()->params['location']= $location['loc_name'];
         <title><?php echo CHtml::encode($this->pageTitle).'-'. ucfirst(Yii::app()->params['location']); ?></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-
+        <link rel="shortcut icon" href="<?php echo Yii::app()->theme->baseUrl; ?>/images/gw_logo.ico">
+        
         <!--[if lt IE 8]>
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/ie.css" media="screen, projection" />
         <![endif]-->
@@ -40,14 +41,18 @@ Yii::app()->params['location']= $location['loc_name'];
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
-        <div class="container" id="page">
+        
+        <div class="limiter">
+             <div id="logo"><img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/AT%20Logo.jpg" alt="Academic Technologies"/></div>
+            <div class="container" id="page">
+           
             <!--[if lt IE 7]>
                 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
             <![endif]-->
 
             <!-- Add your site or application content here -->
             <div id="header">
-                <div id="logo"><?php echo CHtml::encode(Yii::app()->name).'-'.  ucfirst(Yii::app()->params['location']); ?></div>
+                <div id="global-title"><?php echo CHtml::encode(Yii::app()->name).'-'.  ucfirst(Yii::app()->params['location']); ?></div>
             </div><!-- header -->
 
             <div id="mainmenu" class="menu">
@@ -90,11 +95,12 @@ Yii::app()->params['location']= $location['loc_name'];
                 </div>
             </div>
             <div id="footer">
-                Copyright &copy; <?php echo date('Y'); ?> by <a href="http://acadtech.gwu.edu" target="blank">Academic Technologies</a>.<br/>
-                All Rights Reserved.<br/>
+                <a href="http://acadtech.gwu.edu" target="blank">Academic Technologies</a> of <a href="www.gwu.edu" target="_blank">the George Washington University</a><br/>
+                    Phone: 202-994-7900 | Fax: 202-994-4747 | Email: <a href="mailto:acadtech@gwu.edu">acadtech.gwu.edu</a> <br/>
             </div><!-- footer -->
-
-        </div><!-- page -->
+        
+        </div><!-- container #page-->
+        </div><!-- limiter -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/plugins.js"></script>
