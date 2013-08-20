@@ -36,7 +36,7 @@ class Controller extends CController
                 ),
                 array('deny',
                     'ips'=>array('*'),
-                     'message'=>'<h1>You are not Allowed to access this page.</h1><div hidden>'
+                     'message'=>'<h1>You are not Allowed to access this site from this location.</h1><div hidden>'
                 )
             );
         }

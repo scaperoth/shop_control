@@ -1,0 +1,143 @@
+/* 
+    Document   : style
+    Created on : Aug 4, 2013, 7:48:21 PM
+    Author     : mscapero
+    Description:
+        Custom styles for page.
+*/
+
+/*Misc
+==================*/
+a{
+    color:#2972a7;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+
+/*Wrap Text
+==================*/
+pre,code {
+ white-space: pre-wrap;       /* css-3 */
+ white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+ white-space: -pre-wrap;      /* Opera 4-6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+body{
+    padding:10px 0;
+}
+
+/*Page
+==================*/
+#page{
+    margin:0 auto;
+    width:80%;
+    border:1px solid #ccc;
+    padding:20px;
+    border-radius:10px;
+}
+
+/*header
+==================*/
+#header{
+    font-family:'Quicksand',sans-serif;
+    font-size:5em;
+    font-weight:300;
+}
+
+/*All Menus
+==================*/
+#page-title{
+    font-weight:normal;
+}
+
+/*All Menus
+==================*/
+.menu ul{
+   padding:5px 0;
+   list-style: none;
+}
+/*MAIN MENU
+==================*/
+#mainmenu{
+    padding:0;
+    margin:0;
+    
+}
+#mainmenu ul{
+   height:20px;
+}
+#mainmenu ul li{
+    float:left;
+    font-weight: normal;
+    padding:0 40px 0 0 ;
+}
+#mainmenu ul li.active{
+    font-weight: bold;
+    text-decoration:underline;
+}
+#mainmenu ul li a{
+}
+/*Logout Menu
+==================*/
+#logout{
+    position:relative;
+    height:50px;
+}
+#logoutInside{
+    position:absolute;
+    right:0;
+}
+
+/*BreadCrumb
+==================*/
+.breadcrumbs{
+    font-weight: 100;
+}
+
+/*Footer
+==================*/
+#footer{
+    text-align: center;
+}
+
+/*Status Button Container
+==================*/
+#buttonControl{
+    width:400px;
+    margin: 0 auto;
+}
+/*Shop Status Toggle Button
+==================*/
+#statusToggle{
+    color:#555;
+    font-family:'Quicksand',sans-serif;
+    font-size:4em;
+    background:none;
+    border:1px solid #aaa;
+    border-radius:15px;
+    width:400px;
+    height:150px;
+}
+#statusToggle:hover{
+    border:1px solid #767777;
+}
+#statusToggle:active{
+    border:1px solid #000;
+}
+/*Button Instructions
+==================*/
+#buttonControl dfn{
+    color:#999;
+    font-size:.8em;
+}
+/*Status Update
+==================*/
+#statusUpdate{
+    text-align: center;
+    color:#777;
+    margin-bottom:0;
+}

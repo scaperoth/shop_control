@@ -9191,3 +9191,356 @@ Stack trace:
 #11 {main}
 REQUEST_URI=/shop_control/
 ---
+2013/08/08 16:12:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "admin/index".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('admin/index')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/admin/index
+HTTP_REFERER=http://shopcontrol/index.php
+---
+2013/08/08 16:12:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "home/index".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('home/index')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/home/index
+HTTP_REFERER=http://shopcontrol/index.php/admin/index
+---
+2013/08/08 16:13:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "home/index".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('home/index')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/home/index
+HTTP_REFERER=http://shopcontrol/index.php/admin/index
+---
+2013/08/08 16:13:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "home/index".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('home/index')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/home/index
+HTTP_REFERER=http://shopcontrol/index.php/admin/index
+---
+2013/08/08 16:13:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "home/index".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('home/index')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/home/index
+HTTP_REFERER=http://shopcontrol/index.php/admin/index
+---
+2013/08/08 16:14:34 [error] [exception.CException] exception 'CException' with message 'SiteController cannot find the requested view "admin".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(782): CController->renderPartial('admin', NULL, true)
+#1 C:\xampp\htdocs\shop_control\protected\controllers\SiteController.php(51): CController->render('admin')
+#2 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): SiteController->actionAdmin()
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('admin')
+#12 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/admin')
+#13 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php/site/admin
+HTTP_REFERER=http://shopcontrol/index.php/site/login
+---
+2013/08/08 16:14:57 [error] [exception.CException] exception 'CException' with message 'SiteController cannot find the requested view "admin".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(782): CController->renderPartial('admin', NULL, true)
+#1 C:\xampp\htdocs\shop_control\protected\controllers\SiteController.php(51): CController->render('admin')
+#2 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): SiteController->actionAdmin()
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('admin')
+#12 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/admin')
+#13 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php/site/admin
+HTTP_REFERER=http://shopcontrol/index.php/site/login
+---
+2013/08/08 16:14:58 [error] [exception.CException] exception 'CException' with message 'SiteController cannot find the requested view "admin".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(782): CController->renderPartial('admin', NULL, true)
+#1 C:\xampp\htdocs\shop_control\protected\controllers\SiteController.php(51): CController->render('admin')
+#2 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): SiteController->actionAdmin()
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('admin')
+#12 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/admin')
+#13 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php/site/admin
+HTTP_REFERER=http://shopcontrol/index.php/site/login
+---
+2013/08/08 16:14:58 [error] [exception.CException] exception 'CException' with message 'SiteController cannot find the requested view "admin".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(782): CController->renderPartial('admin', NULL, true)
+#1 C:\xampp\htdocs\shop_control\protected\controllers\SiteController.php(51): CController->render('admin')
+#2 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): SiteController->actionAdmin()
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('admin')
+#12 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/admin')
+#13 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php/site/admin
+HTTP_REFERER=http://shopcontrol/index.php/site/login
+---
+2013/08/08 16:14:58 [error] [exception.CException] exception 'CException' with message 'SiteController cannot find the requested view "admin".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(782): CController->renderPartial('admin', NULL, true)
+#1 C:\xampp\htdocs\shop_control\protected\controllers\SiteController.php(51): CController->render('admin')
+#2 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): SiteController->actionAdmin()
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('admin')
+#12 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/admin')
+#13 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php/site/admin
+HTTP_REFERER=http://shopcontrol/index.php/site/login
+---
+2013/08/08 16:14:58 [error] [exception.CException] exception 'CException' with message 'SiteController cannot find the requested view "admin".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(782): CController->renderPartial('admin', NULL, true)
+#1 C:\xampp\htdocs\shop_control\protected\controllers\SiteController.php(51): CController->render('admin')
+#2 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): SiteController->actionAdmin()
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('admin')
+#12 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/admin')
+#13 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php/site/admin
+HTTP_REFERER=http://shopcontrol/index.php/site/login
+---
+2013/08/08 16:14:59 [error] [exception.CException] exception 'CException' with message 'SiteController cannot find the requested view "admin".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(782): CController->renderPartial('admin', NULL, true)
+#1 C:\xampp\htdocs\shop_control\protected\controllers\SiteController.php(51): CController->render('admin')
+#2 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): SiteController->actionAdmin()
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('admin')
+#12 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/admin')
+#13 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php/site/admin
+HTTP_REFERER=http://shopcontrol/index.php/site/login
+---
+2013/08/08 16:15:05 [error] [exception.CException] exception 'CException' with message 'SiteController cannot find the requested view "admin".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(782): CController->renderPartial('admin', NULL, true)
+#1 C:\xampp\htdocs\shop_control\protected\controllers\SiteController.php(51): CController->render('admin')
+#2 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): SiteController->actionAdmin()
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('admin')
+#12 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/admin')
+#13 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php/site/admin
+HTTP_REFERER=http://shopcontrol/index.php/site/login
+---
+2013/08/08 16:33:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "site".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(270): CController->missingAction('site')
+#1 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('site')
+#2 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/site/logou...')
+#3 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/site/site/logout
+HTTP_REFERER=http://shopcontrol/index.php/site/index
+---
+2013/08/08 16:34:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "site".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(270): CController->missingAction('site')
+#1 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('site')
+#2 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/site/logou...')
+#3 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/site/site/logout
+HTTP_REFERER=http://shopcontrol/index.php/site/index
+---
+2013/08/08 16:34:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "site".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(270): CController->missingAction('site')
+#1 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('site')
+#2 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/site/logou...')
+#3 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/site/site/logout
+HTTP_REFERER=http://shopcontrol/index.php/site/index
+---
+2013/08/08 16:34:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "site".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(270): CController->missingAction('site')
+#1 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('site')
+#2 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/site/logou...')
+#3 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/site/site/logout
+HTTP_REFERER=http://shopcontrol/index.php/site/index
+---
+2013/08/08 16:34:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "site".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(270): CController->missingAction('site')
+#1 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('site')
+#2 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/site/logou...')
+#3 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/site/site/logout
+HTTP_REFERER=http://shopcontrol/index.php/site/index
+---
+2013/08/08 17:10:10 [error] [exception.CHttpException.403] exception 'CHttpException' with message '<h1>You are not Allowed to access this page.</h1><div hidden>' in C:\xampp\htdocs\shop_control\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(WebUser), '<h1>You are not...')
+#1 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('index')
+#8 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/index')
+#9 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php/site/index
+HTTP_REFERER=http://shopcontrol/index.php/site/login
+---
+2013/08/08 17:10:15 [error] [exception.CHttpException.403] exception 'CHttpException' with message '<h1>You are not Allowed to access this Site.</h1><div hidden>' in C:\xampp\htdocs\shop_control\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(WebUser), '<h1>You are not...')
+#1 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('index')
+#8 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/index')
+#9 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php/site/index
+HTTP_REFERER=http://shopcontrol/index.php/site/login
+---
+2013/08/08 17:10:16 [error] [exception.CHttpException.403] exception 'CHttpException' with message '<h1>You are not Allowed to access this Site.</h1><div hidden>' in C:\xampp\htdocs\shop_control\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(WebUser), '<h1>You are not...')
+#1 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('index')
+#8 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/index')
+#9 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php/site/index
+HTTP_REFERER=http://shopcontrol/index.php/site/login
+---
+2013/08/08 17:10:22 [error] [exception.CHttpException.403] exception 'CHttpException' with message '<h1>You are not Allowed to access this site from this location.</h1><div hidden>' in C:\xampp\htdocs\shop_control\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(WebUser), '<h1>You are not...')
+#1 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('index')
+#8 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/index')
+#9 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php/site/index
+HTTP_REFERER=http://shopcontrol/index.php/site/login
+---
+2013/08/08 17:10:35 [error] [exception.CHttpException.403] exception 'CHttpException' with message '<h1>You are not Allowed to access this site from this location.</h1><div hidden>' in C:\xampp\htdocs\shop_control\framework\web\auth\CAccessControlFilter.php:179
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\auth\CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(WebUser), '<h1>You are not...')
+#1 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#6 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('index')
+#8 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/index')
+#9 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#10 C:\xampp\htdocs\shop_control\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php/site/index
+HTTP_REFERER=http://shopcontrol/index.php/site/login
+---
