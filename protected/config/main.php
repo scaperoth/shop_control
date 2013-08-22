@@ -7,7 +7,8 @@
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'name' => 'Shop Control',
-    'defaultController' => 'site',
+    'homeurl'=>'login',
+    'defaultController' => 'site/login',
     'theme' => 'classic',
     // preloading 'log' component
     'preload' => array('log'),
@@ -96,6 +97,7 @@ return array(
         ),
         'ip' => CHttpRequest::getUserHostAddress(),
         //set default location
-        'location' => 'localhost',
+        'location',
+        'current_state',
     ),
 );

@@ -52,7 +52,7 @@ class Controller extends CController {
             //disallow ips on only index and admin actions so that error page can show.
             array('deny',
                 'ips' => array('*'),
-                'actions' => array('index', 'admin'),
+                'actions' => array('index', 'admin', 'openshop','closeshop'),
                 'message' => "You cannot access this application from your current location."
             )
         );

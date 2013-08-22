@@ -128,6 +128,7 @@ class UserIdentity extends CUserIdentity {
                         $ADvalue = 'AT-AVD';
                     }
                 }
+                Yii::app()->user->setState('username',$userFullName);
                 $this->errorCode = self::ERROR_NONE;
             }
             if (!$ldapBind) {

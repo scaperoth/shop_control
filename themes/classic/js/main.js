@@ -1,11 +1,33 @@
-/**
- * 
- * @type @exp;document@call;getElementById|@exp;document@call;getElementById
- */
-$('.timepicker').timepicker();
-$('.timepicker').change(function() {
-    $(this).css('background', '#CCFFFF');
+
+$(document).ready(function() {
+    $("table").tablecloth({
+        theme: "default",
+        striped: true,
+        condensed: true,
+        clean: true,
+        cleanElements: "th td"
+    });
+    $('.selectpicker').selectpicker({
+        width: '100%'
+    });
+    /**
+     * 
+     * @type @exp;document@call;getElementById|@exp;document@call;getElementById
+     */
+    $('.timepicker').timepicker({
+        className :'dropdown',
+        appendTo :$('.limiter')
+    });
+     
+     $('.timepicker').click(function(){
+     });
+
+    //better code is needed
+    /**$('.timepicker').change(function() {
+        $(this).addClass('changed');
+    });*/
 });
+
 
 
 /**
@@ -24,32 +46,35 @@ if (statBtn) {
      * 
      * @type @exp;document@call;getElementById|@exp;document@call;getElementById
      */
-    if (statBtn.value === 'open') {
+    if (statBtn.value == 'open') {
         this.value = 'open';
-        statBtn.className = 'isopen';
+        $(statBtn).removeClass('isclosed');
+        $(statBtn).addClass('isopen');
         msg = 'The shop is now closed';
 
     }
     else {
         this.value = 'closed';
-        statBtn.className = 'isclosed';
+        $(statBtn).removeClass('isopen');
+        $(statBtn).addClass('isclosed');
         msg = 'The shop is now open';
     }
     $('#toggleShopForm').submit(function(e) {
         e.preventDefault();
         var $form = $(this);
         if (statBtn.value === 'open') {
-            
+
             if (confirm('Are you sure you wish to close this shop?'))
             {
                 /**
                  * toggle shop closed
                  */
-                $.post('openshop', $form.serialize(), function(json) {
-                            console.log(json);                    
+                $.post('closeshop', $form.serialize(), function(json) {
+                    console.log(json);
                 });
                 statBtn.value = 'closed';
-                statBtn.className = 'isclosed';
+                $(statBtn).removeClass('isopen');
+                $(statBtn).addClass('isclosed');
                 msg = 'The shop is now open';
             }
         }
@@ -60,10 +85,11 @@ if (statBtn) {
                  * toggle shop closed
                  */
                 $.post('openshop', $form.serialize(), function(json) {
-                            console.log(json);                    
+                    console.log(json);
                 });
                 statBtn.value = 'open';
-                statBtn.className = 'isopen';
+                $(statBtn).removeClass('isclosed');
+                $(statBtn).addClass('isopen');
                 msg = 'The shop is now closed';
             }
         }

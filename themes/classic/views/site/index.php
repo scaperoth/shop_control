@@ -5,10 +5,10 @@
 $this->pageTitle = Yii::app()->name;
 ?>
 
-<h1 id="page-title"><?php echo CHtml::encode(Yii::app()->name); ?>: User Page <i>(<?php echo Yii::app()->params->ip; ?>)</i></h1>
 <div>
     <h3 id="statusUpdate">This shop is now</h3>
 </div>
+
 <div class="center" id="buttonControl">
     <?php
     $form = $this->beginWidget('CActiveForm', array(
@@ -16,7 +16,7 @@ $this->pageTitle = Yii::app()->name;
         'enableAjaxValidation' => true,
     ));
     ?>
-    <input type="submit" id="statusToggle" value="closed"/>
+    <input type="submit" id="statusToggle" value="<?php echo Yii::app()->user->getState('current_state');?>"/>
 <?php $this->endWidget(); ?>
 <div>
     <span class="description">{ click to change state }</span>

@@ -8,6 +8,9 @@
 
 /*Misc
 ==================*/
+.clear{
+    clear:both;
+}
 a{
     color:#2972a7;
     text-decoration: none;
@@ -17,6 +20,9 @@ a:hover{
 .description{
     color:#999;
     font-size:.8em;
+}
+.errorMessage{
+    color:#d00;
 }
 
 /*Wrap Text
@@ -29,6 +35,8 @@ pre,code {
  word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 
+
+
 body{
     padding:10px 0;
 }
@@ -37,7 +45,7 @@ body{
 ==================*/
 .limiter{
     margin:0 auto;
-    width:80%;
+    width:1200px;
 }
 
 /*Page
@@ -47,6 +55,7 @@ body{
     padding:20px;
     border-radius:10px;
 }
+
 
 /*header
 ==================*/
@@ -61,9 +70,10 @@ body{
 #page-title{
     font-weight:normal;
     text-align: center;
-    font-family:'Quicksand',sans-serif;
     font-weight:bold;
     font-size:2.3em;
+    padding-bottom:20px;
+    padding-top:5px;
 }
 
 /*All Menus
@@ -125,6 +135,10 @@ body{
     color:#0062a7;
 }
 
+#toggleShopForm{
+    margin:0;
+}
+
 /*Status Button Container
 ==================*/
 #buttonControl{
@@ -134,9 +148,10 @@ body{
 /*Shop Status Toggle Button
 ==================*/
 #statusToggle{
-    font-family:'Quicksand',sans-serif;
     font-size:4em;
     border:1px solid #aaa;
+    font-weight:normal;
+    letter-spacing: .1em;
     border-radius:15px;
     width:400px;
     height:150px;
@@ -148,12 +163,13 @@ body{
     border:1px solid #000;
 }
 .isopen{
-    color:#555;
-    background:#76C376
+    color:#336533;
+    text-shadow: 0px 2px 3px #82c462;
+    background:#76C376;
 }
 .isclosed{
-    background:#C00;
-    color:#fff;
+   color:#600;
+    text-shadow: 0px 2px 3px #f00;
 }
 /*Button Instructions
 ==================*/
@@ -209,26 +225,36 @@ body{
     width:100%;
     margin:20px 0;
 }#timeTable td{
-    padding:10px;
+    padding:5px;
+}#timeTable td.location_name{
+    vertical-align: middle;
 }
-
 /*time picker
 ==================*/
-.timepicker{
-    font-size:.8em;
-    width:50px;
+input.timepicker{
+    font-size:1em;
+    background:transparent;
+    text-align: center;
+    width:60px;
     border:none;
-    padding:15px 5px;
-}.timepicker:hover{
+    padding:10px 2px;
+}input.timepicker:hover{
     border:1px solid #aaa;
-    border-radius:5px;
-    padding:13px 4px;
+    border-radius:5px;  
+    padding:8px 1px;
     cursor: pointer;
+}input.timepicker.changed{
+    background:#Cff0F7;
+    border-radius:6px;
 }
-
+.bootstrap-timepicker{
+    display:inline;
+}
 /*time hover action
 ==================*/
 .date_hover{
     padding:0;
 }
 
+/*Holiday section
+==================*/
