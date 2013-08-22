@@ -28,7 +28,7 @@ class Locations extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'Locations';
+		return 'locations';
 	}
 
 	/**

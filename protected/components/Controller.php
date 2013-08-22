@@ -35,8 +35,8 @@ class Controller extends CController {
         //get all ip addresses from ips table
         $ips = Yii::app()->db->createCommand()
                 ->select('ip_address')
-                ->from('Ips ip')
-                ->join('Locations l', 'l.loc_id=ip.ip_loc_id')
+                ->from('ips ip')
+                ->join('locations l', 'l.loc_id=ip.ip_loc_id')
                 ->where('l.loc_flag=:active', array(':active' => 1))
                 ->queryAll();
         
@@ -52,7 +52,7 @@ class Controller extends CController {
             //disallow ips on only index and admin actions so that error page can show.
             array('deny',
                 'ips' => array('*'),
-                'actions' => array('index', 'admin'),
+                'actions' => array('index', 'admin', 'openshop','closeshop'),
                 'message' => "You cannot access this application from your current location."
             )
         );
