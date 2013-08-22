@@ -99,5 +99,7 @@ return array(
         //set default location
         'location',
         'current_state',
+        //administrative emails. Separated by colons
+        'admin_emails'=>'mscapero@email.gwu.edu',
     ),
 );

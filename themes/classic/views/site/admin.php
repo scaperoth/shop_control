@@ -27,79 +27,66 @@ $this->pageTitle = Yii::app()->name;
                     <?php
                     $locations = Locations::model()->findAll();
 
-
+                    $days_of_week = array(
+                        'monday',
+                        'tuesday',
+                        'wednesday',
+                        'thursday',
+                        'friday',
+                        'saturday',
+                        'sunday'
+                    );
                     foreach ($locations as $location) {
                         ?>
-                        <tr>
+                        <tr class="location_row <?php echo $location['loc_name']; ?>">
                             <td class="location_name">
                                 <?php
                                 echo $location['loc_name'];
                                 ?>
                             </td>
-                            <td class="date_hover" id="monday">
-                                <div class="bootstrap-timepicker">
-                                    <input title="Click to edit" class="timepicker open" name="<?php echo $location['loc_name'] . '_open'; ?>" value="<?php echo $location['loc_mon_open_hrs']; ?>">
-                                </div>
-                                <span> to </span>
+                            <?php
+                                /**
+                                 * this loop goes through the days of the week and 
+                                 * provides the name of the days as well as a 
+                                 * shortened (3 chars) version to use in the db call 
+                                 */
+                            ?>
+                            <?php foreach ($days_of_week as $day): ?>
+                                
+                                <td class="date_hover" id="<?php echo $day; ?>">
+                                    <?php
+                                    /**
+                                     * this code gets the times for each day and formats them the same as the timepicker
+                                     * so that the timepicker can do comparisons.
+                                     * 
+                                     * this value is placed into a data-* attribute that can be used for the comparison in
+                                     * assets/js/main.js
+                                     */
+                                    $short_day = substr($day, 0, 3);
+                                    //turn time into date for formatting.. 
+                                    //formatting is 'hh:mm:ss'
+                                    $stringOpenTime = date('h:ia', strtotime($location['loc_' . $short_day . '_open_hrs']));
+                                    $stringClosedTime = date('h:ia', strtotime($location['loc_' . $short_day . '_closed_hrs']));
+                                    
+                                    //trim leading zeros from formatted time
+                                    $open_time = ltrim(
+                                            $stringOpenTime, '0'
+                                    );
+                                    $close_time = ltrim(
+                                            $stringClosedTime, '0'
+                                    );
+                                    ?>
+                                    <div class="bootstrap-timepicker">
+                                        <input title="Click to edit" data-time ="<?php echo $open_time; ?>" class="timepicker open" name="<?php echo $location['loc_name'] .'|'. $short_day . '_open_hrs'; ?>" value="<?php echo $open_time; ?>">
+                                    </div>
+                                    <span> to </span>
 
-                                <div class="bootstrap-timepicker">
-                                    <input title="Click to edit" class="timepicker closed" name="<?php echo $location['loc_name'] . '_close'; ?>" value="<?php echo $location['loc_mon_closed_hrs']; ?>">
-                                </div>
-                            </td>
-                            <td class="date_hover" id="tuesday">
-                                <div class="bootstrap-timepicker">                                
-                                    <input title="Click to edit" class="timepicker open" name="<?php echo $location['loc_name'] . '_open'; ?>" value="<?php echo $location['loc_tue_open_hrs']; ?>">
-                                </div>
-                                <span> to </span>
-                                <div class="bootstrap-timepicker">       
-                                    <input title="Click to edit" class="timepicker closed" name="<?php echo $location['loc_name'] . '_close'; ?>" value="<?php echo $location['loc_tue_closed_hrs']; ?>">
-                                </div>
-                            </td>
-                            <td class="date_hover" id="wednesday">
-                                <div class="bootstrap-timepicker">
-                                    <input title="Click to edit" class="timepicker open" name="<?php echo $location['loc_name'] . '_open'; ?>" value="<?php echo $location['loc_wed_open_hrs']; ?>">
-                                </div>
-                                <span> to </span>
-                                 <div class="bootstrap-timepicker">
-                                    <input title="Click to edit" class="timepicker closed" name="<?php echo $location['loc_name'] . '_close'; ?>" value="<?php echo $location['loc_wed_closed_hrs']; ?>">
-                                </div>
-                            </td>
-                            <td class="date_hover" id="thursday">
-                                <div class="bootstrap-timepicker">
-                                    <input title="Click to edit" class="timepicker open" name="<?php echo $location['loc_name'] . '_open'; ?>" value="<?php echo $location['loc_thu_open_hrs']; ?>">
-                                </div>
-                                <span> to </span>
-                                <div class="bootstrap-timepicker">
-                                    <input title="Click to edit" class="timepicker closed" name="<?php echo $location['loc_name'] . '_close'; ?>" value="<?php echo $location['loc_thu_closed_hrs']; ?>">
-                                </div>
-                            </td>
-                            <td class="date_hover" id="friday">
-                                <div class="bootstrap-timepicker">
-                                    <input title="Click to edit" class="timepicker open" name="<?php echo $location['loc_name'] . '_open'; ?>" value="<?php echo $location['loc_fri_open_hrs']; ?>">
-                                </div>
-                                <span> to </span>
-                                <div class="bootstrap-timepicker">
-                                    <input title="Click to edit" class="timepicker closed" name="<?php echo $location['loc_name'] . '_close'; ?>" value="<?php echo $location['loc_fri_closed_hrs']; ?>">
-                                </div>
-                            </td>
-                            <td class="date_hover" id="saturday">
-                                <div class="bootstrap-timepicker">
-                                    <input title="Click to edit" class="timepicker open" name="<?php echo $location['loc_name'] . '_open'; ?>" value="<?php echo $location['loc_sat_open_hrs']; ?>">
-                                </div>
-                                <span> to </span>
-                                <div class="bootstrap-timepicker">
-                                    <input title="Click to edit" class="timepicker closed" name="<?php echo $location['loc_name'] . '_close'; ?>" value="<?php echo $location['loc_sat_closed_hrs']; ?>">
-                                </div>
-                            </td>
-                            <td class="date_hover" id="sunday">
-                                <div class="bootstrap-timepicker">
-                                    <input title="Click to edit" class="timepicker open" name="<?php echo $location['loc_name'] . '_open'; ?>" value="<?php echo $location['loc_sun_open_hrs']; ?>">
-                                </div>
-                                <span> to </span>
-                                <div class="bootstrap-timepicker">
-                                    <input title="Click to edit" class="timepicker closed" name="<?php echo $location['loc_name'] . '_close'; ?>" value="<?php echo $location['loc_sun_closed_hrs']; ?>">
-                                </div>
-                            </td>
+                                    <div class="bootstrap-timepicker">
+                                        <input title="Click to edit" data-time ="<?php echo $close_time; ?>" class="timepicker closed" name="<?php echo $location['loc_name'].'|'. $short_day . '_closed_hrs'; ?>" value="<?php echo $close_time; ?>">
+                                    </div>
+                                </td>
+                            <?php endforeach; ?>
+
 
                         </tr>
                         <?php

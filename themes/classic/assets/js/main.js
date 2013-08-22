@@ -1,5 +1,6 @@
 
 $(document).ready(function() {
+    
     $("table").tablecloth({
         theme: "default",
         striped: true,
@@ -15,17 +16,36 @@ $(document).ready(function() {
      * @type @exp;document@call;getElementById|@exp;document@call;getElementById
      */
     $('.timepicker').timepicker({
-        className :'dropdown',
-        appendTo :$('.limiter')
+        className: 'dropdown',
+        appendTo: $('.limiter'),
+        meridan:false
     });
-     
-     $('.timepicker').click(function(){
-     });
+
+    /**
+     * 
+     * @type @exp;@call;$@call;val
+     */
+    var start_time;
+    var change_time;
+    $('.timepicker').click(function() {
+        
+           start_time = $(this).attr('data-time');
+        
+    });
+    $('.timepicker').change(function() {
+        change_time = $(this).val();
+        if (change_time != start_time) {
+            $(this).addClass('changed');
+        }
+        else{
+            $(this).removeClass('changed');
+        }
+    });
 
     //better code is needed
     /**$('.timepicker').change(function() {
-        $(this).addClass('changed');
-    });*/
+     $(this).addClass('changed');
+     });*/
 });
 
 

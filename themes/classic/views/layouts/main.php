@@ -6,8 +6,8 @@
 //query location using current ip address <--(found in protected/config/main.php under params)
 $location = Yii::app()->db->createCommand()
         ->select("loc_name, loc_status, loc_id")
-        ->from('Locations l')
-        ->join('Ips ip', 'l.loc_id=ip.ip_loc_id')
+        ->from('locations l')
+        ->join('ips ip', 'l.loc_id=ip.ip_loc_id')
         ->where('ip.ip_address=:ip', array(':ip' => Yii::app()->params['ip']))
         ->queryRow();
 
@@ -24,24 +24,24 @@ Yii::app()->user->setState('loc_id', $location['loc_id']);
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title><?php echo CHtml::encode($this->pageTitle) . '-' . ucfirst(Yii::app()->params['location']); ?></title>
+        <title><?php echo CHtml::encode($this->pageTitle) . '-' . ucfirst(Yii::app()->user->getState('location')); ?></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <link rel="shortcut icon" href="<?php echo Yii::app()->theme->baseUrl; ?>/images/gw_logo.ico">
+        <link rel="shortcut icon" href="<?php echo Yii::app()->theme->baseUrl; ?>/img/gw_logo.ico">
 
         <!--[if lt IE 8]>
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/ie.css" media="screen, projection" />
         <![endif]-->
         <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/assets/css/bootstrap.css">
-        <link rel="stylesheet" href="/assets/css/css/bootstrap-responsive.css">
-        <link rel="stylesheet" href="/assets/css/tablecloth.css">
-        <link rel="stylesheet" href="/assets/css/prettify.css">
-        <link rel="stylesheet" href="/assets/silviomoreto-bootstrap-select-10ba1a3/bootstrap-select.min.css">
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/js/jonthornton-jquery-timepicker-ced5953/jquery.timepicker.css">
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/style.css">
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/bootstrap-style.css">
-        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/vendor/modernizr-2.6.2.min.js"></script>
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/css/bootstrap.css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/css/bootstrap-responsive.css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/css/tablecloth.css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/css/prettify.css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/silviomoreto-bootstrap-select-10ba1a3/bootstrap-select.min.css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/jonthornton-jquery-timepicker-ced5953/jquery.timepicker.css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/css/style.css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/css/bootstrap-style-override.css">
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
 
@@ -54,7 +54,7 @@ Yii::app()->user->setState('loc_id', $location['loc_id']);
 
                 <div class="masthead">
                     <h3 class="muted">
-                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/images/AT%20Logo.jpg" alt="Academic Technologies"/>
+                        <img src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/img/AT%20Logo.jpg" alt="Academic Technologies"/>
                     </h3>
                     <div class="title">
                         <h1 id="page-title">
@@ -68,8 +68,9 @@ Yii::app()->user->setState('loc_id', $location['loc_id']);
                                 <?php
                                 $this->widget('zii.widgets.CMenu', array(
                                     'items' => array(
-                                        array('label' => 'Home', 'url' => array('/site/index')),
-                                        array('label' => 'Admin', 'url' => array('/site/admin'), 'visible' => Yii::app()->user->checkAccess('admin')),
+                                        array('label' => 'Open/Close Shop', 'url' => array('/site/index')),
+                                        array('label' => 'Change Shop Hours and Holidays', 'url' => array('/site/admin'), 'visible' => Yii::app()->user->checkAccess('admin')),
+                                        array('label' => 'Run Reports', 'url' => array('/site/reporting'), 'visible' => Yii::app()->user->checkAccess('admin')),
                                         array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest),
                                         array('label' => 'Login', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
                                     ), 'lastItemCssClass' => 'mitem-last',
@@ -113,15 +114,15 @@ Yii::app()->user->setState('loc_id', $location['loc_id']);
         </div><!-- limiter -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-        <script src="/assets/js/jquery-1.7.2.min.js"></script>
-        <script src="/assets/js/bootstrap.js"></script>
-        <script src="/assets/js/jquery.metadata.js"></script>
-        <script src="/assets/js/jquery.tablesorter.min.js"></script>
-        <script src="/assets/js/jquery.tablecloth.js"></script>
-        <script src="/assets/silviomoreto-bootstrap-select-10ba1a3/bootstrap-select.min.js"></script>
-        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/plugins.js"></script>
-        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/jonthornton-jquery-timepicker-ced5953/jquery.timepicker.min.js"></script>
-        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/js/main.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/jquery-1.7.2.min.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/bootstrap.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/jquery.metadata.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/jquery.tablesorter.min.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/jquery.tablecloth.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/silviomoreto-bootstrap-select-10ba1a3/bootstrap-select.min.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/plugins.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/jonthornton-jquery-timepicker-ced5953/jquery.timepicker.min.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
@@ -142,6 +143,10 @@ Yii::app()->user->setState('loc_id', $location['loc_id']);
                 $('.selectpicker').selectpicker({
                     width: '100%'
                 });
+                if(<?php echo !Yii::app()->user->checkAccess('admin');?>){
+                    $('.navbar').addClass('user');
+                    
+                }
             });
         </script>
     </body>

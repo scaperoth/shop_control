@@ -35,8 +35,8 @@ class Controller extends CController {
         //get all ip addresses from ips table
         $ips = Yii::app()->db->createCommand()
                 ->select('ip_address')
-                ->from('Ips ip')
-                ->join('Locations l', 'l.loc_id=ip.ip_loc_id')
+                ->from('ips ip')
+                ->join('locations l', 'l.loc_id=ip.ip_loc_id')
                 ->where('l.loc_flag=:active', array(':active' => 1))
                 ->queryAll();
         

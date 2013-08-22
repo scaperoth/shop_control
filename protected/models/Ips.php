@@ -26,7 +26,7 @@ class Ips extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'Ips';
+		return 'ips';
 	}
 
 	/**

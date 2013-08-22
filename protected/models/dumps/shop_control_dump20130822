@@ -1,0 +1,183 @@
+CREATE DATABASE  IF NOT EXISTS `shop_control` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `shop_control`;
+-- MySQL dump 10.13  Distrib 5.5.16, for Win32 (x86)
+--
+-- Host: localhost    Database: shop_control
+-- ------------------------------------------------------
+-- Server version	5.1.68-community
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `holidays`
+--
+
+DROP TABLE IF EXISTS `holidays`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `holidays` (
+  `hol_id` int(11) NOT NULL,
+  `hol_name` varchar(45) NOT NULL,
+  `hol_date` varchar(40) NOT NULL,
+  `hol_description` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`hol_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `holidays`
+--
+
+LOCK TABLES `holidays` WRITE;
+/*!40000 ALTER TABLE `holidays` DISABLE KEYS */;
+INSERT INTO `holidays` VALUES (1,'Christmas','Dec 25',NULL),(2,'New Years','Jan 1',NULL);
+/*!40000 ALTER TABLE `holidays` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ips`
+--
+
+DROP TABLE IF EXISTS `ips`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ips` (
+  `ip_id` int(11) NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `ip_compname` varchar(45) DEFAULT NULL,
+  `ip_loc_id` int(11) NOT NULL,
+  PRIMARY KEY (`ip_id`),
+  KEY `fk1_idx` (`ip_loc_id`),
+  CONSTRAINT `fk1` FOREIGN KEY (`ip_loc_id`) REFERENCES `locations` (`loc_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='\n\n	';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ips`
+--
+
+LOCK TABLES `ips` WRITE;
+/*!40000 ALTER TABLE `ips` DISABLE KEYS */;
+INSERT INTO `ips` VALUES (1,'127.0.0.1',NULL,1),(2,'128.164.60.238','est00211w01',3),(3,'128.164.60.237','FN00105w01',2),(4,'128.164.60.239','gl0b103w01',4),(5,'128.164.137.37','Matt\'s',1);
+/*!40000 ALTER TABLE `ips` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `location_change_tracking`
+--
+
+DROP TABLE IF EXISTS `location_change_tracking`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `location_change_tracking` (
+  `lct_id` int(11) NOT NULL AUTO_INCREMENT,
+  `lct_location` varchar(45) DEFAULT NULL,
+  `lct_user` varchar(45) DEFAULT NULL,
+  `lct_action` varchar(45) DEFAULT NULL,
+  `lct_on_time` int(11) DEFAULT NULL,
+  `lct_message` text,
+  `lct_timestamp` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`lct_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `location_change_tracking`
+--
+
+LOCK TABLES `location_change_tracking` WRITE;
+/*!40000 ALTER TABLE `location_change_tracking` DISABLE KEYS */;
+INSERT INTO `location_change_tracking` VALUES (1,'localhost','Matt Scaperoth','open',0,NULL,'2013-08-22 01:25:56'),(2,'localhost','Matt Scaperoth','close',0,NULL,'2013-08-22 01:29:53'),(3,'localhost','Matt Scaperoth','open',0,NULL,'2013-08-22 01:29:54'),(4,'localhost','Matt Scaperoth','close',0,'Matt Scaperoth closed the shop late</br>Latest closing time is 18:10pm.<br/>Late by: 3 hours 20 minutes and 33 seconds','2013-08-22 01:30:33'),(5,'localhost','Matt Scaperoth','open',0,'Matt Scaperoth opened the shop late</br>Latest opening time is 08:10am.<br/>Late by: 13 hours 20 minutes and 51 seconds','2013-08-22 01:30:51'),(6,'localhost','Matt Scaperoth','close',0,'Matt Scaperoth closed the shop late</br>Latest closing time is 18:10pm.<br/>Late by: 3 hours 22 minutes and 23 seconds','2013-08-22 01:32:23'),(7,'localhost','Matt Scaperoth','open',0,'Matt Scaperoth opened the shop late</br>Latest opening time is 08:10am.<br/>Late by: 13 hours 22 minutes and 26 seconds','2013-08-22 01:32:26'),(8,'localhost','Matt Scaperoth','close',0,'Matt Scaperoth closed the shop late</br>Latest closing time is 18:10pm.<br/>Late by: 3 hours 22 minutes and 30 seconds','2013-08-22 01:32:30'),(9,'localhost','Matt Scaperoth','open',0,'Matt Scaperoth opened the shop late</br>Latest opening time is 08:10am.<br/>Late by: 13 hours 22 minutes and 39 seconds','2013-08-22 01:32:39'),(10,'localhost','Matt Scaperoth','close',0,'Matt Scaperoth closed the shop late</br>Latest closing time is 18:10pm.<br/>Late by: 3 hours 22 minutes and 48 seconds','2013-08-22 01:32:48'),(11,'localhost','Matt Scaperoth','open',0,'Matt Scaperoth opened the shop late</br>Latest opening time is 08:10am.<br/>Late by: 13 hours 24 minutes and 14 seconds','2013-08-22 01:34:14'),(12,'localhost','Matt Scaperoth','close',0,'Matt Scaperoth closed the shop late</br>Latest closing time is 18:10pm.<br/>Late by: 3 hours 24 minutes and 17 seconds','2013-08-22 01:34:17'),(13,'localhost','Matt Scaperoth','open',0,'Matt Scaperoth opened the shop late</br>Latest opening time is 08:10am.<br/>Late by: 13 hours 24 minutes and 21 seconds','2013-08-22 01:34:21'),(14,'localhost','Matt Scaperoth','close',0,'Matt Scaperoth closed the shop late</br>Latest closing time is 18:10pm.<br/>Late by: 3 hours 24 minutes and 51 seconds','2013-08-22 01:34:51'),(15,'localhost','Matt Scaperoth','open',0,'Matt Scaperoth opened the shop late</br>Latest opening time is 08:10am.<br/>Late by: 13 hours 24 minutes and 52 seconds','2013-08-22 01:34:52'),(16,'localhost','Matt Scaperoth','close',0,'Matt Scaperoth closed the shop late</br>Latest closing time is 18:10pm.<br/>Late by: 3 hours 24 minutes and 55 seconds','2013-08-22 01:34:55'),(17,'localhost','Matt Scaperoth','open',0,'Matt Scaperoth opened the shop late</br>Latest opening time is 08:10am.<br/>Late by: 13 hours 24 minutes and 57 seconds','2013-08-22 01:34:57'),(18,'localhost','Matt Scaperoth','close',0,'Matt Scaperoth closed the shop late</br>Latest closing time is 18:10pm.<br/>Late by: 3 hours 25 minutes and 58 seconds','2013-08-22 01:35:58'),(19,'localhost','Matt Scaperoth','open',0,'Matt Scaperoth opened the shop late</br>Latest opening time is 08:10am.<br/>Late by: 13 hours 36 minutes and 59 seconds','2013-08-22 01:46:59'),(20,'localhost','Matt Scaperoth','close',0,'Matt Scaperoth closed the shop late</br>Latest closing time is 18:10pm.<br/>Late by: 3 hours 37 minutes and 6 seconds','2013-08-22 01:47:06');
+/*!40000 ALTER TABLE `location_change_tracking` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `locations`
+--
+
+DROP TABLE IF EXISTS `locations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `locations` (
+  `loc_id` int(11) NOT NULL AUTO_INCREMENT,
+  `loc_name` varchar(65) NOT NULL,
+  `loc_status` int(11) NOT NULL DEFAULT '0',
+  `loc_mon_open_hrs` time NOT NULL DEFAULT '08:00:00',
+  `loc_mon_closed_hrs` time NOT NULL DEFAULT '18:00:00',
+  `loc_tue_open_hrs` time NOT NULL DEFAULT '08:00:00',
+  `loc_tue_closed_hrs` time NOT NULL DEFAULT '18:00:00',
+  `loc_wed_open_hrs` time NOT NULL DEFAULT '08:00:00',
+  `loc_wed_closed_hrs` time NOT NULL DEFAULT '18:00:00',
+  `loc_thu_open_hrs` time NOT NULL DEFAULT '08:00:00',
+  `loc_thu_closed_hrs` time NOT NULL DEFAULT '18:00:00',
+  `loc_fri_open_hrs` time NOT NULL DEFAULT '08:00:00',
+  `loc_fri_closed_hrs` time NOT NULL DEFAULT '18:00:00',
+  `loc_sat_open_hrs` time NOT NULL DEFAULT '08:00:00',
+  `loc_sat_closed_hrs` time NOT NULL DEFAULT '18:00:00',
+  `loc_sun_open_hrs` time NOT NULL DEFAULT '08:00:00',
+  `loc_sun_closed_hrs` time NOT NULL DEFAULT '18:00:00',
+  `loc_flag` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`loc_id`),
+  UNIQUE KEY `loc_name_UNIQUE` (`loc_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COMMENT='\n\n	';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `locations`
+--
+
+LOCK TABLES `locations` WRITE;
+/*!40000 ALTER TABLE `locations` DISABLE KEYS */;
+INSERT INTO `locations` VALUES (1,'localhost',0,'08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00',1),(2,'Funger',1,'08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00',1),(3,'E-Street',1,'08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00',1),(4,'Gelman',1,'08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00',1);
+/*!40000 ALTER TABLE `locations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `shop_holidays`
+--
+
+DROP TABLE IF EXISTS `shop_holidays`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `shop_holidays` (
+  `hol_id` int(11) NOT NULL,
+  `loc_id` int(11) NOT NULL,
+  PRIMARY KEY (`hol_id`,`loc_id`),
+  KEY `fk1` (`hol_id`),
+  KEY `fk2` (`loc_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `shop_holidays`
+--
+
+LOCK TABLES `shop_holidays` WRITE;
+/*!40000 ALTER TABLE `shop_holidays` DISABLE KEYS */;
+INSERT INTO `shop_holidays` VALUES (1,1),(1,3),(2,1);
+/*!40000 ALTER TABLE `shop_holidays` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'shop_control'
+--
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2013-08-22  9:13:26

@@ -26,7 +26,7 @@ class Holidays extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'Holidays';
+		return 'holidays';
 	}
 
 	/**

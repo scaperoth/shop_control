@@ -111,8 +111,8 @@ CUSTOM CSS
     width:100%;
 }
 
-.navbar{
-    width:70%;
+.navbar.user{
+    width:50%;
     margin:0 auto;
 }
 
