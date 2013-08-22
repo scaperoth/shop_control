@@ -9,6 +9,7 @@ class WebUser extends CWebUser
      * @param mixed $params (opt) Parameters for this operation, usually the object to access.
      * @return bool Permission granted?
      */
+    public $returnUrl = array("/site/index");
     public function checkAccess($operation, $params=array())
     {
         if (empty($this->id)) {
@@ -19,6 +20,7 @@ class WebUser extends CWebUser
         if ($role === 'admin') {
             return true; // admin role has access to everything
         }
+        
         // allow access if the operation request is the current user's role
         return ($operation === $role);
     }

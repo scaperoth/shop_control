@@ -1,20 +1,20 @@
 <?php
 
 /**
- * This is the model class for table "User".
+ * This is the model class for table "Holidays".
  *
- * The followings are the available columns in table 'User':
- * @property integer $id
- * @property string $username
- * @property string $password
- * @property string $admin
+ * The followings are the available columns in table 'Holidays':
+ * @property integer $hol_id
+ * @property string $hol_name
+ * @property string $hol_date
+ * @property string $hol_description
  */
-class User extends CActiveRecord
+class Holidays extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return User the static model class
+	 * @return Holidays the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -26,7 +26,7 @@ class User extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'User';
+		return 'holidays';
 	}
 
 	/**
@@ -37,12 +37,12 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id, username, password, role', 'required'),
-			array('id', 'numerical', 'integerOnly'=>true),
-			array('username, role', 'length', 'max'=>45),
+			array('hol_id, hol_name, hol_date', 'required'),
+			array('hol_id', 'numerical', 'integerOnly'=>true),
+			array('hol_name, hol_description', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			//array('id, username, password', 'safe', 'on'=>'search'),
+			array('hol_id, hol_name, hol_date, hol_description', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,10 +63,10 @@ class User extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'username' => 'Username',
-			'password' => 'Password',
-                        'role' => 'Role'
+			'hol_id' => 'Hol',
+			'hol_name' => 'Hol Name',
+			'hol_date' => 'Hol Date',
+			'hol_description' => 'Hol Description',
 		);
 	}
 
@@ -81,10 +81,10 @@ class User extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('username',$this->username,true);
-		$criteria->compare('password',$this->password,true);
-                $criteria->compare('role',$this->password,true);
+		$criteria->compare('hol_id',$this->hol_id);
+		$criteria->compare('hol_name',$this->hol_name,true);
+		$criteria->compare('hol_date',$this->hol_date,true);
+		$criteria->compare('hol_description',$this->hol_description,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
