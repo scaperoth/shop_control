@@ -28,8 +28,10 @@ class SiteController extends Controller {
         // renders the view file 'protected/views/site/index.php'
         // using the default layout 'protected/views/layouts/main.php'
         //if(!Yii::app()->user->checkAccess('authenticated'))
-        if (Yii::app()->user->isGuest)
+        if (Yii::app()->user->isGuest) {
+            Yii::app()->user->setFlash('error', 'Access Denied.');
             $this->redirect(array('/site/login'));
+        }
         else
             $this->render('index');
     }
@@ -42,10 +44,24 @@ class SiteController extends Controller {
         // renders the view file 'protected/views/site/index.php'
         // using the default layout 'protected/views/layouts/main.php'
         //if(!Yii::app()->user->checkAccess('authenticated'))
-        if (!Yii::app()->user->checkAccess('admin'))
-            $this->redirect(array('/site/login'));
+        if (!Yii::app()->user->checkAccess('admin')) {
+            Yii::app()->user->setFlash('error', 'Access Denied.');
+            $this->redirect(Yii::app()->user->returnUrl);
+        }
         else
             $this->render('admin');
+    }
+    
+    public function actionReporting() {
+        // renders the view file 'protected/views/site/index.php'
+        // using the default layout 'protected/views/layouts/main.php'
+        //if(!Yii::app()->user->checkAccess('authenticated'))
+        if (!Yii::app()->user->checkAccess('admin')) {
+            Yii::app()->user->setFlash('error', 'Access Denied.');
+            $this->redirect(Yii::app()->user->returnUrl);
+        }
+        else
+            $this->render('reporting');
     }
 
     /**
@@ -87,23 +103,27 @@ class SiteController extends Controller {
      * Displays the login page
      */
     public function actionLogin() {
-        $model = new LoginForm;
+        if (!Yii::app()->user->isGuest) {
+            $this->render('index');
+        } else {
+            $model = new LoginForm;
 
-        // if it is ajax validation request
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
-            echo CActiveForm::validate($model);
-            Yii::app()->end();
-        }
+            // if it is ajax validation request
+            if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
+                echo CActiveForm::validate($model);
+                Yii::app()->end();
+            }
 
-        // collect user input data
-        if (isset($_POST['LoginForm'])) {
-            $model->attributes = $_POST['LoginForm'];
-            // validate user input and redirect to the previous page if valid
-            if ($model->validate() && $model->login())
-                $this->redirect(Yii::app()->user->returnUrl);
+            // collect user input data
+            if (isset($_POST['LoginForm'])) {
+                $model->attributes = $_POST['LoginForm'];
+                // validate user input and redirect to the previous page if valid
+                if ($model->validate() && $model->login())
+                    $this->redirect(Yii::app()->user->returnUrl);
+            }
+            // display the login form
+            $this->render('login', array('model' => $model));
         }
-        // display the login form
-        $this->render('login', array('model' => $model));
     }
 
     /**
@@ -119,70 +139,212 @@ class SiteController extends Controller {
      */
     public function actionOpenShop() {
 
+        if (Yii::app()->request->isPostRequest) {
+            //administrative emails
+            $admin_emails = Yii::app()->params['admin_emails'];
+            echo $admin_emails . ' : ';
+            //full username
+            $username = Yii::app()->user->getState('username');
+            //open or closed
+            $action = 'open';
+            //get timestamp
+            $timestamp = date('Y-m-d H:i:s');
+
+            //is user ontime?
+            $on_time = 0;
+
+            //whether or not to send an email defaults to no
+            $message = NULL;
 
 //get curr location
-        $location = Yii::app()->params['location'];
-
+            $location = Yii::app()->user->getState('location');
+//get current day of the week
+            $dayofweek = strtolower(date('D'));
+            $table_col = 'loc_' . $dayofweek . '_open_hrs';
 //check open hours
-        $check_query = Yii::app()->db->createCommand()
-                ->select('loc_open_hrs')
-                ->from('Locations l')
-                ->where('l.loc_name=:name', array(':name' => $location))
-                ->queryRow();
+            $check_query = Yii::app()->db->createCommand()
+                    ->select($table_col)
+                    ->from('locations l')
+                    ->where('l.loc_name=:name', array(':name' => $location))
+                    ->queryRow();
 
 //translate databse open hours into php time()
-        $openHrsTime = strtotime($check_query['loc_open_hrs']);
+            $openHrsTime = strtotime($check_query[$table_col]);
 
 //get current time
-        $currtime = date('d-m-Y H:i:s');
+            $currtime = date('d-m-Y H:i:s');
 
 //get upper deviation of time. +- 10 minutes from db shop open time
-        $open_upper_bound = date('d-m-Y H:i:s', $openHrsTime + 600);
-        $open_lower_bound = date('d-m-Y H:i:s', $openHrsTime - 600);
+            $open_upper_bound = date('d-m-Y H:i:s', $openHrsTime + 600);
+            $open_lower_bound = date('d-m-Y H:i:s', $openHrsTime - 600);
 
 //if current time is later than the open + 10 minutes
 //shop was opened late
-        if ($currtime > $open_upper_bound) {
-            $currtime = new DateTime($currtime);
-            $openDateTime = new DateTime($open_upper_bound);
-            $difference = $currtime->diff($openDateTime, True);
+            if ($currtime > $open_upper_bound) {
+                $currtime = new DateTime($currtime);
+                $openDateTime = new DateTime($open_upper_bound);
+                $difference = $currtime->diff($openDateTime, True);
 
-            $message = 'Opened late</br>' . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds';
-        }
+                $message = $username . " opened the $location shop late. Latest opening time is " . date('H:ia', $openHrsTime + 600) . '. Late by: ' . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds';
+            }
 
 //if current time is less than the open - 10 minutes
 //shop was opened early
-        else if ($currtime < $open_lower_bound) {
-            $currtime = new DateTime($currtime);
-            $openDateTime = new DateTime($open_lower_bound);
-            $difference = $currtime->diff($openDateTime, True);
+            else if ($currtime < $open_lower_bound) {
+                $currtime = new DateTime($currtime);
+                $openDateTime = new DateTime($open_lower_bound);
+                $difference = $currtime->diff($openDateTime, True);
 
 
-            $message = 'Opened early by </br>' . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds';
+                $message = $username . " opened the. $location shop early by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds';
+            } else {
+                $on_time = 1;
+                $message = NULL;
+            }
+
+            //if send messages is set to 1 then send the email. otherwise don't.
+            if ($message != NULL && !Yii::app()->user->checkAccess('admin')) {
+
+
+                $to = $admin_emails;
+                $subject = 'Test email using PHP';
+                $headers = 'From: acadtech@gwu.edu' . "\r\n" .
+                        'Reply-To: scaperoth@gmail.com' . "\r\n" .
+                        'X-Mailer: PHP/' . phpversion();
+
+                mail($to, $subject, $message, $headers, '-facadtech.gwu.edu');
+                
+                $lct = new LocationChangeTracking();
+                $lct->lct_location = $location;
+                $lct->lct_user = $username;
+                $lct->lct_action = $action;
+                $lct->lct_on_time = $on_time;
+                $lct->lct_message = $message;
+                $lct->lct_timestamp = $timestamp;
+                $lct->insert();
+            }
+
+            $loc_id = Yii::app()->user->getState('loc_id');
+            $new_status = 1;
+            $location_model = Locations::model()->findByPk($loc_id);
+            $location_model->loc_status = $new_status;
+            $location_model->save(); // save the change to database
+
+
+            echo $message;
         } else {
-            $message = 'opened on time';
+            Yii::app()->user->setFlash('error', 'Access Denied.');
+            $this->redirect(Yii::app()->user->returnUrl);
         }
-        $headers = 'From: webmaster@example.com';
-        mail('nobody@example.com', 'Test email using PHP', 'This is a test email message', $headers, '-fwebmaster@example.com');
-
-        $to = 'scaperoth@gmail.com';
-        $subject = 'Test email using PHP';
-        $message = 'This is a test email message';
-        $headers = 'From: scaperoth@gmail.com' . "\r\n" .
-                'Reply-To: scaperoth@gmail.com' . "\r\n" .
-                'X-Mailer: PHP/' . phpversion();
-
-        mail($to, $subject, $message, $headers, '-scaperoth@gmail.com');
-        echo $message;
     }
 
     /**
      * 
      */
     public function actionCloseShop() {
-        
-    }
+        if (Yii::app()->request->isPostRequest) {
+            //administrative emails
+            $admin_emails = Yii::app()->params['admin_emails'];
+            //full username
+            $username = Yii::app()->user->getState('username');
+            //open or closed
+            $action = 'close';
+            //get timestamp
+            $timestamp = date('Y-m-d H:i:s');
 
+            //is user ontime?
+            $on_time = 0;
+
+            $message = NULL;
+
+            //get curr location
+            $location = Yii::app()->user->getState('location');
+//get current day of the week
+            $dayofweek = strtolower(date('D'));
+            $table_col = 'loc_' . $dayofweek . '_closed_hrs';
+//check open hours
+            $check_query = Yii::app()->db->createCommand()
+                    ->select($table_col)
+                    ->from('locations l')
+                    ->where('l.loc_name=:name', array(':name' => $location))
+                    ->queryRow();
+
+//translate databse open hours into php time()
+            $openHrsTime = strtotime($check_query[$table_col]);
+
+//get current time
+            $currtime = date('d-m-Y H:i:s');
+
+//get upper deviation of time. +- 10 minutes from db shop open time
+            $open_upper_bound = date('d-m-Y H:i:s', $openHrsTime + 600);
+            $open_lower_bound = date('d-m-Y H:i:s', $openHrsTime - 600);
+
+//if current time is later than the open + 10 minutes
+//shop was opened late
+            if ($currtime > $open_upper_bound) {
+                $currtime = new DateTime($currtime);
+                $openDateTime = new DateTime($open_upper_bound);
+                $difference = $currtime->diff($openDateTime, True);
+
+                $message = $username . " closed the $location shop late. Latest closing time is " . date('H:ia', $openHrsTime + 600) . '. Late by: ' . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds';
+            }
+
+//if current time is less than the open - 10 minutes
+//shop was opened early
+            else if ($currtime < $open_lower_bound) {
+                $currtime = new DateTime($currtime);
+                $openDateTime = new DateTime($open_lower_bound);
+                $difference = $currtime->diff($openDateTime, True);
+
+
+                $message = $username . " closed the $location shop early by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds';
+            } else {
+                $on_time = 1;
+                $message = NULL;
+            }
+
+
+            if ($message != NULL && !Yii::app()->user->checkAccess('admin')) {
+
+                $to = $admin_emails;
+                $subject = 'Test email using PHP';
+                $headers = 'From: acadtech@gwu.edu' . "\r\n" .
+                        'Reply-To: webmaster@example.com' . "\r\n" .
+                        'X-Mailer: PHP/' . phpversion();
+
+                mail($to, $subject, $message, $headers, '-facadtech.gwu.edu');
+
+                $lct = new LocationChangeTracking();
+                $lct->lct_location = $location;
+                $lct->lct_user = $username;
+                $lct->lct_action = $action;
+                $lct->lct_on_time = $on_time;
+                $lct->lct_message = $message;
+                $lct->lct_timestamp = $timestamp;
+                $lct->insert();
+            }
+            //update status table
+            $loc_id = Yii::app()->user->getState('loc_id');
+            $new_status = 0;
+            $location_model = Locations::model()->findByPk($loc_id);
+            $location_model->loc_status = $new_status;
+            $location_model->save(); // save the change to database
+            //update tracking table
+
+
+
+            echo $message;
+        } else {
+            Yii::app()->user->setFlash('error', 'Access Denied.');
+            $this->redirect(Yii::app()->user->returnUrl);
+        }
+    }
+    
+    public function actionUpdateHours(){
+        if (Yii::app()->request->isPostRequest) {
+            
+        }
+    }
     /**
      * 
      * @param type $model
@@ -192,6 +354,18 @@ class SiteController extends Controller {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }
+    }
+
+    public function actionMailTest() {
+
+
+        $to = 'mscapero@gwu.edu';
+        $subject = 'Test email using PHP';
+        $message = 'This is a test email message';
+        $headers = 'From: webmaster@example.com' . "\r\n" .
+                'Reply-To: webmaster@example.com' . "\r\n" .
+                'X-Mailer: PHP/' . phpversion();
+        mail($to, $subject, $message, $headers, '-fwebmaster@example.com');
     }
 
 }
