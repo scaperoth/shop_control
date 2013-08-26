@@ -50,7 +50,7 @@ class UserIdentity extends CUserIdentity {
         if ($ldapConn) {
 
             @$ldapBind = ldap_bind($ldapConn, $ldapDn, $this->password); //can use either dn(distinguished name) or rdn(relative dn) 
-            
+
             if ($ldapBind) {
                 $this->_id = 1;
                 $sr = ldap_search($ldapConn, $baseDnPeople, $filter, $attr);
@@ -128,7 +128,7 @@ class UserIdentity extends CUserIdentity {
                         $ADvalue = 'AT-AVD';
                     }
                 }
-                Yii::app()->user->setState('username',$userFullName);
+                Yii::app()->user->setState('username', $userFullName);
                 $this->errorCode = self::ERROR_NONE;
             }
             if (!$ldapBind) {

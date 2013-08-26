@@ -5,7 +5,13 @@
 $this->pageTitle = Yii::app()->name;
 ?>
 
-
+<style>
+    .alert-error{
+        color: #165235;
+        text-shadow: 0px 2px 3px #82c462;
+        background-color:#8CCD8C;
+    }
+</style>
 <div>
 
     <div id="classroomDataForm" class="admin-form">
@@ -38,21 +44,21 @@ $this->pageTitle = Yii::app()->name;
                     );
                     foreach ($locations as $location) {
                         ?>
-                        <tr class="location_row <?php echo $location['loc_name']; ?>">
+                        <tr class="location_row <?php echo $location['loc_name']; ?>" data-rel = '<?php echo md5($location['loc_id']); ?>'>
                             <td class="location_name">
                                 <?php
                                 echo $location['loc_name'];
                                 ?>
                             </td>
                             <?php
-                                /**
-                                 * this loop goes through the days of the week and 
-                                 * provides the name of the days as well as a 
-                                 * shortened (3 chars) version to use in the db call 
-                                 */
+                            /**
+                             * this loop goes through the days of the week and 
+                             * provides the name of the days as well as a 
+                             * shortened (3 chars) version to use in the db call 
+                             */
                             ?>
                             <?php foreach ($days_of_week as $day): ?>
-                                
+
                                 <td class="date_hover" id="<?php echo $day; ?>">
                                     <?php
                                     /**
@@ -67,7 +73,7 @@ $this->pageTitle = Yii::app()->name;
                                     //formatting is 'hh:mm:ss'
                                     $stringOpenTime = date('h:ia', strtotime($location['loc_' . $short_day . '_open_hrs']));
                                     $stringClosedTime = date('h:ia', strtotime($location['loc_' . $short_day . '_closed_hrs']));
-                                    
+
                                     //trim leading zeros from formatted time
                                     $open_time = ltrim(
                                             $stringOpenTime, '0'
@@ -77,12 +83,12 @@ $this->pageTitle = Yii::app()->name;
                                     );
                                     ?>
                                     <div class="bootstrap-timepicker">
-                                        <input title="Click to edit" data-time ="<?php echo $open_time; ?>" class="timepicker open" name="<?php echo $location['loc_name'] .'|'. $short_day . '_open_hrs'; ?>" value="<?php echo $open_time; ?>">
+                                        <input title="Click to edit" data-time ="<?php echo $open_time; ?>" class="timepicker open" name="<?php echo $location['loc_name'] . '|' . $short_day . '_open_hrs'; ?>" value="<?php echo $open_time; ?>">
                                     </div>
                                     <span> to </span>
 
                                     <div class="bootstrap-timepicker">
-                                        <input title="Click to edit" data-time ="<?php echo $close_time; ?>" class="timepicker closed" name="<?php echo $location['loc_name'].'|'. $short_day . '_closed_hrs'; ?>" value="<?php echo $close_time; ?>">
+                                        <input title="Click to edit" data-time ="<?php echo $close_time; ?>" class="timepicker closed" name="<?php echo $location['loc_name'] . '|' . $short_day . '_closed_hrs'; ?>" value="<?php echo $close_time; ?>">
                                     </div>
                                 </td>
                             <?php endforeach; ?>
@@ -97,10 +103,10 @@ $this->pageTitle = Yii::app()->name;
             </fieldset>
         </form>
     </div>
-
+    <div id='holiday_flash'></div>
     <div id="holidayForm" class="admin-form">
         <h3 class="section-title">Holidays</h3>
-        <form>
+        <form id='shopHolidayForm'>
             <fieldset>
                 <table id="timeTable" align="center" border="1">
                     <thead>
@@ -123,7 +129,7 @@ $this->pageTitle = Yii::app()->name;
                         <tr>
                             <td>
                                 <!--option for each location. "selected" if holiday applies to location-->
-                                <select multiple class='selectpicker large-select'>
+                                <select multiple name='holidayshops' class='selectpicker large-select'>
                                     <?php
                                     //get all locations
                                     foreach ($locations as $location) {
@@ -139,13 +145,13 @@ $this->pageTitle = Yii::app()->name;
                                         }//end sh foreach
                                         ?>
 
-                                        <option <?php echo $selected ?> value='<?php echo $location['loc_name'] ?>'><?php echo $location['loc_name'] ?></option>
+                                        <option <?php echo $selected ?>  value='<?php echo md5($location['loc_id']);?>'><?php echo $location['loc_name'] ?></option>
                                         <?php
                                     }//end location foreach
                                     ?>
                                 </select>
                             </td>
-                            <td>
+                            <td class='holiday' data-hol='<?php echo md5($holiday['hol_id']);?>'>
                                 <?php
                                 echo $holiday['hol_name'];
                                 ?>

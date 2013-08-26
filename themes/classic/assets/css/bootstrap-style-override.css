@@ -100,7 +100,6 @@ CUSTOM CSS
     border-color: #51a351 #51a351 #387038;
 }
 
-
 [class*="span"] {
     float:none;
     margin:0;
@@ -118,7 +117,6 @@ CUSTOM CSS
 
 .alert-error{
     text-align:center;
-    width:300px;
     margin:20px auto;
 }
 
