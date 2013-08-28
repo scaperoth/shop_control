@@ -1,3 +1,5 @@
+
+
 /* 
  * admin format and time change
  */
@@ -75,27 +77,66 @@ $('#classroomDateForm').submit(function(e) {
 /**
  * 
  */
+$('#addLocationForm').submit(function(e) {
+    e.preventDefault();
+    $.post('addlocation', $(this).serialize(), function(data) {
+        location.reload();
+    });
+});
+
+/**
+ * 
+ */
+$('#deleteLocationForm').submit(function(e) {
+    e.preventDefault();
+    $.post('deletelocation', $(this).serialize(), function(data) {
+        location.reload();
+    });
+});
+
+/**
+ * 
+ */
 $('#shopHolidayForm').submit(function(e) {
     e.preventDefault();
-    
     //create array of which rows to update
     var objArray = $(".holiday");
     var holiday_ids = [];
     $(objArray).each(function() {
         holiday_ids.push($(this).data('hol'));
     });
-    
     var location_ids = serealizeSelects($('.selectpicker'));
     $.post('holidayupdate', {locations: location_ids, holidays: holiday_ids}, function(data) {
         console.log(data);
         $('#holiday_flash').load('flashmsg');
-
     }
     );
 });
 
 /**
+ * 
+ */
+$('#addHolidayForm').submit(function(e) {
+    e.preventDefault();
+    $.post('addholiday', $(this).serialize(), function(data) {
+        console.log(data);
+    });
+});
+
+/**
+ * 
+ */
+$('#deleteHolidayForm').submit(function(e) {
+    e.preventDefault();
+    $.post('deleteholiday', $(this).serialize(), function(data) {
+        console.log(data);
+    });
+});
+
+/**
  * Convert select to array with values
+ * @param {type} select
+ * @returns {Array}
  */
 function serealizeSelects(select)
 {

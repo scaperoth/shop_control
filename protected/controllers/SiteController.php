@@ -448,10 +448,58 @@ class SiteController extends Controller {
             $this->redirect(Yii::app()->user->returnUrl);
         }
     }
-
+    
     /**
      * 
-     * @param type $model
+     */
+    public function actionAddLocation() {
+        if (Yii::app()->request->isPostRequest) {
+            $vars = $_POST['CreateLocation'];
+            $loc_name = $vars['locationname'];
+            $ip = $vars['ipaddress'];
+            $comp_name = $vars['computername'];
+            
+            $phys_location = new Locations();
+            $phys_location->loc_name = $loc_name;
+            $phys_location->save();
+            
+            $new_loc_id= Locations::model()->findByAttributes(array('loc_name'=>$loc_name), 'loc_id');
+            
+            $ip_location = new Ips();
+            $ip_location->ip_address = $ip;
+            $ip_location->ip_compname = $comp_name;
+            $ip_location->ip_loc_id = $new_loc_id['loc_id'];
+            $ip_location->save();
+            
+            Yii::app()->user->setFlash('success', 'Location added.');
+        }else{
+            Yii::app()->user->setFlash('error', 'Access Denied.');
+            $this->redirect(Yii::app()->user->returnUrl);
+        }
+    }
+    
+    /**
+     * 
+     */
+    public function actionDeleteLocation() {
+        if (Yii::app()->request->isPostRequest) {
+            $vars = ($_POST['DeleteLocation']);
+            $loc_id = $vars['locationname'];
+            $locations = Locations::model()->findAll();
+            foreach($locations as $location){
+                if(md5($location['loc_id'])==$loc_id){
+                    Locations::model()->deleteByPk($location['loc_id']);
+                }
+            }
+             Yii::app()->user->setFlash('success', 'Location deleted.');
+        }else{
+            Yii::app()->user->setFlash('error', 'Access Denied.');
+            $this->redirect(Yii::app()->user->returnUrl);
+        }
+    }
+    
+    /**
+     * 
      */
     public function actionHolidayUpdate() {
         if (Yii::app()->request->isPostRequest) {
@@ -486,10 +534,28 @@ class SiteController extends Controller {
             $this->redirect(Yii::app()->user->returnUrl);
         }
     }
+    
+    public function actionAddHoliday() {
+        if (Yii::app()->request->isPostRequest) {
+            
+        }else{
+            Yii::app()->user->setFlash('error', 'Access Denied.');
+            $this->redirect(Yii::app()->user->returnUrl);
+        }
+    }
+    
+    public function actionDeleteHoliday() {
+        if (Yii::app()->request->isPostRequest) {
+            
+        }else{
+            Yii::app()->user->setFlash('error', 'Access Denied.');
+            $this->redirect(Yii::app()->user->returnUrl);
+        }
+            
+    }
 
     /**
      * 
-     * @param type $model
      */
     public function actionFlashMsg() {
         if (Yii::app()->user->hasFlash('time_update')) {

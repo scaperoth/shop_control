@@ -59,6 +59,7 @@ class Controller extends CController {
         //used for testing denied ips
         //$ip_filter = array('127.0.0.2');
         return array(
+            
             array('allow',
                 'roles' => array('admin'),
             ),
@@ -66,10 +67,12 @@ class Controller extends CController {
             array('allow',
                 'ips' => $ip_filter,
             ),
+            array('allow',
+                'actions' => array('login'),
+            ),
             //disallow ips on only index and admin actions so that error page can show.
             array('deny',
                 'ips' => array('*'),
-                'actions' => array('index', 'admin', 'openshop', 'closeshop', 'reporting'),
                 'deniedCallback' => function() { 
                     Yii::app()->user->logout();
                     
@@ -81,8 +84,5 @@ class Controller extends CController {
 
             )
         );
-    }
-    private function getLocationData(){
-        
     }
 }

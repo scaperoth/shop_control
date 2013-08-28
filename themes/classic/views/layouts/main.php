@@ -16,7 +16,8 @@ $display_location = (($this->location) ? ' - ' . ucfirst($this->location) : '');
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/jquery-1.7.2.min.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/jquery-1.10.2.min.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/jquery-migrate-1.2.1.min.js"></script>
         <title><?php echo CHtml::encode($this->pageTitle) . $display_location; ?></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
@@ -29,9 +30,10 @@ $display_location = (($this->location) ? ' - ' . ucfirst($this->location) : '');
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/css/bootstrap.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/css/bootstrap-responsive.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/css/tablecloth.css">
-        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/css/prettify.css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/css/bootstrap-datepicker.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/silviomoreto-bootstrap-select-10ba1a3/bootstrap-select.min.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/jonthornton-jquery-timepicker-ced5953/jquery.timepicker.css">
+        <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/css/prettify.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/css/style.css">
         <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/css/bootstrap-style-override.css">
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/vendor/modernizr-2.6.2.min.js"></script>
@@ -115,6 +117,8 @@ $display_location = (($this->location) ? ' - ' . ucfirst($this->location) : '');
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/silviomoreto-bootstrap-select-10ba1a3/bootstrap-select.min.js"></script>
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/plugins.js"></script>
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/jonthornton-jquery-timepicker-ced5953/jquery.timepicker.min.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/bootstrap-transition.js"></script>
+        <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/bootstrap-datepicker.js"></script>
         <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/main.js"></script>
         <?php
         /**
@@ -143,6 +147,10 @@ $display_location = (($this->location) ? ' - ' . ucfirst($this->location) : '');
                 });
                 $('.selectpicker').selectpicker({
                     width: '100%'
+                });
+                
+                $('.datepicker').datepicker({
+                    format: 'M dd'
                 });
             });
         </script>
