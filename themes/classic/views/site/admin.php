@@ -127,11 +127,11 @@ $this->pageTitle = Yii::app()->name;
                             <!--new row-->
                             <div class="row">
                                 <div class="control-group">
-                                    <label class="control-label" for="locationname">Location Name:</label>
+                                    <label class="control-label" for="locationname">Location Name:<span class="required">*</span></label>
                                     <div class="controls">
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-globe"></i></span>
-                                            <input placeholder="Example: Funger" class="span3" name="CreateLocation[locationname]" id="locationname" type="text">
+                                            <input placeholder="Example: Funger" required class="span3" name="CreateLocation[locationname]" id="locationname" type="text">
                                         </div>
                                     </div><!--end controls-->
                                 </div><!--end control group-->
@@ -140,11 +140,11 @@ $this->pageTitle = Yii::app()->name;
                             <!--new row-->
                             <div class="row">
                                 <div class="control-group">
-                                    <label class="control-label" for="ipaddress">IP Address:</label>
+                                    <label class="control-label" for="ipaddress">IP Address:<span class="required">*</span></label>
                                     <div class="controls">
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-barcode"></i></span>
-                                            <input placeholder="Example: 127.0.0.1" class="span3" name="CreateLocation[ipaddress]" id="ipaddress" type="text">
+                                            <input placeholder="Example: 127.0.0.1" required class="span3" name="CreateLocation[ipaddress]" id="ipaddress" type="text">
                                         </div>
                                     </div><!--end controls-->
                                 </div><!--end control group-->
@@ -153,11 +153,11 @@ $this->pageTitle = Yii::app()->name;
                             <!--new row-->
                             <div class="row">
                                 <div class="control-group">
-                                    <label class="control-label" for="computername">Computer Name:</label>
+                                    <label class="control-label" for="computername">Computer Name:<span class="required">*</span></label>
                                     <div class="controls">
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-tag"></i></span>
-                                            <input placeholder="Example: est00211w01" class="span3" name="CreateLocation[computername]" id="computername" type="text">
+                                            <input placeholder="Example: est00211w01" required class="span3" name="CreateLocation[computername]" id="computername" type="text">
                                         </div>
                                     </div><!--end controls-->
                                 </div><!--end control group-->
@@ -305,11 +305,11 @@ $this->pageTitle = Yii::app()->name;
                             <!--new row-->
                             <div class="row">
                                 <div class="control-group">
-                                    <label class="control-label" for="holidayname">Holiday Name:</label>
+                                    <label class="control-label" for="holidayname">Holiday Name:<span class="required">*</span></label>
                                     <div class="controls">
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-briefcase"></i></span>
-                                            <input placeholder="Example: Christmas" class="span3" name="CreateHoliday[holidayname]" id="holidayname" type="text">
+                                            <input placeholder="Example: Christmas" required class="span3" name="CreateHoliday[holidayname]" id="holidayname" type="text">
                                         </div>
                                     </div><!--end controls-->
                                 </div><!--end control group-->
@@ -318,17 +318,28 @@ $this->pageTitle = Yii::app()->name;
                             <!--new row-->
                             <div class="row">
                                 <div class="control-group">
-                                    <label class="control-label" for="hoildaydate">Holiday Date:</label>
+                                    <label class="control-label" for="hoildaydate">Holiday Date:<span class="required">*</span></label>
                                     <div class="controls">
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-th"></i></span>
-                                            <input class='datepicker' placeholder="Example: Jan 01" class="span3" name="CreateHoliday[hoildaydate]" id="hoildaydate" type="text">
+                                            <input class='datepicker' required placeholder="Example: Jan 01" class="span3" name="CreateHoliday[hoildaydate]" id="hoildaydate" type="text">
                                         </div>
                                     </div><!--end controls-->
                                 </div><!--end control group-->
                             </div><!--end row-->
 
-
+                            <!--new row-->
+                            <div class="row">
+                                <div class="control-group">
+                                    <label class="control-label" for="holidaydescription">Holiday Description:</label>
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on"><i class="icon-comment"></i></span>
+                                            <input class='datepicker' placeholder="Example: Federal holiday" class="span3" name="CreateHoliday[holidaydescription]" id="holidaydescription" type="text">
+                                        </div>
+                                    </div><!--end controls-->
+                                </div><!--end control group-->
+                            </div><!--end row-->
 
                         </div>
                     </div>

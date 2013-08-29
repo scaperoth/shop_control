@@ -197,7 +197,10 @@ body{
         ADMIN PAGE
 
 ==========================*/
-
+.required{
+    font-weight: bold;
+    color:#d00;
+}
 /*admin-form
 ==================*/
 .admin-form{
