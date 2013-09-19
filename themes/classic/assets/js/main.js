@@ -104,7 +104,7 @@ if (statBtn) {
                 /**
                  * toggle shop closed
                  */
-                $.post('openshop', $form.serialize(), function(json) {
+                $.post('../phpactions/openshop', $form.serialize(), function(json) {
                     console.log(json);
                 });
                 statBtn.value = 'open';

@@ -5,9 +5,30 @@
  * All controller classes for this application should extend from this base class.
  */
 class Controller extends CController {
+
+    /**
+     * set up globals for all actions
+     * @param type $action
+     * @return boolean
+     */
+    protected function beforeAction($action) {
+        //query location using current ip address <--(found in protected/config/main.php under params)
+        $location = Yii::app()->db->createCommand()
+                ->select("loc_name, loc_status, loc_id")
+                ->from('locations l')
+                ->join('ips ip', 'l.loc_id=ip.ip_loc_id')
+                ->where('ip.ip_address=:ip', array(':ip' => Yii::app()->params['ip']))
+                ->queryRow();
+        $this->current_state = $location['loc_status'];
+        $this->location = $location['loc_name'];
+        $this->loc_id = $location['loc_id'];
+        return true;
+    }
+
     public $location;
     public $loc_id;
     public $current_state;
+
     /**
      * @var string the default layout for the controller view. Defaults to '//layouts/column1',
      * meaning using a single column layout. See 'protected/views/layouts/column1.php'.
@@ -31,17 +52,17 @@ class Controller extends CController {
             'accessControl'           // required to enable accessRules
         );
     }
+
     /**
      * 
      * @param type $filterChain
-    
-    public function filterAccessControl($filterChain) {
-        $filter = new MyAccessControlFilter;  // CHANGED THIS
-        $filter->setRules($this->accessRules());
-        $filter->filter($filterChain);
-    }
- */
-    
+
+      public function filterAccessControl($filterChain) {
+      $filter = new MyAccessControlFilter;  // CHANGED THIS
+      $filter->setRules($this->accessRules());
+      $filter->filter($filterChain);
+      }
+     */
     public function accessRules() {
 
         //get all ip addresses from ips table
@@ -59,7 +80,6 @@ class Controller extends CController {
         //used for testing denied ips
         //$ip_filter = array('127.0.0.2');
         return array(
-            
             array('allow',
                 'roles' => array('admin'),
             ),
@@ -73,16 +93,14 @@ class Controller extends CController {
             //disallow ips on only index and admin actions so that error page can show.
             array('deny',
                 'ips' => array('*'),
-                'deniedCallback' => function() { 
+                'deniedCallback' => function() {
                     Yii::app()->user->logout();
-                    
-                    //arguments are 'error' and 'denied'
-                    Yii::app()->controller->redirect(array ('/site/login?'.md5('error').'='.md5('denied'))); 
-                
-                    
-                }
 
+                    //arguments are 'error' and 'denied'
+                    Yii::app()->controller->redirect(array('/site/login?' . md5('error') . '=' . md5('denied')));
+                }
             )
         );
     }
+
 }

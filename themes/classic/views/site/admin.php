@@ -14,14 +14,14 @@ $this->pageTitle = Yii::app()->name;
 </style>
 
 <div>
-<div id='flash'>
-                    <?php if (Yii::app()->user->hasFlash('success')): ?>
-                        <div class="alert alert-error">
-                            <a class="close" data-dismiss="alert">&#215;</a>
-                            <div id="flash_error"><?php echo Yii::app()->user->getFlash('success'); ?></div>
-                        </div>
-                    <?php endif; ?>
-                </div>
+    <div id='flash'>
+        <?php if (Yii::app()->user->hasFlash('success')): ?>
+            <div class="alert alert-error">
+                <a class="close" data-dismiss="alert">&#215;</a>
+                <div id="flash_error"><?php echo Yii::app()->user->getFlash('success'); ?></div>
+            </div>
+        <?php endif; ?>
+    </div>
     <div id="classroomDataForm" class="admin-form">
         <h3 class="section-title">Shop Hours</h3>
         <dfn class="description">Click times to edit.</dfn>
@@ -109,14 +109,15 @@ $this->pageTitle = Yii::app()->name;
                 </table>
                 <input id="time_submit" class="btn btn-primary" type="Submit" value="Submit Changes"/>
                 <a data-toggle="modal" id="add_location_btn" class="btn btn-info" href="#AddLocationDialog">Create a New Location</a>
-                <a data-toggle="modal" id="delete_location_btn" class="btn btn-danger" href="#DeleteLocationDialog">Delete a Location</a>
+                <a data-toggle="modal" id="add_location_btn" class="btn" href="#UpdateLocationDialog">Edit a Location</a>
+                <a data-toggle="modal" id="delete_location_btn" class="btn btn-danger pull-right" href="#DeleteLocationDialog">Delete a Location</a>
             </fieldset>
         </form>
 
         <!---------add location dialog start----------->
         <div id="AddLocationDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="windowTitleLabel" aria-hidden="true">
             <div class="form">
-                <form class="form-horizontal" id="addLocationForm" method="post">       
+                <form class="form-horizontal" id="addLocationForm" method="post" >       
                     <div class="modal-header">
                         <a href="#" class="close" data-dismiss="modal">&times;</a>
                         <h3>Add a new shop location.</h3>
@@ -131,7 +132,7 @@ $this->pageTitle = Yii::app()->name;
                                     <div class="controls">
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-globe"></i></span>
-                                            <input placeholder="Example: Funger" required class="span3" name="CreateLocation[locationname]" id="locationname" type="text">
+                                            <input placeholder="Example: Funger" required class="span3" name="AddLocation[locationname]" id="locationname" type="text">
                                         </div>
                                     </div><!--end controls-->
                                 </div><!--end control group-->
@@ -144,7 +145,7 @@ $this->pageTitle = Yii::app()->name;
                                     <div class="controls">
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-barcode"></i></span>
-                                            <input placeholder="Example: 127.0.0.1" required class="span3" name="CreateLocation[ipaddress]" id="ipaddress" type="text">
+                                            <input placeholder="Example: 127.0.0.1" required class="span3" name="AddLocation[ipaddress]" id="ipaddress" type="text">
                                         </div>
                                     </div><!--end controls-->
                                 </div><!--end control group-->
@@ -157,7 +158,7 @@ $this->pageTitle = Yii::app()->name;
                                     <div class="controls">
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-tag"></i></span>
-                                            <input placeholder="Example: est00211w01" required class="span3" name="CreateLocation[computername]" id="computername" type="text">
+                                            <input placeholder="Example: est00211w01" required class="span3" name="AddLocation[computername]" id="computername" type="text">
                                         </div>
                                     </div><!--end controls-->
                                 </div><!--end control group-->
@@ -173,6 +174,71 @@ $this->pageTitle = Yii::app()->name;
             </div>
         </div><!--end modal window-->
         <!---------add location dialog end----------->
+
+        <!---------update location dialog start----------->
+        <div id="UpdateLocationDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="windowTitleLabel" aria-hidden="true">
+            <div class="form">
+                <form class="form-horizontal" id="updateLocationForm" method="post">       
+                    <div class="modal-header">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h3>Edit a shop location.</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="divDialogElements">
+
+                            <!--new row-->
+                            <div class="row">
+                                <div class="control-group">
+                                    <label class="control-label" for="locationselectupdate">Location Name:</label>
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on"><i class="icon-globe"></i></span>
+                                            <select id='locationselectupdate' name='UpdateLocation[locationnameupdate]'>
+                                                <?php foreach ($locations as $location): ?>
+                                                    <option value='<?php echo md5($location['loc_id']); ?>'><?php echo $location['loc_name']; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div><!--end controls-->
+                                </div><!--end control group-->
+                            </div><!--end row--> 
+
+                            <!--new row-->
+                            <div class="row">
+                                <div class="control-group">
+                                    <label class="control-label" for="ipaddressupdate">IP Address:<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on"><i class="icon-barcode"></i></span>
+                                            <input placeholder="Example: 127.0.0.1" required class="span3" name="UpdateLocation[ipaddressupdate]" id="ipaddressupdate" type="text">
+                                        </div>
+                                    </div><!--end controls-->
+                                </div><!--end control group-->
+                            </div><!--end row-->
+
+                            <!--new row-->
+                            <div class="row">
+                                <div class="control-group">
+                                    <label class="control-label" for="computernameupdate">Computer Name:<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on"><i class="icon-tag"></i></span>
+                                            <input placeholder="Example: est00211w01" required class="span3" name="UpdateLocation[computernameupdate]" id="computernameupdate" type="text">
+                                        </div>
+                                    </div><!--end controls-->
+                                </div><!--end control group-->
+                            </div><!--end row-->
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn small" onclick="closeDialog();" value="Cancel">
+                        <input class="btn btn-primary" type="Submit" value="OK">
+                    </div>
+                </form>
+            </div>
+        </div><!--end modal window-->
+        <!---------update location dialog end----------->
 
         <!---------delete location dialog start----------->
         <div id="DeleteLocationDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="windowTitleLabel" aria-hidden="true">
@@ -287,7 +353,7 @@ $this->pageTitle = Yii::app()->name;
                 </table>
                 <input id="time_submit" class="btn btn-primary" type="Submit" value="Submit Changes"/>
                 <a data-toggle="modal" id="add_holiday_btn" class="btn btn-info" href="#AddHolidayDialog">Create a New Holiday</a>
-                <a data-toggle="modal" id="delete_holiday_btn" class="btn btn-danger" href="#DeleteHolidayDialog">Delete a Holiday</a>
+                <a data-toggle="modal" id="delete_holiday_btn" class="btn btn-danger pull-right" href="#DeleteHolidayDialog">Delete a Holiday</a>
             </fieldset>
         </form>
 
@@ -309,7 +375,7 @@ $this->pageTitle = Yii::app()->name;
                                     <div class="controls">
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-briefcase"></i></span>
-                                            <input placeholder="Example: Christmas" required class="span3" name="CreateHoliday[holidayname]" id="holidayname" type="text">
+                                            <input placeholder="Example: New Year's Day" required class="span3" name="CreateHoliday[holidayname]" id="holidayname" type="text">
                                         </div>
                                     </div><!--end controls-->
                                 </div><!--end control group-->
@@ -335,7 +401,7 @@ $this->pageTitle = Yii::app()->name;
                                     <div class="controls">
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-comment"></i></span>
-                                            <input class='datepicker' placeholder="Example: Federal holiday" class="span3" name="CreateHoliday[holidaydescription]" id="holidaydescription" type="text">
+                                            <input placeholder="Example: Federal holiday" class="span3" name="CreateHoliday[holidaydescription]" id="holidaydescription" type="text">
                                         </div>
                                     </div><!--end controls-->
                                 </div><!--end control group-->
@@ -366,7 +432,7 @@ $this->pageTitle = Yii::app()->name;
                             <!--new row-->
                             <div class="row">
                                 <div class="control-group">
-                                    <label class="control-label" for="holidayselect">Location Name:</label>
+                                    <label class="control-label" for="holidayselect">Holiday Name:</label>
                                     <div class="controls">
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-briefcase"></i></span>
@@ -396,8 +462,8 @@ $this->pageTitle = Yii::app()->name;
     <script>
 
                             function closeDialog() {
-                                $('#AddLocationDialog, #AddHolidayDialog,#DeleteLocationDialog,#DeleteHolidayDialog').modal('hide');
+                                $('.modal').modal('hide');
                             }
-                            
+
 
     </script>

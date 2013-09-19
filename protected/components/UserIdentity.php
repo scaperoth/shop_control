@@ -133,6 +133,7 @@ class UserIdentity extends CUserIdentity {
             }
             if (!$ldapBind) {
                 $this->errorCode = self::ERROR_PASSWORD_INVALID;
+             
             }
         }
         return !$this->errorCode;

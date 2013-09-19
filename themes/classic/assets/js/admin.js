@@ -1,4 +1,10 @@
 
+/********************************************
+ * admin page control
+ * controls all form submissions and 
+ * style settings for elements on 
+ * this page that use bootstrap plugin styles
+ **********************************************/
 
 /* 
  * admin format and time change
@@ -10,6 +16,7 @@ $("table").tablecloth({
     clean: true,
     cleanElements: "th td"
 });
+
 $('.selectpicker').selectpicker({
     width: '100%'
 });
@@ -23,17 +30,32 @@ $('.timepicker').timepicker({
     meridan: false
 });
 
-/**
- * 
- * @type @exp;@call;$@call;val
+/***********************************************************
+ * AJAX calls to php actions for all buttons on admin page.
  */
+
+
 var start_time;
 var change_time;
+
+/*set click of time picker to change "start_time" static variable */
 $('.timepicker').click(function() {
 
     start_time = $(this).attr('data-time');
 
 });
+
+/*on change, if the new value is different than the start value, add changed
+ * class and add "update" class to the parent row of the item
+ * 
+ * otherwise, if the time is changed back to what is already reflected
+ * in the database, remove the "update" class
+ * 
+ * the "update" class tells the php action, updateHours, which rows
+ * to update in the DB
+ * 
+ * TODO find better solution instead of adding update class. may be security issue
+ */
 $('.timepicker').change(function() {
     change_time = $(this).val();
     if (change_time != start_time) {
@@ -46,26 +68,23 @@ $('.timepicker').change(function() {
     }
 });
 
-/**
- * 
- */
-//when time table is submitted post to updatehours
+/*when time table is submitted post to updatehours*/
 $('#classroomDateForm').submit(function(e) {
     e.preventDefault();
 
     //create array of which rows to update
     var objArray = $(".update");
     var idArray = [];
+    //push the attribute, data-rel, of each "update" row into the array
     $(objArray).each(function() {
         idArray.push($(this).data('rel'));
     });
 
     var data = $('#classroomDateForm').serializeArray();
+    /*create php-friendly array variable*/
     data.push({name: 'rows', value: idArray});
-    /**
-     * 
-     */
-    $.post('updatehours', data, function(data) {
+    
+    $.post('../phpactions/updatehours', data, function(data) {
         $('#flash').load('flashmsg');
         $('.location_row').removeClass('update');
         $('.timepicker').removeClass('changed');
@@ -74,67 +93,85 @@ $('#classroomDateForm').submit(function(e) {
     );
 });
 
-/**
- * 
- */
+//TODO remove function and put inline as post action on the form tag
+/*post location to add*/
 $('#addLocationForm').submit(function(e) {
     e.preventDefault();
-    $.post('addlocation', $(this).serialize(), function(data) {
+    $.post('../phpactions/addlocation', $(this).serialize(), function(data) {
+        
         location.reload();
     });
 });
 
-/**
- * 
- */
+
+//TODO
+/////////////////////////////////////////////////////////////////////////////////////////
+/*populate fields with location info*/
+$('#locationselectupdate').change(function(e) {
+    var data = find_loc_info($('#updateLocationForm'));
+});
+
+/*post which location to update */
+$('#updateLocationForm').submit(function(e) {
+    e.preventDefault();
+    var data = find_loc_info($(this));
+});
+
+function find_loc_info(form){
+    var ret;
+    $.post('../phpactions/updatelocation', form.serialize(), function(data) {
+         ret= data;
+    });
+   return ret;
+}
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/*post which location to delete */
 $('#deleteLocationForm').submit(function(e) {
     e.preventDefault();
-    $.post('deletelocation', $(this).serialize(), function(data) {
+    $.post('../phpactions/deletelocation', $(this).serialize(), function(data) {
         location.reload();
     });
 });
 
-/**
- * 
- */
+/*post all holidays to update on change*/
 $('#shopHolidayForm').submit(function(e) {
     e.preventDefault();
+    
     //create array of which rows to update
     var objArray = $(".holiday");
     var holiday_ids = [];
     $(objArray).each(function() {
-        holiday_ids.push($(this).data('hol'));
+        holiday_ids.push($(this).data('hol')); 
     });
     var location_ids = serealizeSelects($('.selectpicker'));
-    $.post('holidayupdate', {locations: location_ids, holidays: holiday_ids}, function(data) {
+    $.post('../phpactions/holidayupdate', {locations: location_ids, holidays: holiday_ids}, function(data) {
         console.log(data);
         $('#holiday_flash').load('flashmsg');
     }
     );
 });
 
-/**
- * 
- */
+/*post holiday to add*/
 $('#addHolidayForm').submit(function(e) {
     e.preventDefault();
-    $.post('addholiday', $(this).serialize(), function(data) {
+    $.post('../phpactions/addholiday', $(this).serialize(), function(data) {
         console.log(data);
     });
 });
 
-/**
- * 
- */
+/*post holiday to delete*/
 $('#deleteHolidayForm').submit(function(e) {
     e.preventDefault();
-    $.post('deleteholiday', $(this).serialize(), function(data) {
+    $.post('../phpactions/deleteholiday', $(this).serialize(), function(data) {
         console.log(data);
     });
 });
 
 /**
  * Convert select to array with values
+ * Used in: shopHolidayForm.submit(function(){...});
  * @param {type} select
  * @returns {Array}
  */
