@@ -855,3 +855,7 @@ Stack trace:
 REQUEST_URI=/index.php/site/phpactions/getlocationinfo
 HTTP_REFERER=http://shopcontrol.com/index.php/site/admin
 ---
+2013/09/26 15:37:50 [error] [system.db.CDbCommand] Error in preparing SQL: DELETE FROM 'YiiSession' WHERE expire<:expire
+in C:\xampp\htdocs\shop_control\index.php (17)
+2013/09/26 15:37:50 [error] [system.db.CDbCommand] CDbCommand::execute() failed: CDbCommand failed to prepare the SQL statement: SQLSTATE[HY000]: General error: 1 no such table: YiiSession. The SQL statement executed was: DELETE FROM 'YiiSession' WHERE expire<:expire.
+in C:\xampp\htdocs\shop_control\index.php (17)
