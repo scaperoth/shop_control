@@ -4,7 +4,6 @@
 <?php
 $this->pageTitle = Yii::app()->name;
 ?>
-test
 <style>
     .alert-error{
         color: #165235;
