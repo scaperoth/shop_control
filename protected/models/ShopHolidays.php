@@ -36,7 +36,7 @@ class ShopHolidays extends CActiveRecord {
      * @return string the associated database table name
      */
     public function tableName() {
-        return 'Shop_Holidays';
+        return 'shop_holidays';
     }
 
     /**
