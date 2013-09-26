@@ -83,7 +83,7 @@ $('#classroomDateForm').submit(function(e) {
     var data = $('#classroomDateForm').serializeArray();
     /*create php-friendly array variable*/
     data.push({name: 'rows', value: idArray});
-    
+
     $.post('../phpactions/updatehours', data, function(data) {
         $('#flash').load('flashmsg');
         $('.location_row').removeClass('update');
@@ -98,32 +98,33 @@ $('#classroomDateForm').submit(function(e) {
 $('#addLocationForm').submit(function(e) {
     e.preventDefault();
     $.post('../phpactions/addlocation', $(this).serialize(), function(data) {
-        
+
         location.reload();
     });
 });
 
-
-//TODO
-/////////////////////////////////////////////////////////////////////////////////////////
-/*populate fields with location info*/
-$('#locationselectupdate').change(function(e) {
-    var data = find_loc_info($('#updateLocationForm'));
+//initally populate location update form with location data
+populate_loc_data();
+$("#locationselectupdate").change(function() {
+    populate_loc_data();
 });
+
+function populate_loc_data() {
+    $.post('../phpactions/getlocationinfo', $('#locationselectupdate').serialize(), function(data) {
+        var loc_attr = JSON.parse(data);
+        $('#ipaddressupdate').val(loc_attr.ip);
+        $('#computernameupdate').val(loc_attr.name);
+    });
+}
 
 /*post which location to update */
 $('#updateLocationForm').submit(function(e) {
     e.preventDefault();
-    var data = find_loc_info($(this));
-});
-
-function find_loc_info(form){
-    var ret;
-    $.post('../phpactions/updatelocation', form.serialize(), function(data) {
-         ret= data;
+    $.post('../phpactions/updatelocation', $(this).serialize(), function(data) {
+        console.log(data);
+        location.reload();
     });
-   return ret;
-}
+});
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -138,12 +139,12 @@ $('#deleteLocationForm').submit(function(e) {
 /*post all holidays to update on change*/
 $('#shopHolidayForm').submit(function(e) {
     e.preventDefault();
-    
+
     //create array of which rows to update
     var objArray = $(".holiday");
     var holiday_ids = [];
     $(objArray).each(function() {
-        holiday_ids.push($(this).data('hol')); 
+        holiday_ids.push($(this).data('hol'));
     });
     var location_ids = serealizeSelects($('.selectpicker'));
     $.post('../phpactions/holidayupdate', {locations: location_ids, holidays: holiday_ids}, function(data) {
@@ -153,11 +154,11 @@ $('#shopHolidayForm').submit(function(e) {
     );
 });
 
-/*post holiday to add*/
 $('#addHolidayForm').submit(function(e) {
     e.preventDefault();
     $.post('../phpactions/addholiday', $(this).serialize(), function(data) {
         console.log(data);
+        location.reload();
     });
 });
 
@@ -166,6 +167,7 @@ $('#deleteHolidayForm').submit(function(e) {
     e.preventDefault();
     $.post('../phpactions/deleteholiday', $(this).serialize(), function(data) {
         console.log(data);
+        location.reload();
     });
 });
 

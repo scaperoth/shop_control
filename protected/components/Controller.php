@@ -22,7 +22,7 @@ class Controller extends CController {
         $this->current_state = $location['loc_status'];
         $this->location = $location['loc_name'];
         $this->loc_id = $location['loc_id'];
-        return true;
+        return parent::beforeAction($action);
     }
 
     public $location;
@@ -73,7 +73,7 @@ class Controller extends CController {
                 ->where('l.loc_flag=:active', array(':active' => 1))
                 ->queryAll();
 
-        //add ips to array
+        /*add ips to array*/
         foreach ($ips as $ip) {
             $ip_filter[] = $ip['ip_address'];
         }
@@ -88,7 +88,7 @@ class Controller extends CController {
                 'ips' => $ip_filter,
             ),
             array('allow',
-                'actions' => array('login'),
+                'actions' => array('login','cron'),
             ),
             //disallow ips on only index and admin actions so that error page can show.
             array('deny',

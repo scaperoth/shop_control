@@ -89,7 +89,7 @@ if (statBtn) {
                 /**
                  * toggle shop closed
                  */
-                $.post('closeshop', $form.serialize(), function(json) {
+                $.post('../phpactions/closeshop', $form.serialize(), function(json) {
                     console.log(json);
                 });
                 statBtn.value = 'closed';

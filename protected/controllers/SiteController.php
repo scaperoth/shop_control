@@ -2,6 +2,8 @@
 
 class SiteController extends Controller {
 
+    private $login_error = "Please login to continue";
+
     /**
      * 
      */
@@ -51,7 +53,7 @@ class SiteController extends Controller {
 // using the default layout 'protected/views/layouts/main.php'
 //if(!Yii::app()->user->checkAccess('authenticated'))
         if (Yii::app()->user->isGuest) {
-            Yii::app()->user->setFlash('error', 'Access Denied.');
+            Yii::app()->user->setFlash('error', $this->login_error);
             $this->redirect(array('/site/login'));
         }
         else
@@ -67,7 +69,7 @@ class SiteController extends Controller {
 // using the default layout 'protected/views/layouts/main.php'
 //if(!Yii::app()->user->checkAccess('authenticated'))
         if (!Yii::app()->user->checkAccess('admin')) {
-            Yii::app()->user->setFlash('error', 'Access Denied.');
+            Yii::app()->user->setFlash('error', $this->login_error);
             $this->redirect(Yii::app()->user->returnUrl);
         }
         else
@@ -79,7 +81,7 @@ class SiteController extends Controller {
 // using the default layout 'protected/views/layouts/main.php'
 //if(!Yii::app()->user->checkAccess('authenticated'))
         if (!Yii::app()->user->checkAccess('admin')) {
-            Yii::app()->user->setFlash('error', 'Access Denied.');
+            Yii::app()->user->setFlash('error', $this->login_error);
             $this->redirect(Yii::app()->user->returnUrl);
         }
         else

@@ -360,7 +360,7 @@ $this->pageTitle = Yii::app()->name;
         <!---------add holiday dialog start----------->
         <div id="AddHolidayDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="HolidayLabel" aria-hidden="true">
             <div class="form">
-                <form class="form-horizontal" id="addHolidayForm" method="post">       
+                <form class="form-horizontal" id="addHolidayForm" method="post" action="../phpactions/addholiday">       
                     <div class="modal-header">
                         <a href="#" class="close" data-dismiss="modal">&times;</a>
                         <h3>Add a new holiday.</h3>
@@ -375,7 +375,7 @@ $this->pageTitle = Yii::app()->name;
                                     <div class="controls">
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-briefcase"></i></span>
-                                            <input placeholder="Example: New Year's Day" required class="span3" name="CreateHoliday[holidayname]" id="holidayname" type="text">
+                                            <input placeholder="Example: New Year's Day" required class="span3" name="AddHoliday[holidayname]" id="holidayname" type="text">
                                         </div>
                                     </div><!--end controls-->
                                 </div><!--end control group-->
@@ -388,7 +388,7 @@ $this->pageTitle = Yii::app()->name;
                                     <div class="controls">
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-th"></i></span>
-                                            <input class='datepicker' required placeholder="Example: Jan 01" class="span3" name="CreateHoliday[hoildaydate]" id="hoildaydate" type="text">
+                                            <input class='datepicker' required placeholder="Example: Jan 01" class="span3" name="AddHoliday[holidaydate]" id="hoildaydate" type="text">
                                         </div>
                                     </div><!--end controls-->
                                 </div><!--end control group-->
@@ -401,7 +401,7 @@ $this->pageTitle = Yii::app()->name;
                                     <div class="controls">
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-comment"></i></span>
-                                            <input placeholder="Example: Federal holiday" class="span3" name="CreateHoliday[holidaydescription]" id="holidaydescription" type="text">
+                                            <input placeholder="Example: Federal holiday" class="span3" name="AddHoliday[holidaydescription]" id="holidaydescription" type="text">
                                         </div>
                                     </div><!--end controls-->
                                 </div><!--end control group-->
@@ -436,7 +436,7 @@ $this->pageTitle = Yii::app()->name;
                                     <div class="controls">
                                         <div class="input-prepend">
                                             <span class="add-on"><i class="icon-briefcase"></i></span>
-                                            <select id='holidayselect' name='DeleteHoliday[locationselect]'>
+                                            <select id='holidayselect' name='DeleteHoliday[holidayselect]'>
                                                 <?php foreach ($holidays as $holiday): ?>
                                                     <option value='<?php echo md5($holiday['hol_id']); ?>'><?php echo $holiday['hol_name']; ?></option>
                                                 <?php endforeach; ?>
