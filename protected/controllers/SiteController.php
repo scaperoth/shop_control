@@ -2,18 +2,42 @@
 
 class SiteController extends Controller {
 
+    private $login_error = "Please login to continue";
+
+    /**
+     * 
+     */
+    public function actionFlashMsg() {
+        if (Yii::app()->user->hasFlash('time_update')) {
+            echo '<div class = "alert alert-error">
+                        <a class = "close" data-dismiss = "alert">&#215;</a>
+                        <div id = "flash_error">' . Yii::app()->user->getFlash("time_update") . '</div>
+                    </div>';
+        } else if (Yii::app()->user->hasFlash('error')) {
+            echo '<div class = "alert alert-error">
+                        <a class = "close" data-dismiss = "alert">&#215;</a>
+                        <div id = "flash_error">' . Yii::app()->user->getFlash("error") . '</div>
+                    </div>';
+        } else if (Yii::app()->user->hasFlash('holiday_update')) {
+            echo '<div class = "alert alert-error">
+                        <a class = "close" data-dismiss = "alert">&#215;</a>
+                        <div id = "flash_error">' . Yii::app()->user->getFlash("holiday_update") . '</div>
+                    </div>';
+        }
+    }
+
     /**
      * Declares class-based actions.
      */
     public function actions() {
         return array(
-            // captcha action renders the CAPTCHA image displayed on the contact page
+// captcha action renders the CAPTCHA image displayed on the contact page
             'captcha' => array(
                 'class' => 'CCaptchaAction',
                 'backColor' => 0xFFFFFF,
             ),
             // page action renders "static" pages stored under 'protected/views/site/pages'
-            // They can be accessed via: index.php?r=site/page&view=FileName
+// They can be accessed via: index.php?r=site/page&view=FileName
             'page' => array(
                 'class' => 'CViewAction',
             ),
@@ -25,11 +49,13 @@ class SiteController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionIndex() {
-        // renders the view file 'protected/views/site/index.php'
-        // using the default layout 'protected/views/layouts/main.php'
-        //if(!Yii::app()->user->checkAccess('authenticated'))
-        if (Yii::app()->user->isGuest)
+// renders the view file 'protected/views/site/index.php'
+// using the default layout 'protected/views/layouts/main.php'
+//if(!Yii::app()->user->checkAccess('authenticated'))
+        if (Yii::app()->user->isGuest) {
+            Yii::app()->user->setFlash('error', $this->login_error);
             $this->redirect(array('/site/login'));
+        }
         else
             $this->render('index');
     }
@@ -39,13 +65,27 @@ class SiteController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionAdmin() {
-        // renders the view file 'protected/views/site/index.php'
-        // using the default layout 'protected/views/layouts/main.php'
-        //if(!Yii::app()->user->checkAccess('authenticated'))
-        if (!Yii::app()->user->checkAccess('admin'))
-            $this->redirect(array('/site/login'));
+// renders the view file 'protected/views/site/index.php'
+// using the default layout 'protected/views/layouts/main.php'
+//if(!Yii::app()->user->checkAccess('authenticated'))
+        if (!Yii::app()->user->checkAccess('admin')) {
+            Yii::app()->user->setFlash('error', $this->login_error);
+            $this->redirect(Yii::app()->user->returnUrl);
+        }
         else
             $this->render('admin');
+    }
+
+    public function actionReporting() {
+// renders the view file 'protected/views/site/index.php'
+// using the default layout 'protected/views/layouts/main.php'
+//if(!Yii::app()->user->checkAccess('authenticated'))
+        if (!Yii::app()->user->checkAccess('admin')) {
+            Yii::app()->user->setFlash('error', $this->login_error);
+            $this->redirect(Yii::app()->user->returnUrl);
+        }
+        else
+            $this->render('reporting');
     }
 
     /**
@@ -87,23 +127,34 @@ class SiteController extends Controller {
      * Displays the login page
      */
     public function actionLogin() {
-        $model = new LoginForm;
+        if (!Yii::app()->user->isGuest) {
+            $this->render('index');
+        } else {
+//get arguments.
 
-        // if it is ajax validation request
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
-            echo CActiveForm::validate($model);
-            Yii::app()->end();
-        }
+            $model = new LoginForm;
 
-        // collect user input data
-        if (isset($_POST['LoginForm'])) {
-            $model->attributes = $_POST['LoginForm'];
-            // validate user input and redirect to the previous page if valid
-            if ($model->validate() && $model->login())
-                $this->redirect(Yii::app()->user->returnUrl);
+// if it is ajax validation request
+            if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
+                echo CActiveForm::validate($model);
+                Yii::app()->end();
+            }
+
+// collect user input data
+            if (isset($_POST['LoginForm'])) {
+                $model->attributes = $_POST['LoginForm'];
+// validate user input and redirect to the previous page if valid
+                if ($model->validate() && $model->login())
+                    $this->redirect(Yii::app()->user->returnUrl);
+            }
+            if (isset($_GET[md5('error')])) {
+                if ($_GET[md5('error')] == md5('denied') && Yii::app()->user->isGuest) {
+                    Yii::app()->user->setFlash('error', 'You cannot access this site from your current location');
+                }
+            }
+// display the login form
+            $this->render('login', array('model' => $model));
         }
-        // display the login form
-        $this->render('login', array('model' => $model));
     }
 
     /**
@@ -116,81 +167,27 @@ class SiteController extends Controller {
 
     /**
      * 
-     */
-    public function actionOpenShop() {
-
-
-//get curr location
-        $location = Yii::app()->params['location'];
-
-//check open hours
-        $check_query = Yii::app()->db->createCommand()
-                ->select('loc_open_hrs')
-                ->from('Locations l')
-                ->where('l.loc_name=:name', array(':name' => $location))
-                ->queryRow();
-
-//translate databse open hours into php time()
-        $openHrsTime = strtotime($check_query['loc_open_hrs']);
-
-//get current time
-        $currtime = date('d-m-Y H:i:s');
-
-//get upper deviation of time. +- 10 minutes from db shop open time
-        $open_upper_bound = date('d-m-Y H:i:s', $openHrsTime + 600);
-        $open_lower_bound = date('d-m-Y H:i:s', $openHrsTime - 600);
-
-//if current time is later than the open + 10 minutes
-//shop was opened late
-        if ($currtime > $open_upper_bound) {
-            $currtime = new DateTime($currtime);
-            $openDateTime = new DateTime($open_upper_bound);
-            $difference = $currtime->diff($openDateTime, True);
-
-            $message = 'Opened late</br>' . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds';
-        }
-
-//if current time is less than the open - 10 minutes
-//shop was opened early
-        else if ($currtime < $open_lower_bound) {
-            $currtime = new DateTime($currtime);
-            $openDateTime = new DateTime($open_lower_bound);
-            $difference = $currtime->diff($openDateTime, True);
-
-
-            $message = 'Opened early by </br>' . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds';
-        } else {
-            $message = 'opened on time';
-        }
-        $headers = 'From: webmaster@example.com';
-        mail('nobody@example.com', 'Test email using PHP', 'This is a test email message', $headers, '-fwebmaster@example.com');
-
-        $to = 'scaperoth@gmail.com';
-        $subject = 'Test email using PHP';
-        $message = 'This is a test email message';
-        $headers = 'From: scaperoth@gmail.com' . "\r\n" .
-                'Reply-To: scaperoth@gmail.com' . "\r\n" .
-                'X-Mailer: PHP/' . phpversion();
-
-        mail($to, $subject, $message, $headers, '-scaperoth@gmail.com');
-        echo $message;
-    }
-
-    /**
-     * 
-     */
-    public function actionCloseShop() {
-        
-    }
-
-    /**
-     * 
      * @param type $model
      */
     protected function performAjaxValidation($model) {
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'user-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
+        }
+    }
+
+    /**
+     * test mail function...
+     */
+    public function actionMailTest() {
+        if (Yii::app()->request->isPostRequest) {
+            $to = 'mscapero@gwu.edu';
+            $subject = 'Test email using PHP';
+            $message = 'This is a test email message';
+            $headers = 'From: webmaster@example.com' . "\r\n" .
+                    'Reply-To: webmaster@example.com' . "\r\n" .
+                    'X-Mailer: PHP/' . phpversion();
+            mail($to, $subject, $message, $headers, '-fwebmaster@example.com');
         }
     }
 

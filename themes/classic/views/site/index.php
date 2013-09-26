@@ -3,12 +3,15 @@
 ?>
 <?php
 $this->pageTitle = Yii::app()->name;
+$open_or_closed = (($this->current_state)?'open':'closed');
 ?>
 
-<h1 id="page-title"><?php echo CHtml::encode(Yii::app()->name); ?>: User Page <i>(<?php echo Yii::app()->params->ip; ?>)</i></h1>
+<?php if($this->current_state!=''):?>
 <div>
     <h3 id="statusUpdate">This shop is now</h3>
 </div>
+
+
 <div class="center" id="buttonControl">
     <?php
     $form = $this->beginWidget('CActiveForm', array(
@@ -16,10 +19,10 @@ $this->pageTitle = Yii::app()->name;
         'enableAjaxValidation' => true,
     ));
     ?>
-    <input type="submit" id="statusToggle" value="closed"/>
+    <input type="submit" id="statusToggle" class='<?php echo 'is'.$open_or_closed;?>' value="<?php echo $open_or_closed;?>"/>
 <?php $this->endWidget(); ?>
 <div>
-    <dfn class="description">click to change state</dfn>
+    <span class="description">{ click to change state }</span>
 </div>
 
 <div id="clock">
@@ -28,4 +31,9 @@ $this->pageTitle = Yii::app()->name;
     </p>
 </div>
 </div>
-
+<?php endif;?>
+<?php if($this->current_state==''):?>
+<div>
+    <h3 id="statusUpdate" style="margin:30px;">You are not at a shop location.</h3>
+</div>
+<?php endif;?>

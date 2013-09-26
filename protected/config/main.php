@@ -7,7 +7,8 @@
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'name' => 'Shop Control',
-    'defaultController' => 'site',
+    'homeurl' => 'login',
+    'defaultController' => 'site/login',
     'theme' => 'classic',
     // preloading 'log' component
     'preload' => array('log'),
@@ -25,9 +26,15 @@ return array(
             // If removed, Gii defaults to localhost only. Edit carefully to taste.
             'ipFilters' => array('127.0.0.1', '::1'),
         ),
+        'test', 
+        
     ),
     // application components
     'components' => array(
+        'session' => array(
+            'class' => 'CDbHttpSession',
+            'timeout' => 1200,
+        ),
         'authManager' => array(
             'class' => 'CPhpAuthManager'
 
@@ -35,7 +42,7 @@ return array(
         ),
         'user' => array(
             // enable cookie-based authentication
-            'allowAutoLogin' => true,
+            'allowAutoLogin' => false,
             'class' => 'WebUser'
         ),
         // uncomment the following to enable URLs in path-format
@@ -96,6 +103,9 @@ return array(
         ),
         'ip' => CHttpRequest::getUserHostAddress(),
         //set default location
-        'location' => 'localhost',
+        'location',
+        'current_state',
+        //administrative emails. Separated by colons
+        'admin_emails' => 'mscapero@email.gwu.edu',
     ),
 );

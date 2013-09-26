@@ -37,9 +37,9 @@ class Holidays extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('hol_id, hol_name, hol_date', 'required'),
-			array('hol_id', 'numerical', 'integerOnly'=>true),
+			array('hol_name, hol_date', 'required'),
 			array('hol_name, hol_description', 'length', 'max'=>45),
+			array('hol_date', 'length', 'max'=>40),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('hol_id, hol_name, hol_date, hol_description', 'safe', 'on'=>'search'),

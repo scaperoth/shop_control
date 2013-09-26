@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "Ips".
+ * This is the model class for table "ips".
  *
- * The followings are the available columns in table 'Ips':
+ * The followings are the available columns in table 'ips':
  * @property integer $ip_id
  * @property string $ip_address
  * @property string $ip_compname
@@ -26,7 +26,7 @@ class Ips extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'Ips';
+		return 'ips';
 	}
 
 	/**
@@ -37,8 +37,8 @@ class Ips extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('ip_id, ip_address, ip_loc_id', 'required'),
-			array('ip_id, ip_loc_id', 'numerical', 'integerOnly'=>true),
+			array('ip_address, ip_loc_id', 'required'),
+			array('ip_loc_id', 'numerical', 'integerOnly'=>true),
 			array('ip_address, ip_compname', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.

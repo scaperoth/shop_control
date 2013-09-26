@@ -8,16 +8,21 @@
 
 /*Misc
 ==================*/
+.clear{
+    clear:both;
+}
 a{
     color:#2972a7;
     text-decoration: none;
 }
 a:hover{
-    text-decoration: underline;
 }
-dfn.description{
+.description{
     color:#999;
     font-size:.8em;
+}
+.errorMessage{
+    color:#d00;
 }
 
 /*Wrap Text
@@ -30,19 +35,30 @@ pre,code {
  word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
 
+
+
 body{
     padding:10px 0;
+}
+
+/*limiter
+==================*/
+.limiter{
+    margin:0 auto;
+    width:100%;
+    max-width:1300px;
+    padding:0;
 }
 
 /*Page
 ==================*/
 #page{
-    margin:0 auto;
-    width:80%;
     border:1px solid #ccc;
     padding:20px;
     border-radius:10px;
+    width:95%;
 }
+
 
 /*header
 ==================*/
@@ -56,6 +72,11 @@ body{
 ==================*/
 #page-title{
     font-weight:normal;
+    text-align: center;
+    font-weight:bold;
+    font-size:2.3em;
+    padding-bottom:20px;
+    padding-top:5px;
 }
 
 /*All Menus
@@ -79,9 +100,13 @@ body{
     font-weight: normal;
     padding:0 40px 0 0 ;
 }
-#mainmenu ul li.active{
-    font-weight: bold;
-    text-decoration:underline;
+#mainmenu ul li a{
+    color:#555;
+}
+#mainmenu ul li:hover a{
+    color:#222;
+}
+#mainmenu ul li.active a{
 }
 #mainmenu ul li a{
 }
@@ -105,7 +130,16 @@ body{
 /*Footer
 ==================*/
 #footer{
+    font-size:.8em;
     text-align: center;
+    color:#555;
+}
+#footer a{
+    color:#0062a7;
+}
+
+#toggleShopForm{
+    margin:0;
 }
 
 /*Status Button Container
@@ -117,9 +151,10 @@ body{
 /*Shop Status Toggle Button
 ==================*/
 #statusToggle{
-    font-family:'Quicksand',sans-serif;
     font-size:4em;
     border:1px solid #aaa;
+    font-weight:normal;
+    letter-spacing: .1em;
     border-radius:15px;
     width:400px;
     height:150px;
@@ -131,12 +166,13 @@ body{
     border:1px solid #000;
 }
 .isopen{
-    color:#555;
-    background:#76C376
+    color:#336533;
+    text-shadow: 0px 2px 3px #82c462;
+    background:#76C376;
 }
 .isclosed{
-    background:#C00;
-    color:#fff;
+   color:#600;
+    text-shadow: 0px 2px 3px #f00;
 }
 /*Button Instructions
 ==================*/
@@ -146,6 +182,7 @@ body{
 #statusUpdate{
     text-align: center;
     color:#777;
+    font-weight: normal;
     margin-bottom:0;
 }
 
@@ -160,28 +197,70 @@ body{
         ADMIN PAGE
 
 ==========================*/
+.required{
+    font-weight: bold;
+    color:#d00;
+}
+/*admin-form
+==================*/
+.admin-form{
+    padding-bottom:20px;
+    margin-bottom:10px;
+    border-bottom:1px dotted #bbb;
+}
+
+/*Section title
+==================*/
+.section-title{
+    color:#555;
+    font-weight:normal;
+    padding:0;
+    margin:0;
+    font-size:1.9em;
+}
+
+/*classroom hours form
+==================*/
 .classroomDataForm{
 }
 
+/*hours table
+==================*/
 #timeTable{
     position:relative;
-    width:80%;
+    width:99%;
     margin:20px 0;
-
+}#timeTable td{
+    padding:5px;
+}#timeTable td.location_name{
+    vertical-align: middle;
 }
-#timeTable td{
-    padding:10px;
-}
-.timepicker{
-    width:100px;
+/*time picker
+==================*/
+input.timepicker{
+    font-size:1em;
+    background:transparent;
+    text-align: center;
+    width:60px;
     border:none;
-    padding:15px 5px;
-}.timepicker:hover{
+    padding:10px 2px;
+}input.timepicker:hover{
     border:1px solid #aaa;
-    border-radius:5px;
-    padding:13px 4px;
+    border-radius:5px;  
+    padding:8px 1px;
     cursor: pointer;
+}input.timepicker.changed{
+    background:#Cff0F7;
+    border-radius:6px;
 }
+.bootstrap-timepicker{
+    display:inline;
+}
+/*time hover action
+==================*/
 .date_hover{
     padding:0;
 }
+
+/*Holiday section
+==================*/
