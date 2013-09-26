@@ -34,6 +34,7 @@ return array(
         'session' => array(
             'class' => 'CDbHttpSession',
             'timeout' => 1200,
+            'autoCreateSessionTable'=>'false',
         ),
         'authManager' => array(
             'class' => 'CPhpAuthManager'
