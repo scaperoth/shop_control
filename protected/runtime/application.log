@@ -859,3 +859,25 @@ HTTP_REFERER=http://shopcontrol.com/index.php/site/admin
 in C:\xampp\htdocs\shop_control\index.php (17)
 2013/09/26 15:37:50 [error] [system.db.CDbCommand] CDbCommand::execute() failed: CDbCommand failed to prepare the SQL statement: SQLSTATE[HY000]: General error: 1 no such table: YiiSession. The SQL statement executed was: DELETE FROM 'YiiSession' WHERE expire<:expire.
 in C:\xampp\htdocs\shop_control\index.php (17)
+2013/09/26 16:03:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "site".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(270): CController->missingAction('site')
+#1 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('site')
+#2 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/site/login')
+#3 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/site/site/login
+HTTP_REFERER=http://shopcontrol.com/index.php/
+---
+2013/09/26 16:03:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "site".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(270): CController->missingAction('site')
+#1 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('site')
+#2 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/site/login')
+#3 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/site/site/login
+HTTP_REFERER=http://shopcontrol.com/index.php/
+---

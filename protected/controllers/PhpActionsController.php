@@ -1,9 +1,8 @@
 <?php
 
-class PhpActionsController extends Controller {
+class PhpactionsController extends Controller {
 
     public function actions() {
-        $location = $this->location;
         return array(
             //Home actions
             'closeshop' => 'application.controllers.home.CloseShopAction',
