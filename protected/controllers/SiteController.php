@@ -54,7 +54,7 @@ class SiteController extends Controller {
 //if(!Yii::app()->user->checkAccess('authenticated'))
         if (Yii::app()->user->isGuest) {
             Yii::app()->user->setFlash('error', $this->login_error);
-            $this->redirect(array('/site/login'));
+            $this->redirect(array('login'));
         }
         else
             $this->render('index');

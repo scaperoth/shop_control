@@ -187,3 +187,47 @@ function serealizeSelects(select)
     });
     return array;
 }
+
+/**
+ * Use API to show all shop statuses
+ */
+$.getJSON("../api/allshopstatus", function(data) {
+    var i = 0;
+    $.each(data, function(key, val) {
+        i++;
+    });
+    for (var k = 2; k <= 4; k++) {
+        if (k == i) {
+            num_items_in_row = k;
+            break;
+        }
+        else if (i % k < i % (k - 1)) {
+            num_items_in_row = k;
+
+        }
+        else
+            num_items_in_row = k - 1;
+    }
+    console.log("final num_items_in_row=" + num_items_in_row);
+    var items = [];
+    var j = 0;
+    var status_icon = 'icon-minus-sign';
+    var color = '#d00';
+    items.push("<div class='row-fluid'>");
+    $.each(data, function(key, val) {
+        if (val == 'open') {
+            status_icon = 'icon-ok-sign';
+            color = '#5bb75b';
+        }
+        j++;
+        items.push("<div title='"+val+"' class='span" + (12 / num_items_in_row) + " well well-small' id='" + key + "_status'><span style='font-size:1.3em; color:"+color+";' class='" + status_icon + "'>&nbsp&nbsp</span>" + key + ": " + val + "</div>");
+        if (j % num_items_in_row == 0) {
+            items.push("</div>");
+            items.push("<div class='row-fluid'>");
+        }
+    });
+    $("<div/>", {
+        "class": "",
+        html: items.join("")
+    }).appendTo("#location_details");
+});

@@ -52,7 +52,9 @@ return array(
             //uncomment to clean "index" out of url
             //'showScriptName' => false,
             //'caseSensitive' => false,
+            
             'rules' => array(
+                array('api/allshopstatus', 'pattern'=>'api/<resource:\w+>', 'verb'=>'GET'),
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',

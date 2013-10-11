@@ -21,6 +21,10 @@ $this->pageTitle = Yii::app()->name;
             </div>
         <?php endif; ?>
     </div>
+    <p>&nbsp</p>
+    <div id="location_details" >
+    </div>
+    <p>&nbsp</p>
     <div id="classroomDataForm" class="admin-form">
         <h3 class="section-title">Shop Hours</h3>
         <dfn class="description">Click times to edit.</dfn>
