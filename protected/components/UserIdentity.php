@@ -44,7 +44,7 @@ class UserIdentity extends CUserIdentity {
         $checkADVroup = array("AT-AVD");
 
         $ldapConn = ldap_connect($ldapHost, $ldapPort);  // must be a valid LDAP server!
-        ldap_set_option( $ldapConn, LDAP_OPT_PROTOCOL_VERSION, 3 );  //Set the LDAP Protocol used by your AD service
+        ldap_set_option($ldapConn, LDAP_OPT_PROTOCOL_VERSION, 3);  //Set the LDAP Protocol used by your AD service
         ldap_set_option($ldapConn, LDAP_OPT_REFERRALS, 0);         //This was necessary for my AD to do anything
 
         if ($ldapConn) {
@@ -53,10 +53,10 @@ class UserIdentity extends CUserIdentity {
 
             if ($ldapBind) {
                 $this->_id = 1;
-                
+
                 $sr = ldap_search($ldapConn, $baseDnPeople, $filter, $attr);
                 $info = ldap_get_entries($ldapConn, $sr);
-               
+
                 for ($i = 0; $i < $info["count"]; $i++) {
                     $this->email = $info[$i]["mail"][0];
                     $userFullName = $info[$i]["cn"][0];
@@ -134,7 +134,6 @@ class UserIdentity extends CUserIdentity {
             }
             if (!$ldapBind) {
                 $this->errorCode = self::ERROR_PASSWORD_INVALID;
-             
             }
         }
         return !$this->errorCode;

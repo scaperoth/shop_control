@@ -60,6 +60,8 @@ class CronJobAction extends CAction {
                 if ($currtime < $closed_lower_bound && $currtime > $open_upper_bound) {
                     $shouldbeopen = TRUE;
                 }
+                
+                /**EMAIL LOGIC FOR CRON JOB**/
                 if (!$isholiday) {
                     if (!$isopen) {
                         echo "it's not open ";
