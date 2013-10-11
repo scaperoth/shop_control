@@ -26,15 +26,14 @@ return array(
             // If removed, Gii defaults to localhost only. Edit carefully to taste.
             'ipFilters' => array('127.0.0.1', '::1'),
         ),
-        'test', 
-        
+        'test',
     ),
     // application components
     'components' => array(
         'session' => array(
             'class' => 'CDbHttpSession',
             'timeout' => 1200,
-            'autoCreateSessionTable'=>'false',
+            'autoCreateSessionTable' => 'false',
         ),
         'authManager' => array(
             'class' => 'CPhpAuthManager'
@@ -50,6 +49,8 @@ return array(
         /**/
         'urlManager' => array(
             'urlFormat' => 'path',
+            'showScriptName' => false,
+            'caseSensitive' => false,
             'rules' => array(
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
