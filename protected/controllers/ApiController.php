@@ -50,7 +50,7 @@ class ApiController extends Controller {
         //returns holidays
         return Yii::app()->db->createCommand()
                 ->select('sh.hol_id, loc_id, hol_date')
-                ->from('shop_holidays sh, holidays h')
+                ->from('shop_holidays sh, Holidays h')
                 ->where('sh.hol_id = h.hol_id')
                 ->queryAll();
     }
@@ -59,8 +59,8 @@ class ApiController extends Controller {
     }
 
     /**
-     * returns json array with open/closed for each location
-     * @return {"shopname":"status",....}
+     * returns json array with "open" or "closed" for each location
+     * @return {"shopname":"open"|"closed",....}
      */
     public function actionAllShopStatus() {
         // Check if id was submitted via GET

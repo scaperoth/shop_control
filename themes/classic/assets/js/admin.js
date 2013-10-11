@@ -211,16 +211,19 @@ $.getJSON("../api/allshopstatus", function(data) {
     console.log("final num_items_in_row=" + num_items_in_row);
     var items = [];
     var j = 0;
-    var status_icon = 'icon-minus-sign';
-    var color = '#d00';
+    var status_icon;
+    var color_class;
     items.push("<div class='row-fluid'>");
     $.each(data, function(key, val) {
-        if (val == 'open') {
+        status_icon = 'icon-minus-sign';
+        color_class = 'red';
+        val = ucfirst(val);
+        if (val == 'Open') {
             status_icon = 'icon-ok-sign';
-            color = '#5bb75b';
+            color_class = 'green';
         }
         j++;
-        items.push("<div title='"+val+"' class='span" + (12 / num_items_in_row) + " well well-small' id='" + key + "_status'><span style='font-size:1.3em; color:"+color+";' class='" + status_icon + "'>&nbsp&nbsp</span>" + key + ": " + val + "</div>");
+        items.push("<div title='" + ucfirst(val) + "' class='span" + (12 / num_items_in_row) + " well well-small' id='" + key + "_status'><span style='font-size:1.5em;' class='" + status_icon + " "+color_class+"'>&nbsp&nbsp</span>" + key + ": " + "<span class='"+color_class+"'>"+val+"</span>" + "</div>");
         if (j % num_items_in_row == 0) {
             items.push("</div>");
             items.push("<div class='row-fluid'>");
@@ -231,3 +234,10 @@ $.getJSON("../api/allshopstatus", function(data) {
         html: items.join("")
     }).appendTo("#location_details");
 });
+
+function ucfirst(str) {
+    str = str.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+        return letter.toUpperCase();
+    });
+    return str;
+}

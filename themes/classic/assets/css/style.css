@@ -24,7 +24,12 @@ a:hover{
 .errorMessage{
     color:#d00;
 }
-
+.green{
+    color:#5bb75b;
+}
+.red{
+    color: #d00;
+}
 /*Wrap Text
 ==================*/
 pre,code {

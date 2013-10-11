@@ -6459,3 +6459,133 @@ Stack trace:
 REQUEST_URI=/index.php/phpactions/addlocation
 HTTP_REFERER=http://shopcontrol.com/index.php/site/admin
 ---
+2013/10/11 16:36:26 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '127.0.0.1' for key 'ip_address_UNIQUE'. The SQL statement executed was: UPDATE `ips` SET `ip_id`=:yp0, `ip_address`=:yp1, `ip_compname`=:yp2, `ip_loc_id`=:yp3 WHERE `ips`.`ip_id`=34.
+in C:\xampp\htdocs\shop_control\protected\controllers\admin\location\UpdateLocationAction.php (24)
+in C:\xampp\htdocs\shop_control\index.php (17)
+2013/10/11 16:36:26 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '127.0.0.1' for key 'ip_address_UNIQUE'. The SQL statement executed was: UPDATE `ips` SET `ip_id`=:yp0, `ip_address`=:yp1, `ip_compname`=:yp2, `ip_loc_id`=:yp3 WHERE `ips`.`ip_id`=34' in C:\xampp\htdocs\shop_control\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\db\ar\CActiveRecord.php(1691): CDbCommand->execute()
+#1 C:\xampp\htdocs\shop_control\framework\db\ar\CActiveRecord.php(1070): CActiveRecord->updateByPk('34', Array)
+#2 C:\xampp\htdocs\shop_control\framework\db\ar\CActiveRecord.php(795): CActiveRecord->update(NULL)
+#3 C:\xampp\htdocs\shop_control\protected\controllers\admin\location\UpdateLocationAction.php(24): CActiveRecord->save()
+#4 C:\xampp\htdocs\shop_control\framework\web\actions\CAction.php(76): UpdateLocationAction->run()
+#5 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CAction->runWithParams(Array)
+#6 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(UpdateLocationAction))
+#7 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(UpdateLocationAction), Array)
+#13 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('updatelocation')
+#14 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('phpactions/upda...')
+#15 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php/phpactions/updatelocation
+HTTP_REFERER=http://shopcontrol.com/index.php/site/admin
+---
+2013/10/11 16:36:27 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '127.0.0.1' for key 'ip_address_UNIQUE'. The SQL statement executed was: UPDATE `ips` SET `ip_id`=:yp0, `ip_address`=:yp1, `ip_compname`=:yp2, `ip_loc_id`=:yp3 WHERE `ips`.`ip_id`=34.
+in C:\xampp\htdocs\shop_control\protected\controllers\admin\location\UpdateLocationAction.php (24)
+in C:\xampp\htdocs\shop_control\index.php (17)
+2013/10/11 16:36:27 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '127.0.0.1' for key 'ip_address_UNIQUE'. The SQL statement executed was: UPDATE `ips` SET `ip_id`=:yp0, `ip_address`=:yp1, `ip_compname`=:yp2, `ip_loc_id`=:yp3 WHERE `ips`.`ip_id`=34' in C:\xampp\htdocs\shop_control\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\db\ar\CActiveRecord.php(1691): CDbCommand->execute()
+#1 C:\xampp\htdocs\shop_control\framework\db\ar\CActiveRecord.php(1070): CActiveRecord->updateByPk('34', Array)
+#2 C:\xampp\htdocs\shop_control\framework\db\ar\CActiveRecord.php(795): CActiveRecord->update(NULL)
+#3 C:\xampp\htdocs\shop_control\protected\controllers\admin\location\UpdateLocationAction.php(24): CActiveRecord->save()
+#4 C:\xampp\htdocs\shop_control\framework\web\actions\CAction.php(76): UpdateLocationAction->run()
+#5 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CAction->runWithParams(Array)
+#6 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(UpdateLocationAction))
+#7 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(UpdateLocationAction), Array)
+#13 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('updatelocation')
+#14 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('phpactions/upda...')
+#15 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php/phpactions/updatelocation
+HTTP_REFERER=http://shopcontrol.com/index.php/site/admin
+---
+2013/10/11 16:36:33 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '127.0.0.1' for key 'ip_address_UNIQUE'. The SQL statement executed was: UPDATE `ips` SET `ip_id`=:yp0, `ip_address`=:yp1, `ip_compname`=:yp2, `ip_loc_id`=:yp3 WHERE `ips`.`ip_id`=34.
+in C:\xampp\htdocs\shop_control\protected\controllers\admin\location\UpdateLocationAction.php (24)
+in C:\xampp\htdocs\shop_control\index.php (17)
+2013/10/11 16:36:33 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '127.0.0.1' for key 'ip_address_UNIQUE'. The SQL statement executed was: UPDATE `ips` SET `ip_id`=:yp0, `ip_address`=:yp1, `ip_compname`=:yp2, `ip_loc_id`=:yp3 WHERE `ips`.`ip_id`=34' in C:\xampp\htdocs\shop_control\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\db\ar\CActiveRecord.php(1691): CDbCommand->execute()
+#1 C:\xampp\htdocs\shop_control\framework\db\ar\CActiveRecord.php(1070): CActiveRecord->updateByPk('34', Array)
+#2 C:\xampp\htdocs\shop_control\framework\db\ar\CActiveRecord.php(795): CActiveRecord->update(NULL)
+#3 C:\xampp\htdocs\shop_control\protected\controllers\admin\location\UpdateLocationAction.php(24): CActiveRecord->save()
+#4 C:\xampp\htdocs\shop_control\framework\web\actions\CAction.php(76): UpdateLocationAction->run()
+#5 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CAction->runWithParams(Array)
+#6 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(UpdateLocationAction))
+#7 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(UpdateLocationAction), Array)
+#13 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('updatelocation')
+#14 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('phpactions/upda...')
+#15 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php/phpactions/updatelocation
+HTTP_REFERER=http://shopcontrol.com/index.php/site/admin
+---
+2013/10/11 16:36:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '127.0.0.1' for key 'ip_address_UNIQUE'. The SQL statement executed was: UPDATE `ips` SET `ip_id`=:yp0, `ip_address`=:yp1, `ip_compname`=:yp2, `ip_loc_id`=:yp3 WHERE `ips`.`ip_id`=34.
+in C:\xampp\htdocs\shop_control\protected\controllers\admin\location\UpdateLocationAction.php (24)
+in C:\xampp\htdocs\shop_control\index.php (17)
+2013/10/11 16:36:43 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '127.0.0.1' for key 'ip_address_UNIQUE'. The SQL statement executed was: UPDATE `ips` SET `ip_id`=:yp0, `ip_address`=:yp1, `ip_compname`=:yp2, `ip_loc_id`=:yp3 WHERE `ips`.`ip_id`=34' in C:\xampp\htdocs\shop_control\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\db\ar\CActiveRecord.php(1691): CDbCommand->execute()
+#1 C:\xampp\htdocs\shop_control\framework\db\ar\CActiveRecord.php(1070): CActiveRecord->updateByPk('34', Array)
+#2 C:\xampp\htdocs\shop_control\framework\db\ar\CActiveRecord.php(795): CActiveRecord->update(NULL)
+#3 C:\xampp\htdocs\shop_control\protected\controllers\admin\location\UpdateLocationAction.php(24): CActiveRecord->save()
+#4 C:\xampp\htdocs\shop_control\framework\web\actions\CAction.php(76): UpdateLocationAction->run()
+#5 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CAction->runWithParams(Array)
+#6 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(UpdateLocationAction))
+#7 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(UpdateLocationAction), Array)
+#13 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('updatelocation')
+#14 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('phpactions/upda...')
+#15 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php/phpactions/updatelocation
+HTTP_REFERER=http://shopcontrol.com/index.php/site/admin
+---
+2013/10/11 16:36:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '127.0.0.1' for key 'ip_address_UNIQUE'. The SQL statement executed was: UPDATE `ips` SET `ip_id`=:yp0, `ip_address`=:yp1, `ip_compname`=:yp2, `ip_loc_id`=:yp3 WHERE `ips`.`ip_id`=34.
+in C:\xampp\htdocs\shop_control\protected\controllers\admin\location\UpdateLocationAction.php (24)
+in C:\xampp\htdocs\shop_control\index.php (17)
+2013/10/11 16:36:43 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '127.0.0.1' for key 'ip_address_UNIQUE'. The SQL statement executed was: UPDATE `ips` SET `ip_id`=:yp0, `ip_address`=:yp1, `ip_compname`=:yp2, `ip_loc_id`=:yp3 WHERE `ips`.`ip_id`=34' in C:\xampp\htdocs\shop_control\framework\db\CDbCommand.php:357
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\db\ar\CActiveRecord.php(1691): CDbCommand->execute()
+#1 C:\xampp\htdocs\shop_control\framework\db\ar\CActiveRecord.php(1070): CActiveRecord->updateByPk('34', Array)
+#2 C:\xampp\htdocs\shop_control\framework\db\ar\CActiveRecord.php(795): CActiveRecord->update(NULL)
+#3 C:\xampp\htdocs\shop_control\protected\controllers\admin\location\UpdateLocationAction.php(24): CActiveRecord->save()
+#4 C:\xampp\htdocs\shop_control\framework\web\actions\CAction.php(76): UpdateLocationAction->run()
+#5 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CAction->runWithParams(Array)
+#6 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(UpdateLocationAction))
+#7 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#10 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(UpdateLocationAction), Array)
+#13 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('updatelocation')
+#14 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('phpactions/upda...')
+#15 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php/phpactions/updatelocation
+HTTP_REFERER=http://shopcontrol.com/index.php/site/admin
+---
