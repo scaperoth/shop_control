@@ -6589,3 +6589,19 @@ Stack trace:
 REQUEST_URI=/index.php/phpactions/updatelocation
 HTTP_REFERER=http://shopcontrol.com/index.php/site/admin
 ---
+2013/10/14 10:20:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/classic/img/gw_logo.ico".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/classic/...')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/classic/img/gw_logo.ico
+---
+2013/10/14 10:20:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---

@@ -6,14 +6,17 @@ class CronJobAction extends CAction {
         $admin_emails = Yii::app()->params['admin_emails'];    
         //check if "action" == md5(go);
         if ($_GET['action'] == md5('go')) {
-
             $holidays_query = Yii::app()->db->createCommand()
                     ->select('sh.hol_id, loc_id, hol_date')
-                    ->from('shop_holidays sh, holidays h')
+                    ->from('shop_holidays sh, Holidays h')
                     ->where('sh.hol_id = h.hol_id')
                     ->queryAll();
-
-
+            
+            /*
+             * which locations to send in the email
+             */
+            $send_locations=array(); 
+            $message = NULL;
             $locations = Locations::model()->findAll();
             foreach ($locations as $curr_location) {
                 $location = $curr_location['loc_name'];
@@ -61,43 +64,50 @@ class CronJobAction extends CAction {
                 if ($currtime < $closed_lower_bound && $currtime > $open_upper_bound) {
                     $shouldbeopen = TRUE;
                 }
-                $to = $admin_emails;
-                $subject = 'Test email using PHP';
-                $headers = 'From: acadtech@gwu.edu' . "\r\n" .
-                        'Reply-To: scaperoth@gmail.com' . "\r\n" .
-                        'X-Mailer: PHP/' . phpversion();
-
                 
+               
+               
                 /**EMAIL LOGIC FOR CRON JOB**/
                 if (!$isholiday) {
-                    //it's not a holiday...
+                    //it"s not a holiday...
                     if (!$isopen) {
                         //it's not open
-                        $subject= NULL;
                         if ($shouldbeopen) {
                             //it should be open
-                            $subject="$location, has not been opened @ $currtime";
-                            $message = "$location should have been opened by $open_upper_bound. Not yet opened.";
+                            $message .= "$location should have been opened by $open_upper_bound. Not yet opened.\n";
+                            $send_locations[] =$location;
                         } else {
                             //but that's ok
-                            $subject=NULL;
                         }
                     }else{
                         //it's open
                         if($shouldbeopen){
                             //but it should be, and that's ok
-                           $subject= NULL;
                         }else{
                             //this means no one has closed it
-                            $subject="$location, has not been closed @ $currtime";
-                            $message = "$location should have been closed by $closed_lower_bound. Not yet closed.";
+                            $message .= "$location should have been closed by $closed_lower_bound. Not yet closed.\n";
+                            $send_locations[] =$location;
                         }
                     }
+                }//end !isholiday
+                
+                
+                
+            }//end foreach
+            
+            $to = $admin_emails;
+            $subject="Shop status error: ";
+            $i = 0;
+            foreach($send_locations as $loc){
+                $subject.=$loc;
+                if(count($send_locations)>1 && $i<count($send_locations)){
+                    $subject.=", ";
                 }
-                
-                mail($to, $subject, $message, $headers, '-facadtech.gwu.edu');
-                
+                $i++;
             }
+            $headers = "From: Shop Control App <acadtech@gwu.edu>";
+            if($message)
+                    mail($to, $subject, $message, $headers, '-facadtech.gwu.edu');
         }
     }
 

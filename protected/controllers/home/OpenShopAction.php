@@ -1,108 +1,100 @@
 <?php
 
-class OpenShopAction extends CAction {
+class CronJobAction extends CAction {
 
     public function run() {
+        $admin_emails = Yii::app()->params['admin_emails'];    
+        //check if "action" == md5(go);
+        if ($_GET['action'] == md5('go')) {
+            $holidays_query = Yii::app()->db->createCommand()
+                    ->select('sh.hol_id, loc_id, hol_date')
+                    ->from('shop_holidays sh, Holidays h')
+                    ->where('sh.hol_id = h.hol_id')
+                    ->queryAll();
 
-        if (Yii::app()->request->isPostRequest) {
-//administrative emails
-            $admin_emails = Yii::app()->params['admin_emails'];
-            echo $admin_emails . ' : ';
-//full username
-            $username = Yii::app()->user->getState('username');
-//open or closed
-            $action = 'open';
-//get timestamp
-            $timestamp = date('Y-m-d H:i:s');
 
-//is user ontime?
-            $on_time = 0;
+            $locations = Locations::model()->findAll();
+            foreach ($locations as $curr_location) {
+                $location = $curr_location['loc_name'];
+                $isopen = Locations::model()->findByAttributes(array('loc_name' => $location), 'loc_status');
+                $shouldbeopen = FALSE;
+                $isholiday = FALSE;
+                echo '<h3>' . $location . '</h3>';
+                if (!$isopen) {
+                    echo'<pre class="well">closed</pre>';
+                }else{
+                    echo'<pre>open</pre>';
+                }
 
-//whether or not to send an email defaults to no
-            $message = NULL;
-
-//get curr location
-            $location = $this->getController()->location;
-//get current day of the week
-            $dayofweek = strtolower(date('D'));
-            $table_col = 'loc_' . $dayofweek . '_open_hrs';
+                $dayofweek = strtolower(date('D'));
+                $table_col_open = 'loc_' . $dayofweek . '_open_hrs';
+                $table_col_closed = 'loc_' . $dayofweek . '_closed_hrs';
 //check open hours
-            $check_query = Yii::app()->db->createCommand()
-                    ->select($table_col)
-                    ->from('locations l')
-                    ->where('l.loc_name=:name', array(':name' => $location))
-                    ->queryRow();
+                $check_query = Yii::app()->db->createCommand()
+                        ->select($table_col_open . ',' . $table_col_closed)
+                        ->from('locations l')
+                        ->where('l.loc_name=:name', array(':name' => $location))
+                        ->queryRow();
+                $openHrsTime = strtotime($check_query[$table_col_open]);
+                $closedHrsTime = strtotime($check_query[$table_col_closed]);
 
-//translate databse open hours into php time()
-            $openHrsTime = strtotime($check_query[$table_col]);
+                $open_upper_bound = date('d-m-Y H:i:s', $openHrsTime + 600);
+                $open_lower_bound = date('d-m-Y H:i:s', $openHrsTime - 600);
 
-//get current time
-            $currtime = date('d-m-Y H:i:s');
+                $closed_upper_bound = date('d-m-Y H:i:s', $closedHrsTime + 600);
+                $closed_lower_bound = date('d-m-Y H:i:s', $closedHrsTime - 600);
 
-//get upper deviation of time. +- 10 minutes from db shop open time
-            $open_upper_bound = date('d-m-Y H:i:s', $openHrsTime + 600);
-            $open_lower_bound = date('d-m-Y H:i:s', $openHrsTime - 600);
-
-//if current time is later than the open + 10 minutes
-//shop was opened late
-            if ($currtime > $open_upper_bound) {
-                $currtime = new DateTime($currtime);
-                $openDateTime = new DateTime($open_upper_bound);
-                $difference = $currtime->diff($openDateTime, True);
-
-                $message = $username . " opened the $location shop late. Latest opening time is " . date('H:ia', $openHrsTime + 600) . '. Late by: ' . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds';
-                Yii::app()->user->setFlash('error', "The shop has been opened late by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds');
-            }
-
-//if current time is less than the open - 10 minutes
-//shop was opened early
-            else if ($currtime < $open_lower_bound) {
-                $currtime = new DateTime($currtime);
-                $openDateTime = new DateTime($open_lower_bound);
-                $difference = $currtime->diff($openDateTime, True);
+                $currtime = date('d-m-Y H:i:s');
+                $currDay = date('M d');
 
 
-                $message = $username . " opened the. $location shop early by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds';
+                foreach ($holidays_query as $holiday) {
+                    if ($holiday['hol_date'] == $currDay) {
+                        if ($holiday['loc_id'] == $curr_location['loc_id']) {
+                            echo "Don't worry! it's a holiday";
+                            $isholiday = TRUE;
+                        }
+                    }
+                }
 
-                Yii::app()->user->setFlash('error', 'The shop has been opened early by ' . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds');
-            } else {
-                $on_time = 1;
-                $message = NULL;
-            }
-
-//if send messages is set to 1 then send the email. otherwise don't.
-            if ($message != NULL && !Yii::app()->user->checkAccess('admin')) {
-
-
+                if ($currtime < $closed_lower_bound && $currtime > $open_upper_bound) {
+                    $shouldbeopen = TRUE;
+                }
                 $to = $admin_emails;
                 $subject = 'Test email using PHP';
-                $headers = 'From: acadtech@gwu.edu' . "\r\n" .
-                        'Reply-To: scaperoth@gmail.com' . "\r\n" .
-                        'X-Mailer: PHP/' . phpversion();
+                $headers = "From: Shop Control App acadtech@gwu.edu";
 
-                mail($to, $subject, $message, $headers, '-facadtech.gwu.edu');
-
-                $lct = new LocationChangeTracking();
-                $lct->lct_location = $location;
-                $lct->lct_user = $username;
-                $lct->lct_action = $action;
-                $lct->lct_on_time = $on_time;
-                $lct->lct_message = $message;
-                $lct->lct_timestamp = $timestamp;
-                $lct->insert();
+                $subject= NULL;
+                /**EMAIL LOGIC FOR CRON JOB**/
+                if (!$isholiday) {
+                    //it"s not a holiday...
+                    if (!$isopen) {
+                        //it's not open
+                        $subject= NULL;
+                        if ($shouldbeopen) {
+                            //it should be open
+                            $subject="$location shop has not been opened @ $currtime";
+                            $message = "$location should have been opened by $open_upper_bound. Not yet opened.";
+                        } else {
+                            //but that's ok
+                            $subject=NULL;
+                        }
+                    }else{
+                        //it's open
+                        if($shouldbeopen){
+                            //but it should be, and that's ok
+                           $subject= NULL;
+                        }else{
+                            //this means no one has closed it
+                            $subject="$location, has not been closed @ $currtime";
+                            $message = "$location should have been closed by $closed_lower_bound. Not yet closed.";
+                        }
+                    }
+                }
+                if($subject)
+                    mail($to, $subject, $message, $headers, '-facadtech.gwu.edu');
+                
             }
-
-            $loc_id = $this->getController()->loc_id;
-            $new_status = 1;
-            $location_model = Locations::model()->findByPk($loc_id);
-            $location_model->loc_status = $new_status;
-            $location_model->save(); // save the change to database
-
-
-            echo $message;
-        } else {
-            Yii::app()->user->setFlash('error', 'Access Denied.');
-            $this->redirect(Yii::app()->user->returnUrl);
         }
     }
 
