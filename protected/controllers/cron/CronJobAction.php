@@ -3,6 +3,7 @@
 class CronJobAction extends CAction {
 
     public function run() {
+        $admin_emails = Yii::app()->params['admin_emails'];    
         //check if "action" == md5(go);
         if ($_GET['action'] == md5('go')) {
 
@@ -60,25 +61,42 @@ class CronJobAction extends CAction {
                 if ($currtime < $closed_lower_bound && $currtime > $open_upper_bound) {
                     $shouldbeopen = TRUE;
                 }
+                $to = $admin_emails;
+                $subject = 'Test email using PHP';
+                $headers = 'From: acadtech@gwu.edu' . "\r\n" .
+                        'Reply-To: scaperoth@gmail.com' . "\r\n" .
+                        'X-Mailer: PHP/' . phpversion();
+
                 
                 /**EMAIL LOGIC FOR CRON JOB**/
                 if (!$isholiday) {
+                    //it's not a holiday...
                     if (!$isopen) {
-                        echo "it's not open ";
+                        //it's not open
+                        $subject= NULL;
                         if ($shouldbeopen) {
-                            echo', but it should be...';
+                            //it should be open
+                            $subject="$location, has not been opened @ $currtime";
+                            $message = "$location should have been opened by $open_upper_bound. Not yet opened.";
                         } else {
-                            echo', but that\'s ok';
+                            //but that's ok
+                            $subject=NULL;
                         }
                     }else{
-                        echo"it's open";
+                        //it's open
                         if($shouldbeopen){
-                           echo", and that's ok.";
+                            //but it should be, and that's ok
+                           $subject= NULL;
                         }else{
-                            echo", but it shouldn't be...";
+                            //this means no one has closed it
+                            $subject="$location, has not been closed @ $currtime";
+                            $message = "$location should have been closed by $closed_lower_bound. Not yet closed.";
                         }
                     }
                 }
+                
+                mail($to, $subject, $message, $headers, '-facadtech.gwu.edu');
+                
             }
         }
     }
