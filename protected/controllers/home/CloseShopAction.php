@@ -17,9 +17,13 @@ class CloseShopAction extends CAction {
             $on_time = 0;
 
             $message = NULL;
-
+            
+            if(!isset($_POST['location'])){
 //get curr location
             $location = $this->getController()->location;
+            }
+            
+            
 //get current day of the week
             $dayofweek = strtolower(date('D'));
             $table_col = 'loc_' . $dayofweek . '_closed_hrs';

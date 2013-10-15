@@ -3,7 +3,7 @@
 class SiteController extends Controller {
 
     private $login_error = "Please login to continue";
-
+    private $permission_error = "Access Denied";
     /**
      * 
      */
@@ -69,7 +69,7 @@ class SiteController extends Controller {
 // using the default layout 'protected/views/layouts/main.php'
 //if(!Yii::app()->user->checkAccess('authenticated'))
         if (!Yii::app()->user->checkAccess('admin')) {
-            Yii::app()->user->setFlash('error', $this->login_error);
+            Yii::app()->user->setFlash('error', $this->permission_error);
             $this->redirect(Yii::app()->user->returnUrl);
         }
         else
@@ -81,7 +81,7 @@ class SiteController extends Controller {
 // using the default layout 'protected/views/layouts/main.php'
 //if(!Yii::app()->user->checkAccess('authenticated'))
         if (!Yii::app()->user->checkAccess('admin')) {
-            Yii::app()->user->setFlash('error', $this->login_error);
+            Yii::app()->user->setFlash('error', $this->permission_error);
             $this->redirect(Yii::app()->user->returnUrl);
         }
         else

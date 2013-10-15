@@ -4,12 +4,13 @@
 // Yii::setPathOfAlias('local','path/to/local-folder');
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
+Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'name' => 'Shop Control',
     'homeurl' => 'login',
     'defaultController' => 'site/login',
-    'theme' => 'classic',
+    'theme' => 'bootstrap',
     // preloading 'log' component
     'preload' => array('log'),
     // autoloading model and component classes
@@ -26,10 +27,12 @@ return array(
             // If removed, Gii defaults to localhost only. Edit carefully to taste.
             'ipFilters' => array('127.0.0.1', '::1'),
         ),
-        'test',
     ),
     // application components
     'components' => array(
+        'bootstrap'=>array(
+            'class'=>'bootstrap.components.Bootstrap',
+        ),
         'session' => array(
             'class' => 'CDbHttpSession',
             'timeout' => 1200,
@@ -52,9 +55,13 @@ return array(
             //uncomment to clean "index" out of url
             //'showScriptName' => false,
             //'caseSensitive' => false,
-            
             'rules' => array(
-                array('api/allshopstatus', 'pattern'=>'api/<resource:\w+>', 'verb'=>'GET'),
+                'config/emails' => 'config/emails',
+                'api/shopstatus' => 'api/shopstatus',
+                'api/shopstatus/<location:[^a-zA-Z]>' => 'api/shopstatus',
+                'api/changeshopstatus' => 'api/changeshopstatus',
+                'api/changeshopstatus/<changeto:\w+>' => 'api/changeshopstatus',
+                
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
@@ -96,7 +103,6 @@ return array(
     // using Yii::app()->params['paramName']
     'params' => array(
         // this is used in contact page
-        'adminEmail' => 'webmaster@example.com',
         'ldap' => array(
             'host' => 'fbwndc22.cats.gwu.edu',
             'port' => 389,
@@ -110,7 +116,5 @@ return array(
         //set default location
         'location',
         'current_state',
-        //administrative emails. Separated by colons
-        'admin_emails' => 'scaperoth@gmail.com',
     ),
 );
