@@ -13,7 +13,7 @@ $open_or_closed = (($this->current_state) ? 'open' : 'closed');
 
 
     <div class="center" id="buttonControl">
-        <form class="form-horizontal" onsubmit="confirm('You are about to <?php echo $open_or_closed=='open'?'CLOSE':'OPEN';?> this shop. Proceed?')" id='toggleShopForm' action='<?php echo (($open_or_closed=='open')?'../api/changeshopstatus/close':'../api/changeshopstatus/open');?>' method='POST'>
+        <form class="form-horizontal" data-status ='<?php echo $open_or_closed;?>' id='toggleShopForm' action='<?php echo (($open_or_closed=='open')?'../api/changeshopstatus/mylocation/close':'../api/changeshopstatus/mylocation/open');?>' method='POST'>
             <fieldset>
                 <input type="submit" id="statusToggle" class='<?php echo 'is' . $open_or_closed; ?>' value="<?php echo $open_or_closed; ?>"/>
             </fieldset>

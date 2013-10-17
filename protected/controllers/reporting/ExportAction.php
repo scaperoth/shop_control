@@ -1,8 +1,8 @@
 <?php
 
-class ExportAction extends CAction
-{
-    public function run(){
+class ExportAction extends CAction {
+
+    public function run() {
         if (Yii::app()->request->isPostRequest) {
             if (isset($_POST['employeeTrackingForm'])) {
                 $query = LocationChangeTracking::model()->findAll();
@@ -10,9 +10,9 @@ class ExportAction extends CAction
                     'lct_location' => array('text'),
                     'lct_user' => array('text'),
                     'lct_action' => array('text'),
-                    'lct_on_time' => array('number'),
+                    'lct_early_or_late' => array('text'),
                     'lct_message' => array('text'),
-                    'lct_timestamp' => array('time'),
+                    'lct_timestamp' => array('datetime'),
                 );
                 $filename = 'ShopControlEmployeesTracking-upto--' . date('d-m-Y H-i') . ".csv";
             } elseif (isset($_POST['shopHoursForm'])) {
@@ -44,5 +44,7 @@ class ExportAction extends CAction
             );
         }
     }
+
 }
+
 ?>

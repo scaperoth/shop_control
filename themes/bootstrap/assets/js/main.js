@@ -34,16 +34,19 @@ $(document).ready(function() {
 
 $('#toggleShopForm').submit(function(e) {
     e.preventDefault();
-    $.post($('#toggleShopForm').attr('action'), $(this).serialize(), function(json) {
-        location.reload();
-    });
+    var status = ($('#toggleShopForm').attr('data-status')=='open')?'close':'open';
+    if (confirm('You are about to '+status+' this shop. Proceed?')) {
+        $.post($('#toggleShopForm').attr('action'), $(this).serialize(), function(json) {
+            location.reload();
+        });
+    }
 });
 
 /**
  * clock
  */
 var d = new Date;
-        $('#clock p').text('Cuurent time: ' + d.getHours() + ':' + d.getMinutes() + ":" + d.getSeconds());
+$('#clock p').text('Cuurent time: ' + d.getHours() + ':' + d.getMinutes() + ":" + d.getSeconds());
 
 setInterval(function() {
     d = new Date;

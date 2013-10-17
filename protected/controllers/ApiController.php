@@ -30,10 +30,10 @@ class ApiController extends Controller {
      * @param type String which location to check if today is holiday 
      * @return boolean
      */
-    private function __IsShopHoliday($location) {
+    private function _IsShopHoliday($location) {
         $currDay = date('M d');
 
-        foreach ($this->__getHolidaysData() as $holiday) {
+        foreach ($this->_getHolidaysData() as $holiday) {
             if ($holiday['hol_date'] == $currDay) {
                 if ($holiday['loc_id'] == $location['loc_id']) {
                     return TRUE;
@@ -45,11 +45,11 @@ class ApiController extends Controller {
 
     /**
      * returns $model of holiday data
-     * usage: $return = __getHolidaysData()
+     * usage: $return = _getHolidaysData()
      *        $return["hol_id"]
      * @return type $model("hol_id","loc_id","hol_date")
      */
-    private function __getHolidaysData() {
+    private function _getHolidaysData() {
         //returns holidays
         return Yii::app()->db->createCommand()
                         ->select('sh.hol_id, loc_id, hol_date')
@@ -58,7 +58,7 @@ class ApiController extends Controller {
                         ->queryAll();
     }
 
-    private function __getLocationsData() {
+    private function _getLocationsData() {
         return Locations::model()->findAll();
     }
 
@@ -70,12 +70,12 @@ class ApiController extends Controller {
         // Check if id was submitted via GET
         $this->__checkUserAuth();
         $JSON_array = array();
-        $locations_query = $this->__getLocationsData();
+        $locations_query = $this->_getLocationsData();
         foreach ($locations_query as $curr_location) {
             $location = $curr_location['loc_name'];
             $isopen = Locations::model()->findByAttributes(array('loc_name' => $location), 'loc_status');
 
-            $isholiday = $this->__IsShopHoliday($location);
+            $isholiday = $this->_IsShopHoliday($location);
 
             if (!$isopen) {
                 $JSON_array[$location] = 'closed';
@@ -92,21 +92,32 @@ class ApiController extends Controller {
         $this->_sendResponse(200, CJSON::encode($JSON_array));
     }
 
+    /**
+     * 
+     * @throws CHttpException
+     */
     public function actionChangeshopstatus() {
-        if ($param = CHttpRequest::getParam('changeto')) {
-            switch ($param) {
-                case 'open':
-                    $JSON_array[] = $this->__OpenShop();
-                    break;
-                case 'close':
-                    $JSON_array[] = $this->__CloseShop();
-                    break;
-                default:
-                    throw new CHttpException(404,"The API for '../api/changeshopstatus/$param' cannot be found.");
-                    
-            }
+        if ($whichshop = CHttpRequest::getParam('whichshop')) {
+
+            $JSON_array = $this->_ProcessShopStatusChange($whichshop, CHttpRequest::getParam('changeto'));
         }
-        else throw new CHttpException(404,"The page you are looking for does not exist.");
+        else
+            throw new CHttpException(404, "The page you are looking for does not exist.");
+
+        $this->_sendResponse(200, CJSON::encode($JSON_array));
+    }
+
+    /**
+     * 
+     * @throws CHttpException
+     */
+    public function actionCron() {
+        if (CHttpRequest::getParam('action') == md5('go')) {
+
+            $JSON_array[] = $this->_CronJob();
+        }
+        else
+            throw new CHttpException(404, "The page you are looking for does not exist.");
 
         $this->_sendResponse(200, CJSON::encode($JSON_array));
     }
@@ -115,15 +126,47 @@ class ApiController extends Controller {
      * CHANGE FUNCTIONS
      * ********************************************** */
 
-    private function __CloseShop($location = NULL) {
+    /**
+     * 
+     * @param type $which_shop
+     * @param type $status_to_change_to
+     * @return mixed array
+     * @throws CHttpException
+     */
+    private function _ProcessShopStatusChange($which_shop, $status_to_change_to) {
+        if ($status_to_change_to) {
+            switch ($status_to_change_to) {
+                case 'open':
+                    $JSON_array[] = $this->_CloseOrOpenShop('open',$which_shop);
+                    break;
+                case 'close':
+                    $JSON_array[] = $this->_CloseOrOpenShop('closed',$which_shop);
+                    break;
 
+                default:
+                    throw new CHttpException(404, "The API for '../api/changeshopstatus/$which_shop/$status_to_change_to' cannot be found.");
+            }
+        }
+        else
+            throw new CHttpException(404, "The page you are looking for does not exist.");
+
+        return $JSON_array;
+    }
+
+    /**
+     * 
+     * @param type $action
+     * @param type $which_shop
+     * @return string|null
+     */
+    private function _CloseOrOpenShop($action, $which_shop = 'mylocation') {
+        
         $this->__checkUserAuth();
         //administrative emails
-        $admin_emails = Yii::app()->params['admin_emails'];
+        $admin_emails = $this->admin_emails;
 //full username
         $username = Yii::app()->user->getState('username');
-//open or closed
-        $action = 'close';
+        
 //get timestamp
         $timestamp = date('Y-m-d H:i:s');
 
@@ -131,55 +174,74 @@ class ApiController extends Controller {
         $on_time = 0;
 
         $message = NULL;
+        if ($which_shop == 'mylocation') {
+            $location = $this->location;
+            $loc_id = $this->loc_id;
+        } else {
+            $this->__checkAdminAuth();
+            $which_shop = addcslashes(strtoupper($which_shop), '%_'); // escape LIKE's special characters
+            $q = new CDbCriteria(array(
+                'condition' => "UPPER(SUBSTRING(loc_name,1,4)) = :match", // no quotes around :match
+                'params' => array(':match' => "$which_shop")  // Aha! Wildcards go here
+            ));
 
-        $location = $this->location;
-
+            if (!$location_query = Locations::model()->find($q)) {
+                return 'wrong location, bub';
+            }
+            $location = $location_query['loc_name'];
+            $loc_id = $location_query['loc_id'];
+        }
 
 
 //get current day of the week
         $dayofweek = strtolower(date('D'));
-        $table_col = 'loc_' . $dayofweek . '_closed_hrs';
+        $table_col = 'loc_' . $dayofweek . '_'.$action.'_hrs';
 //check closed hours
         $check_query = Yii::app()->db->createCommand()
                 ->select(array($table_col, 'loc_status'))
                 ->from('locations l')
                 ->where('l.loc_name=:name', array(':name' => $location))
                 ->queryRow();
-        if (!$check_query['loc_status']) {
-            $message = 'Shop is already closed';
+        //exit if status is already achieved.
+        if (!$check_query['loc_status'] && $action == 'closed') {
+            $message = 'Shop is already '.$action;
+            return $message;
+        }else if ($check_query['loc_status'] && $action == 'open'){
+            $message = 'Shop is already '.$action;
             return $message;
         }
 //translate databse closed hours into php time()
-        $openHrsTime = strtotime($check_query[$table_col]);
+        $openorcloseHrsTime = strtotime($check_query[$table_col]);
 
 //get current time
         $currtime = date('d-m-Y H:i:s');
 
 //get upper deviation of time. +- 10 minutes from db shop closed time
-        $open_upper_bound = date('d-m-Y H:i:s', $openHrsTime + 600);
-        $open_lower_bound = date('d-m-Y H:i:s', $openHrsTime - 600);
-
+        $time_upper_bound = date('d-m-Y H:i:s', $openorcloseHrsTime + 600);
+        $time_lower_bound = date('d-m-Y H:i:s', $openorcloseHrsTime - 600);
+        
+        $currtime = new DateTime($currtime);
 //if current time is later than the open + 10 minutes
 //shop was opened late
-        if ($currtime > $open_upper_bound) {
-            $currtime = new DateTime($currtime);
-            $openDateTime = new DateTime($open_upper_bound);
+        if ($currtime > $time_upper_bound) {
+            $openDateTime = new DateTime($time_upper_bound);
             $difference = $currtime->diff($openDateTime, True);
+            $early_or_late = ($action=='open'?'late':'early');
+            $message = $username . " ".($action=='open'?'opened':'closed')." the $location shop $early_or_late. Latest closing time is " . date('H:ia', $openorcloseHrsTime + 600) . ". ".ucfirst($early_or_late)." by: " . $difference->h . " hours " . $difference->i . " minutes and " . $difference->s . " seconds";
 
-            $message = $username . " closed the $location shop late. Latest closing time is " . date('H:ia', $openHrsTime + 600) . '. Late by: ' . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds';
-            Yii::app()->user->setFlash('error', "The shop has been closed late by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds');
+            Yii::app()->user->setFlash('error', "The shop has been ".($action=='open'?'opened':'closed')." ".$early_or_late." by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds');
         }
 
 //if current time is less than the open - 10 minutes
 //shop was opened early
-        else if ($currtime < $open_lower_bound) {
-            $currtime = new DateTime($currtime);
-            $openDateTime = new DateTime($open_lower_bound);
+        else if ($currtime < $time_lower_bound) {
+            $openDateTime = new DateTime($time_lower_bound);
             $difference = $currtime->diff($openDateTime, True);
 
+            $early_or_late = ($action=='open'?'early':'late');
+            $message = $username . " ".($action=='open'?'opened':'closed')." the $location shop $early_or_late. by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds';
 
-            $message = $username . " closed the $location shop early by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds';
-            Yii::app()->user->setFlash('error', "The shop has been closed early by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds');
+            Yii::app()->user->setFlash('error', "The shop has been ".($action=='open'?'opened':'closed')." $early_or_late by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds');
         } else {
             $on_time = 1;
             $message = NULL;
@@ -189,25 +251,24 @@ class ApiController extends Controller {
         if ($message != NULL && !Yii::app()->user->checkAccess('admin')) {
 
             $to = $admin_emails;
-            $subject = 'Test email using PHP';
+            $subject = "Classroom Support Center - $location: ".($action=='open'?'Opened':'Closed')." $early_or_late";
             $headers = 'From: acadtech@gwu.edu' . "\r\n" .
                     'Reply-To: webmaster@example.com' . "\r\n" .
                     'X-Mailer: PHP/' . phpversion();
 
             mail($to, $subject, $message, $headers, '-facadtech.gwu.edu');
-
-            $lct = new LocationChangeTracking();
-            $lct->lct_location = $location;
-            $lct->lct_user = $username;
-            $lct->lct_action = $action;
-            $lct->lct_on_time = $on_time;
-            $lct->lct_message = $message;
-            $lct->lct_timestamp = $timestamp;
-            $lct->insert();
         }
+        $lct = new LocationChangeTracking();
+        $lct->lct_location = $location;
+        $lct->lct_user = $username;
+        $lct->lct_action = $action;
+        $lct->lct_early_or_late = $early_or_late;
+        $lct->lct_message = $message;
+        $lct->lct_timestamp = $timestamp;
+        $lct->insert();
+
 //update status table
-        $loc_id = $this->loc_id;
-        $new_status = 0;
+        $new_status = ($action=='open'?1:0);
         $location_model = Locations::model()->findByPk($loc_id);
         $location_model->loc_status = $new_status;
         $location_model->save(); // save the change to database
@@ -217,110 +278,114 @@ class ApiController extends Controller {
         return $message;
     }
 
-    /**
-     * 
-     * @param type $location
-     */
-    private function __OpenShop($location = NULL) {
-        //administrative emails
-        $admin_emails = Yii::app()->params['admin_emails'];
-//full username
-        $username = Yii::app()->user->getState('username');
-//open or closed
-        $action = 'open';
-//get timestamp
-        $timestamp = date('Y-m-d H:i:s');
 
-//is user ontime?
-        $on_time = 0;
+    private function _CronJob() {
+        $admin_emails = $this->admin_emails;
+        //check if "action" == md5(go);
 
-//whether or not to send an email defaults to no
+        $holidays_query = Yii::app()->db->createCommand()
+                ->select('sh.hol_id, loc_id, hol_date')
+                ->from('shop_holidays sh, Holidays h')
+                ->where('sh.hol_id = h.hol_id')
+                ->queryAll();
+
+        /*
+         * which locations to send in the email
+         */
+        $send_locations = array();
         $message = NULL;
+        $locations = Locations::model()->findAll();
+        foreach ($locations as $curr_location) {
+            $location = $curr_location['loc_name'];
+            $isopen = Locations::model()->findByAttributes(array('loc_name' => $location), 'loc_status');
+            $shouldbeopen = FALSE;
+            $isholiday = FALSE;
+            /*
+              echo '<h3>' . $location . '</h3>';
+              if (!$isopen) {
+              echo'<pre class="well">closed</pre>';
+              } else {
+              echo'<pre>open</pre>';
+              }
+             * 
+             */
 
-//get curr location
-        $location = $this->location;
-//get current day of the week
-        $dayofweek = strtolower(date('D'));
-        $table_col = 'loc_' . $dayofweek . '_open_hrs';
+            $dayofweek = strtolower(date('D'));
+            $table_col_open = 'loc_' . $dayofweek . '_open_hrs';
+            $table_col_closed = 'loc_' . $dayofweek . '_closed_hrs';
 //check open hours
-        $check_query = Yii::app()->db->createCommand()
-                ->select(array($table_col,'loc_status'))
-                ->from('locations l')
-                ->where('l.loc_name=:name', array(':name' => $location))
-                ->queryRow();
+            $check_query = Yii::app()->db->createCommand()
+                    ->select($table_col_open . ',' . $table_col_closed)
+                    ->from('locations l')
+                    ->where('l.loc_name=:name', array(':name' => $location))
+                    ->queryRow();
+            $openHrsTime = strtotime($check_query[$table_col_open]);
+            $closedHrsTime = strtotime($check_query[$table_col_closed]);
 
-        if ($check_query['loc_status']) {
-            $message = 'Shop is already open';
-            return $message;
+            $open_upper_bound = date('d-m-Y H:i:s', $openHrsTime + 600);
+            $closed_lower_bound = date('d-m-Y H:i:s', $closedHrsTime - 600);
+
+            $currtime = date('d-m-Y H:i:s');
+            $currDay = date('M d');
+
+
+            foreach ($holidays_query as $holiday) {
+                if ($holiday['hol_date'] == $currDay) {
+                    if ($holiday['loc_id'] == $curr_location['loc_id']) {
+                        //echo "Don't worry! it's a holiday";
+                        $isholiday = TRUE;
+                    }
+                }
+            }
+
+            if ($currtime < $closed_lower_bound && $currtime > $open_upper_bound) {
+                $shouldbeopen = TRUE;
+            }
+
+
+
+            /*             * EMAIL LOGIC FOR CRON JOB* */
+            if (!$isholiday) {
+                //it"s not a holiday...
+                if (!$isopen) {
+                    //it's not open
+                    if ($shouldbeopen) {
+                        //it should be open
+                        $message .= "$location should have been opened by $open_upper_bound. Not yet opened.\n";
+                        $send_locations[] = $location;
+                    } else {
+                        //but that's ok
+                    }
+                } else {
+                    //it's open
+                    if ($shouldbeopen) {
+                        //but it should be, and that's ok
+                    } else {
+                        //this means no one has closed it
+                        $message .= "$location should have been closed by $closed_lower_bound. Not yet closed.\n";
+                        $send_locations[] = $location;
+                    }
+                }
+            }//end !isholiday
+        }//end foreach
+
+        $to = $admin_emails;
+        $subject = "Shop status error: ";
+        $i = 0;
+        foreach ($send_locations as $loc) {
+            $subject.=$loc;
+            if (count($send_locations) > 1 && $i < count($send_locations)) {
+                $subject.=", ";
+            }
+            $i++;
         }
-        
-//translate databse open hours into php time()
-        $openHrsTime = strtotime($check_query[$table_col]);
-
-//get current time
-        $currtime = date('d-m-Y H:i:s');
-
-//get upper deviation of time. +- 10 minutes from db shop open time
-        $open_upper_bound = date('d-m-Y H:i:s', $openHrsTime + 600);
-        $open_lower_bound = date('d-m-Y H:i:s', $openHrsTime - 600);
-
-//if current time is later than the open + 10 minutes
-//shop was opened late
-        if ($currtime > $open_upper_bound) {
-            $currtime = new DateTime($currtime);
-            $openDateTime = new DateTime($open_upper_bound);
-            $difference = $currtime->diff($openDateTime, True);
-
-            $message = $username . " opened the $location shop late. Latest opening time is " . date('H:ia', $openHrsTime + 600) . '. Late by: ' . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds';
-            Yii::app()->user->setFlash('error', "The shop has been opened late by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds');
-        }
-
-//if current time is less than the open - 10 minutes
-//shop was opened early
-        else if ($currtime < $open_lower_bound) {
-            $currtime = new DateTime($currtime);
-            $openDateTime = new DateTime($open_lower_bound);
-            $difference = $currtime->diff($openDateTime, True);
-
-
-            $message = $username . " opened the. $location shop early by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds';
-
-            Yii::app()->user->setFlash('error', 'The shop has been opened early by ' . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds');
-        } else {
-            $on_time = 1;
-            $message = NULL;
-        }
-
-//if send messages is set to 1 then send the email. otherwise don't.
-        if ($message != NULL && !Yii::app()->user->checkAccess('admin')) {
-
-
-            $to = $admin_emails;
-            $subject = 'Test email using PHP';
-            $headers = 'From: acadtech@gwu.edu' . "\r\n" .
-                    'Reply-To: scaperoth@gmail.com' . "\r\n" .
-                    'X-Mailer: PHP/' . phpversion();
-
+        $headers = "From: Shop Control App <acadtech@gwu.edu>";
+        if ($message) {
             mail($to, $subject, $message, $headers, '-facadtech.gwu.edu');
 
-            $lct = new LocationChangeTracking();
-            $lct->lct_location = $location;
-            $lct->lct_user = $username;
-            $lct->lct_action = $action;
-            $lct->lct_on_time = $on_time;
-            $lct->lct_message = $message;
-            $lct->lct_timestamp = $timestamp;
-            $lct->insert();
+            return 'Mail sent';
         }
-
-        $loc_id = $this->loc_id;
-        $new_status = 1;
-        $location_model = Locations::model()->findByPk($loc_id);
-        $location_model->loc_status = $new_status;
-        $location_model->save(); // save the change to database
-
-
-        return $message;
+        return 'No mail sent';
     }
 
     /**
@@ -418,7 +483,7 @@ class ApiController extends Controller {
     private function __checkAdminAuth() {
         if (!Yii::app()->user->checkAccess('admin')) {
             Yii::app()->user->setFlash('error', $this->login_error);
-            $this->redirect(Yii::app()->user->returnUrl);
+            $this->redirect(Yii::app()->homeUrl);
         }
     }
 

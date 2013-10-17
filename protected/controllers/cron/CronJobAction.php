@@ -3,7 +3,7 @@
 class CronJobAction extends CAction {
 
     public function run() {
-        $admin_emails = Yii::app()->params['admin_emails'];    
+        $admin_emails = $this->controller->admin_emails;  
         //check if "action" == md5(go);
         if ($_GET['action'] == md5('go')) {
             $holidays_query = Yii::app()->db->createCommand()

@@ -17,7 +17,7 @@
     <?php
     $this->widget('bootstrap.widgets.TbGridView', array(
         'dataProvider' => $model->search(),
-        'template' => "{items}",
+        'template' => "{summary}\n{items}\n{pager}",
         'columns' => array(
             array('name' => 'email_id', 'header' => 'ID', 'visible' => FALSE),
             array('name' => 'email', 'header' => 'Email'),

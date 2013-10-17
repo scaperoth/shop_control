@@ -6,12 +6,26 @@
  */
 class Controller extends CController {
 
+    public $location;
+    public $loc_id;
+    public $current_state;
+    public $admin_emails;
+
     /**
      * set up globals for all actions
      * @param type $action
      * @return boolean
      */
     protected function beforeAction($action) {
+        $admin_emails = '';
+        $criteria = new CDbCriteria;
+        $criteria->select = 'email';  // only select the 'title' column
+        $admin_emails_query = AdminEmails::model()->findAll($criteria); // $params is not needed
+        foreach ($admin_emails_query as $amail) {
+            $admin_emails.=$amail['email'] . ';';
+        }
+        $this->admin_emails = "$admin_emails";
+        //
         //query location using current ip address <--(found in protected/config/main.php under params)
         $location = Yii::app()->db->createCommand()
                 ->select("loc_name, loc_status, loc_id")
@@ -24,10 +38,6 @@ class Controller extends CController {
         $this->loc_id = $location['loc_id'];
         return parent::beforeAction($action);
     }
-
-    public $location;
-    public $loc_id;
-    public $current_state;
 
     /**
      * @var string the default layout for the controller view. Defaults to '//layouts/column1',
@@ -73,7 +83,7 @@ class Controller extends CController {
                 ->where('l.loc_flag=:active', array(':active' => 1))
                 ->queryAll();
 
-        /*add ips to array*/
+        /* add ips to array */
         foreach ($ips as $ip) {
             $ip_filter[] = $ip['ip_address'];
         }
@@ -88,7 +98,7 @@ class Controller extends CController {
                 'ips' => $ip_filter,
             ),
             array('allow',
-                'actions' => array('login','cron'),
+                'actions' => array('login', 'cron'),
             ),
             //disallow ips on only index and admin actions so that error page can show.
             array('deny',

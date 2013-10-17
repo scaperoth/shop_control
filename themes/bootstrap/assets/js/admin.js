@@ -209,17 +209,26 @@ $.getJSON("../api/shopstatus", function(data) {
     var j = 0;
     var status_icon;
     var color_class;
+    var status_to_change_to
     items.push("<div class='row-fluid'>");
     $.each(data, function(key, val) {
         status_icon = 'icon-minus-sign';
         color_class = 'red';
         val = ucfirst(val);
+        status_to_change_to = (val == 'Closed' ? "open" : "close");
         if (val == 'Open') {
             status_icon = 'icon-ok-sign';
             color_class = 'green';
         }
         j++;
-        items.push("<div title='" + ucfirst(val) + "' class='span" + (12 / num_items_in_row) + " well well-small' id='" + key + "_status'><span style='font-size:1.5em;' class='" + status_icon + " "+color_class+"'>&nbsp;&nbsp;</span>" + key + ": " + "<span class='"+color_class+"'>"+val+"</span>" + "</div>");
+        items.push("<a href='javascript:void(0)' rel='tooltip' title='Click to " + status_to_change_to.toUpperCase()+ " the "+ucfirst(key)+" shop' class='span" + (12 / num_items_in_row) + " well well-small submitAnchorTopForm'> \n\
+                    <form class='changeshop'  data-changeto='" + status_to_change_to + "' style='margin:0;' method='POST' action='../api/changeshopstatus/" + key.substring(0, 4).toUpperCase() + "/" + status_to_change_to + "'>\n\
+                    <div id='" + key + "_status'>\n\
+                            <span style='font-size:1.5em;' class='" + status_icon + " " + color_class + "'>&nbsp;&nbsp;</span>\n\
+                            " + key + ": " + "<span class='" + color_class + "'>" + val + "</span>" +
+                        "</div>\n\
+                    </form>\n\
+                    </a>");
         if (j % num_items_in_row == 0) {
             items.push("</div>");
             items.push("<div class='row-fluid'>");
@@ -229,6 +238,21 @@ $.getJSON("../api/shopstatus", function(data) {
         "class": "",
         html: items.join("")
     }).appendTo("#location_details");
+}).done(function(){
+    $('.submitAnchorTopForm').click(function(){
+        $(this).children('form').submit();
+    });
+    $('.changeshop').each(function() {
+        $(this).bind('submit',function(e) {
+            e.preventDefault();
+            var status = $(this).attr('data-changeto');
+            if (confirm('You are about to ' + status + ' this shop. Proceed?')) {
+                $.post($(this).attr('action'), $(this).serialize(), function(json) {
+                    location.reload();
+                });
+            }
+        });
+    });
 });
 
 function ucfirst(str) {

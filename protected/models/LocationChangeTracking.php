@@ -8,7 +8,8 @@
  * @property string $lct_location
  * @property string $lct_user
  * @property string $lct_action
- * @property integer $lct_on_time
+ * @property string $lct_early_or_late
+ * @property string $lct_message
  * @property string $lct_timestamp
  */
 class LocationChangeTracking extends CActiveRecord
@@ -39,12 +40,11 @@ class LocationChangeTracking extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('lct_on_time', 'numerical', 'integerOnly'=>true),
-			array('lct_location, lct_user, lct_action', 'length', 'max'=>45),
-			array('lct_timestamp', 'safe'),
+			array('lct_location, lct_user, lct_action, lct_early_or_late', 'length', 'max'=>45),
+			array('lct_message, lct_timestamp', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('lct_id, lct_location, lct_user, lct_action, lct_on_time, lct_timestamp', 'safe', 'on'=>'search'),
+			array('lct_id, lct_location, lct_user, lct_action, lct_early_or_late, lct_message, lct_timestamp', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -69,7 +69,8 @@ class LocationChangeTracking extends CActiveRecord
 			'lct_location' => 'Lct Location',
 			'lct_user' => 'Lct User',
 			'lct_action' => 'Lct Action',
-			'lct_on_time' => 'Lct On Time',
+			'lct_early_or_late' => 'Lct Early Or Late',
+			'lct_message' => 'Lct Message',
 			'lct_timestamp' => 'Lct Timestamp',
 		);
 	}
@@ -89,7 +90,8 @@ class LocationChangeTracking extends CActiveRecord
 		$criteria->compare('lct_location',$this->lct_location,true);
 		$criteria->compare('lct_user',$this->lct_user,true);
 		$criteria->compare('lct_action',$this->lct_action,true);
-		$criteria->compare('lct_on_time',$this->lct_on_time);
+		$criteria->compare('lct_early_or_late',$this->lct_early_or_late,true);
+		$criteria->compare('lct_message',$this->lct_message,true);
 		$criteria->compare('lct_timestamp',$this->lct_timestamp,true);
 
 		return new CActiveDataProvider($this, array(

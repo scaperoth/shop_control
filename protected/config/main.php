@@ -57,10 +57,14 @@ return array(
             //'caseSensitive' => false,
             'rules' => array(
                 'config/emails' => 'config/emails',
+                'api/shopinfo' => 'api/shopinfo',
+                'api/shopinfo/<whichshop:[\w\-]+>' => 'api/shopinfo',
+                'api/shophours' => 'api/shopinfo',
+                'api/shophours/<whichshop:[\w\-]+>' => 'api/shopinfo',
                 'api/shopstatus' => 'api/shopstatus',
                 'api/shopstatus/<location:[^a-zA-Z]>' => 'api/shopstatus',
-                'api/changeshopstatus' => 'api/changeshopstatus',
-                'api/changeshopstatus/<changeto:\w+>' => 'api/changeshopstatus',
+                'api/cron/<action:\w+>' => 'api/cron',
+                'api/changeshopstatus/<whichshop:[\w\-]+>/<changeto:\w+>' => 'api/changeshopstatus',
                 
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',

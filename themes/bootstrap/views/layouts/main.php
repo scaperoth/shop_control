@@ -48,11 +48,11 @@ $display_location = (($this->location) ? ' - ' . ucfirst($this->location) : '');
                         'htmlOptions' => array('class' => 'pull-right', 'style' => 'margin-top:10px'),
                         'items' => array(
                             array('label' => 'Open/Close Shop', 'url' => array('/site/index')),
-                            array('label' => 'Admin', 'url' => '#', 'visible' => Yii::app()->user->checkAccess('admin'), 'items' => array(
-                                    array('label' => 'Change Shop Hours and Holidays', 'url' => array('/site/admin')),
-                                    array('label' => 'Run Reports', 'url' => array('/site/reporting')),
-                                    array('label' => 'Update Admin Emails', 'url' => '/config/emails'),
-                                )),
+                            '---',
+                            array('label' => 'Shop Details', 'url' => array('/site/admin'), 'visible' => Yii::app()->user->checkAccess('admin'),),
+                            array('label' => 'Run Reports', 'url' => array('/site/reporting'), 'visible' => Yii::app()->user->checkAccess('admin'),),
+                            array('label' => 'Update Admin Emails', 'url' => '/config/emails', 'visible' => Yii::app()->user->checkAccess('admin'),),
+                            '---',
                             array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest),
                             array('label' => 'Login', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
                         ),

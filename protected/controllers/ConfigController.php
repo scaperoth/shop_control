@@ -15,11 +15,12 @@ class ConfigController extends Controller {
             $model->attributes = $_POST['AdminEmails'];
             try {
                 $model->save();
+                $model = new AdminEmails;
             } catch (CDbException $e) {
+                $model = new AdminEmails;
                 $model->addError(null, "This email already exists.");
             }
         }
-
 
         $this->render('emails', array('model' => $model));
     }
