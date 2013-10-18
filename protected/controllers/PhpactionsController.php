@@ -3,34 +3,29 @@
 class PhpactionsController extends Controller {
 
     public function actions() {
-        if (Yii::app()->request->isPostRequest) {
-            return array(
-                //Home actions
-                'closeshop' => 'application.controllers.home.CloseShopAction',
-                'openshop' => 'application.controllers.home.OpenShopAction',
-                //
-                //reporting actions
-                'export' => 'application.controllers.reporting.ExportAction',
-                //
-                //location actions
-                'updatehours' => 'application.controllers.admin.location.UpdateHoursAction',
-                'addlocation' => 'application.controllers.admin.location.AddLocationAction',
-                'updatelocation' => 'application.controllers.admin.location.UpdateLocationAction',
-                'getlocationinfo' => 'application.controllers.admin.location.GetLocationInfoAction',
-                'deletelocation' => 'application.controllers.admin.location.DeleteLocationAction',
-                //
-                //holiday actions
-                'addholiday' => 'application.controllers.admin.holidays.AddHolidayAction',
-                'deleteholiday' => 'application.controllers.admin.holidays.DeleteHolidayAction',
-                'holidayupdate' => 'application.controllers.admin.holidays.HolidayUpdateAction',
-                //
-                //cron job
-                'cron' => 'application.controllers.cron.CronJobAction',
-            );
-        } else {
-            Yii::app()->user->setFlash('error', 'Access Denied.');
-            $this->redirect(array('site/login'));
-        }
+        return array(
+            //Home actions
+            'closeshop' => 'application.controllers.home.CloseShopAction',
+            'openshop' => 'application.controllers.home.OpenShopAction',
+            //
+            //reporting actions
+            'export' => 'application.controllers.reporting.ExportAction',
+            //
+            //location actions
+            'updatehours' => 'application.controllers.admin.location.UpdateHoursAction',
+            'addlocation' => 'application.controllers.admin.location.AddLocationAction',
+            'updatelocation' => 'application.controllers.admin.location.UpdateLocationAction',
+            'getlocationinfo' => 'application.controllers.admin.location.GetLocationInfoAction',
+            'deletelocation' => 'application.controllers.admin.location.DeleteLocationAction',
+            //
+            //holiday actions
+            'addholiday' => 'application.controllers.admin.holidays.AddHolidayAction',
+            'deleteholiday' => 'application.controllers.admin.holidays.DeleteHolidayAction',
+            'holidayupdate' => 'application.controllers.admin.holidays.HolidayUpdateAction',
+            //
+            //cron job
+            'cron'=>'application.controllers.cron.CronJobAction',
+        );  
     }
 
 // Uncomment the following methods and override them if needed
