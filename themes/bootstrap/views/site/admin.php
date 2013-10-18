@@ -5,7 +5,7 @@
 $this->pageTitle = Yii::app()->name;
 ?>
 <style>
-.alert-error{
+    .alert-error{
         color: #165235;
         text-shadow: 0px 2px 3px #82c462;
         background-color:#8CCD8C;
@@ -29,23 +29,23 @@ $this->pageTitle = Yii::app()->name;
 <div>
     <div id='flash'>
         <?php if (Yii::app()->user->hasFlash('success')): ?>
-        <div class="alert alert-error">
-            <a class="close" data-dismiss="alert">&#215;</a>
-            <div id="flash_error"><?php echo Yii::app()->user->getFlash('success'); ?></div>
-        </div>
-    <?php endif; ?>
-</div>
-<p>&nbsp;</p>
-<div id="location_details" >
-</div>
-<p>&nbsp;</p>
-<div id="classroomDataForm" class="admin-form">
-    <h3 class="section-title">Shop Hours</h3>
-    <dfn class="description">Click times to edit.</dfn>
-    <form id="classroomDateForm">
-        <fieldset>
-            <table id="timeTable" align="center" border="1">
-                <thead>
+            <div class="alert alert-error">
+                <a class="close" data-dismiss="alert">&#215;</a>
+                <div id="flash_error"><?php echo Yii::app()->user->getFlash('success'); ?></div>
+            </div>
+        <?php endif; ?>
+    </div>
+    <p>&nbsp;</p>
+    <div id="location_details" >
+    </div>
+    <p>&nbsp;</p>
+    <div id="classroomDataForm" class="admin-form">
+        <h3 class="section-title">Shop Hours</h3>
+        <dfn class="description">Click times to edit.</dfn>
+        <form id="classroomDateForm">
+            <fieldset>
+                <table id="timeTable" align="center" border="1">
+                    <thead>
                     <td>Location</td>
                     <td>Monday</td>
                     <td>Tuesday</td>
@@ -54,28 +54,28 @@ $this->pageTitle = Yii::app()->name;
                     <td>Friday</td>
                     <td>Saturday</td>
                     <td>Sunday</td>
-                </thead>
-                <?php
-                $locations = Locations::model()->findAll();
+                    </thead>
+                    <?php
+                    $locations = Locations::model()->findAll();
 
-                $days_of_week = array(
-                    'monday',
-                    'tuesday',
-                    'wednesday',
-                    'thursday',
-                    'friday',
-                    'saturday',
-                    'sunday'
+                    $days_of_week = array(
+                        'monday',
+                        'tuesday',
+                        'wednesday',
+                        'thursday',
+                        'friday',
+                        'saturday',
+                        'sunday'
                     );
-                foreach ($locations as $location) {
-                    ?>
-                    <tr class="location_row <?php echo $location['loc_name']; ?>" data-rel = '<?php echo md5($location['loc_id']); ?>'>
-                        <td class="location_name">
+                    foreach ($locations as $location) {
+                        ?>
+                        <tr class="location_row <?php echo $location['loc_name']; ?>" data-rel = '<?php echo md5($location['loc_id']); ?>'>
+                            <td class="location_name">
+                                <?php
+                                echo $location['loc_name'];
+                                ?>
+                            </td>
                             <?php
-                            echo $location['loc_name'];
-                            ?>
-                        </td>
-                        <?php
                             /**
                              * this loop goes through the days of the week and 
                              * provides the name of the days as well as a 
@@ -84,8 +84,8 @@ $this->pageTitle = Yii::app()->name;
                             ?>
                             <?php foreach ($days_of_week as $day): ?>
 
-                            <td class="date_hover" id="<?php echo $day; ?>">
-                                <?php
+                                <td class="date_hover" id="<?php echo $day; ?>">
+                                    <?php
                                     /**
                                      * this code gets the times for each day and formats them the same as the timepicker
                                      * so that the timepicker can do comparisons.
@@ -101,26 +101,26 @@ $this->pageTitle = Yii::app()->name;
 
                                     //trim leading zeros from formatted time
                                     $open_time = ltrim(
-                                        $stringOpenTime, '0'
-                                        );
+                                            $stringOpenTime, '0'
+                                    );
                                     $close_time = ltrim(
-                                        $stringClosedTime, '0'
-                                        );
-                                        ?>
-                                        <div class="bootstrap-timepicker">
-                                            <input title="Click to edit" data-time ="<?php echo $open_time; ?>" class="timepicker open" name="<?php echo $location['loc_name'] . '|' . $short_day . '_open_hrs'; ?>" value="<?php echo $open_time; ?>">
-                                        </div>
-                                        <span> to </span>
+                                            $stringClosedTime, '0'
+                                    );
+                                    ?>
+                                    <div class="bootstrap-timepicker">
+                                        <input title="Click to edit" data-time ="<?php echo $open_time; ?>" class="timepicker open" name="<?php echo $location['loc_name'] . '|' . $short_day . '_open_hrs'; ?>" value="<?php echo $open_time; ?>">
+                                    </div>
+                                    <span> to </span>
 
-                                        <div class="bootstrap-timepicker">
-                                            <input title="Click to edit" data-time ="<?php echo $close_time; ?>" class="timepicker closed" name="<?php echo $location['loc_name'] . '|' . $short_day . '_closed_hrs'; ?>" value="<?php echo $close_time; ?>">
-                                        </div>
-                                    </td>
-                                <?php endforeach; ?>
+                                    <div class="bootstrap-timepicker">
+                                        <input title="Click to edit" data-time ="<?php echo $close_time; ?>" class="timepicker closed" name="<?php echo $location['loc_name'] . '|' . $short_day . '_closed_hrs'; ?>" value="<?php echo $close_time; ?>">
+                                    </div>
+                                </td>
+                            <?php endforeach; ?>
 
 
-                            </tr>
-                            <?php
+                        </tr>
+                        <?php
                     }//end foreach
                     ?>
                 </table>
@@ -184,186 +184,160 @@ $this->pageTitle = Yii::app()->name;
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <input type="button" class="btn small" data-dismiss="modal" value="Cancel">
+                    <input class="btn btn-primary" type="Submit" value="OK">
+                </div>
+            </form>
+        </div>
+        <?php $this->endWidget(); ?><!--end modal window-->
+        <!--add location dialog end-->
+
+        <!---update location dialog start-->
+        <?php $this->beginWidget('bootstrap.widgets.TbModal', array('id' => 'UpdateLocationDialog')); ?>
+        <div class="form">
+            <form class="form-horizontal" id="updateLocationForm" method="post">       
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h3>Edit a shop location.</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="divDialogElements">
+
+                        <!--new row-->
+                        <div class="row">
+                            <div class="control-group">
+                                <label class="control-label" for="locationselectupdate">Location Name:</label>
+                                <div class="controls">
+                                    <div class="input-prepend">
+                                        <span class="add-on"><i class="icon-globe"></i></span>
+                                        <select id='locationselectupdate' name='UpdateLocation[locationnameupdate]'>
+                                            <?php foreach ($locations as $location): ?>
+                                                <option value='<?php echo md5($location['loc_id']); ?>'><?php echo $location['loc_name']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div><!--end controls-->
+                            </div><!--end control group-->
+                        </div><!--end row--> 
+
+                        <!--new row-->
+                        <div class="row">
+                            <div class="control-group">
+                                <label class="control-label" for="ipaddressupdate">IP Address:<span class="required">*</span></label>
+                                <div class="controls">
+                                    <div class="input-prepend">
+                                        <span class="add-on"><i class="icon-barcode"></i></span>
+                                        <input placeholder="Example: 127.0.0.1" required class="span3" name="UpdateLocation[ipaddressupdate]" id="ipaddressupdate" type="text">
+                                    </div>
+                                </div><!--end controls-->
+                            </div><!--end control group-->
+                        </div><!--end row-->
+
+                        <!--new row-->
+                        <div class="row">
+                            <div class="control-group">
+                                <label class="control-label" for="computernameupdate">Computer Name:<span class="required">*</span></label>
+                                <div class="controls">
+                                    <div class="input-prepend">
+                                        <span class="add-on"><i class="icon-tag"></i></span>
+                                        <input placeholder="Example: est00211w01" required class="span3" name="UpdateLocation[computernameupdate]" id="computernameupdate" type="text">
+                                    </div>
+                                </div><!--end controls-->
+                            </div><!--end control group-->
+                        </div><!--end row-->
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn small" data-dismiss="modal" value="Cancel">
+                    <input class="btn btn-primary" type="Submit" value="OK">
+                </div>
+            </form>
+        </div>
+        <?php $this->endWidget(); ?><!--end modal window-->
+        <!---update location dialog end-->
+
+        <!---delete location dialog start-->
+        <?php $this->beginWidget('bootstrap.widgets.TbModal', array('id' => 'DeleteLocationDialog')); ?>
+        <div class="form">
+            <form class="form-horizontal" id="deleteLocationForm" method="post">       
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h3>Delete a location.</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="divDialogElements">
+
+                        <!--new row-->
+                        <div class="row">
+                            <div class="control-group">
+                                <label class="control-label" for="locationselect">Location Name:</label>
+                                <div class="controls">
+                                    <div class="input-prepend">
+                                        <span class="add-on"><i class="icon-globe"></i></span>
+                                        <select id='locationselect' name='DeleteLocation[locationname]'>
+                                            <?php foreach ($locations as $location): ?>
+                                                <option value='<?php echo md5($location['loc_id']); ?>'><?php echo $location['loc_name']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div><!--end controls-->
+                            </div><!--end control group-->
+                        </div><!--end row-->
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn small" data-dismiss="modal" value="Cancel">
+                    <input class="btn btn-primary" data-dismiss="modal"  type="Submit" value="OK">
+                </div>
+            </form>
+        </div>
+        <?php $this->endWidget(); ?><!--end modal window-->
+        <!--delete location dialog end-->
+
+    </div>
+    <!--end classroom data form-->
+
+    <div id='holiday_flash'></div>
+    <div id="holidayForm" class="admin-form">
+        <h3 class="section-title">Closures</h3>
+        <form id='shopHolidayForm'>
+            <fieldset>
+                <table id="timeTable" align="center" border="1">
+                    <thead>
+                    <td>Selected Shops</td>
+                    <td>Holiday</td>
+                    <td>Date</td>
+                    <td>Description (optional)</td>
+                    </thead>
+
                     <?php
-                    $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => 'Close',
-                        'url' => '#',
-                        'htmlOptions' => array('data-dismiss' => 'modal'),
+                    $holidays = Holidays::model()->findAll();
+
+                    foreach ($holidays as $holiday) {
+                        //get all shop_holidays with the id of the current holiday
+                        $shop_holidays = ShopHolidays::model()->findAllbyAttributes(
+                                array(
+                                    'hol_id' => $holiday['hol_id'],
                         ));
                         ?>
-                        <?php
-                        $this->widget('bootstrap.widgets.TbButton', array(
-                            'type' => 'primary',
-                            'label' => 'Save changes',
-                            'url' => '#',
-                            'htmlOptions' => array('data-dismiss' => 'modal'),
-                            ));
-                            ?>
-                        </div>
-                    </form>
-                </div>
-                <?php $this->endWidget(); ?><!--end modal window-->
-                <!--add location dialog end-->
-
-                <!---update location dialog start-->
-                <?php $this->beginWidget('bootstrap.widgets.TbModal', array('id' => 'UpdateLocationDialog')); ?>
-                <div class="form">
-                    <form class="form-horizontal" id="updateLocationForm" method="post">       
-                        <div class="modal-header">
-                            <a href="#" class="close" data-dismiss="modal">&times;</a>
-                            <h3>Edit a shop location.</h3>
-                        </div>
-                        <div class="modal-body">
-                            <div class="divDialogElements">
-
-                                <!--new row-->
-                                <div class="row">
-                                    <div class="control-group">
-                                        <label class="control-label" for="locationselectupdate">Location Name:</label>
-                                        <div class="controls">
-                                            <div class="input-prepend">
-                                                <span class="add-on"><i class="icon-globe"></i></span>
-                                                <select id='locationselectupdate' name='UpdateLocation[locationnameupdate]'>
-                                                    <?php foreach ($locations as $location): ?>
-                                                    <option value='<?php echo md5($location['loc_id']); ?>'><?php echo $location['loc_name']; ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div><!--end controls-->
-                                </div><!--end control group-->
-                            </div><!--end row--> 
-
-                            <!--new row-->
-                            <div class="row">
-                                <div class="control-group">
-                                    <label class="control-label" for="ipaddressupdate">IP Address:<span class="required">*</span></label>
-                                    <div class="controls">
-                                        <div class="input-prepend">
-                                            <span class="add-on"><i class="icon-barcode"></i></span>
-                                            <input placeholder="Example: 127.0.0.1" required class="span3" name="UpdateLocation[ipaddressupdate]" id="ipaddressupdate" type="text">
-                                        </div>
-                                    </div><!--end controls-->
-                                </div><!--end control group-->
-                            </div><!--end row-->
-
-                            <!--new row-->
-                            <div class="row">
-                                <div class="control-group">
-                                    <label class="control-label" for="computernameupdate">Computer Name:<span class="required">*</span></label>
-                                    <div class="controls">
-                                        <div class="input-prepend">
-                                            <span class="add-on"><i class="icon-tag"></i></span>
-                                            <input placeholder="Example: est00211w01" required class="span3" name="UpdateLocation[computernameupdate]" id="computernameupdate" type="text">
-                                        </div>
-                                    </div><!--end controls-->
-                                </div><!--end control group-->
-                            </div><!--end row-->
-
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <?php
-                        $this->widget('bootstrap.widgets.TbButton', array(
-                            'label' => 'Close',
-                            'url' => '#',
-                            'htmlOptions' => array('data-dismiss' => 'modal'),
-                            ));
-                            ?>
-                            <?php
-                            $this->widget('bootstrap.widgets.TbButton', array(
-                                'type' => 'primary',
-                                'label' => 'Save changes',
-                                'url' => '#',
-                                'htmlOptions' => array('data-dismiss' => 'modal'),
-                                ));
-                                ?>
-                            </div>
-                        </form>
-                    </div>
-                    <?php $this->endWidget(); ?><!--end modal window-->
-                    <!---update location dialog end-->
-
-                    <!---delete location dialog start-->
-                    <?php $this->beginWidget('bootstrap.widgets.TbModal', array('id' => 'DeleteLocationDialog')); ?>
-                    <div class="form">
-                        <form class="form-horizontal" id="deleteLocationForm" method="post">       
-                            <div class="modal-header">
-                                <a href="#" class="close" data-dismiss="modal">&times;</a>
-                                <h3>Delete a location.</h3>
-                            </div>
-                            <div class="modal-body">
-                                <div class="divDialogElements">
-
-                                    <!--new row-->
-                                    <div class="row">
-                                        <div class="control-group">
-                                            <label class="control-label" for="locationselect">Location Name:</label>
-                                            <div class="controls">
-                                                <div class="input-prepend">
-                                                    <span class="add-on"><i class="icon-globe"></i></span>
-                                                    <select id='locationselect' name='DeleteLocation[locationname]'>
-                                                        <?php foreach ($locations as $location): ?>
-                                                        <option value='<?php echo md5($location['loc_id']); ?>'><?php echo $location['loc_name']; ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
-                                            </div>
-                                        </div><!--end controls-->
-                                    </div><!--end control group-->
-                                </div><!--end row-->
-
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn small" onclick="closeDialog();" value="Cancel">
-                            <input class="btn btn-primary" type="Submit" value="OK">
-                        </div>
-                    </form>
-                </div>
-                <?php $this->endWidget(); ?><!--end modal window-->
-                <!--delete location dialog end-->
-
-            </div>
-            <!--end classroom data form-->
-
-            <div id='holiday_flash'></div>
-            <div id="holidayForm" class="admin-form">
-                <h3 class="section-title">Closures</h3>
-                <form id='shopHolidayForm'>
-                    <fieldset>
-                        <table id="timeTable" align="center" border="1">
-                            <thead>
-                                <td>Selected Shops</td>
-                                <td>Holiday</td>
-                                <td>Date</td>
-                                <td>Description (optional)</td>
-                            </thead>
-
-                            <?php
-                            $holidays = Holidays::model()->findAll();
-
-                            foreach ($holidays as $holiday) {
-                        //get all shop_holidays with the id of the current holiday
-                                $shop_holidays = ShopHolidays::model()->findAllbyAttributes(
-                                    array(
-                                        'hol_id' => $holiday['hol_id'],
-                                        ));
-                                        ?>
-                                        <tr>
-                                            <td>
-                                                <!--option for each location. "selected" if holiday applies to location-->
-                                                <select multiple name='holidayshops' class='selectpicker large-select'>
-                                                    <?php
+                        <tr>
+                            <td>
+                                <!--option for each location. "selected" if holiday applies to location-->
+                                <select multiple name='holidayshops' class='selectpicker large-select'>
+                                    <?php
                                     //get all locations
-                                                    foreach ($locations as $location) {
+                                    foreach ($locations as $location) {
                                         //reset "selected" value
-                                                        $selected = '';
+                                        $selected = '';
 
                                         //check loc in shop holiday list and compare to all locations
                                         //if they match, set "selected" to true
-                                                        foreach ($shop_holidays as $sh) {
-                                                            if ($sh['loc_id'] == $location['loc_id']) {
-                                                                $selected = 'selected';
-                                                            }
+                                        foreach ($shop_holidays as $sh) {
+                                            if ($sh['loc_id'] == $location['loc_id']) {
+                                                $selected = 'selected';
+                                            }
                                         }//end sh foreach
                                         ?>
 
@@ -454,86 +428,59 @@ $this->pageTitle = Yii::app()->name;
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <?php
-                    $this->widget('bootstrap.widgets.TbButton', array(
-                        'label' => 'Close',
-                        'url' => '#',
-                        'htmlOptions' => array('data-dismiss' => 'modal'),
-                        ));
-                        ?>
-                        <?php
-                        $this->widget('bootstrap.widgets.TbButton', array(
-                            'type' => 'primary',
-                            'label' => 'Save changes',
-                            'url' => '#',
-                            'htmlOptions' => array('data-dismiss' => 'modal'),
-                            ));
-                            ?>
-                        </div>
-                    </form>
+                    <input type="button" class="btn small" data-dismiss="modal" value="Cancel">
+                    <input class="btn btn-primary" data-dismiss="modal"  type="Submit" value="OK">
                 </div>
-                <?php $this->endWidget(); ?><!--end modal window-->
-                <!---add holiday dialog end-->
+            </form>
+        </div>
+        <?php $this->endWidget(); ?><!--end modal window-->
+        <!---add holiday dialog end-->
 
-                <!---delete location dialog start-->
-                <?php $this->beginWidget('bootstrap.widgets.TbModal', array('id' => 'DeleteHolidayDialog')); ?>
-                <div class="form">
-                    <form class="form-horizontal" id="deleteHolidayForm" method="post">       
-                        <div class="modal-header">
-                            <a href="#" class="close" data-dismiss="modal">&times;</a>
-                            <h3>Delete a holiday.</h3>
-                        </div>
-                        <div class="modal-body">
-                            <div class="divDialogElements">
-
-                                <!--new row-->
-                                <div class="row">
-                                    <div class="control-group">
-                                        <label class="control-label" for="holidayselect">Holiday Name:</label>
-                                        <div class="controls">
-                                            <div class="input-prepend">
-                                                <span class="add-on"><i class="icon-briefcase"></i></span>
-                                                <select id='holidayselect' name='DeleteHoliday[holidayselect]'>
-                                                    <?php foreach ($holidays as $holiday): ?>
-                                                    <option value='<?php echo md5($holiday['hol_id']); ?>'><?php echo $holiday['hol_name']; ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div><!--end controls-->
-                                </div><!--end control group-->
-                            </div><!--end row-->
-
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <?php
-                        $this->widget('bootstrap.widgets.TbButton', array(
-                            'label' => 'Close',
-                            'url' => '#',
-                            'htmlOptions' => array('data-dismiss' => 'modal'),
-                            ));
-                            ?>
-
-                            <?php
-                            $this->widget('bootstrap.widgets.TbButton', array(
-                                'type' => 'primary',
-                                'label' => 'Save changes',
-                                'url' => '#',
-                                'htmlOptions' => array('data-dismiss' => 'modal'),
-                                ));
-                                ?>
-                            </div>
-                        </form>
-                    </div>
-                    <?php $this->endWidget(); ?><!--end modal window-->
-                    <!---delete location dialog end-->
+        <!---delete location dialog start-->
+        <?php $this->beginWidget('bootstrap.widgets.TbModal', array('id' => 'DeleteHolidayDialog')); ?>
+        <div class="form">
+            <form class="form-horizontal" id="deleteHolidayForm" method="post">       
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h3>Delete a holiday.</h3>
                 </div>
+                <div class="modal-body">
+                    <div class="divDialogElements">
 
-                <script>
+                        <!--new row-->
+                        <div class="row">
+                            <div class="control-group">
+                                <label class="control-label" for="holidayselect">Holiday Name:</label>
+                                <div class="controls">
+                                    <div class="input-prepend">
+                                        <span class="add-on"><i class="icon-briefcase"></i></span>
+                                        <select id='holidayselect' name='DeleteHoliday[holidayselect]'>
+                                            <?php foreach ($holidays as $holiday): ?>
+                                                <option value='<?php echo md5($holiday['hol_id']); ?>'><?php echo $holiday['hol_name']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                </div><!--end controls-->
+                            </div><!--end control group-->
+                        </div><!--end row-->
 
-                function closeDialog() {
-                    $('.modal').modal('hide');
-                }
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn small" data-dismiss="modal" value="Cancel">
+                    <input class="btn btn-primary" data-dismiss="modal"  type="Submit" value="OK">
+                </div>
+            </form>
+        </div>
+        <?php $this->endWidget(); ?><!--end modal window-->
+        <!---delete location dialog end-->
+    </div>
+
+    <script>
+
+                    function closeDialog() {
+                        $('.modal').modal('hide');
+                    }
 
 
-                </script>
+    </script>

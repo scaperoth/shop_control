@@ -1458,3 +1458,54 @@ Stack trace:
 #7 {main}
 REQUEST_URI=/index.php/phpactions/cron?action=34d1f91fb2e514b8576fab1a75a89a6b
 ---
+2013/10/18 11:05:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "index.php/site/admin".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('index.php/site/...')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/site/admin
+HTTP_REFERER=http://shopcontrol.com/config/emails
+---
+2013/10/18 11:05:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "index.php/site/reporting".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('index.php/site/...')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/site/reporting
+HTTP_REFERER=http://shopcontrol.com/index.php/site/admin
+---
+2013/10/18 11:05:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "index.php/site/index".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('index.php/site/...')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/site/index
+HTTP_REFERER=http://shopcontrol.com/index.php/site/reporting
+---
+2013/10/18 11:05:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "index.php/site/index".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('index.php/site/...')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/site/index
+---
+2013/10/18 11:05:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "index.php/site/index".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('index.php/site/...')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/site/index
+---
+2013/10/18 11:05:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "index.php/site/index".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('index.php/site/...')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/site/index
+---

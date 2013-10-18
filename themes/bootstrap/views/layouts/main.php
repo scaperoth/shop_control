@@ -51,7 +51,7 @@ $display_location = (($this->location) ? ' - ' . ucfirst($this->location) : '');
                             '---',
                             array('label' => 'Shop Details', 'url' => array('/site/admin'), 'visible' => Yii::app()->user->checkAccess('admin'),),
                             array('label' => 'Run Reports', 'url' => array('/site/reporting'), 'visible' => Yii::app()->user->checkAccess('admin'),),
-                            array('label' => 'Update Admin Emails', 'url' => '/config/emails', 'visible' => Yii::app()->user->checkAccess('admin'),),
+                            array('label' => 'Update Admin Emails', 'url' => array('/config/emails'), 'visible' => Yii::app()->user->checkAccess('admin'),),
                             '---',
                             array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest),
                             array('label' => 'Login', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
