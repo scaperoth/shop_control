@@ -289,7 +289,7 @@ $this->pageTitle = Yii::app()->name;
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn small" data-dismiss="modal" value="Cancel">
-                    <input class="btn btn-primary" data-dismiss="modal"  type="Submit" value="OK">
+                    <input class="btn btn-primary" type="Submit" value="OK">
                 </div>
             </form>
         </div>
@@ -429,7 +429,7 @@ $this->pageTitle = Yii::app()->name;
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn small" data-dismiss="modal" value="Cancel">
-                    <input class="btn btn-primary" data-dismiss="modal"  type="Submit" value="OK">
+                    <input class="btn btn-primary" type="Submit" value="OK">
                 </div>
             </form>
         </div>
@@ -468,7 +468,7 @@ $this->pageTitle = Yii::app()->name;
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn small" data-dismiss="modal" value="Cancel">
-                    <input class="btn btn-primary" data-dismiss="modal"  type="Submit" value="OK">
+                    <input class="btn btn-primary" type="Submit" value="OK">
                 </div>
             </form>
         </div>

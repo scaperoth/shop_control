@@ -142,6 +142,10 @@ pre,code {
         ADMIN PAGE
 
 ==========================*/
+#location_details .submitAnchorTopForm{
+    margin-bottom:10px;
+}
+
 .required{
     font-weight: bold;
     color:#d00;
