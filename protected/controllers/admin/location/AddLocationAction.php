@@ -3,7 +3,7 @@
 class AddLocationAction extends CAction {
 
     public function run() {
-        if (Yii::app()->request->isPostRequest) {
+        
             $vars = $_POST['AddLocation'];
             print_r($vars);
             $loc_name = $vars['locationname'];
@@ -23,12 +23,9 @@ class AddLocationAction extends CAction {
             $ip_location->save();
 
             Yii::app()->user->setFlash('success', 'Location added.');
-        } else {
-            Yii::app()->user->setFlash('error', 'Access Denied.');
-            $this->redirect(Yii::app()->user->returnUrl);
-        }
+        } 
     }
 
-}
+
 
 ?>

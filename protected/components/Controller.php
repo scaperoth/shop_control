@@ -83,10 +83,12 @@ class Controller extends CController {
                 ->where('l.loc_flag=:active', array(':active' => 1))
                 ->queryAll();
 
-        /* add ips to array */
+        /* add ips to array * 
+         */
         foreach ($ips as $ip) {
             $ip_filter[] = $ip['ip_address'];
         }
+         
         //used for testing denied ips
         //$ip_filter = array('127.0.0.2');
         return array(
@@ -98,7 +100,7 @@ class Controller extends CController {
                 'ips' => $ip_filter,
             ),
             array('allow',
-                'actions' => array('login', 'cron'),
+                'actions' => array('login', 'cron','logout','error'),
             ),
             //disallow ips on only index and admin actions so that error page can show.
             array('deny',

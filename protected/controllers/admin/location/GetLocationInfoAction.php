@@ -3,7 +3,6 @@
 class GetLocationinfoAction extends CAction {
 
     public function run() {
-        if (Yii::app()->request->isPostRequest) {
             $request = $_POST['UpdateLocation'];
             $loc_id = $request['locationnameupdate'];
             
@@ -18,10 +17,7 @@ class GetLocationinfoAction extends CAction {
                 }
             }
             echo json_encode($return_data);
-        } else {
-            Yii::app()->user->setFlash('error', 'Access Denied.');
-            $this->redirect(Yii::app()->user->returnUrl);
-        }
+        
     }
 
 }

@@ -4,6 +4,22 @@ class SiteController extends Controller {
 
     private $login_error = "Please login to continue";
     private $permission_error = "Access Denied";
+
+    private function _checkAdminAccess() {
+        if (!Yii::app()->user->checkAccess('admin')) {
+            Yii::app()->user->setFlash('error', $this->permission_error);
+            $this->redirect(Yii::app()->user->returnUrl);
+        }
+    }
+
+    private function _checkAccess() {
+        if (Yii::app()->user->isGuest) {
+
+            Yii::app()->user->setFlash('error', $this->login_error);
+            $this->redirect(array(Yii::app()->getHomeUrl()));
+        }
+    }
+
     /**
      * 
      */
@@ -52,12 +68,8 @@ class SiteController extends Controller {
 // renders the view file 'protected/views/site/index.php'
 // using the default layout 'protected/views/layouts/main.php'
 //if(!Yii::app()->user->checkAccess('authenticated'))
-        if (Yii::app()->user->isGuest) {
-            Yii::app()->user->setFlash('error', $this->login_error);
-            $this->redirect(array('login'));
-        }
-        else
-            $this->render('index');
+        $this->_checkAccess();
+        $this->render('index');
     }
 
     /**
@@ -68,24 +80,16 @@ class SiteController extends Controller {
 // renders the view file 'protected/views/site/index.php'
 // using the default layout 'protected/views/layouts/main.php'
 //if(!Yii::app()->user->checkAccess('authenticated'))
-        if (!Yii::app()->user->checkAccess('admin')) {
-            Yii::app()->user->setFlash('error', $this->permission_error);
-            $this->redirect(Yii::app()->user->returnUrl);
-        }
-        else
-            $this->render('admin');
+        $this->_checkAdminAccess();
+        $this->render('admin');
     }
 
     public function actionReporting() {
 // renders the view file 'protected/views/site/index.php'
 // using the default layout 'protected/views/layouts/main.php'
 //if(!Yii::app()->user->checkAccess('authenticated'))
-        if (!Yii::app()->user->checkAccess('admin')) {
-            Yii::app()->user->setFlash('error', $this->permission_error);
-            $this->redirect(Yii::app()->user->returnUrl);
-        }
-        else
-            $this->render('reporting');
+        $this->_checkAdminAccess();
+        $this->render('reporting');
     }
 
     /**
@@ -128,6 +132,7 @@ class SiteController extends Controller {
      */
     public function actionLogin() {
         if (!Yii::app()->user->isGuest) {
+
             $this->render('index');
         } else {
 //get arguments.

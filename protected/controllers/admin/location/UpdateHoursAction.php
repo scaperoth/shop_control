@@ -8,7 +8,6 @@
 class UpdateHoursAction extends CAction {
 
     public function run() {
-        if (Yii::app()->request->isPostRequest) {
             $db_rows = Locations::model()->findAll();
             $days_of_week = array(
                 'monday',
@@ -79,11 +78,7 @@ class UpdateHoursAction extends CAction {
                     }
                 }
             }
-        }//end of isset($_post) if statement
-        else {
-            Yii::app()->user->setFlash('error', 'Access Denied.');
-            $this->redirect(Yii::app()->user->returnUrl);
-        }
+        
     }
 
 }
