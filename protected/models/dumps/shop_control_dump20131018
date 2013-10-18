@@ -1,0 +1,277 @@
+CREATE DATABASE  IF NOT EXISTS `shop_control` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `shop_control`;
+-- MySQL dump 10.13  Distrib 5.5.16, for Win32 (x86)
+--
+-- Host: localhost    Database: shop_control
+-- ------------------------------------------------------
+-- Server version	5.1.68-community
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `admin_emails`
+--
+
+DROP TABLE IF EXISTS `admin_emails`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `admin_emails` (
+  `email_id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(45) NOT NULL,
+  PRIMARY KEY (`email_id`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admin_emails`
+--
+
+LOCK TABLES `admin_emails` WRITE;
+/*!40000 ALTER TABLE `admin_emails` DISABLE KEYS */;
+INSERT INTO `admin_emails` VALUES (4,'mscapero@gwu.edu');
+/*!40000 ALTER TABLE `admin_emails` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `holidays`
+--
+
+DROP TABLE IF EXISTS `holidays`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `holidays` (
+  `hol_id` int(11) NOT NULL AUTO_INCREMENT,
+  `hol_name` varchar(45) NOT NULL,
+  `hol_date` varchar(40) NOT NULL,
+  `hol_description` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`hol_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `holidays`
+--
+
+LOCK TABLES `holidays` WRITE;
+/*!40000 ALTER TABLE `holidays` DISABLE KEYS */;
+INSERT INTO `holidays` VALUES (1,'Christmas','Dec 25',NULL),(2,'New Years','Jan 1',NULL);
+/*!40000 ALTER TABLE `holidays` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ips`
+--
+
+DROP TABLE IF EXISTS `ips`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ips` (
+  `ip_id` int(11) NOT NULL AUTO_INCREMENT,
+  `ip_address` varchar(45) NOT NULL,
+  `ip_compname` varchar(45) DEFAULT NULL,
+  `ip_loc_id` int(11) NOT NULL,
+  PRIMARY KEY (`ip_id`),
+  UNIQUE KEY `ip_address_UNIQUE` (`ip_address`),
+  UNIQUE KEY `ip_compname_UNIQUE` (`ip_compname`),
+  KEY `fk1_idx` (`ip_loc_id`),
+  CONSTRAINT `fk1` FOREIGN KEY (`ip_loc_id`) REFERENCES `locations` (`loc_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1 COMMENT='\n\n	';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ips`
+--
+
+LOCK TABLES `ips` WRITE;
+/*!40000 ALTER TABLE `ips` DISABLE KEYS */;
+INSERT INTO `ips` VALUES (1,'128.164.60.237','FN00105w01',37),(2,'128.164.60.239','gl0b103w01',38),(3,'128.164.60.238','est00211w01',39),(19,'127.0.0.1','localhost',56);
+/*!40000 ALTER TABLE `ips` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `location_change_tracking`
+--
+
+DROP TABLE IF EXISTS `location_change_tracking`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `location_change_tracking` (
+  `lct_id` int(11) NOT NULL AUTO_INCREMENT,
+  `lct_location` varchar(45) DEFAULT NULL,
+  `lct_user` varchar(45) DEFAULT NULL,
+  `lct_action` varchar(45) DEFAULT NULL,
+  `lct_early_or_late` varchar(45) DEFAULT NULL,
+  `lct_message` text,
+  `lct_timestamp` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`lct_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `location_change_tracking`
+--
+
+LOCK TABLES `location_change_tracking` WRITE;
+/*!40000 ALTER TABLE `location_change_tracking` DISABLE KEYS */;
+INSERT INTO `location_change_tracking` VALUES (61,'Gelman','Matt Scaperoth','closed','early','Matt Scaperoth closed the Gelman shop early. Latest closing time is 18:10pm. Early by: 7 hours 18 minutes and 56 seconds','2013-10-17 14:51:04');
+/*!40000 ALTER TABLE `location_change_tracking` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `location_hours_tracking`
+--
+
+DROP TABLE IF EXISTS `location_hours_tracking`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `location_hours_tracking` (
+  `lht_id` int(11) NOT NULL AUTO_INCREMENT,
+  `lht_username` varchar(45) NOT NULL,
+  `lht_loc_name` varchar(45) NOT NULL,
+  `lht_mon_open_hrs` time NOT NULL,
+  `lht_mon_closed_hrs` time NOT NULL,
+  `lht_tue_open_hrs` time NOT NULL,
+  `lht_tue_closed_hrs` time NOT NULL,
+  `lht_wed_open_hrs` time NOT NULL,
+  `lht_wed_closed_hrs` time NOT NULL,
+  `lht_thu_open_hrs` time NOT NULL,
+  `lht_thu_closed_hrs` time NOT NULL,
+  `lht_fri_open_hrs` time NOT NULL,
+  `lht_fri_closed_hrs` time NOT NULL,
+  `lht_sat_open_hrs` time NOT NULL,
+  `lht_sat_closed_hrs` varchar(45) NOT NULL,
+  `lht_sun_open_hrs` time NOT NULL,
+  `lht_sun_closed_hrs` time NOT NULL,
+  `lht_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`lht_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `location_hours_tracking`
+--
+
+LOCK TABLES `location_hours_tracking` WRITE;
+/*!40000 ALTER TABLE `location_hours_tracking` DISABLE KEYS */;
+INSERT INTO `location_hours_tracking` VALUES (37,'Matt Scaperoth','localhost','09:30:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','21:00:00','08:00:00','18:00:00','2013-08-25 20:15:52'),(38,'Matt Scaperoth','localhost','09:30:00','18:30:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','21:00:00','08:00:00','18:00:00','2013-08-25 20:16:11'),(39,'Matt Scaperoth','Funger','07:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','2013-08-25 20:16:43'),(40,'Matt Scaperoth','localhost','09:30:00','19:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','21:00:00','08:00:00','18:00:00','2013-08-25 20:17:02'),(41,'Matt Scaperoth','localhost','09:00:00','19:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','21:00:00','08:00:00','18:00:00','2013-08-25 20:24:49'),(42,'Matt Scaperoth','localhost','09:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','21:00:00','08:00:00','18:00:00','2013-08-25 20:25:00'),(43,'Matt Scaperoth','localhost','09:00:00','17:30:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','21:00:00','08:00:00','18:00:00','2013-08-25 20:25:22'),(44,'Matt Scaperoth','localhost','09:00:00','17:30:00','07:30:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','21:00:00','08:00:00','18:00:00','2013-08-25 22:59:49'),(45,'Matt Scaperoth','Gelman','08:00:00','18:00:00','08:00:00','19:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','2013-08-25 22:59:49'),(46,'Matt Scaperoth','E-Street','08:30:00','21:30:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','2013-08-25 23:08:40'),(47,'Matt scapero-admin','Funger','06:30:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','2013-08-25 23:20:11'),(48,'Matt Scaperoth','E-Street','08:30:00','21:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','2013-08-26 00:02:15'),(49,'Matt Scaperoth','Funger','06:30:00','17:30:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','2013-08-26 00:03:11'),(50,'Matt Scaperoth','E-Street','08:00:00','21:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','2013-08-26 00:04:27');
+/*!40000 ALTER TABLE `location_hours_tracking` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `locations`
+--
+
+DROP TABLE IF EXISTS `locations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `locations` (
+  `loc_id` int(11) NOT NULL AUTO_INCREMENT,
+  `loc_name` varchar(65) NOT NULL,
+  `loc_status` int(11) NOT NULL DEFAULT '0',
+  `loc_mon_open_hrs` time NOT NULL DEFAULT '08:00:00',
+  `loc_mon_closed_hrs` time NOT NULL DEFAULT '18:00:00',
+  `loc_tue_open_hrs` time NOT NULL DEFAULT '08:00:00',
+  `loc_tue_closed_hrs` time NOT NULL DEFAULT '18:00:00',
+  `loc_wed_open_hrs` time NOT NULL DEFAULT '08:00:00',
+  `loc_wed_closed_hrs` time NOT NULL DEFAULT '18:00:00',
+  `loc_thu_open_hrs` time NOT NULL DEFAULT '08:00:00',
+  `loc_thu_closed_hrs` time NOT NULL DEFAULT '18:00:00',
+  `loc_fri_open_hrs` time NOT NULL DEFAULT '08:00:00',
+  `loc_fri_closed_hrs` time NOT NULL DEFAULT '18:00:00',
+  `loc_sat_open_hrs` time NOT NULL DEFAULT '08:00:00',
+  `loc_sat_closed_hrs` time NOT NULL DEFAULT '18:00:00',
+  `loc_sun_open_hrs` time NOT NULL DEFAULT '08:00:00',
+  `loc_sun_closed_hrs` time NOT NULL DEFAULT '18:00:00',
+  `loc_flag` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`loc_id`),
+  UNIQUE KEY `loc_name_UNIQUE` (`loc_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1 COMMENT='\n\n	';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `locations`
+--
+
+LOCK TABLES `locations` WRITE;
+/*!40000 ALTER TABLE `locations` DISABLE KEYS */;
+INSERT INTO `locations` VALUES (37,'Funger',1,'08:00:00','18:00:00','07:30:00','18:30:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00',1),(38,'Gelman',0,'08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00',1),(39,'E-Street',1,'08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00',1),(56,'localhost',1,'08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00',1);
+/*!40000 ALTER TABLE `locations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `planned_shop_closures_tracking`
+--
+
+DROP TABLE IF EXISTS `planned_shop_closures_tracking`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `planned_shop_closures_tracking` (
+  `psc_id` int(11) NOT NULL AUTO_INCREMENT,
+  `psc_user` varchar(45) NOT NULL,
+  `psc_action` varchar(45) NOT NULL,
+  `psc_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`psc_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `planned_shop_closures_tracking`
+--
+
+LOCK TABLES `planned_shop_closures_tracking` WRITE;
+/*!40000 ALTER TABLE `planned_shop_closures_tracking` DISABLE KEYS */;
+/*!40000 ALTER TABLE `planned_shop_closures_tracking` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `shop_holidays`
+--
+
+DROP TABLE IF EXISTS `shop_holidays`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `shop_holidays` (
+  `hol_id` int(11) NOT NULL,
+  `loc_id` int(11) NOT NULL,
+  PRIMARY KEY (`hol_id`,`loc_id`),
+  KEY `fk1` (`hol_id`),
+  KEY `fk2` (`loc_id`),
+  CONSTRAINT `hol_id` FOREIGN KEY (`hol_id`) REFERENCES `holidays` (`hol_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `loc_id` FOREIGN KEY (`loc_id`) REFERENCES `locations` (`loc_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `shop_holidays`
+--
+
+LOCK TABLES `shop_holidays` WRITE;
+/*!40000 ALTER TABLE `shop_holidays` DISABLE KEYS */;
+INSERT INTO `shop_holidays` VALUES (1,37),(1,38),(1,39),(2,37),(2,38);
+/*!40000 ALTER TABLE `shop_holidays` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'shop_control'
+--
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2013-10-18 10:17:00

@@ -1442,3 +1442,19 @@ Stack trace:
 REQUEST_URI=/index.php/site/login?cb5e100e5a9a3e7f6d1fd97512215282=865726b2885feef8e8b25b56a2d7c8f8
 in C:\xampp\htdocs\shop_control\protected\components\Controller.php (100)
 in C:\xampp\htdocs\shop_control\index.php (17)
+2013/10/18 10:15:03 [error] [system.db.CDbCommand] Error in preparing SQL: DELETE FROM 'YiiSession' WHERE expire<:expire
+in C:\xampp\htdocs\shop_control\index.php (17)
+2013/10/18 10:15:03 [error] [system.db.CDbCommand] CDbCommand::execute() failed: CDbCommand failed to prepare the SQL statement: SQLSTATE[HY000]: General error: 1 no such table: YiiSession. The SQL statement executed was: DELETE FROM 'YiiSession' WHERE expire<:expire.
+in C:\xampp\htdocs\shop_control\index.php (17)
+2013/10/18 10:15:13 [error] [exception.CException] exception 'CException' with message 'Property "PhpactionsController.controller" is not defined.' in C:\xampp\htdocs\shop_control\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\PhpActionsController.php(32): CComponent->__get('controller')
+#1 C:\xampp\htdocs\shop_control\framework\web\CController.php(417): PhpactionsController->actions()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(259): CController->createAction('cron')
+#3 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('cron')
+#4 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('phpactions/cron')
+#5 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#6 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#7 {main}
+REQUEST_URI=/index.php/phpactions/cron?action=34d1f91fb2e514b8576fab1a75a89a6b
+---
