@@ -16,6 +16,7 @@ class ConfigController extends Controller {
             try {
                 $model->save();
                 $model = new AdminEmails;
+                $this->refresh();
             } catch (CDbException $e) {
                 $model = new AdminEmails;
                 $model->addError(null, "This email already exists.");

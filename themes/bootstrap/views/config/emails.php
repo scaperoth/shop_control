@@ -11,6 +11,7 @@
     $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
         'id' => 'vertical',
         'type' => 'vertical',
+        'enableAjaxValidation'=>true,
     ));
     ?>
     <legend>Admin Emails Control Panel</legend>
@@ -18,9 +19,14 @@
     $this->widget('bootstrap.widgets.TbGridView', array(
         'dataProvider' => $model->search(),
         'template' => "{summary}\n{items}\n{pager}",
+        'ajaxUpdate'=>true,
         'columns' => array(
-            array('name' => 'email_id', 'header' => 'ID', 'visible' => FALSE),
-            array('name' => 'email', 'header' => 'Email'),
+            array('name' => 'email_id', 
+                'header' => 'ID', 
+                'visible' => FALSE,
+                ),
+            array('name' => 'email', 
+                'header' =>'Email',),
             array(
                 'class' => 'bootstrap.widgets.TbButtonColumn',
                 'template' => '{update}&nbsp;&nbsp;{delete}',
