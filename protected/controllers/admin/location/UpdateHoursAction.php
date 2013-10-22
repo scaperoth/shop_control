@@ -34,7 +34,7 @@ class UpdateHoursAction extends CAction {
                         $username = Yii::app()->user->getState('username');
 
                         $insert->lht_username = $username;
-                        $insert->lht_loc_name = $row['loc_name'];
+                        $insert->lht_loc_name = addslashes($row['loc_name']);
 
                         foreach ($days_of_week as $day) {
 

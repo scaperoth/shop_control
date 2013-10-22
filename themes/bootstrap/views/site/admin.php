@@ -109,7 +109,7 @@ $this->pageTitle = Yii::app()->name;
                                     );
                                     ?>
                                     <div class="bootstrap-timepicker">
-                                        <input title="Click to edit" data-time ="<?php echo $open_time; ?>" class="timepicker open" name="<?php echo $location['loc_name'] . '|' . $short_day . '_open_hrs'; ?>" value="<?php echo $open_time; ?>">
+                                        <input title="Click to edit" data-time ="<?php echo $open_time; ?>" class="timepicker open" name="<?php echo preg_replace('/[^\da-z]/i','', $location['loc_name']) . '|' . $short_day . '_open_hrs'; ?>" value="<?php echo $open_time; ?>">
                                     </div>
                                     <span> to </span>
 
