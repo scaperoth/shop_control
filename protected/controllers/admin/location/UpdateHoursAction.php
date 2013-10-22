@@ -50,7 +50,7 @@ class UpdateHoursAction extends CAction {
                             $open_hours_to_insert = date('H:i:s', $open_hours_string);
 
 //convert table value to date()
-                            $closed_hours_string = strtotime($_POST[$row['loc_name'] . '|' . $closed_hrs]);
+                            $closed_hours_string = strtotime($_POST[preg_replace('/[^\da-z]/i','', $row['loc_name'])  . '|' . $closed_hrs]);
                             $closed_hours_to_insert = date('H:i:s', $closed_hours_string);
 
 //set string for column, for example 'loc_mon_open_hrs'
