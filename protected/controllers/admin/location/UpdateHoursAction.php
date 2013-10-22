@@ -46,7 +46,7 @@ class UpdateHoursAction extends CAction {
                             $closed_hrs = $short_day . '_closed_hrs';
 
 //convert table value to date()
-                            $open_hours_string = strtotime($_POST[$row['loc_name'] . '|' . $open_hrs]);
+                            $open_hours_string = strtotime($_POST[preg_replace('/[^\da-z]/i','', $row['loc_name']) . '|' . $open_hrs]);
                             $open_hours_to_insert = date('H:i:s', $open_hours_string);
 
 //convert table value to date()
