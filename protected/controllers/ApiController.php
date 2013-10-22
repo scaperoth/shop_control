@@ -215,19 +215,22 @@ class ApiController extends Controller {
 //translate databse closed hours into php time()
         $openorcloseHrsTime = strtotime($check_query[$table_col]);
 
-//get current time
-        $currtime = date('d-m-Y H:i:s');
+
 
 //get upper deviation of time. +- 10 minutes from db shop closed time
         $time_upper_bound = date('d-m-Y H:i:s', $openorcloseHrsTime + 600);
         $time_lower_bound = date('d-m-Y H:i:s', $openorcloseHrsTime - 600);
-
-        $currtime = new DateTime($currtime);
+        
+        
+        //get current time
+        $currtime = date('d-m-Y H:i:s');
+        $currdatetime = new DateTime($currtime);
 //if current time is later than the open + 10 minutes
 //shop was opened late
         if ($currtime > $time_upper_bound) {
+            
             $openDateTime = new DateTime($time_upper_bound);
-            $difference = $currtime->diff($openDateTime, True);
+            $difference = $currdatetime->diff($openDateTime, True);
             $early_or_late = ($action == 'open' ? 'late' : 'early');
             $message = $username . " " . ($action == 'open' ? 'opened' : 'closed') . " the $location Support Center $early_or_late. Latest closing time is " . date('H:ia', $openorcloseHrsTime + 600) . ". " . ucfirst($early_or_late) . " by: " . $difference->h . " hours " . $difference->i . " minutes and " . $difference->s . " seconds";
 
@@ -238,7 +241,7 @@ class ApiController extends Controller {
 //shop was opened early
         else if ($currtime < $time_lower_bound) {
             $openDateTime = new DateTime($time_lower_bound);
-            $difference = $currtime->diff($openDateTime, True);
+            $difference = $currdatetime->diff($openDateTime, True);
 
             $early_or_late = ($action == 'open' ? 'early' : 'late');
             $message = $username . " " . ($action == 'open' ? 'opened' : 'closed') . " the $location Support Center $early_or_late. by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds';
@@ -246,8 +249,9 @@ class ApiController extends Controller {
             Yii::app()->user->setFlash('error', "The $location Support Center has been " . ($action == 'open' ? 'opened' : 'closed') . " $early_or_late by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds');
         } else {
             $on_time = 1;
-            $message = NULL;
-            Yii::app()->user->setFlash('error', "The $location Support Center has been " . ($action == 'open' ? 'opened' : 'closed'));
+            $early_or_late = '-';
+            $message = '';
+            Yii::app()->user->setFlash('success', "The $location Support Center has been " . ($action == 'open' ? 'opened' : 'closed'));
         }
 
 

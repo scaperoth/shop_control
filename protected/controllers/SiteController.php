@@ -25,9 +25,9 @@ class SiteController extends Controller {
      */
     public function actionFlashMsg() {
         if (Yii::app()->user->hasFlash('time_update')) {
-            echo '<div class = "alert alert-error">
+            echo '<div class = "alert alert-success">
                         <a class = "close" data-dismiss = "alert">&#215;</a>
-                        <div id = "flash_error">' . Yii::app()->user->getFlash("time_update") . '</div>
+                        <div id = "flash_success">' . Yii::app()->user->getFlash("time_update") . '</div>
                     </div>';
         } else if (Yii::app()->user->hasFlash('error')) {
             echo '<div class = "alert alert-error">
@@ -35,9 +35,9 @@ class SiteController extends Controller {
                         <div id = "flash_error">' . Yii::app()->user->getFlash("error") . '</div>
                     </div>';
         } else if (Yii::app()->user->hasFlash('holiday_update')) {
-            echo '<div class = "alert alert-error">
+            echo '<div class = "alert alert-success">
                         <a class = "close" data-dismiss = "alert">&#215;</a>
-                        <div id = "flash_error">' . Yii::app()->user->getFlash("holiday_update") . '</div>
+                        <div id = "flash_success">' . Yii::app()->user->getFlash("holiday_update") . '</div>
                     </div>';
         }
     }

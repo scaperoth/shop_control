@@ -8,7 +8,7 @@ $open_or_closed = (($this->current_state) ? 'open' : 'closed');
 
 <?php if ($this->current_state != ''): ?>
     <div>
-        <h3 id="statusUpdate">This shop is now</h3>
+        <h3 id="statusUpdate">This Support Center is now:</h3>
     </div>
 
 

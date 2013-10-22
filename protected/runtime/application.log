@@ -1679,3 +1679,95 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/themes/bootstrap/img/gw_logo.ico
 ---
+2013/10/22 06:53:11 [error] [php] Undefined variable: early_or_late (C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php:269)
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#1 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): ApiController->runAction()
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#4 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): ApiController->run()
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\shop_control\index.php(17): CWebApplication->run()
+REQUEST_URI=/index.php/api/changeshopstatus/LOCA/open
+in C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php (269)
+in C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php (141)
+in C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php (102)
+2013/10/22 06:53:14 [error] [php] Undefined variable: early_or_late (C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php:269)
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#1 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): ApiController->runAction()
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#4 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): ApiController->run()
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\shop_control\index.php(17): CWebApplication->run()
+REQUEST_URI=/index.php/api/changeshopstatus/LOCA/open
+in C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php (269)
+in C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php (141)
+in C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php (102)
+2013/10/22 06:53:47 [error] [php] Undefined variable: early_or_late (C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php:269)
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#1 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): ApiController->runAction()
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#4 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): ApiController->run()
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\shop_control\index.php(17): CWebApplication->run()
+REQUEST_URI=/index.php/api/changeshopstatus/LOCA/open
+in C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php (269)
+in C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php (141)
+in C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php (102)
+2013/10/22 06:54:36 [error] [php] Undefined variable: early_or_late (C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php:269)
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#1 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): ApiController->runAction()
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#4 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): ApiController->run()
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\shop_control\index.php(17): CWebApplication->run()
+REQUEST_URI=/index.php/api/changeshopstatus/LOCA/open
+in C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php (269)
+in C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php (141)
+in C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php (102)
+2013/10/22 06:54:59 [error] [php] Undefined variable: early_or_late (C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php:269)
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#1 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): ApiController->runAction()
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#4 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): ApiController->run()
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\shop_control\index.php(17): CWebApplication->run()
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/open
+in C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php (269)
+in C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php (141)
+in C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php (102)
+2013/10/22 06:55:16 [error] [php] Undefined variable: early_or_late (C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php:269)
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#1 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): ApiController->runAction()
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): ApiController->runActionWithFilters()
+#4 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): ApiController->run()
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#7 C:\xampp\htdocs\shop_control\index.php(17): CWebApplication->run()
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/open
+in C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php (269)
+in C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php (141)
+in C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php (102)
+2013/10/22 06:55:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
