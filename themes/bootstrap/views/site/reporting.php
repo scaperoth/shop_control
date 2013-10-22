@@ -4,7 +4,7 @@
 <?php
 $this->pageTitle = Yii::app()->name;
 ?>
-
+<legend class="section-title">Reporting</legend>
 <div class="center" style="text-align: center;" id="buttonControl">
     <?php
     $form = $this->beginWidget('CActiveForm', array(

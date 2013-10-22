@@ -4,7 +4,7 @@
 //$hostname = gethostname();
 //echo gethostbyname($hostname);
 
-$display_location = (($this->location) ? ' - ' . ucfirst($this->location) : '');
+$display_location = (($this->location) ?  ucfirst($this->location) : '');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +31,7 @@ $display_location = (($this->location) ? ' - ' . ucfirst($this->location) : '');
             <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/silviomoreto-bootstrap-select-10ba1a3/bootstrap-select.min.css">
             <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/jonthornton-jquery-timepicker-ced5953/jquery.timepicker.css">
             <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/font-awesome/css/font-awesome.min.css">
+            <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
             <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/css/style.css">
             <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/css/bootstrap-style-override.css">
             <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/vendor/modernizr-2.6.2.min.js"></script>
@@ -38,7 +39,9 @@ $display_location = (($this->location) ? ' - ' . ucfirst($this->location) : '');
         <body>
             <?php
             $separator = NULL;
-            if(Yii::app()->user->checkAccess('admin')) $separator = '---';
+            $homename = Yii::app()->user->checkAccess('admin') ? 'Open/Close Location' : 'Home';
+            if (Yii::app()->user->checkAccess('admin'))
+                $separator = '---';
             $this->widget('bootstrap.widgets.TbNavbar', array(
                 'type' => 'null', // null or 'inverse'\
                 'brand' => '<img src="' . Yii::app()->theme->baseUrl . '/assets/img/at_logo.png" alt="Academic Technologies\"/>',
@@ -49,14 +52,13 @@ $display_location = (($this->location) ? ' - ' . ucfirst($this->location) : '');
                         'class' => 'bootstrap.widgets.TbMenu',
                         'htmlOptions' => array('class' => 'pull-right', 'style' => 'margin-top:10px'),
                         'items' => array(
-                            array('label' => 'Open/Close Shop', 'url' => array('/site/index'), 'visible' =>!Yii::app()->user->isGuest),
+                            array('label' => $homename, 'url' => array('/site/index'), 'visible' => !Yii::app()->user->isGuest),
                             '---',
-                            array('label' => 'Shop Details', 'url' => array('/site/admin'), 'visible' => Yii::app()->user->checkAccess('admin'),),
+                            array('label' => 'Edit Schedules', 'url' => array('/site/admin'), 'visible' => Yii::app()->user->checkAccess('admin'),),
                             array('label' => 'Run Reports', 'url' => array('/site/reporting'), 'visible' => Yii::app()->user->checkAccess('admin'),),
-                            array('label' => 'Update Admin Emails', 'url' => array('/config/emails'), 'visible' => Yii::app()->user->checkAccess('admin'),),
+                            array('label' => 'Edit Admin Emails', 'url' => array('/config/emails'), 'visible' => Yii::app()->user->checkAccess('admin'),),
                             '---',
                             array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/site/logout'), 'visible' => !Yii::app()->user->isGuest),
-                            
                         ),
                     ),
                 ),
@@ -68,11 +70,17 @@ $display_location = (($this->location) ? ' - ' . ucfirst($this->location) : '');
                 <!--[if lt IE 7]>
                     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
                 <![endif]-->
+
                 <div class="span12 row-fluid">
                     <div class="title">
-                        <h1 id="page-title">
-                            <?php echo CHtml::encode(Yii::app()->name) . $display_location ?>
+                        <h1 id="page-title" class="font-droid">
+                            <?php echo CHtml::encode(Yii::app()->name); ?>
                         </h1>
+                        <span class="subhead muted font-droid text-center">
+                            <h3>
+                                <?php echo $display_location; ?>
+                            </h3>
+                        </span >
                     </div>
                     <div class="clear"></div>
                 </div>

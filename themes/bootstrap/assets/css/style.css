@@ -31,9 +31,10 @@ a:hover{
     color: #d00;
 }
 
-.error{
-    text-align:center;
+.font-droid{
+    font-family: 'Droid Serif', serif;
 }
+
 /*Wrap Text
 ==================*/
 pre,code {
@@ -62,14 +63,17 @@ pre,code {
 /*All Menus
 ==================*/
 #page-title{
-    font-weight:normal;
     text-align: center;
     font-weight:bold;
     font-size:2.3em;
-    padding-bottom:20px;
     padding-top:5px;
+   text-shadow:0 1px 3px rgba(50, 50, 50, 0.5);
 }
-
+.subhead h3{
+    margin-top:0;
+    line-height: .8em;
+    text-shadow:0 1px 0 rgba(210, 210, 210, 0.5);
+}
 
 
 /*Footer

@@ -14,7 +14,7 @@
         'enableAjaxValidation'=>true,
     ));
     ?>
-    <legend>Admin Emails Control Panel</legend>
+    <legend class="section-title">Admin Emails Control Panel</legend>
     <?php
     $this->widget('bootstrap.widgets.TbGridView', array(
         'dataProvider' => $model->search(),

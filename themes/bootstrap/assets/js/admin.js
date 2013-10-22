@@ -221,7 +221,7 @@ $.getJSON("../api/shopstatus", function(data) {
             color_class = 'green';
         }
         j++;
-        items.push("<a href='javascript:void(0)' rel='tooltip' title='Click to " + status_to_change_to.toUpperCase()+ " the "+ucfirst(key)+" shop' class='span" + (12 / num_items_in_row) + " well well-small submitAnchorTopForm'> \n\
+        items.push("<a href='javascript:void(0)' rel='tooltip' title='Click to " + status_to_change_to.toUpperCase()+ " the "+ucfirst(key)+" Support Center' class='span" + (12 / num_items_in_row) + " well well-small submitAnchorTopForm'> \n\
                     <form class='changeshop'  data-changeto='" + status_to_change_to + "' style='margin:0;' method='POST' action='../api/changeshopstatus/" + key.substring(0, 4).toUpperCase() + "/" + status_to_change_to + "'>\n\
                     <div id='" + key + "_status'>\n\
                             <span style='font-size:1.5em;' class='" + status_icon + " " + color_class + "'>&nbsp;&nbsp;</span>\n\

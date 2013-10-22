@@ -190,7 +190,7 @@ class ApiController extends Controller {
             if (!$location_query = Locations::model()->find($q)) {
                 return 'wrong location, bub';
             }
-            $location = $location_query['loc_name'];
+            $location = ucfirst($location_query['loc_name']);
             $loc_id = $location_query['loc_id'];
         }
 
@@ -229,9 +229,9 @@ class ApiController extends Controller {
             $openDateTime = new DateTime($time_upper_bound);
             $difference = $currtime->diff($openDateTime, True);
             $early_or_late = ($action == 'open' ? 'late' : 'early');
-            $message = $username . " " . ($action == 'open' ? 'opened' : 'closed') . " the $location shop $early_or_late. Latest closing time is " . date('H:ia', $openorcloseHrsTime + 600) . ". " . ucfirst($early_or_late) . " by: " . $difference->h . " hours " . $difference->i . " minutes and " . $difference->s . " seconds";
+            $message = $username . " " . ($action == 'open' ? 'opened' : 'closed') . " the $location Support Center $early_or_late. Latest closing time is " . date('H:ia', $openorcloseHrsTime + 600) . ". " . ucfirst($early_or_late) . " by: " . $difference->h . " hours " . $difference->i . " minutes and " . $difference->s . " seconds";
 
-            Yii::app()->user->setFlash('error', "The shop has been " . ($action == 'open' ? 'opened' : 'closed') . " " . $early_or_late . " by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds');
+            Yii::app()->user->setFlash('error', "The $location Support Center has been " . ($action == 'open' ? 'opened' : 'closed') . " " . $early_or_late . " by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds');
         }
 
 //if current time is less than the open - 10 minutes
@@ -241,12 +241,13 @@ class ApiController extends Controller {
             $difference = $currtime->diff($openDateTime, True);
 
             $early_or_late = ($action == 'open' ? 'early' : 'late');
-            $message = $username . " " . ($action == 'open' ? 'opened' : 'closed') . " the $location shop $early_or_late. by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds';
+            $message = $username . " " . ($action == 'open' ? 'opened' : 'closed') . " the $location Support Center $early_or_late. by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds';
 
-            Yii::app()->user->setFlash('error', "The shop has been " . ($action == 'open' ? 'opened' : 'closed') . " $early_or_late by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds');
+            Yii::app()->user->setFlash('error', "The $location Support Center has been " . ($action == 'open' ? 'opened' : 'closed') . " $early_or_late by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds');
         } else {
             $on_time = 1;
             $message = NULL;
+            Yii::app()->user->setFlash('error', "The $location Support Center has been " . ($action == 'open' ? 'opened' : 'closed'));
         }
 
 

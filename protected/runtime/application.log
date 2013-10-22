@@ -1591,3 +1591,91 @@ REQUEST_URI=/index.php
 in C:\xampp\htdocs\shop_control\themes\bootstrap\views\layouts\main.php (56)
 in C:\xampp\htdocs\shop_control\themes\bootstrap\views\layouts\column2.php (22)
 in C:\xampp\htdocs\shop_control\protected\controllers\SiteController.php (136)
+2013/10/18 12:08:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "40asd".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('40asd')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/40asd
+---
+2013/10/18 12:10:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "gsadgsad".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('gsadgsad')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/gsadgsad
+---
+2013/10/18 12:10:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "gsadgsad".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('gsadgsad')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/gsadgsad
+---
+2013/10/18 12:10:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "gsadgsad".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('gsadgsad')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/gsadgsad
+---
+2013/10/18 12:10:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "gsadgsad".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('gsadgsad')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/gsadgsad
+---
+2013/10/18 12:10:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "gsadgsad".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('gsadgsad')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/gsadgsad
+---
+2013/10/18 12:10:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "gsadgsad".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('gsadgsad')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/gsadgsad
+---
+2013/10/18 12:10:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "gsadgsad".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('gsadgsad')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/gsadgsad
+---
+2013/10/18 12:10:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "gsadgsad".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('gsadgsad')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/gsadgsad
+---
+2013/10/18 12:25:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "asgdgsd".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('asgdgsd')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/asgdgsd
+---
+2013/10/22 06:32:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/bootstrap/img/gw_logo.ico".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/bootstra...')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/bootstrap/img/gw_logo.ico
+---

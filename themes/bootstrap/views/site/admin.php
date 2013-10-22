@@ -5,11 +5,11 @@
 $this->pageTitle = Yii::app()->name;
 ?>
 <style>
-    .alert-error{
-        color: #165235;
-        text-shadow: 0px 2px 3px #82c462;
-        background-color:#8CCD8C;
+    .alert-success{
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+        text-align: center;
     }
+
     .submitAnchorTopForm:hover{
         text-decoration:none;
     }
@@ -25,22 +25,23 @@ $this->pageTitle = Yii::app()->name;
 
     }
 </style>
-
+<div id='flash'>
+    <?php if (Yii::app()->user->hasFlash('success')): ?>
+        <div class="alert alert-success">
+            <a class="close" data-dismiss="alert">&#215;</a>
+            <div id="flash_success"><?php echo Yii::app()->user->getFlash('success'); ?></div>
+        </div>
+    <?php endif; ?>
+</div>
+<legend class="section-title">Classroom Support Center Schedules</legend>
 <div>
-    <div id='flash'>
-        <?php if (Yii::app()->user->hasFlash('success')): ?>
-            <div class="alert alert-error">
-                <a class="close" data-dismiss="alert">&#215;</a>
-                <div id="flash_error"><?php echo Yii::app()->user->getFlash('success'); ?></div>
-            </div>
-        <?php endif; ?>
-    </div>
+
     <p>&nbsp;</p>
     <div id="location_details" >
     </div>
     <p>&nbsp;</p>
     <div id="classroomDataForm" class="admin-form">
-        <h3 class="section-title">Shop Hours</h3>
+        <h3 class="section-title">Hours</h3>
         <dfn class="description">Click times to edit.</dfn>
         <form id="classroomDateForm">
             <fieldset>
@@ -137,7 +138,7 @@ $this->pageTitle = Yii::app()->name;
             <form class="form-horizontal" id="addLocationForm" method="post" >       
                 <div class="modal-header">
                     <a href="#" class="close" data-dismiss="modal">&times;</a>
-                    <h3>Add a new shop location.</h3>
+                    <h3>Add a new support center location.</h3>
                 </div>
                 <div class="modal-body">
                     <div class="divDialogElements">
@@ -198,7 +199,7 @@ $this->pageTitle = Yii::app()->name;
             <form class="form-horizontal" id="updateLocationForm" method="post">       
                 <div class="modal-header">
                     <a href="#" class="close" data-dismiss="modal">&times;</a>
-                    <h3>Edit a shop location.</h3>
+                    <h3>Edit a support center location.</h3>
                 </div>
                 <div class="modal-body">
                     <div class="divDialogElements">
@@ -306,7 +307,7 @@ $this->pageTitle = Yii::app()->name;
             <fieldset>
                 <table id="timeTable" align="center" border="1">
                     <thead>
-                    <td>Selected Shops</td>
+                    <td>Selected Suport Centers</td>
                     <td>Holiday</td>
                     <td>Date</td>
                     <td>Description (optional)</td>
@@ -478,9 +479,9 @@ $this->pageTitle = Yii::app()->name;
 
     <script>
 
-                    function closeDialog() {
-                        $('.modal').modal('hide');
-                    }
+        function closeDialog() {
+            $('.modal').modal('hide');
+        }
 
 
     </script>
