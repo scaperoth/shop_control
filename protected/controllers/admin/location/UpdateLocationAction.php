@@ -12,18 +12,17 @@ class UpdateLocationAction extends CAction {
         foreach ($db_rows as $row) {
             if (md5($row['ip_loc_id']) == $loc_id) {
                 $pk = $row['ip_id'];
-                $ip_update_field = Ips::model()->findByPk($pk);
-
-                $ip_update_field->ip_address = $ip_address;
-                $ip_update_field->ip_compname = $comp_name;
-                $ip_update_field->save();
-                echo 'updated';
-                Yii::app()->user->setFlash('success', 'Location updated.');
                 break;
             }
         }
 
-        
+        $ip_update_field = Ips::model()->findByPk($pk);
+
+        $ip_update_field->ip_address = $ip_address;
+        $ip_update_field->ip_compname = $comp_name;
+        $ip_update_field->save();
+        echo 'updated';
+        Yii::app()->user->setFlash('success', 'Location updated.');
     }
 
 }
