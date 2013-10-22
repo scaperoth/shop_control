@@ -45,7 +45,7 @@ $display_location = (($this->location) ?  ucfirst($this->location) : '');
             $this->widget('bootstrap.widgets.TbNavbar', array(
                 'type' => 'null', // null or 'inverse'\
                 'brand' => '<img src="' . Yii::app()->theme->baseUrl . '/assets/img/at_logo.png" alt="Academic Technologies\"/>',
-                'brandUrl' => '/site/index',
+                'brandUrl' => array('/site/index'),
                 'collapse' => true, // requires bootstrap-responsive.css
                 'items' => array(
                     array(
