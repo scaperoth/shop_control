@@ -13,10 +13,11 @@ class GetLocationinfoAction extends CAction {
                         'ip'=>$row['ip_address'],
                         'name'=>$row['ip_compname']
                     );
+                    echo json_encode($return_data);
                     break;
                 }
             }
-            echo json_encode($return_data);
+            
         
     }
 
