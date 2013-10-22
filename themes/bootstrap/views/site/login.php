@@ -10,8 +10,8 @@ $this->pageTitle = Yii::app()->name . ' - Login';
   ); */
 ?>
 <style type="text/css">
+    
     body {
-        padding-top: 40px;
         padding-bottom: 40px;
     }
 
