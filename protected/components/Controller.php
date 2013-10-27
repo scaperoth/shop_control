@@ -31,8 +31,7 @@ class Controller extends CController {
                 ->select("loc_name, loc_status, loc_id")
                 ->from('locations l')
                 ->join('ips ip', 'l.loc_id=ip.ip_loc_id')
-                ->where('ip.ip_address=:ip', array(':ip' => Yii::app()->params['ip']))
-                ->where('ip.ip_address2=:ip', array(':ip' => Yii::app()->params['ip']))
+                ->where('ip.ip_address=:ip or ip.ip_address2=:ip', array(':ip' => Yii::app()->params['ip']))
                 ->queryRow();
         $this->current_state = $location['loc_status'];
         $this->location = $location['loc_name'];

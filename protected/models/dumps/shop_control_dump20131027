@@ -1,0 +1,279 @@
+CREATE DATABASE  IF NOT EXISTS `shop_control` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `shop_control`;
+-- MySQL dump 10.13  Distrib 5.5.16, for Win32 (x86)
+--
+-- Host: localhost    Database: shop_control
+-- ------------------------------------------------------
+-- Server version	5.1.68-community
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `admin_emails`
+--
+
+DROP TABLE IF EXISTS `admin_emails`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `admin_emails` (
+  `email_id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(45) NOT NULL,
+  PRIMARY KEY (`email_id`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admin_emails`
+--
+
+LOCK TABLES `admin_emails` WRITE;
+/*!40000 ALTER TABLE `admin_emails` DISABLE KEYS */;
+INSERT INTO `admin_emails` VALUES (84,'mscapero@email.gwu.edu');
+/*!40000 ALTER TABLE `admin_emails` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `holidays`
+--
+
+DROP TABLE IF EXISTS `holidays`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `holidays` (
+  `hol_id` int(11) NOT NULL AUTO_INCREMENT,
+  `hol_name` varchar(45) NOT NULL,
+  `hol_date` varchar(40) NOT NULL,
+  `hol_description` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`hol_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `holidays`
+--
+
+LOCK TABLES `holidays` WRITE;
+/*!40000 ALTER TABLE `holidays` DISABLE KEYS */;
+INSERT INTO `holidays` VALUES (1,'Christmas','Dec 25',NULL),(2,'New Years','Jan 1',NULL);
+/*!40000 ALTER TABLE `holidays` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ips`
+--
+
+DROP TABLE IF EXISTS `ips`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ips` (
+  `ip_id` int(11) NOT NULL AUTO_INCREMENT,
+  `ip_address` varchar(45) NOT NULL,
+  `ip_address2` varchar(45) DEFAULT NULL,
+  `ip_compname` varchar(45) DEFAULT NULL,
+  `ip_loc_id` int(11) NOT NULL,
+  PRIMARY KEY (`ip_id`),
+  UNIQUE KEY `ip_address_UNIQUE` (`ip_address`),
+  UNIQUE KEY `ip_compname_UNIQUE` (`ip_compname`),
+  UNIQUE KEY `ip_address2_UNIQUE` (`ip_address2`),
+  KEY `fk1_idx` (`ip_loc_id`),
+  CONSTRAINT `fk1` FOREIGN KEY (`ip_loc_id`) REFERENCES `locations` (`loc_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1 COMMENT='\n\n	';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ips`
+--
+
+LOCK TABLES `ips` WRITE;
+/*!40000 ALTER TABLE `ips` DISABLE KEYS */;
+INSERT INTO `ips` VALUES (1,'128.164.60.237',NULL,'FN00105w01',37),(2,'128.164.60.239',NULL,'gl0b103w01',38),(3,'128.164.60.238',NULL,'est00211w01',39),(20,'127.0.0.2','127.0.0.1','localhost',57),(24,'128.164.137.37',NULL,'OM310',61),(25,'1212121',NULL,'032103',62);
+/*!40000 ALTER TABLE `ips` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `location_change_tracking`
+--
+
+DROP TABLE IF EXISTS `location_change_tracking`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `location_change_tracking` (
+  `lct_id` int(11) NOT NULL AUTO_INCREMENT,
+  `lct_location` varchar(45) DEFAULT NULL,
+  `lct_user` varchar(45) DEFAULT NULL,
+  `lct_action` varchar(45) DEFAULT NULL,
+  `lct_early_or_late` varchar(45) DEFAULT NULL,
+  `lct_message` text,
+  `lct_timestamp` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`lct_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=109 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `location_change_tracking`
+--
+
+LOCK TABLES `location_change_tracking` WRITE;
+/*!40000 ALTER TABLE `location_change_tracking` DISABLE KEYS */;
+INSERT INTO `location_change_tracking` VALUES (61,'Gelman','Matt Scaperoth','closed','early','Matt Scaperoth closed the Gelman shop early. Latest closing time is 18:10pm. Early by: 7 hours 18 minutes and 56 seconds','2013-10-17 14:51:04'),(62,'localhost','Matt mscapero-user','open','late','Matt mscapero-user opened the localhost shop late. Latest closing time is 08:10am. Late by: 3 hours 18 minutes and 40 seconds','2013-10-18 15:28:40'),(63,'localhost','Matt mscapero-user','closed','early','Matt mscapero-user closed the localhost shop early. Latest closing time is 18:10pm. Early by: 5 hours 25 minutes and 42 seconds','2013-10-18 16:44:18'),(64,'E-Street','Matt Scaperoth','closed','early','Matt Scaperoth closed the E-Street shop early. Latest closing time is 18:10pm. Early by: 5 hours 24 minutes and 8 seconds','2013-10-18 16:45:52'),(65,'E-Street','Matt Scaperoth','open','late','Matt Scaperoth opened the E-Street shop late. Latest closing time is 08:10am. Late by: 4 hours 35 minutes and 56 seconds','2013-10-18 16:45:56'),(66,'Gelman','Matt Scaperoth','open','late','Matt Scaperoth opened the Gelman shop late. Latest closing time is 08:10am. Late by: 4 hours 36 minutes and 23 seconds','2013-10-18 16:46:23'),(67,'Gelman','Matt Scaperoth','closed','early','Matt Scaperoth closed the Gelman shop early. Latest closing time is 18:10pm. Early by: 5 hours 23 minutes and 1 seconds','2013-10-18 16:46:59'),(68,'Gelman','Matt Scaperoth','open','late','Matt Scaperoth opened the Gelman shop late. Latest closing time is 08:10am. Late by: 4 hours 37 minutes and 38 seconds','2013-10-18 16:47:38'),(69,'Gelman','Matt Scaperoth','closed','early','Matt Scaperoth closed the Gelman shop early. Latest closing time is 18:10pm. Early by: 5 hours 21 minutes and 20 seconds','2013-10-18 16:48:39'),(70,'E-Street','Matt Scaperoth','closed','early','Matt Scaperoth closed the E-Street shop early. Latest closing time is 18:10pm. Early by: 5 hours 20 minutes and 43 seconds','2013-10-18 16:49:17'),(71,'Gelman','Matt Scaperoth','open','late','Matt Scaperoth opened the Gelman Control Center late. Latest closing time is 08:10am. Late by: 4 hours 42 minutes and 13 seconds','2013-10-18 16:52:13'),(72,'Gelman','Matt Scaperoth','closed','early','Matt Scaperoth closed the Gelman Support Center early. Latest closing time is 18:10pm. Early by: 5 hours 17 minutes and 25 seconds','2013-10-18 16:52:35'),(73,'Localhost','Matt Scaperoth','open','late','Matt Scaperoth opened the Localhost Support Center late. Latest closing time is 08:10am. Late by: 4 hours 43 minutes and 25 seconds','2013-10-18 16:53:25'),(74,'E-Street','Matt Scaperoth','open','late','Matt Scaperoth opened the E-Street Support Center late. Latest closing time is 08:10am. Late by: 5 hours 16 minutes and 6 seconds','2013-10-18 17:26:06'),(75,'Gelman','Matt Scaperoth','open','late','Matt Scaperoth opened the Gelman Support Center late. Latest closing time is 08:10am. Late by: 6 hours 26 minutes and 31 seconds','2013-10-18 18:36:31'),(76,'Localhost','Matt Scaperoth','closed','early','Matt Scaperoth closed the Localhost Support Center early. Latest closing time is 18:10pm. Early by: 3 hours 32 minutes and 21 seconds','2013-10-18 18:37:39'),(77,'E-Street','Matt Scaperoth','closed','early','Matt Scaperoth closed the E-Street Support Center early. Latest closing time is 18:10pm. Early by: 3 hours 32 minutes and 19 seconds','2013-10-18 18:37:41'),(78,'Gelman','Matt Scaperoth','closed','early','Matt Scaperoth closed the Gelman Support Center early. Latest closing time is 18:10pm. Early by: 3 hours 32 minutes and 17 seconds','2013-10-18 18:37:43'),(79,'Funger','Matt Scaperoth','closed','early','Matt Scaperoth closed the Funger Support Center early. Latest closing time is 18:10pm. Early by: 3 hours 32 minutes and 16 seconds','2013-10-18 18:37:44'),(80,'Localhost','Matt Scaperoth','open','late','Matt Scaperoth opened the Localhost Support Center late. Latest closing time is 08:10am. Late by: 1 hours 23 minutes and 59 seconds','2013-10-22 10:46:01'),(81,'Localhost','Matt Scaperoth','closed','early','Matt Scaperoth closed the Localhost Support Center early. Latest closing time is 18:10pm. Early by: 11 hours 23 minutes and 30 seconds','2013-10-22 10:46:30'),(82,'Localhost','Matt Scaperoth','open','late','Matt Scaperoth opened the Localhost Support Center late. Latest closing time is 08:10am. Late by: 1 hours 23 minutes and 26 seconds','2013-10-22 10:46:34'),(83,'E-Street','Matt Scaperoth','open','late','Matt Scaperoth opened the E-Street Support Center late. Latest closing time is 08:10am. Late by: 1 hours 23 minutes and 7 seconds','2013-10-22 10:46:53'),(84,'Gelman','Matt Scaperoth','open','late','Matt Scaperoth opened the Gelman Support Center late. Latest closing time is 08:10am. Late by: 1 hours 23 minutes and 2 seconds','2013-10-22 10:46:58'),(85,'Funger','Matt Scaperoth','open','late','Matt Scaperoth opened the Funger Support Center late. Latest closing time is 07:40am. Late by: 0 hours 53 minutes and 1 seconds','2013-10-22 10:46:59'),(86,'Localhost','Matt Scaperoth','closed','early','Matt Scaperoth closed the Localhost Support Center early. Latest closing time is 18:10pm. Early by: 11 hours 21 minutes and 3 seconds','2013-10-22 10:48:57'),(87,'Localhost','Matt Scaperoth','open','late','Matt Scaperoth opened the Localhost Support Center late. Latest closing time is 08:10am. Late by: 1 hours 21 minutes and 1 seconds','2013-10-22 10:48:59'),(88,'Localhost','Matt Scaperoth','closed','early','Matt Scaperoth closed the Localhost Support Center early. Latest closing time is 18:10pm. Early by: 11 hours 20 minutes and 48 seconds','2013-10-22 10:49:12'),(89,'Localhost','Matt Scaperoth','open','early','Matt Scaperoth opened the Localhost Support Center early. by 0 hours 57 minutes and 18 seconds','2013-10-22 10:52:42'),(90,'Localhost','Matt Scaperoth','closed','late','Matt Scaperoth closed the Localhost Support Center late. by 10 hours 56 minutes and 52 seconds','2013-10-22 10:53:08'),(91,'localhost','Matt Scaperoth','open','-','','2013-10-22 10:55:36'),(92,'Localhost','Matt Scaperoth','closed','late','Matt Scaperoth closed the Localhost Support Center late. by 10 hours 54 minutes and 11 seconds','2013-10-22 10:55:49'),(93,'Localhost','Matt Scaperoth','open','-','','2013-10-22 10:55:51'),(94,'Localhost','Matt Scaperoth','closed','late','Matt Scaperoth closed the Localhost Support Center late. by 10 hours 53 minutes and 59 seconds','2013-10-22 10:56:01'),(95,'Localhost','Matt Scaperoth','open','-','','2013-10-22 10:56:03'),(96,'Matt\'s location','Matt Scaperoth','open','late','Matt Scaperoth opened the Matt\'s location Support Center late. Latest closing time is 08:10am. Late by: 2 hours 14 minutes and 52 seconds','2013-10-22 14:24:52'),(97,'Matt\'s location','Matt Scaperoth','closed','late','Matt Scaperoth closed the Matt\'s location Support Center late. by 7 hours 25 minutes and 5 seconds','2013-10-22 14:24:55'),(98,'localhost','Matt Scaperoth','closed','late','Matt Scaperoth closed the localhost Support Center late. by 7 hours 24 minutes and 0 seconds','2013-10-22 14:26:00'),(99,'localhost','Matt Scaperoth','open','late','Matt Scaperoth opened the localhost Support Center late. Latest closing time is 08:10am. Late by: 2 hours 16 minutes and 3 seconds','2013-10-22 14:26:03'),(100,'K Street','Matt Scaperoth','open','late','Matt Scaperoth opened the K Street Support Center late. Latest closing time is 08:10am. Late by: 8 hours 12 minutes and 25 seconds','2013-10-27 20:22:25'),(101,'K Street','Matt Scaperoth','closed','late','Matt Scaperoth closed the K Street Support Center late. by 1 hours 27 minutes and 22 seconds','2013-10-27 20:22:38'),(102,'K Street','Matt Scaperoth','open','late','Matt Scaperoth opened the K Street Support Center late. Latest closing time is 08:10am. Late by: 8 hours 12 minutes and 56 seconds','2013-10-27 20:22:56'),(103,'K Street','Matt Scaperoth','closed','late','Matt Scaperoth closed the K Street Support Center late. by 1 hours 27 minutes and 1 seconds','2013-10-27 20:22:59'),(104,'Gelman','Matt Scaperoth','closed','late','Matt Scaperoth closed the Gelman Support Center late. by 1 hours 26 minutes and 49 seconds','2013-10-27 20:23:11'),(105,'K Street','Matt Scaperoth','open','late','Matt Scaperoth opened the K Street Support Center late. Latest closing time is 08:10am. Late by: 8 hours 16 minutes and 26 seconds','2013-10-27 20:26:26'),(106,'K Street','Matt Scaperoth','closed','early','Matt Scaperoth closed the K Street Support Center early. by 1 hours 23 minutes and 31 seconds','2013-10-27 20:26:29'),(107,'Matt\'s location','Matt Scaperoth','open','late','Matt Scaperoth opened the Matt\'s location Support Center late. Latest closing time is 08:10am. Late by: 8 hours 16 minutes and 50 seconds','2013-10-27 20:26:50'),(108,'Matt\'s location','Matt Scaperoth','closed','early','Matt Scaperoth closed the Matt\'s location Support Center early. by 1 hours 23 minutes and 2 seconds','2013-10-27 20:26:58');
+/*!40000 ALTER TABLE `location_change_tracking` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `location_hours_tracking`
+--
+
+DROP TABLE IF EXISTS `location_hours_tracking`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `location_hours_tracking` (
+  `lht_id` int(11) NOT NULL AUTO_INCREMENT,
+  `lht_username` varchar(45) NOT NULL,
+  `lht_loc_name` varchar(45) NOT NULL,
+  `lht_mon_open_hrs` time NOT NULL,
+  `lht_mon_closed_hrs` time NOT NULL,
+  `lht_tue_open_hrs` time NOT NULL,
+  `lht_tue_closed_hrs` time NOT NULL,
+  `lht_wed_open_hrs` time NOT NULL,
+  `lht_wed_closed_hrs` time NOT NULL,
+  `lht_thu_open_hrs` time NOT NULL,
+  `lht_thu_closed_hrs` time NOT NULL,
+  `lht_fri_open_hrs` time NOT NULL,
+  `lht_fri_closed_hrs` time NOT NULL,
+  `lht_sat_open_hrs` time NOT NULL,
+  `lht_sat_closed_hrs` varchar(45) NOT NULL,
+  `lht_sun_open_hrs` time NOT NULL,
+  `lht_sun_closed_hrs` time NOT NULL,
+  `lht_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`lht_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `location_hours_tracking`
+--
+
+LOCK TABLES `location_hours_tracking` WRITE;
+/*!40000 ALTER TABLE `location_hours_tracking` DISABLE KEYS */;
+INSERT INTO `location_hours_tracking` VALUES (37,'Matt Scaperoth','localhost','09:30:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','21:00:00','08:00:00','18:00:00','2013-08-25 20:15:52'),(38,'Matt Scaperoth','localhost','09:30:00','18:30:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','21:00:00','08:00:00','18:00:00','2013-08-25 20:16:11'),(39,'Matt Scaperoth','Funger','07:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','2013-08-25 20:16:43'),(40,'Matt Scaperoth','localhost','09:30:00','19:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','21:00:00','08:00:00','18:00:00','2013-08-25 20:17:02'),(41,'Matt Scaperoth','localhost','09:00:00','19:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','21:00:00','08:00:00','18:00:00','2013-08-25 20:24:49'),(42,'Matt Scaperoth','localhost','09:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','21:00:00','08:00:00','18:00:00','2013-08-25 20:25:00'),(43,'Matt Scaperoth','localhost','09:00:00','17:30:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','21:00:00','08:00:00','18:00:00','2013-08-25 20:25:22'),(44,'Matt Scaperoth','localhost','09:00:00','17:30:00','07:30:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','21:00:00','08:00:00','18:00:00','2013-08-25 22:59:49'),(45,'Matt Scaperoth','Gelman','08:00:00','18:00:00','08:00:00','19:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','2013-08-25 22:59:49'),(46,'Matt Scaperoth','E-Street','08:30:00','21:30:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','2013-08-25 23:08:40'),(47,'Matt scapero-admin','Funger','06:30:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','2013-08-25 23:20:11'),(48,'Matt Scaperoth','E-Street','08:30:00','21:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','2013-08-26 00:02:15'),(49,'Matt Scaperoth','Funger','06:30:00','17:30:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','2013-08-26 00:03:11'),(50,'Matt Scaperoth','E-Street','08:00:00','21:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','2013-08-26 00:04:27');
+/*!40000 ALTER TABLE `location_hours_tracking` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `locations`
+--
+
+DROP TABLE IF EXISTS `locations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `locations` (
+  `loc_id` int(11) NOT NULL AUTO_INCREMENT,
+  `loc_name` varchar(65) NOT NULL,
+  `loc_status` int(11) NOT NULL DEFAULT '0',
+  `loc_mon_open_hrs` time NOT NULL DEFAULT '08:00:00',
+  `loc_mon_closed_hrs` time NOT NULL DEFAULT '18:00:00',
+  `loc_tue_open_hrs` time NOT NULL DEFAULT '08:00:00',
+  `loc_tue_closed_hrs` time NOT NULL DEFAULT '18:00:00',
+  `loc_wed_open_hrs` time NOT NULL DEFAULT '08:00:00',
+  `loc_wed_closed_hrs` time NOT NULL DEFAULT '18:00:00',
+  `loc_thu_open_hrs` time NOT NULL DEFAULT '08:00:00',
+  `loc_thu_closed_hrs` time NOT NULL DEFAULT '18:00:00',
+  `loc_fri_open_hrs` time NOT NULL DEFAULT '08:00:00',
+  `loc_fri_closed_hrs` time NOT NULL DEFAULT '18:00:00',
+  `loc_sat_open_hrs` time NOT NULL DEFAULT '08:00:00',
+  `loc_sat_closed_hrs` time NOT NULL DEFAULT '18:00:00',
+  `loc_sun_open_hrs` time NOT NULL DEFAULT '08:00:00',
+  `loc_sun_closed_hrs` time NOT NULL DEFAULT '18:00:00',
+  `loc_flag` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`loc_id`),
+  UNIQUE KEY `loc_name_UNIQUE` (`loc_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=latin1 COMMENT='\n\n	';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `locations`
+--
+
+LOCK TABLES `locations` WRITE;
+/*!40000 ALTER TABLE `locations` DISABLE KEYS */;
+INSERT INTO `locations` VALUES (37,'Funger',1,'08:00:00','18:00:00','07:30:00','18:30:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00',1),(38,'Gelman',0,'08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00',1),(39,'E-Street',1,'08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00',1),(57,'localhost',1,'08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00',1),(61,'matt\'s location',0,'08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00',1),(62,'K Street',0,'08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00','08:00:00','18:00:00',1);
+/*!40000 ALTER TABLE `locations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `planned_shop_closures_tracking`
+--
+
+DROP TABLE IF EXISTS `planned_shop_closures_tracking`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `planned_shop_closures_tracking` (
+  `psc_id` int(11) NOT NULL AUTO_INCREMENT,
+  `psc_user` varchar(45) NOT NULL,
+  `psc_action` varchar(45) NOT NULL,
+  `psc_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`psc_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `planned_shop_closures_tracking`
+--
+
+LOCK TABLES `planned_shop_closures_tracking` WRITE;
+/*!40000 ALTER TABLE `planned_shop_closures_tracking` DISABLE KEYS */;
+/*!40000 ALTER TABLE `planned_shop_closures_tracking` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `shop_holidays`
+--
+
+DROP TABLE IF EXISTS `shop_holidays`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `shop_holidays` (
+  `hol_id` int(11) NOT NULL,
+  `loc_id` int(11) NOT NULL,
+  PRIMARY KEY (`hol_id`,`loc_id`),
+  KEY `fk1` (`hol_id`),
+  KEY `fk2` (`loc_id`),
+  CONSTRAINT `hol_id` FOREIGN KEY (`hol_id`) REFERENCES `holidays` (`hol_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `loc_id` FOREIGN KEY (`loc_id`) REFERENCES `locations` (`loc_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `shop_holidays`
+--
+
+LOCK TABLES `shop_holidays` WRITE;
+/*!40000 ALTER TABLE `shop_holidays` DISABLE KEYS */;
+INSERT INTO `shop_holidays` VALUES (1,37),(1,38),(1,39),(2,37),(2,38);
+/*!40000 ALTER TABLE `shop_holidays` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'shop_control'
+--
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2013-10-27 16:37:40
