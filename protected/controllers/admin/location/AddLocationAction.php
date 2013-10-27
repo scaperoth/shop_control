@@ -7,7 +7,8 @@ class AddLocationAction extends CAction {
             $vars = $_POST['AddLocation'];
             print_r($vars);
             $loc_name = $vars['locationname'];
-            $ip = $vars['ipaddress'];
+            $ip = $_POST['ipaddress'];
+            $ip2 = $_POST['ipaddress2'];
             $comp_name = $vars['computername'];
 
             $phys_location = new Locations();
@@ -18,6 +19,7 @@ class AddLocationAction extends CAction {
 
             $ip_location = new Ips();
             $ip_location->ip_address = $ip;
+            $ip_location->ip_address2= $ip2;
             $ip_location->ip_compname = $comp_name;
             $ip_location->ip_loc_id = $new_loc_id['loc_id'];
             $ip_location->save();

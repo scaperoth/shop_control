@@ -5,7 +5,39 @@
  * style settings for elements on 
  * this page that use bootstrap plugin styles
  **********************************************/
+$(function() {
+            $.validator.addMethod('ipv4', function(value) {
+                var ipv4 = /^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/;
+                return value.match(ipv4);
+            }, 'Warning: Invalid IP address');
+            
+            
+            $('#addLocationForm').validate({
+                rules: {
+                    ipaddress: {
+                        required: true,
+                        ipv4: true
+                    },
+                    ipaddress2: {
+                        required: false,
+                        ipv4: true
+                    }
+                }
+            });
+            $('#updateLocationForm').validate({
+                rules: {
+                    ipaddressupdate: {
+                        required: true,
+                        ipv4: true
+                    },
+                    ipaddressupdate2: {
+                        required: false,
+                        ipv4: true
+                    }
+                }
+            });
 
+        });
 /* 
  * admin format and time change
  */
@@ -109,6 +141,7 @@ function populate_loc_data() {
     $.post('../phpactions/getlocationinfo', $('#locationselectupdate').serialize(), function(data) {
         var loc_attr = JSON.parse(data);
         $('#ipaddressupdate').val(loc_attr.ip);
+        $('#ipaddressupdate2').val(loc_attr.ip2);
         $('#computernameupdate').val(loc_attr.name);
     });
 }

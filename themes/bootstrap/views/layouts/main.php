@@ -16,25 +16,25 @@ $display_location = (($this->location) ?  ucfirst($this->location) : '');
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-            <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/bootstrap/jquery-1.10.2.min.js"></script>
-            <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/bootstrap/jquery-migrate-1.2.1.min.js"></script>
-            <title><?php echo CHtml::encode($this->pageTitle) . $display_location; ?></title>
+            <script src="<?php echo Yii::app()->theme->baseUrl;?>/assets/js/bootstrap/jquery-1.10.2.min.js"></script>
+            <script src="<?php echo Yii::app()->theme->baseUrl;?>/assets/js/bootstrap/jquery-migrate-1.2.1.min.js"></script>
+            <title><?php echo CHtml::encode($this->pageTitle) . $display_location;?></title>
             <meta name="description" content="">
             <meta name="viewport" content="width=device-width">
-            <link rel="shortcut icon" href="<?php echo Yii::app()->theme->baseUrl; ?>/img/gw_logo.ico">
+            <link rel="shortcut icon" href="<?php echo Yii::app()->theme->baseUrl;?>/img/gw_logo.ico">
 
             <!--[if lt IE 8]>
-            <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/ie.css" media="screen, projection" />
+            <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl;?>/css/ie.css" media="screen, projection" />
             <![endif]-->
             <link href='http://fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
-            <?php Yii::app()->bootstrap->register(); ?>
-            <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/silviomoreto-bootstrap-select-10ba1a3/bootstrap-select.min.css">
-            <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/jonthornton-jquery-timepicker-ced5953/jquery.timepicker.css">
-            <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/font-awesome/css/font-awesome.min.css">
+            <?php Yii::app()->bootstrap->register();?>
+            <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl;?>/assets/silviomoreto-bootstrap-select-10ba1a3/bootstrap-select.min.css">
+            <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl;?>/assets/js/jonthornton-jquery-timepicker-ced5953/jquery.timepicker.css">
+            <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl;?>/assets/font-awesome/css/font-awesome.min.css">
             <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
-            <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/css/style.css">
-            <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl; ?>/assets/css/bootstrap-style-override.css">
-            <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/vendor/modernizr-2.6.2.min.js"></script>
+            <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl;?>/assets/css/style.css">
+            <link rel="stylesheet" href="<?php echo Yii::app()->theme->baseUrl;?>/assets/css/bootstrap-style-override.css">
+            <script src="<?php echo Yii::app()->theme->baseUrl;?>/assets/js/vendor/modernizr-2.6.2.min.js"></script>
         </head>
         <body>
             <?php
@@ -74,11 +74,11 @@ $display_location = (($this->location) ?  ucfirst($this->location) : '');
                 <div class="span12 row-fluid">
                     <div class="title">
                         <h1 id="page-title" class="font-droid">
-                            <?php echo CHtml::encode(Yii::app()->name); ?>
+                            <?php echo CHtml::encode(Yii::app()->name);?>
                         </h1>
                         <span class="subhead muted font-droid text-center">
                             <h3>
-                                <?php echo $display_location; ?>
+                                <?php echo $display_location;?>
                             </h3>
                         </span >
                     </div>
@@ -88,9 +88,9 @@ $display_location = (($this->location) ?  ucfirst($this->location) : '');
                     <?php if (Yii::app()->user->hasFlash('error')): ?>
                         <div class="alert alert-error">
                             <a class="close" data-dismiss="alert">&#215;</a>
-                            <div id="flash_error"><?php echo Yii::app()->user->getFlash('error'); ?></div>
+                            <div id="flash_error"><?php echo Yii::app()->user->getFlash('error');?></div>
                         </div>
-                    <?php endif; ?>
+                    <?php endif;?>
                 </div>
 
                 <div class="clear"></div>
@@ -102,7 +102,7 @@ $display_location = (($this->location) ?  ucfirst($this->location) : '');
                     ?><!-- breadcrumbs -->
                 <?php endif ?>
 
-                <?php echo $content; ?>
+                <?php echo $content;?>
 
 
                 <div class="clear"></div>
@@ -116,15 +116,15 @@ $display_location = (($this->location) ?  ucfirst($this->location) : '');
 
             </div><!-- container #page-->
 
-            <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/bootstrap/jquery.metadata.js"></script>
-            <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/bootstrap/jquery.tablesorter.min.js"></script>
-            <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/bootstrap/jquery.tablecloth.js"></script>
-            <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/silviomoreto-bootstrap-select-10ba1a3/bootstrap-select.min.js"></script>
-            <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/plugins.js"></script>
-            <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/jonthornton-jquery-timepicker-ced5953/jquery.timepicker.min.js"></script>
+            <script src="<?php echo Yii::app()->theme->baseUrl;?>/assets/js/bootstrap/jquery.metadata.js"></script>
+            <script src="<?php echo Yii::app()->theme->baseUrl;?>/assets/js/bootstrap/jquery.tablesorter.min.js"></script>
+            <script src="<?php echo Yii::app()->theme->baseUrl;?>/assets/js/bootstrap/jquery.tablecloth.js"></script>
+            <script src="<?php echo Yii::app()->theme->baseUrl;?>/assets/silviomoreto-bootstrap-select-10ba1a3/bootstrap-select.min.js"></script>
+            <script src="<?php echo Yii::app()->theme->baseUrl;?>/assets/js/plugins.js"></script>
+            <script src="<?php echo Yii::app()->theme->baseUrl;?>/assets/js/jonthornton-jquery-timepicker-ced5953/jquery.timepicker.min.js"></script>
 
-            <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/bootstrap/bootstrap-datepicker.js"></script>
-            <script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/main.js"></script>
+            <script src="<?php echo Yii::app()->theme->baseUrl;?>/assets/js/bootstrap/bootstrap-datepicker.js"></script>
+            <script src="<?php echo Yii::app()->theme->baseUrl;?>/assets/js/main.js"></script>
             <?php
             /**
              * load admin.js if page is admin

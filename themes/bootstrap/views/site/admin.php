@@ -1,6 +1,7 @@
 <?php
 /* @var $this HomeController */
 ?>
+<script src="<?php echo Yii::app()->theme->baseUrl;?>/assets/js/jquery-validation/dist/jquery.validate.min.js"></script>
 <?php
 $this->pageTitle = Yii::app()->name;
 ?>
@@ -83,9 +84,9 @@ $this->pageTitle = Yii::app()->name;
                              * shortened (3 chars) version to use in the db call 
                              */
                             ?>
-                            <?php foreach ($days_of_week as $day): ?>
+                            <?php foreach ($days_of_week as $day):?>
 
-                                <td class="date_hover" id="<?php echo $day; ?>">
+                                <td class="date_hover" id="<?php echo $day;?>">
                                     <?php
                                     /**
                                      * this code gets the times for each day and formats them the same as the timepicker
@@ -109,12 +110,12 @@ $this->pageTitle = Yii::app()->name;
                                     );
                                     ?>
                                     <div class="bootstrap-timepicker">
-                                        <input title="Click to edit" data-time ="<?php echo $open_time; ?>" class="timepicker open" name="<?php echo preg_replace('/[^\da-z]/i','', $location['loc_name']) . '|' . $short_day . '_open_hrs'; ?>" value="<?php echo $open_time; ?>">
+                                        <input title="Click to edit" data-time ="<?php echo $open_time; ?>" class="timepicker open" name="<?php echo preg_replace('/[^\da-z]/i', '', $location['loc_name']) . '|' . $short_day . '_open_hrs'; ?>" value="<?php echo $open_time; ?>">
                                     </div>
                                     <span> to </span>
 
                                     <div class="bootstrap-timepicker">
-                                        <input title="Click to edit" data-time ="<?php echo $close_time; ?>" class="timepicker closed" name="<?php echo preg_replace('/[^\da-z]/i','', $location['loc_name']) . '|' . $short_day . '_closed_hrs'; ?>" value="<?php echo $close_time; ?>">
+                                        <input title="Click to edit" data-time ="<?php echo $close_time; ?>" class="timepicker closed" name="<?php echo preg_replace('/[^\da-z]/i', '', $location['loc_name']) . '|' . $short_day . '_closed_hrs'; ?>" value="<?php echo $close_time; ?>">
                                     </div>
                                 </td>
                             <?php endforeach; ?>
@@ -163,7 +164,20 @@ $this->pageTitle = Yii::app()->name;
                                 <div class="controls">
                                     <div class="input-prepend">
                                         <span class="add-on"><i class="icon-barcode"></i></span>
-                                        <input placeholder="Example: 127.0.0.1" required class="span3" name="AddLocation[ipaddress]" id="ipaddress" type="text">
+                                        <input placeholder="Example: 127.0.0.1" required class="span3" name="ipaddress" id="ipaddress" type="text">
+                                    </div>
+                                </div><!--end controls-->
+                            </div><!--end control group-->
+                        </div><!--end row-->
+
+                        <!--new row-->
+                        <div class="row">
+                            <div class="control-group">
+                                <label class="control-label" for="ipaddress2">Second IP Address (optional):</label>
+                                <div class="controls">
+                                    <div class="input-prepend">
+                                        <span class="add-on"><i class="icon-barcode"></i></span>
+                                        <input placeholder="Example: 127.0.0.1" class="span3" name="ipaddress2" id="ip2" type="text">
                                     </div>
                                 </div><!--end controls-->
                             </div><!--end control group-->
@@ -228,7 +242,20 @@ $this->pageTitle = Yii::app()->name;
                                 <div class="controls">
                                     <div class="input-prepend">
                                         <span class="add-on"><i class="icon-barcode"></i></span>
-                                        <input placeholder="Example: 127.0.0.1" required class="span3" name="UpdateLocation[ipaddressupdate]" id="ipaddressupdate" type="text">
+                                        <input placeholder="Example: 127.0.0.1" required class="span3" name="ipaddressupdate" id="ipaddressupdate" type="text">
+                                    </div>
+                                </div><!--end controls-->
+                            </div><!--end control group-->
+                        </div><!--end row-->
+                        
+                        <!--new row-->
+                        <div class="row">
+                            <div class="control-group">
+                                <label class="control-label" for="ipaddressupdate2">IP Address:</label>
+                                <div class="controls">
+                                    <div class="input-prepend">
+                                        <span class="add-on"><i class="icon-barcode"></i></span>
+                                        <input placeholder="Example: 127.0.0.1" class="span3" name="ipaddressupdate2" id="ipaddressupdate2" type="text">
                                     </div>
                                 </div><!--end controls-->
                             </div><!--end control group-->
@@ -476,12 +503,12 @@ $this->pageTitle = Yii::app()->name;
         <?php $this->endWidget(); ?><!--end modal window-->
         <!---delete location dialog end-->
     </div>
-
+    
     <script>
 
         function closeDialog() {
             $('.modal').modal('hide');
         }
-
+        
 
     </script>

@@ -5,7 +5,8 @@ class UpdateLocationAction extends CAction {
     public function run() {
         $vars = $_POST['UpdateLocation'];
         $loc_id = $vars['locationnameupdate'];
-        $ip_address = $vars['ipaddressupdate'];
+        $ip_address = $_POST['ipaddressupdate'];
+        $ip_address2= $_POST['ipaddressupdate2'];
         $comp_name = $vars['computernameupdate'];
 
         $db_rows = Ips::model()->findAll();
@@ -19,6 +20,7 @@ class UpdateLocationAction extends CAction {
         $ip_update_field = Ips::model()->findByPk($pk);
 
         $ip_update_field->ip_address = $ip_address;
+        $ip_update_field->ip_address2 = $ip_address2;
         $ip_update_field->ip_compname = $comp_name;
         $ip_update_field->save();
         echo 'updated';

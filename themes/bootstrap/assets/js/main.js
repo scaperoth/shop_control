@@ -35,7 +35,7 @@ $(document).ready(function() {
 $('#toggleShopForm').submit(function(e) {
     e.preventDefault();
     var status = ($('#toggleShopForm').attr('data-status')=='open')?'close':'open';
-    if (confirm('You are about to '+status+' this shop. Proceed?')) {
+    if (confirm('You are about to '+status.toUpperCase()+' this support center. Proceed?')) {
         $.post($('#toggleShopForm').attr('action'), $(this).serialize(), function(json) {
             location.reload();
         });
@@ -46,10 +46,10 @@ $('#toggleShopForm').submit(function(e) {
  * clock
  */
 var d = new Date;
-$('#clock p').text('Cuurent time: ' + d.getHours() + ':' + d.getMinutes() + ":" + d.getSeconds());
+$('#clock p').text('Current time: ' + d.getHours() + ':' + d.getMinutes() + ":" + d.getSeconds());
 
 setInterval(function() {
     d = new Date;
-    $('#clock p').text('Cuurent time: ' + d.getHours() + ':' + d.getMinutes() + ":" + d.getSeconds());
+    $('#clock p').text('Current time: ' + d.getHours() + ':' + d.getMinutes() + ":" + d.getSeconds());
 }, 1000);
 

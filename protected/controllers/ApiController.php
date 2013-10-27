@@ -68,7 +68,6 @@ class ApiController extends Controller {
      */
     public function actionShopstatus() {
         // Check if id was submitted via GET
-        $this->__checkUserAuth();
         $JSON_array = array();
         $locations_query = $this->_getLocationsData();
         foreach ($locations_query as $curr_location) {
@@ -87,8 +86,6 @@ class ApiController extends Controller {
                     $JSON_array[$location] = 'open';
             }
         }
-
-
         $this->_sendResponse(200, CJSON::encode($JSON_array));
     }
 
@@ -135,6 +132,7 @@ class ApiController extends Controller {
      * @throws CHttpException
      */
     private function _ProcessShopStatusChange($which_shop, $status_to_change_to) {
+        
         if ($status_to_change_to) {
             switch ($status_to_change_to) {
                 case 'open':
@@ -231,7 +229,7 @@ class ApiController extends Controller {
             
             $openDateTime = new DateTime($time_upper_bound);
             $difference = $currdatetime->diff($openDateTime, True);
-            $early_or_late = ($action == 'open' ? 'late' : 'early');
+            $early_or_late =  'late';
             $message = $username . " " . ($action == 'open' ? 'opened' : 'closed') . " the $location Support Center $early_or_late. Latest closing time is " . date('H:ia', $openorcloseHrsTime + 600) . ". " . ucfirst($early_or_late) . " by: " . $difference->h . " hours " . $difference->i . " minutes and " . $difference->s . " seconds";
 
             Yii::app()->user->setFlash('error', "The $location Support Center has been " . ($action == 'open' ? 'opened' : 'closed') . " " . $early_or_late . " by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds');
@@ -243,7 +241,7 @@ class ApiController extends Controller {
             $openDateTime = new DateTime($time_lower_bound);
             $difference = $currdatetime->diff($openDateTime, True);
 
-            $early_or_late = ($action == 'open' ? 'early' : 'late');
+            $early_or_late = 'early';
             $message = $username . " " . ($action == 'open' ? 'opened' : 'closed') . " the $location Support Center $early_or_late. by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds';
 
             Yii::app()->user->setFlash('error', "The $location Support Center has been " . ($action == 'open' ? 'opened' : 'closed') . " $early_or_late by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds');
@@ -400,6 +398,7 @@ class ApiController extends Controller {
      */
     private function _sendResponse($status = 200, $body = '', $content_type = 'text/html') {
         // set the status
+        header("Access-Control-Allow-Origin: *");
         $status_header = 'HTTP/1.1 ' . $status . ' ' . $this->_getStatusCodeMessage($status);
         header($status_header);
         // and the content type

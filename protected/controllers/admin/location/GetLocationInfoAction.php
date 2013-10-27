@@ -11,6 +11,7 @@ class GetLocationinfoAction extends CAction {
                 if(md5($row['ip_loc_id'])==$loc_id){
                     $return_data= array(
                         'ip'=>$row['ip_address'],
+                        'ip2'=>$row['ip_address2'],
                         'name'=>$row['ip_compname']
                     );
                     break;
