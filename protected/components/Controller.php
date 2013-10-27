@@ -32,6 +32,7 @@ class Controller extends CController {
                 ->from('locations l')
                 ->join('ips ip', 'l.loc_id=ip.ip_loc_id')
                 ->where('ip.ip_address=:ip', array(':ip' => Yii::app()->params['ip']))
+                ->where('ip.ip_address2=:ip', array(':ip' => Yii::app()->params['ip']))
                 ->queryRow();
         $this->current_state = $location['loc_status'];
         $this->location = $location['loc_name'];
@@ -77,7 +78,7 @@ class Controller extends CController {
 
         //get all ip addresses from ips table
         $ips = Yii::app()->db->createCommand()
-                ->select('ip_address')
+                ->select(array('ip_address','ip_address2'))
                 ->from('ips ip')
                 ->join('locations l', 'l.loc_id=ip.ip_loc_id')
                 ->where('l.loc_flag=:active', array(':active' => 1))
@@ -87,6 +88,7 @@ class Controller extends CController {
          */
         foreach ($ips as $ip) {
             $ip_filter[] = $ip['ip_address'];
+            $ip_filter[] = $ip['ip_address2'];
         }
          
         //used for testing denied ips
