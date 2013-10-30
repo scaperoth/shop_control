@@ -159,7 +159,7 @@ class ApiController extends Controller {
      * @return string|null
      */
     private function _CloseOrOpenShop($action, $which_shop = 'mylocation') {
-
+        $threshhold = 900;
         $this->__checkUserAuth();
         //administrative emails
         $admin_emails = $this->admin_emails;
@@ -216,8 +216,8 @@ class ApiController extends Controller {
 
 
 //get upper deviation of time. +- 10 minutes from db shop closed time
-        $time_upper_bound = date('d-m-Y H:i:s', $openorcloseHrsTime + 600);
-        $time_lower_bound = date('d-m-Y H:i:s', $openorcloseHrsTime - 600);
+        $time_upper_bound = date('d-m-Y H:i:s', $openorcloseHrsTime + $threshhold);
+        $time_lower_bound = date('d-m-Y H:i:s', $openorcloseHrsTime - $threshhold);
         
         
         //get current time
