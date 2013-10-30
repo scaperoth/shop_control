@@ -202,7 +202,7 @@ class ApiController extends Controller {
                 ->from('locations l')
                 ->where('l.loc_name=:name', array(':name' => $location))
                 ->queryRow();
-        //exit if status is already achieved.
+        //exit if status is already achieved. using boolean loc_status
         if (!$check_query['loc_status'] && $action == 'closed') {
             $message = 'Shop is already ' . $action;
             return $message;

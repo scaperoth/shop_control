@@ -2789,3 +2789,11 @@ Stack trace:
 REQUEST_URI=/index.php/phpactions/updatelocation
 in C:\xampp\htdocs\shop_control\protected\controllers\admin\location\UpdateLocationAction.php (9)
 in C:\xampp\htdocs\shop_control\index.php (17)
+2013/10/30 10:14:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "themes/bootstrap/img/gw_logo.ico".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/bootstra...')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/themes/bootstrap/img/gw_logo.ico
+---

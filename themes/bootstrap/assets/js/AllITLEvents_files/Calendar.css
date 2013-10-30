@@ -1,0 +1,117 @@
+/* These style control the calendar grids & .title also controls the list view title. */
+.calendarcell
+{font-family:Arial;font-size:1em;color:#333333;background-color:#e4e4e4;}
+.calendarcellhilite
+{font-family:Arial;font-size:1em;color:#4C4C4C;background-color:#e4e4e4;}
+.calendarcell:hover
+{font-family:Arial;font-size:1em;color:#4C4C4C;background-color:#e4e4e4;}
+.calendarnowdiv a {font-family:Arial;font-size:1em;color:#333333;}
+.calendarnowdiv a:hover {font-family:Arial;font-size:1em;color:#4C4C4C;}
+.dayheader
+{font-family:Arial;font-weight:Bold;font-size:1em;color:#000000;background-color:#ffffff;}
+.title
+{font-family:Arial;font-weight:Bold;font-size:1.2em;color:#214380;}
+/* These styles control the list view small grid. */
+.titleSmallGrid
+{font-family:Arial;font-weight:Bold;font-size:1em;color:#214380;}
+.dayheaderSmallGrid
+{font-family:Arial;font-weight:Bold;font-size:1em;color:#000000;background-color:#ffffff;}
+td.dayheaderSmallGrid a
+{font-family:Arial;font-weight:Bold;font-size:1em;color:#000000;background-color:#ffffff;}
+.calendarcellSmallGrid
+{font-family:Arial;font-size:1em;color:#333333;background-color:#e4e4e4;}
+.calendarcellhiliteSmallGrid
+{font-family:Arial;font-size:1em;color:#4C4C4C;background-color:#e4e4e4;}
+/* These styles control the list view headings. */
+.highlightheadertext
+{font-family:Arial;font-size:1.6em;color:#FF0000;}
+.listtableheadertext
+{font-family:Arial;font-size:1.5em;color:#006699;}
+/* This style controls error message style. */
+.errormessagetext
+{font-family:Arial;font-size:1em;color:#FF0000;}
+/* These styles control list view text. */
+.eventlistdiv a {font-family:Arial;font-size:1em;color:#333333;}
+.eventlistdiv a:hover {font-family:Arial;font-size:1em;color:#3C75B1;}
+.listheadtext
+{font-family:Arial;font-size:1em;color:#222222;background-color:#e4e4e4;}
+.listcolumnheadtext
+{font-family:Arial;font-size:1em;font-weight:Bold;color:#000000;background-color:#ffffff;}
+.detailsview
+{font-family:Arial;font-size:1em;color:#006699;background-color:#FFFFFF;}
+td.detailsview li
+{list-style-type:none;}
+td.adx-detailsview-left
+{}
+td.adx-detailsview-right img
+{border:1px solid #999;}
+.listbodytext
+{font-family:Arial;font-size:1em;color:#222222;background-color:#FFFFFF;}
+td.listbodytext li, td.listbodytextalt li
+{list-style-type:none;}
+.listbodytextalt
+{font-family:Arial;font-size:1em;color:Black;background-color:#dddddd;}
+/* This style controls general text. */
+.bodycopy
+{font-family:Arial;font-size:1em;color:#222222;}
+/* This style controls textbox field styleing. */
+.textboxcopy
+{font-family:Arial;font-size:1em;color:Black;}
+/* This style controls '+' links on the calendar. */
+.LinkOn
+{font-family:Arial;font-size:1em;color:Red;}
+.LinkOff
+{font-family:Arial;font-size:1em;color:Blue;}
+/* This style controls the style of grid cells not being used. */
+.otherday
+{font-family:Arial;font-size:1em;color:Black;background-color:#F5F5F5;}
+.otherdaySmallGrid
+{font-family:Arial;font-size:1em;color:Black;background-color:#F5F5F5;}
+BODY
+{font-size:68.75%;font-family:Arial;color:#000000;margin-bottom:10px;margin-left:3px;margin-right:3px;margin-top:0px;}
+/* This class is used so em font sizing is handled correctly on front end calendar views. */
+TABLE, DIV
+{font-size:1em;}
+/* This is used to color the Quick Tip Border */
+.quicktipborder {border-style:solid;border-color:#ffffff;border-width:2px;}
+SELECT
+{font-family:Arial;font-size:1em;color:Black;}
+
+/* The classed blelow are used for the gantt display of the calendar. */
+/*Global generic styles for the search table*/
+.searchformatter {}
+.searchformatter td {height:24px;}
+/*Global generic styles for the gantt grid*/
+.gantt {width:100%;}
+.gantt table {border:solid 1px #214380;border-collapse:separate;width:100%;}
+.gantt td {border-left:solid 1px #214380;border-right:solid 1px #214380;}
+.ganttprint {width:100%;}
+.ganttprint table {border:solid 1px #214380;border-collapse:separate;width:100%;}
+.ganttprint td {}
+.monthtitleformatter {width:100%;}
+.monthtitleformatter td {border-width:0px;}
+/*Previous selector TD class*/
+.previousmonth {vertical-align:middle;padding-left:1px;}
+/*Month title TD class*/
+.monthtitle {vertical-align:middle;text-align:center;padding-top:5px;padding-bottom:5px;}
+/*Next selector TD class*/
+.nextmonth {vertical-align:middle;text-align:right;padding-right:1px;}
+/*Weekdays (Sun-Sat) TD class*/
+.weekdayheading {height:25px;width:14%;vertical-align:middle;text-align:center;color:#FFFFFF;background-color:#214380;font-weight:Bold;font-size:1em;}
+.weekdayheadingprint {height:25px;width:14%;vertical-align:middle;text-align:center;color:#000000;border:solid 1px #214380;font-weight:Bold;font-size:1em;}
+/*Weekday (1-31) TD class*/
+.weekdaynumber {font-weight:bold;height:25px;vertical-align:middle;text-align:center;color:#214380;background-color:#A7C4E1;font-size:1em;}
+.weekdaynumberprint {font-weight:bold;height:25px;vertical-align:middle;text-align:center;color:#000000;border:solid 1px #A7C4E1;font-size:1em;}
+/*Weekday TD class for all grid cells (not title cells or heading cells)*/
+.weekday {}
+/*Padding row applied after each week row to make for easier viewing*/
+.weekdayspacing {height:25px;}
+/*Applied to the event DIV that is placed in a cell allowing for coloring and rounding corners*/
+.weekdayitem {position:relative;width:100%;height:22px;overflow:hidden;background-color:#E0E0E0;font-size:1em;}
+.weekdayitemprint {position:relative;width:100%;border:solid 1px #E0E0E0;font-size:1em;}
+/*Applied to to the DIV contained inside the [weekdayitem] to add padding to allow for easier viewing */
+.weekdayitempadding {padding-top:5px;padding-right:15px;padding-bottom:5px;padding-left:15px;}
+/*Classes for rounding gantt item corners and arrow identifiers for line continuations*/
+.leftimg {left:0px;top:0px;position:absolute;border-width:0px;height:22px;}
+.rightimg {right:0px;top:0px;position:absolute;border-width:0px;height:22px;}
+.suggestedCategoryDiv {float:left; background-color:#CCCCCC; padding:5px 5px 5px 5px; margin-left:5px;}

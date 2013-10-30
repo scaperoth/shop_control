@@ -1,0 +1,722 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0130)http://browse.calendar.gwu.edu/EventList.aspx?fromdate=10/28/2012&todate=11/26/2013&display=&view=Category&type=public&print=print -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us" xmlns:fb="http://www.facebook.com/2008/fbml"><head id="head1"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>
+	George Washington University - Category View
+</title><meta id="title1" name="title"><meta id="description1" name="description"><link href="./AllITLEvents_files/Calendar.css" type="text/css" rel="stylesheet">
+	    <script type="text/javascript" async="" src="./AllITLEvents_files/ga.js"></script><script src="./AllITLEvents_files/jquery.min.js" type="text/javascript"></script>
+	    <script src="./AllITLEvents_files/multiSelect.js" type="text/javascript"></script>
+	    
+		<script type="text/javascript" src="./AllITLEvents_files/PopupWindows.js"></script>
+		<script type="text/javascript" src="./AllITLEvents_files/QuickTip.js"></script>
+		<script type="text/javascript" src="./AllITLEvents_files/JSFunctions.js"></script> 
+
+		<script type="text/javascript"> 
+			function displayKeywordWindow(){
+				var new_window = window.open('KeywordList.aspx?keywords=' + encodeURIComponent(String("itl")), 'Category\SubCategory', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=0,width=380,height=228,left=212,top=50');
+				new_window.focus();
+				document.Form1.dlstCategory.selectedIndex = 0;   
+			}
+			             
+			function displaySelectedLocationsWindow(){  
+				var new_window = window.open('SelectedLocationList.aspx?locs=&lFormat=Location', 'Category\SubCategory', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=0,width=380,height=228,left=212,top=50');
+				new_window.focus();
+				document.Form1.dlstCategory.selectedIndex = 0;
+            }
+
+            $(document).ready(function () {
+                $(".expander").css("cursor", "pointer").click(function () {
+                    if ($(this).html() == "+") { 
+                        $(this).html("-");
+                        $("#" + $(this)[0].id.replace("a", "d")).toggle();
+                    } 
+                    else {
+                        $(this).html("+");
+                        $("#" + $(this)[0].id.replace("a", "d")).toggle();
+                    }
+                });
+
+
+                 $(".url").hover(  
+                        function (e) {    
+                            var dataurl= $(this).attr("data-url");
+                            var data= $(this).attr("data");
+                            initQuickTip(dataurl,data,e);
+                        },  
+                        function (e) {    
+                            removeTimouts();               
+                            startexitingQuickTip();
+                       }
+                     ); 
+
+                    $("#dlstView").prop('selectedIndex', 0);
+                    $("#dlstView").blur();
+
+                       $(".openInternetBrowser").click(function (e) {    
+                            e.stopPropagation();
+                            var dataurl= $(this).attr("data-url");
+                            openInternetBrowser(dataurl);
+                        });
+
+
+
+            });
+
+            function checkBoxSelector(toggle) {
+                $("#cellCBlock input:checkbox").attr("checked", toggle);
+            }
+
+            function openCategorySelector(){
+                var lAutoOpen = "Enable";
+                if(lAutoOpen == "Enable"){
+                    var new_window = window.open('CategorySubCategorySelect.aspx', '', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=0,width=380,height=400,left=212,top=50');
+		            new_window.focus();
+                }
+            }
+
+
+
+		</script>
+		
+	    <style type="text/css">
+                .modallayer {background-color:#C0C0C0;position:absolute;top:0px;left:0px;width:100%;}
+                .divlayer {position:absolute;display:none;}
+                .divlayerborder {border:solid 2px #214380;}
+                .divlayerbackground {background-color:#FFFFFF;}
+                .divlayerpadding {margin:5px;border:solid 1px #214380;}
+                .divlayerclosebar {}
+                .divlayercloseaction {float:right;font-weight:bold;padding-right:10px;}
+                .divlayerallaction {float:left;font-weight:bold;padding-left:10px;}
+                .divlayernoneaction {float:left;font-weight:bold;padding-left:10px;}
+                .divlayersaveaction {float:left;font-weight:bold;padding-left:10px;}               
+            </style>
+                <style type="text/css">#cellCBlock {height:150px;overflow-y:scroll;border-top:2px inset #C0C0C0;border-left:2px inset #C0C0C0;border-bottom:1px solid #C0C0C0;border-right:1px solid #C0C0C0;} .ccontainer {width:100%;} .sccontainer {margin-left:30px;display:none;} .listcolumnheadtext { background-color: #6699cc; color: white; padding-left:10px;} td.title { padding-left: 10px; } .listheadtext { background-color: white; color: #006699; font-weight: bold; font-size: 1.2em; padding-top:10px; padding-left: 10px; } .titleSmallGrid { font-weight:bold; color: #5d5d5d; font-size:1.2em; } .otherdaySmallGrid { background-color: white;} td.listbodytextalt { padding-left: 10px; background-color: #dddddd; } td.listbodytext { padding-left: 10px; } #lbtnSubmitEvents { font-weight:normal; text-transform: uppercase; font-size: 1em; margin-left: 10px; padding: 5px; } .listtableheadertext { color: #006699; } #txtStartDateSearch { margin-bottom: 10px; } #txtEndDateSearch { margin-bottom: 10px; } div#divLeft select.bodycopy { margin-left: 5px; } .eventlistdiv a, .eventlistdiv a:link, .eventlistdiv a:visited, .eventlistdiv a:hover, .eventlistdiv a:active { color: #2a72a7; } a.listtext, a:link.listtext, a:visited.listtext, a:hover.listtext, a:active.listtext { color: #222222; } .detailsview { color: #333333; } td.detailsview h3 {border-top: 3px dotted #D7D7D7; border-bottom: 3px dotted #D7D7D7; padding: 8px 0; }
+span#lblCategorys { font-weight:bold; color: #666666; }
+span#lblCustomField3 { font-weight:bold;  color: #666666; }
+span#lblCustomField4 { font-weight:bold; color: #666666; }
+span#lblCustomField1 {font-weight:bold;  color: #666666; }
+span#lblKeywords { font-weight:bold; color: #666666; }
+span#lblFrom { font-weight:bold; color: #666666; }
+span#lblTo {font-weight:bold;  color: #666666; } input#txtKeyword { margin-bottom:20px; } select.bodycopy  { font-weight: bold; color: #11324b; } td.listheadtext h2 { padding-top: 20px; border-top: 2px dotted #ddd; }</style><script type="text/javascript">var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-737548-3']);_gaq.push(['_trackPageview']);(function() {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);})();</script></head>
+	<body cz-shortcut-listen="true">
+      <div style="position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden;"><a href="http://browse.calendar.gwu.edu/EventList.aspx?fromdate=10/28/2012&todate=11/26/2013&display=&view=Category&type=public&print=print#skip" title="Skip to content">Skip to content</a></div> 
+	
+		<form name="Form1" method="post" action="http://browse.calendar.gwu.edu/EventList.aspx?fromdate=10%2f28%2f2012&todate=11%2f26%2f2013&display=&view=Category&type=public&print=print" id="Form1" enctype="application/x-www-form-urlencoded">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJOTU1NDQ0NzcwDxYsHhhFdmVudERldGFpbHNIZWxwRmlsZVBhdGgFIUNhbGVuZGFyRXZlbnREZXRhaWxzVmlld0hlbHAuYXNweB4WRXZlbnRzQ2FsZW5kYXJMYW5ndWFnZQUPRXZlbnRzIENhbGVuZGFyHhJTZWxlY3RXZWVrSW1hZ2VBbHQFDlNlbGVjdCBhIHdlZWsuHgtSU1NJbWFnZUFsdAUmU3Vic2NyaWJlIHRvIFJTUyBmZWVkIG9mIGN1cnJlbnQgdmlldy4eDkFsbERheUxhbmd1YWdlBQdBbGwgRGF5HhRMb2NhdGlvbkhlbHBGaWxlUGF0aAUdQ2FsZW5kYXJMb2NhdGlvblZpZXdIZWxwLmFzcHgeCVN0YXJ0VGltZWUeD0xpc3RWaWV3SGVhZGluZwVQPHNwYW4gY2xhc3M9Imxpc3R0YWJsZWhlYWRlcnRleHQiIHN0eWxlPSJmb250LXdlaWdodDpib2xkOyI+Q2F0ZWdvcnkgVmlldzwvc3Bhbj4eBFR5cGUFBnB1YmxpYx4EVmlldwUIQ2F0ZWdvcnkeBlRvRGF0ZQUKMTEvMjYvMjAxMx4HRW5kVGltZWUeFENhdGVnb3J5SGVscEZpbGVQYXRoBR1DYWxlbmRhckNhdGVnb3J5Vmlld0hlbHAuYXNweB4MTmV4dEltYWdlQWx0BQROZXh0HhBEYXRlSGVscEZpbGVQYXRoBRlDYWxlbmRhckRhdGVWaWV3SGVscC5hc3B4HglQYWdlVGl0bGUFKEdlb3JnZSBXYXNoaW5ndG9uIFVuaXZlcnNpdHkgLSBHcmlkIFZpZXceDENsaWNrVG9QcmludAUTQ2xpY2sgaGVyZSB0byBQcmludB4TU3VtbWFyeUhlbHBGaWxlUGF0aAUcQ2FsZW5kYXJTdW1tYXJ5TGlzdFZpZXcuYXNweB4QUHJldmlvdXNJbWFnZUFsdAUIUHJldmlvdXMeC0dyaWREaXNwbGF5ZB4LRm9yTGFuZ3VhZ2UFA2Zvch4IRnJvbURhdGUFCjEwLzI4LzIwMTIWAgIBD2QWDmYPDxYCHgdWaXNpYmxlZ2QWAgIBDxYCHgRUZXh0BZkDPHRhYmxlIGNlbGxwYWRkaW5nPSIwIiBjZWxsc3BhY2luZz0iMCIgYm9yZGVyPSIwIiB3aWR0aD0iMTAwJSI+PHRyPjx0ZCB3aWR0aD0iMTclIj4mbmJzcDs8L3RkPjx0ZCB3aWR0aD0iNjYlIiBjbGFzcz0idGl0bGUiIGFsaWduPSJjZW50ZXIiPlRlY2hub2xvZ3kgRXZlbnRzIENhbGVuZGFyIGZvciBHZW9yZ2UgV2FzaGluZ3RvbiBVbml2ZXJzaXR5PC90ZD48dGQgd2lkdGg9IjE3JSIgYWxpZ249InJpZ2h0IiBub3dyYXAgdmFsaWduPSJ0b3AiPjxhIHN0eWxlPSJmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToxLjVlbTtjb2xvcjpyZWQ7dGV4dC1kZWNvcmF0aW9uOnVuZGVybGluZTsiIGhyZWY9ImphdmFzY3JpcHQ6d2luZG93LnByaW50KCk7Ij5DbGljayBoZXJlIHRvIFByaW50PC9hPjwvdGQ+PC90cj48L3RhYmxlPmQCAQ8PFgIfFmhkFhhmDw8WAh8XBQ9EaXNwbGF5IEZvcm1hdDpkZAIBDxAPFgIfFmdkEBUCBlNlbGVjdA5EYXRlL1RpbWUgVmlldxUCBlNlbGVjdA5EYXRlL1RpbWUgVmlldxQrAwJnZxYBZmQCAg8PFgIfFwUKVGVjaG5vbG9neWRkAgMPDxYGHgdUb29sVGlwBSJHbyB0byBhZG1pbmlzdHJhdGl2ZSBsb2dpbiBzY3JlZW4uHxcFDVN1Ym1pdCBFdmVudHMfFmdkZAIEDw8WBB4ISW1hZ2VVcmwFDmltYWdlcy9EYXkuZ2lmHg1BbHRlcm5hdGVUZXh0BSFEaXNwbGF5IGFsbCB0aGUgZXZlbnRzIGZvciB0b2RheS5kZAIFDw8WBB8ZBQ9pbWFnZXMvV2Vlay5naWYfGgUsRGlzcGxheSBhbGwgdGhlIGV2ZW50cyBmb3IgdGhlIGN1cnJlbnQgd2Vlay5kZAIGDw8WBB8ZBRBpbWFnZXMvTW9udGguZ2lmHxoFLURpc3BsYXkgYWxsIHRoZSBldmVudHMgZm9yIHRoZSBjdXJyZW50IG1vbnRoLmRkAgcPDxYEHxkFD2ltYWdlcy9ZZWFyLmdpZh8aBSxEaXNwbGF5IGFsbCB0aGUgZXZlbnRzIGZvciB0aGUgY3VycmVudCB5ZWFyLmRkAgkPDxYKHxkFFGltYWdlcy9zdWJzY3JpYmUuZ2lmHxgFMUNsaWNrIHRvIHN1YnNjcmliZSB0byB0aGUgY3VycmVudCB2aWV3IG9mIGV2ZW50cy4fFwUxQ2xpY2sgdG8gc3Vic2NyaWJlIHRvIHRoZSBjdXJyZW50IHZpZXcgb2YgZXZlbnRzLh4LTmF2aWdhdGVVcmwFASMfFmcWAh4Hb25jbGljawUXY2FsZW5kYXJTdWJzY3JpcHRpb24oKTtkAgoPDxYKHxkFE2ltYWdlcy9kb3dubG9hZC5naWYfGAU6Q2xpY2sgdG8gZG93bmxvYWQgZXZlbnRzIHNob3duIGluIENTViwgaUNBTCBvciBYTUwgZm9ybWF0Lh8XBTpDbGljayB0byBkb3dubG9hZCBldmVudHMgc2hvd24gaW4gQ1NWLCBpQ0FMIG9yIFhNTCBmb3JtYXQuHxsFASMfFmcWAh8cBYMBZG93bmxvYWRUeXBlKCdkb3dubG9hZHR5cGUuYXNweD9mcm9tZGF0ZT0xMC8yOC8yMDEyJnRvZGF0ZT0xMS8yNi8yMDEzJmRpc3BsYXk9JnZpZXc9Q2F0ZWdvcnkmdHlwZT1wdWJsaWMmZG93bmxvYWQ9ZG93bmxvYWQnLGV2ZW50KTtkAgsPDxYIHxkFD2ltYWdlcy9oZWxwLmdpZh8YBSpDbGljayBmb3IgaGVscCBpbiB1c2luZyBjYWxlbmRhciBkaXNwbGF5cy4fFwUqQ2xpY2sgZm9yIGhlbHAgaW4gdXNpbmcgY2FsZW5kYXIgZGlzcGxheXMuHxsFKUNhbGVuZGFyQ2F0ZWdvcnlWaWV3SGVscC5hc3B4P3R5cGU9cHVibGljZGQCDA8PFgofGQUQaW1hZ2VzL3ByaW50LmdpZh8YBSlQcmludCB0aGUgY29udGVudHMgb2YgdGhlIGN1cnJlbnQgc2NyZWVuLh8XBSlQcmludCB0aGUgY29udGVudHMgb2YgdGhlIGN1cnJlbnQgc2NyZWVuLh8bBWNFdmVudExpc3QuYXNweD9mcm9tZGF0ZT0xMC8yOC8yMDEyJnRvZGF0ZT0xMS8yNi8yMDEzJmRpc3BsYXk9JnZpZXc9Q2F0ZWdvcnkmdHlwZT1wdWJsaWMmcHJpbnQ9cHJpbnQfFmdkZAICDw8WAh8WaGQWSgICDw8WAh8XBQ5EaXNwbGF5IE1vbnRoOmRkAgMPEGQPFg1mAgECAgIDAgQCBQIGAgcCCAIJAgoCCwIMFg0QBQZTZWxlY3QFBlNlbGVjdGcQBQdKYW51YXJ5BQdKYW51YXJ5ZxAFCEZlYnJ1YXJ5BQhGZWJydWFyeWcQBQVNYXJjaAUFTWFyY2hnEAUFQXByaWwFBUFwcmlsZxAFA01heQUDTWF5ZxAFBEp1bmUFBEp1bmVnEAUESnVseQUESnVseWcQBQZBdWd1c3QFBkF1Z3VzdGcQBQlTZXB0ZW1iZXIFCVNlcHRlbWJlcmcQBQdPY3RvYmVyBQdPY3RvYmVyZxAFCE5vdmVtYmVyBQhOb3ZlbWJlcmcQBQhEZWNlbWJlcgUIRGVjZW1iZXJnFgFmZAIEDw8WAh8XBQ9BZHZhbmNlZCBTZWFyY2hkZAIFDw8WAh8XBTE8c3BhbiBzdHlsZT0iZm9udC1zaXplOjAuOGVtIj4oTmV3IFNlYXJjaCk8L3NwYW4+ZGQCBg8PFgIfFwUFRnJvbTpkZAIHDw8WAh8XBQoxMC8yOC8yMDEzZGQCCg8PFgIfFwUDVG86ZGQCCw8PFgIfFwUKMTAvMjgvMjAxM2RkAg4PDxYCHxcFC0RhdGUgUmFuZ2U6ZGQCDw8QZA8WEGYCAQICAgMCBAIFAgYCBwIIAgkCCgILAgwCDQIOAg8WEBAFBlNlbGVjdAUGU2VsZWN0ZxAFBVRvZGF5BQV0b2RheWcQBQhUb21vcnJvdwUIdG9tb3Jyb3dnEAUMQ3VycmVudCBXZWVrBQtjdXJyZW50d2Vla2cQBQ1DdXJyZW50IE1vbnRoBQxjdXJyZW50bW9udGhnEAUMQ3VycmVudCBZZWFyBQtjdXJyZW50eWVhcmcQBQtOZXh0IDcgRGF5cwUFbmV4dDdnEAUMTmV4dCAxNCBEYXlzBQZuZXh0MTRnEAUMTmV4dCAzMCBEYXlzBQZuZXh0MzBnEAUJTmV4dCBXZWVrBQhuZXh0d2Vla2cQBQpOZXh0IE1vbnRoBQluZXh0bW9udGhnEAUMTmV4dCA0NSBEYXlzBQZuZXh0NDVnEAUMTmV4dCA2MCBEYXlzBQZuZXh0NjBnEAUMTmV4dCA5MCBEYXlzBQZuZXh0OTBnEAUNTmV4dCAzNjUgRGF5cwUHbmV4dDM2NWcQBQlOZXh0IFllYXIFCG5leHR5ZWFyZxYBZmQCEA8PFgIfFwULVGltZSBSYW5nZTpkZAIRDxBkDxYFZgIBAgICAwIEFgUQBQZTZWxlY3QFBlNlbGVjdGcQBRFNaWRuaWdodCDigJMgNSBhbQUTMTI6MDA6MDEgQU0sNTowMCBBTWcQBQ01IGFtIOKAkyBOb29uBRA1OjAwIEFNLDEyOjAwIFBNZxAFDE5vb24gdG8gNSBwbQUQMTI6MDAgUE0sNTowMCBQTWcQBQ41cG0gLSBNaWRuaWdodAUTNTowMCBQTSwxMTo1OTo1OSBQTWcWAWZkAhYPEA8WAh4LXyFEYXRhQm91bmRnZBAVNQZTZWxlY3QCQUsCQUwCQVICQVoCQ0ECQ08CQ1QCREMCREUCRkwCR0ECSEkCSUECSUQCSUwCSU4CS1MCS1kCTEECTUECTUQCTUUCTUkCTU4CTU8CTVMCTVQCTkMCTkQCTkUCTkgCTkoCTk0CTlYCTlkCT0gCT0sCT1ICUEECUFICUkkCU0MCU0QCVE4CVFgCVVQCVkECVlQCV0ECV0kCV1YCV1kVNQACQUsCQUwCQVICQVoCQ0ECQ08CQ1QCREMCREUCRkwCR0ECSEkCSUECSUQCSUwCSU4CS1MCS1kCTEECTUECTUQCTUUCTUkCTU4CTU8CTVMCTVQCTkMCTkQCTkUCTkgCTkoCTk0CTlYCTlkCT0gCT0sCT1ICUEECUFICUkkCU0MCU0QCVE4CVFgCVVQCVkECVlQCV0ECV0kCV1YCV1kUKwM1Z2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2cWAWZkAhoPEGRkFgBkAhwPEA8WAh8dZ2QQFQsGU2VsZWN0ATUCMTACMTUCMjACMjUCMzACMzUCNDACNDUCNTAVCwEwATUCMTACMTUCMjACMjUCMzACMzUCNDACNDUCNTAUKwMLZ2dnZ2dnZ2dnZ2cWAWZkAh0PDxYEHhNBc3NvY2lhdGVkQ29udHJvbElEBQpjZWxsQ0Jsb2NrHxcFDENhdGVnb3J5KHMpOmRkAh4PZBZSZg9kFgJmD2QWAmYPDxYCHxcFBiZuYnNwO2RkAgEPZBYCZg9kFgJmDw8WAh8XBQYmbmJzcDtkZAIEDxBkZBYAZAIGD2QWAmYPZBYCZg8PFgIfFwUGJm5ic3A7ZGQCBw9kFgJmD2QWAmYPDxYCHxcFBiZuYnNwO2RkAggPZBYCZg9kFgJmDw8WAh8XBQYmbmJzcDtkZAILDxBkZBYAZAIPDxBkZBYAZAIRD2QWAmYPZBYCZg8PFgIfFwUGJm5ic3A7ZGQCFA8QZGQWAGQCFg9kFgJmD2QWAmYPDxYCHxcFBiZuYnNwO2RkAhcPZBYCZg9kFgJmDw8WAh8XBQYmbmJzcDtkZAIaDxBkZBYAZAIcD2QWAmYPZBYCZg8PFgIfFwUGJm5ic3A7ZGQCHQ9kFgJmD2QWAmYPDxYCHxcFBiZuYnNwO2RkAh4PZBYCZg9kFgJmDw8WAh8XBQYmbmJzcDtkZAIfD2QWAmYPZBYCZg8PFgIfFwUGJm5ic3A7ZGQCIA9kFgJmD2QWAmYPDxYCHxcFBiZuYnNwO2RkAiEPZBYCZg9kFgJmDw8WAh8XBQYmbmJzcDtkZAIiD2QWAmYPZBYCZg8PFgIfFwUGJm5ic3A7ZGQCIw9kFgJmD2QWAmYPDxYCHxcFBiZuYnNwO2RkAiQPZBYCZg9kFgJmDw8WAh8XBQYmbmJzcDtkZAIlD2QWAmYPZBYCZg8PFgIfFwUGJm5ic3A7ZGQCJg9kFgJmD2QWAmYPDxYCHxcFBiZuYnNwO2RkAicPZBYCZg9kFgJmDw8WAh8XBQYmbmJzcDtkZAIoD2QWAmYPZBYCZg8PFgIfFwUGJm5ic3A7ZGQCKQ9kFgJmD2QWAmYPDxYCHxcFBiZuYnNwO2RkAioPZBYCZg9kFgJmDw8WAh8XBQYmbmJzcDtkZAIrD2QWAmYPZBYCZg8PFgIfFwUGJm5ic3A7ZGQCLA9kFgJmD2QWAmYPDxYCHxcFBiZuYnNwO2RkAi0PZBYCZg9kFgJmDw8WAh8XBQYmbmJzcDtkZAIuD2QWAmYPZBYCZg8PFgIfFwUGJm5ic3A7ZGQCLw9kFgJmD2QWAmYPDxYCHxcFBiZuYnNwO2RkAjAPZBYCZg9kFgJmDw8WAh8XBQYmbmJzcDtkZAIxD2QWAmYPZBYCZg8PFgIfFwUGJm5ic3A7ZGQCNA8QZGQWAGQCNg9kFgJmD2QWAmYPDxYCHxcFBiZuYnNwO2RkAjcPZBYCZg9kFgRmDw8WAh8XBQYmbmJzcDtkZAIBD2QWAmYPEA8WAh4HQ2hlY2tlZGdkZGRkAjgPZBYCZg9kFgJmDw8WAh8XBQYmbmJzcDtkZAI7DxBkZBYAZAI/DxBkZBYAZAIfDxAPZBYEHghvbmNoYW5nZQUfZGlzcGxheU11bHRpcGxlQ2F0ZWdvcnlXaW5kb3coKR4Fc3R5bGUFDHdpZHRoOjE3MnB4Ow8WA2YCAQICFgMQBQZTZWxlY3QFBlNlbGVjdGcQBQpTZWxlY3QgQWxsBQpTZWxlY3QgQWxsZxAFD1NlbGVjdCBNdWx0aXBsZQUPU2VsZWN0IE11bHRpcGxlZxYBZmQCIQ8PFgIfFwUMTG9jYXRpb24ocyk6ZGQCIg8QD2QWBB8gBR9kaXNwbGF5TXVsdGlwbGVMb2NhdGlvbldpbmRvdygpHyEFDHdpZHRoOjE3MnB4Ow8WCGYCAQICAgMCBAIFAgYCBxYIEAUGU2VsZWN0BQZTZWxlY3RnEAUKU2VsZWN0IEFsbAUKU2VsZWN0IEFsbGcQBQ9TZWxlY3QgTXVsdGlwbGUFD1NlbGVjdCBNdWx0aXBsZWcQBQxGb2dneSBCb3R0b20FATZnEAUMTW91bnQgVmVybm9uBQE3ZxAFCk9mZiBDYW1wdXMFATVnEAUGT25saW5lBQI0M2cQBSRWaXJnaW5pYSBTY2llbmNlICYgVGVjaG5vbG9neSBDYW1wdXMFAThnFgFmZAIjDxYCHglpbm5lcmh0bWwFBihWaWV3KWQCJA8PFgIfFwUWVGhpcyBldmVudCBpcyBvcGVuIHRvOmRkAiUPEA8WAh8dZxYCHyAFD3Nob3dMYXllcignMycpOxAVFQZTZWxlY3QKU2VsZWN0IEFsbA9TZWxlY3QgTXVsdGlwbGUGQWx1bW5pCUNvbW11bml0eQ9FbXBsb3llZXMgLSBBbGwTRW1wbG95ZWVzIC0gRmFjdWx0eRFFbXBsb3llZXMgLSBTdGFmZhRFbXBsb3llZXMgLSBSZXNlYXJjaBNFbXBsb3llZXMgLSBTdHVkZW50D0VtcGxveWVlcyAtIE5ldw5HZW5lcmFsIFB1YmxpYwVNZWRpYQdQYXJlbnRzC1Jlc2VhcmNoZXJzDlN0dWRlbnRzIC0gQWxsGFN0dWRlbnRzIC0gVW5kZXJncmFkdWF0ZRNTdHVkZW50cyAtIEdyYWR1YXRlGFN0dWRlbnRzIC0gSW50ZXJuYXRpb25hbBZTdHVkZW50cyAtIFByb3NwZWN0aXZlEkJ5IEludml0YXRpb24gT25seRUVAApTZWxlY3QgQWxsD1NlbGVjdCBNdWx0aXBsZQZBbHVtbmkJQ29tbXVuaXR5D0VtcGxveWVlcyAtIEFsbBNFbXBsb3llZXMgLSBGYWN1bHR5EUVtcGxveWVlcyAtIFN0YWZmFEVtcGxveWVlcyAtIFJlc2VhcmNoE0VtcGxveWVlcyAtIFN0dWRlbnQPRW1wbG95ZWVzIC0gTmV3DkdlbmVyYWwgUHVibGljBU1lZGlhB1BhcmVudHMLUmVzZWFyY2hlcnMOU3R1ZGVudHMgLSBBbGwYU3R1ZGVudHMgLSBVbmRlcmdyYWR1YXRlE1N0dWRlbnRzIC0gR3JhZHVhdGUYU3R1ZGVudHMgLSBJbnRlcm5hdGlvbmFsFlN0dWRlbnRzIC0gUHJvc3BlY3RpdmUSQnkgSW52aXRhdGlvbiBPbmx5FCsDFWdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZxYBZmQCJg8PFgIfFwUGKFZpZXcpFgIfIQUNZGlzcGxheTogbm9uZWQCJw8PFgIfFwUYRXZlbnQgRm9ybWF0ICYgRmVhdHVyZXM6ZGQCKA8QDxYCHx1nFgIfIAUPc2hvd0xheWVyKCc0Jyk7EBUWBlNlbGVjdApTZWxlY3QgQWxsD1NlbGVjdCBNdWx0aXBsZRRBd2FyZHMgJiBSZWNvZ25pdGlvbhhCcm9hZGNhc3Qgb3IgTGl2ZSBUYXBpbmcIRGVhZGxpbmUKRGlzY3Vzc2lvbgdFeGhpYml0BEZhaXIJRnJlZSBGb29kCkhhcHB5IEhvdXITSW5mb3JtYXRpb24gU2Vzc2lvbgdMZWN0dXJlB01lZXRpbmcKTmV0d29ya2luZwpPcGVuIEhvdXNlC09yaWVudGF0aW9uH1BlcmZvcm1hbmNlLCBDb25jZXJ0IG9yIFJlY2l0YWwEVG91cghUcmFpbmluZwdXZWJpbmFyH1dvcmtzaG9wLCBTZW1pbmFyIG9yIENvbmZlcmVuY2UVFgAKU2VsZWN0IEFsbA9TZWxlY3QgTXVsdGlwbGUUQXdhcmRzICYgUmVjb2duaXRpb24YQnJvYWRjYXN0IG9yIExpdmUgVGFwaW5nCERlYWRsaW5lCkRpc2N1c3Npb24HRXhoaWJpdARGYWlyCUZyZWUgRm9vZApIYXBweSBIb3VyE0luZm9ybWF0aW9uIFNlc3Npb24HTGVjdHVyZQdNZWV0aW5nCk5ldHdvcmtpbmcKT3BlbiBIb3VzZQtPcmllbnRhdGlvbh9QZXJmb3JtYW5jZSwgQ29uY2VydCBvciBSZWNpdGFsBFRvdXIIVHJhaW5pbmcHV2ViaW5hch9Xb3Jrc2hvcCwgU2VtaW5hciBvciBDb25mZXJlbmNlFCsDFmdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2cWAWZkAikPDxYCHxcFBihWaWV3KRYCHyEFDWRpc3BsYXk6IG5vbmVkAioPDxYCHxcFB1NlcmllczpkZAIrDxAPFgIfHWcWAh8gBQ9zaG93TGF5ZXIoJzEnKTsQFREGU2VsZWN0ClNlbGVjdCBBbGwPU2VsZWN0IE11bHRpcGxlLkFzaWFuIFBhY2lmaWMgSXNsYW5kZXIgQW1lcmljYW4gSGVyaXRhZ2UgTW9udGgUQmxhY2sgSGVyaXRhZ2UgTW9udGgdQnJlYXN0IENhbmNlciBBd2FyZW5lc3MgTW9udGgVQ29sb25pYWwgSW5hdWd1cmF0aW9uDENvbW1lbmNlbWVudAtFYXJ0aCBNb250aAlGbHUgU2hvdHMJR3JhZCBXZWVrF0hpc3BhbmljIEhlcml0YWdlIE1vbnRoJEh1bmdlciAmIEhvbWVsZXNzbmVzcyBBd2FyZW5lc3MgV2Vlaw9PcGVuIEVucm9sbG1lbnQMV2VsY29tZSBXZWVrEVdlbGNvbWUgQmFjayBXZWVrFVdvbWVuJ3MgSGlzdG9yeSBNb250aBURAApTZWxlY3QgQWxsD1NlbGVjdCBNdWx0aXBsZS5Bc2lhbiBQYWNpZmljIElzbGFuZGVyIEFtZXJpY2FuIEhlcml0YWdlIE1vbnRoFEJsYWNrIEhlcml0YWdlIE1vbnRoHUJyZWFzdCBDYW5jZXIgQXdhcmVuZXNzIE1vbnRoFUNvbG9uaWFsIEluYXVndXJhdGlvbgxDb21tZW5jZW1lbnQLRWFydGggTW9udGgJRmx1IFNob3RzCUdyYWQgV2VlaxdIaXNwYW5pYyBIZXJpdGFnZSBNb250aCRIdW5nZXIgJiBIb21lbGVzc25lc3MgQXdhcmVuZXNzIFdlZWsPT3BlbiBFbnJvbGxtZW50DFdlbGNvbWUgV2VlaxFXZWxjb21lIEJhY2sgV2VlaxVXb21lbidzIEhpc3RvcnkgTW9udGgUKwMRZ2dnZ2dnZ2dnZ2dnZ2dnZ2cWAWZkAiwPDxYCHxcFBihWaWV3KRYCHyEFDWRpc3BsYXk6IG5vbmVkAi4PEGRkFgBkAi8PDxYCHxcFBihWaWV3KRYCHyEFDWRpc3BsYXk6IG5vbmVkAjAPDxYCHxcFC0tleXdvcmQocyk6ZGQCMQ8PFgQfGAUdU2VhcmNoIGZvciBldmVudHMgYnkga2V5d29yZC4fFwUDaXRsFgIfIQUMd2lkdGg6MTcycHg7ZAIyDxYEHyIFBihWaWV3KR8WZ2QCMw8PFgIfFmhkZAI0Dw8WBh8YBSJTZWFyY2ggdG8gbmFycm93IHRoZSBldmVudHMgc2hvd24uHxcFDFZpZXcgUmVzdWx0cx8WZ2RkAgMPZBYGAgEPFgIfFwXxAzxzcGFuIGNsYXNzPSJsaXN0dGFibGVoZWFkZXJ0ZXh0IiBzdHlsZT0iZm9udC13ZWlnaHQ6Ym9sZDsiPkNhdGVnb3J5IFZpZXc8L3NwYW4+Jm5ic3A7Jm5ic3A7PGEgaHJlZj0iIyIgb25jbGljaz0icnNzVHlwZSgpOyI+PGltZyBzcmM9ImltYWdlcy9yc3NfbmV3LmdpZiIgYm9yZGVyPSIwIiBhbHQ9IlN1YnNjcmliZSB0byBSU1MgZmVlZCBvZiBjdXJyZW50IHZpZXcuIi8+PC9hPjxpbnB1dCB0eXBlPSJoaWRkZW4iIHZhbHVlPSJSU1NTeW5kaWNhdG9yLmFzcHg/Y2F0ZWdvcnk9MjQtMCZsb2NhdGlvbj0mdHlwZT1OJnN0YXJ0aW5nPTEwLzI4LzIwMTImZW5kaW5nPTExLzI2LzIwMTMmYmluYXJ5PVkma2V5d29yZHM9aXRsIiBpZD0iaGRuUnNzU3RhdGljIiAvPjxpbnB1dCB0eXBlPSJoaWRkZW4iIHZhbHVlPSJSU1NTeW5kaWNhdG9yLmFzcHg/Y2F0ZWdvcnk9MjQtMCZsb2NhdGlvbj0mdHlwZT1OJmJpbmFyeT1ZJmtleXdvcmRzPWl0bCIgaWQ9ImhkblJzc09uZ29pbmciIC8+ZAIDDxYCHxcFazxzcGFuIGNsYXNzPSJsaXN0dGFibGVoZWFkZXJ0ZXh0IiBzdHlsZT0iZm9udC13ZWlnaHQ6Ym9sZDsiPk9jdG9iZXIgMjgsIDIwMTIgLSBOb3ZlbWJlciAyNiwgMjAxMzwvc3Bhbj48YnI+ZAIFDw8WBB8XZR8WaGRkAgYPDxYCHxZoZGQCBw8PFgIfFmhkFgJmD2QWAmYPZBYCZg8PFgIfF2VkZAIID2QWBgIBDxBkDxYOZgIBAgICAwIEAgUCBgIHAggCCQIKAgsCDAINFg4QBS5Bc2lhbiBQYWNpZmljIElzbGFuZGVyIEFtZXJpY2FuIEhlcml0YWdlIE1vbnRoBS5Bc2lhbiBQYWNpZmljIElzbGFuZGVyIEFtZXJpY2FuIEhlcml0YWdlIE1vbnRoZxAFFEJsYWNrIEhlcml0YWdlIE1vbnRoBRRCbGFjayBIZXJpdGFnZSBNb250aGcQBR1CcmVhc3QgQ2FuY2VyIEF3YXJlbmVzcyBNb250aAUdQnJlYXN0IENhbmNlciBBd2FyZW5lc3MgTW9udGhnEAUVQ29sb25pYWwgSW5hdWd1cmF0aW9uBRVDb2xvbmlhbCBJbmF1Z3VyYXRpb25nEAUMQ29tbWVuY2VtZW50BQxDb21tZW5jZW1lbnRnEAULRWFydGggTW9udGgFC0VhcnRoIE1vbnRoZxAFCUZsdSBTaG90cwUJRmx1IFNob3RzZxAFCUdyYWQgV2VlawUJR3JhZCBXZWVrZxAFF0hpc3BhbmljIEhlcml0YWdlIE1vbnRoBRdIaXNwYW5pYyBIZXJpdGFnZSBNb250aGcQBSRIdW5nZXIgJiBIb21lbGVzc25lc3MgQXdhcmVuZXNzIFdlZWsFJEh1bmdlciAmIEhvbWVsZXNzbmVzcyBBd2FyZW5lc3MgV2Vla2cQBQ9PcGVuIEVucm9sbG1lbnQFD09wZW4gRW5yb2xsbWVudGcQBQxXZWxjb21lIFdlZWsFDFdlbGNvbWUgV2Vla2cQBRFXZWxjb21lIEJhY2sgV2VlawURV2VsY29tZSBCYWNrIFdlZWtnEAUVV29tZW4ncyBIaXN0b3J5IE1vbnRoBRVXb21lbidzIEhpc3RvcnkgTW9udGhnZGQCCQ8QZA8WEmYCAQICAgMCBAIFAgYCBwIIAgkCCgILAgwCDQIOAg8CEAIRFhIQBQZBbHVtbmkFBkFsdW1uaWcQBQlDb21tdW5pdHkFCUNvbW11bml0eWcQBQ9FbXBsb3llZXMgLSBBbGwFD0VtcGxveWVlcyAtIEFsbGcQBRNFbXBsb3llZXMgLSBGYWN1bHR5BRNFbXBsb3llZXMgLSBGYWN1bHR5ZxAFEUVtcGxveWVlcyAtIFN0YWZmBRFFbXBsb3llZXMgLSBTdGFmZmcQBRRFbXBsb3llZXMgLSBSZXNlYXJjaAUURW1wbG95ZWVzIC0gUmVzZWFyY2hnEAUTRW1wbG95ZWVzIC0gU3R1ZGVudAUTRW1wbG95ZWVzIC0gU3R1ZGVudGcQBQ9FbXBsb3llZXMgLSBOZXcFD0VtcGxveWVlcyAtIE5ld2cQBQ5HZW5lcmFsIFB1YmxpYwUOR2VuZXJhbCBQdWJsaWNnEAUFTWVkaWEFBU1lZGlhZxAFB1BhcmVudHMFB1BhcmVudHNnEAULUmVzZWFyY2hlcnMFC1Jlc2VhcmNoZXJzZxAFDlN0dWRlbnRzIC0gQWxsBQ5TdHVkZW50cyAtIEFsbGcQBRhTdHVkZW50cyAtIFVuZGVyZ3JhZHVhdGUFGFN0dWRlbnRzIC0gVW5kZXJncmFkdWF0ZWcQBRNTdHVkZW50cyAtIEdyYWR1YXRlBRNTdHVkZW50cyAtIEdyYWR1YXRlZxAFGFN0dWRlbnRzIC0gSW50ZXJuYXRpb25hbAUYU3R1ZGVudHMgLSBJbnRlcm5hdGlvbmFsZxAFFlN0dWRlbnRzIC0gUHJvc3BlY3RpdmUFFlN0dWRlbnRzIC0gUHJvc3BlY3RpdmVnEAUSQnkgSW52aXRhdGlvbiBPbmx5BRJCeSBJbnZpdGF0aW9uIE9ubHlnZGQCDQ8QZA8WE2YCAQICAgMCBAIFAgYCBwIIAgkCCgILAgwCDQIOAg8CEAIRAhIWExAFFEF3YXJkcyAmIFJlY29nbml0aW9uBRRBd2FyZHMgJiBSZWNvZ25pdGlvbmcQBRhCcm9hZGNhc3Qgb3IgTGl2ZSBUYXBpbmcFGEJyb2FkY2FzdCBvciBMaXZlIFRhcGluZ2cQBQhEZWFkbGluZQUIRGVhZGxpbmVnEAUKRGlzY3Vzc2lvbgUKRGlzY3Vzc2lvbmcQBQdFeGhpYml0BQdFeGhpYml0ZxAFBEZhaXIFBEZhaXJnEAUJRnJlZSBGb29kBQlGcmVlIEZvb2RnEAUKSGFwcHkgSG91cgUKSGFwcHkgSG91cmcQBRNJbmZvcm1hdGlvbiBTZXNzaW9uBRNJbmZvcm1hdGlvbiBTZXNzaW9uZxAFB0xlY3R1cmUFB0xlY3R1cmVnEAUHTWVldGluZwUHTWVldGluZ2cQBQpOZXR3b3JraW5nBQpOZXR3b3JraW5nZxAFCk9wZW4gSG91c2UFCk9wZW4gSG91c2VnEAULT3JpZW50YXRpb24FC09yaWVudGF0aW9uZxAFH1BlcmZvcm1hbmNlLCBDb25jZXJ0IG9yIFJlY2l0YWwFH1BlcmZvcm1hbmNlLCBDb25jZXJ0IG9yIFJlY2l0YWxnEAUEVG91cgUEVG91cmcQBQhUcmFpbmluZwUIVHJhaW5pbmdnEAUHV2ViaW5hcgUHV2ViaW5hcmcQBR9Xb3Jrc2hvcCwgU2VtaW5hciBvciBDb25mZXJlbmNlBR9Xb3Jrc2hvcCwgU2VtaW5hciBvciBDb25mZXJlbmNlZ2RkGAEFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxY3BRJjYmxDdXN0b21GaWVsZF8xJDAFEmNibEN1c3RvbUZpZWxkXzEkMQUSY2JsQ3VzdG9tRmllbGRfMSQyBRJjYmxDdXN0b21GaWVsZF8xJDMFEmNibEN1c3RvbUZpZWxkXzEkNAUSY2JsQ3VzdG9tRmllbGRfMSQ1BRJjYmxDdXN0b21GaWVsZF8xJDYFEmNibEN1c3RvbUZpZWxkXzEkNwUSY2JsQ3VzdG9tRmllbGRfMSQ4BRJjYmxDdXN0b21GaWVsZF8xJDkFE2NibEN1c3RvbUZpZWxkXzEkMTAFE2NibEN1c3RvbUZpZWxkXzEkMTEFE2NibEN1c3RvbUZpZWxkXzEkMTIFE2NibEN1c3RvbUZpZWxkXzEkMTMFE2NibEN1c3RvbUZpZWxkXzEkMTMFEmNibEN1c3RvbUZpZWxkXzIkMAUSY2JsQ3VzdG9tRmllbGRfMyQwBRJjYmxDdXN0b21GaWVsZF8zJDEFEmNibEN1c3RvbUZpZWxkXzMkMgUSY2JsQ3VzdG9tRmllbGRfMyQzBRJjYmxDdXN0b21GaWVsZF8zJDQFEmNibEN1c3RvbUZpZWxkXzMkNQUSY2JsQ3VzdG9tRmllbGRfMyQ2BRJjYmxDdXN0b21GaWVsZF8zJDcFEmNibEN1c3RvbUZpZWxkXzMkOAUSY2JsQ3VzdG9tRmllbGRfMyQ5BRNjYmxDdXN0b21GaWVsZF8zJDEwBRNjYmxDdXN0b21GaWVsZF8zJDExBRNjYmxDdXN0b21GaWVsZF8zJDEyBRNjYmxDdXN0b21GaWVsZF8zJDEzBRNjYmxDdXN0b21GaWVsZF8zJDE0BRNjYmxDdXN0b21GaWVsZF8zJDE1BRNjYmxDdXN0b21GaWVsZF8zJDE2BRNjYmxDdXN0b21GaWVsZF8zJDE3BRNjYmxDdXN0b21GaWVsZF8zJDE3BRJjYmxDdXN0b21GaWVsZF80JDAFEmNibEN1c3RvbUZpZWxkXzQkMQUSY2JsQ3VzdG9tRmllbGRfNCQyBRJjYmxDdXN0b21GaWVsZF80JDMFEmNibEN1c3RvbUZpZWxkXzQkNAUSY2JsQ3VzdG9tRmllbGRfNCQ1BRJjYmxDdXN0b21GaWVsZF80JDYFEmNibEN1c3RvbUZpZWxkXzQkNwUSY2JsQ3VzdG9tRmllbGRfNCQ4BRJjYmxDdXN0b21GaWVsZF80JDkFE2NibEN1c3RvbUZpZWxkXzQkMTAFE2NibEN1c3RvbUZpZWxkXzQkMTEFE2NibEN1c3RvbUZpZWxkXzQkMTIFE2NibEN1c3RvbUZpZWxkXzQkMTMFE2NibEN1c3RvbUZpZWxkXzQkMTQFE2NibEN1c3RvbUZpZWxkXzQkMTUFE2NibEN1c3RvbUZpZWxkXzQkMTYFE2NibEN1c3RvbUZpZWxkXzQkMTcFE2NibEN1c3RvbUZpZWxkXzQkMTgFE2NibEN1c3RvbUZpZWxkXzQkMTgvAfRfi8Uye3oNkPrACAaiNfuYDQ==">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['Form1'];
+if (!theForm) {
+    theForm = document.Form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="./AllITLEvents_files/WebResource.axd" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+_gaq.push(['_trackEvent', 'Search Events','Start Date: 10/28/2012 End Date: 11/26/2013  Keywords: AND (Event_Details.event_name LIKE N'%itl%' OR Event_Details.event_description LIKE N'%itl%' OR Event_Details.admission_info LIKE N'%itl%' OR Event_Details.directions LIKE N'%itl%' OR Event_Details.custom_field_1 LIKE N'%itl%' OR Event_Details.custom_field_2 LIKE N'%itl%' OR Event_Image.image_alt LIKE N'%itl%' OR Event_Image.image_fname LIKE N'%itl%' OR Event_Attachment.attch_alt LIKE N'%itl%' OR Event_Attachment.attch_fname LIKE N'%itl%' OR Event_Details.contact_name LIKE N'%itl%' OR Location.loc_name LIKE N'%itl%' OR Building.build_name LIKE N'%itl%' OR Room.room_name LIKE N'%itl%' OR Category.ctgry_name LIKE N'%itl%' OR SubCategory.subctgry_name LIKE N'%itl%') Categories: Technology']);//]]>
+</script>
+
+<div>
+
+	<input type="hidden" name="__SCROLLPOSITIONX" id="__SCROLLPOSITIONX" value="0">
+	<input type="hidden" name="__SCROLLPOSITIONY" id="__SCROLLPOSITIONY" value="0">
+	<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+	<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+</div>
+		<div class="eventlistdiv">
+		    <input type="hidden" value="Location" id="p_LocationColumnField" name="p_LocationColumnField">
+			<div id="pnlPrintRange">
+	
+				<table cellpadding="0" cellspacing="0" border="0" width="100%"><tbody><tr><td width="17%">&nbsp;</td><td width="66%" class="title" align="center">Technology Events Calendar for George Washington University</td><td width="17%" align="right" nowrap="" valign="top"><a style="font-weight:bold;font-size:1.5em;color:red;text-decoration:underline;" href="javascript:window.print();">Click here to Print</a></td></tr></tbody></table>
+			
+</div>
+			
+			<table id="PageTable" cellspacing="0" cellpadding="5" width="100%" border="0">
+				<tbody><tr>
+					<td valign="top">
+						
+					</td>
+					<td valign="top" align="left" width="100%"><a id="events"></a><a name="skip"></a>
+						<div id="pnlListviewHeading">
+	
+							<table cellspacing="0" cellpadding="1" width="100%" border="0">
+								<tbody><tr>
+									<td><span class="listtableheadertext" style="font-weight:bold;">Category View</span>&nbsp;&nbsp;<a href="http://browse.calendar.gwu.edu/EventList.aspx?fromdate=10/28/2012&todate=11/26/2013&display=&view=Category&type=public&print=print#" onclick="rssType();"><img src="./AllITLEvents_files/rss_new.gif" border="0" alt="Subscribe to RSS feed of current view."></a><input type="hidden" value="RSSSyndicator.aspx?category=24-0&amp;location=&amp;type=N&amp;starting=10/28/2012&amp;ending=11/26/2013&amp;binary=Y&amp;keywords=itl" id="hdnRssStatic"><input type="hidden" value="RSSSyndicator.aspx?category=24-0&amp;location=&amp;type=N&amp;binary=Y&amp;keywords=itl" id="hdnRssOngoing"></td>
+									<td align="right"><span class="listtableheadertext" style="font-weight:bold;">October 28, 2012 - November 26, 2013</span><br></td>
+								</tr>
+								<tr>
+								    <td></td>
+								</tr>
+							</tbody></table>
+						
+</div>
+						<div id="divTableEvents"><table id="tblEvents" cellspacing="1" cellpadding="1" border="0" style="width:100%;">
+	<tbody><tr>
+		<td class="title" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;"><b>Technology</b></td>
+	</tr><tr>
+		<th class="listcolumnheadtext" align="left" scope="col" colspan="1" style="width:30%;">Start Date and Time</th><th class="listcolumnheadtext" align="left" scope="col" colspan="1" style="width:70%;">Event Details</th>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Wednesday, January 23, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">2:00 PM - 3:30 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Grade Center Workshop</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers how-to workshops on Blackboard in the Gelman Library basement, room B06. Participants will have the opportunity to learn about and practice adding Columns, Managing Categories, Smart Views, and Distributing Weights in the Grade
+Center. To register for this event, click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-1-23T14:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-1-23T15:30-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listbodytextalt" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">6:00 PM - 7:30 PM </a></td><td class="listbodytextalt" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Introduction Workshop</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers how-to workshops on Blackboard in Gelman Library basement, Room B06. Participants will have the opportunity to learn about and practice
+everyday activities such as customizing course design, building content,
+communicating with students and creating interactive assignments. To register, please click <a target="blank" href="http://itl.gwu.edu/workshops.asp">here</a>. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="dtstart"><span class="value-title" title="2013-1-23T18:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-1-23T19:30-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Thursday, January 24, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">10:30 AM - 12:00 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Assignments &amp; SafeAssign Workshop</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers how-to workshops on Blackboard in the Gelman Library basement, room B06. Participants will have the opportunity to learn about and practice
+creating Assignments, collecting assignments, Group Assignments, and
+SafeAssign.
+To register for this workshop, click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-1-24T10:30-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-1-24T12:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Friday, January 25, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">11:00 AM - 12:30 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Introduction Webinar</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers how-to workshops on Blackboard. Participants will have the opportunity to learn about and practice
+everyday activities such as customizing course design, building content,
+communicating with students and creating interactive assignments.
+To register for this workshop, click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-1-25T11:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-1-25T12:30-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Monday, January 28, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">10:30 AM - 12:00 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Journals, Blogs, &amp; Wikis Workshop</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers how-to workshops on Blackboard in the Gelman Library basement, room B06. Participants will explore the creation and management of student blogs and
+private journals as well as group wikis in Blackboard. Given time, advanced
+features will be covered, such as wiki history and blog assignment templates. To register for this workshop, click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-1-28T10:30-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-1-28T12:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Tuesday, January 29, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">10:30 AM - 12:00 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Collaborate Virtual Classroom Workshop</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers how-to workshops on Blackboard in the Gelman Library basement, room B06. The workshop covers the essentials of Blackboard Collaborate, a
+synchronous virtual classroom tool, beginning with a general geography
+of the user interface and ending with a practice session. <br>
+<br>
+Participants
+will leave the workshop with hands-on experience in features such as
+text and voice chat, PowerPoint slideshow delivery, student polling, and
+web tours. Given extra time and interest, participants will also view
+demonstrations of more advanced features, such as video broadcast, group
+breakout rooms, and desktop sharing. To register for this workshop, click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-1-29T10:30-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-1-29T12:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Wednesday, February 20, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">2:00 PM - 3:30 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Workshop: Incorporating Media In Your Courses</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on&nbsp;Blackboard in the Gelman Library basement, room B06B. This workshop will cover incorporating content from sources such as YouTube, SlideShare, iSpring, and NBC Learn into your Blackboard course. To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-2-20T14:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-2-20T15:30-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Tuesday, February 26, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">10:30 AM - 12:00 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Workshop: Introduction</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B. Participants in this workshop will have the opportunity to learn about and practice everyday activities such as customizing course design, building content, communicating with students and creating interactive assignments. To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-2-26T10:30-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-2-26T12:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listbodytextalt" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">11:30 AM - 12:30 PM </a></td><td class="listbodytextalt" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Workshop - Assignments &amp; SafeAssign</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement,&nbsp;room B06B. Participants in this workshop will have the opportunity to learn about and practice creating assignments, collecting assignments, group assignments, and SafeAssign. To register for this workshop, please&nbsp;click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-2-26T11:30-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-2-26T12:30-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Monday, March 04, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">2:00 PM - 3:30 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Workshop: Grade Center</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B. Participants in this workshop will have the opportunity to learn about and practice adding Columns, Managing
+Categories, Smart Views, and Distributing Weights in the Grade Center. To register for this event, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-3-4T14:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-3-4T15:30-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Wednesday, March 06, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">10:30 AM - 12:00 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Workshop: Blackboard Collaborate Virtual Classroom</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B.The workshop covers the essentials of Blackboard Collaborate, a synchronous virtual classroom tool, beginning with a general geography of the user interface and ending with a practice session. Participants will leave the workshop with hands-on experience in features such as text and voice chat, PowerPoint slideshow delivery, student polling, and web tours. Given extra time and interest, participants will also view demonstrations of more advanced features, such as video broadcast, group breakout rooms, and desktop sharing. To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-3-6T10:30-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-3-6T12:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Thursday, March 07, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">6:30 PM - 7:30 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Workshop: Introduction</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B. Participants will have the opportunity to learn about and practice everyday activities such as customizing course design, building content, communicating with students and creating interactive assignments.  To register for this event, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-3-7T18:30-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-3-7T19:30-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Tuesday, March 12, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">2:00 PM - 3:30 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Workshop: Blogs, Wikis &amp; Journals</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B. Participants will explore the creation and management of student blogs and private journals as well as group wikis in Blackboard. Given time, advanced features will be covered, such as wiki history and blog assignment templates. To register for this event, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-3-12T14:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-3-12T15:30-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Wednesday, March 13, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">10:30 AM - 11:30 AM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Workshop: Assignments &amp; SafeAssign</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B. Participants will have the opportunity to learn about and practice creating assignments, collecting assignments, group assignments, and SafeAssign. To register for this event, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-3-13T10:30-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-3-13T11:30-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Wednesday, March 20, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">2:00 PM - 2:30 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Workshop: Incorporating Media In Your Courses</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers faculty workshops in the Gelman Library basement, room B06B. This workshop will cover incorporating content from sources such as YouTube, SlideShare, iSpring, and NBC Learn into your Blackboard course.  To register for this event, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-3-20T14:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-3-20T14:30-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Thursday, March 21, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">3:30 PM - 5:00 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>International Challenges and Opportunities:  Law and Policy on Cybersecurity</a><span class="listtext"><span class="description"><br><p>George Washington University Cybersecurity Initiative and the GW Law School are hosting a panel discussion titled “International Challenges and Opportunities:  Law and Policy on Cybersecurity.”</p>
+<p>The panelists are:</p>
+<ul>
+    <li><strong>Scott Charney </strong><br>
+    Corporate Vice President, Trustworthy Computing, Microsoft </li>
+    <li> <strong>Jason Healey</strong><br>
+    Director of Cyber Statecraft Initiative, Atlantic Council</li>
+    <li><strong>Marina Kaljurand</strong><br>
+    Ambassador, Embassy of Estonia</li>
+    <li><strong>Christopher Painter</strong><br>
+    Coordinator for Cyber Issues, U.S. Department of State </li>
+</ul>
+<p>The event will be moderated by Frank Cilluffo, director of the Homeland Security Policy Institute (HSPI). Panelists will share thoughts on the best means and mechanisms for addressing gaps and shortfalls, from a range of perspectives -- U.S. and international, both public and private sector.</p>
+<p>In December, GW launched the university wide Cybersecurity Initiative which will provide research-based solutions to cybersecurity challenges in the areas of national and international security, economic competitiveness, technology, privacy and civil liberties. The university will leverage existing efforts and capacity and build new capabilities in cybersecurity to continue GW’s leadership in this field. The Cybersecurity Initiative will serve as the catalyst for far-reaching scholarship, real-time research and in-depth discussion.</p></span><span class="dtstart"><span class="value-title" title="2013-3-21T15:30-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-3-21T17:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Tuesday, March 26, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">2:00 PM - 3:30 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Workshop: Grade Center</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B. Participants in this workshop will have the opportunity to learn about and practice adding Columns, Managing
+Categories, Smart Views, and Distributing Weights in the Grade Center. To register for this event, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-3-26T14:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-3-26T15:30-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Thursday, March 28, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">10:30 AM - 12:00 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Workshop: Blogs, Wikis &amp; Journals</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B. Participants will explore the creation and management of student blogs and private journals as well as group wikis in Blackboard. Given time, advanced features will be covered, such as wiki history and blog assignment templates. To register for this event, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-3-28T10:30-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-3-28T12:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Thursday, May 16, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">2:00 PM - 3:30 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Workshop: Discussion Board</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers how to workshops on Blackboard in the Gelman Library basement, room B06. Participants will have the opportunity to learn about and practice creating Forums, Forum Settings, and Grading Forums. To register for this event, click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-5-16T14:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-5-16T15:30-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Wednesday, May 22, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">2:00 PM - 3:30 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Workshop: Incorporating Media In Your Courses</a><span class="listtext"><span class="description"><br><span style="font-size: 12px; line-height: 20px; font-family: arial; color: #333333;">The Instructional Technology Lab offers workshops on&nbsp;Blackboard in the Gelman Library basement, room B06B. This workshop will cover incorporating content from sources such as YouTube, SlideShare, iSpring, and NBC Learn into your Blackboard course. To register for this workshop, please click&nbsp;</span><a href="http://itl.gwu.edu/workshops.asp" style="color: #2a72a7; text-decoration: none; font-family: arial; font-size: 12px; line-height: 20px;">here</a><span style="font-size: 12px; line-height: 20px; font-family: arial; color: #333333;">.</span></span><span class="dtstart"><span class="value-title" title="2013-5-22T14:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-5-22T15:30-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Tuesday, May 28, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">2:00 PM - 3:30 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Workshop: Grade Center</a><span class="listtext"><span class="description"><br><span style="font-size: 12px; line-height: 20px; font-family: arial; color: #333333;">The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B. Participants in this workshop will have the opportunity to learn about and practice adding Columns, Managing Categories, Smart Views, and Distributing Weights in the Grade Center. To register for this event, please click&nbsp;</span><a href="http://itl.gwu.edu/workshops.asp" style="color: #2a72a7; text-decoration: none; font-family: arial; font-size: 12px; line-height: 20px;">here</a><span style="font-size: 12px; line-height: 20px; font-family: arial; color: #333333;">.</span></span><span class="dtstart"><span class="value-title" title="2013-5-28T14:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-5-28T15:30-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Thursday, May 30, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">10:30 AM - 12:00 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Workshop: Blackboard Collaborate Virtual Classroom</a><span class="listtext"><span class="description"><br><span style="font-size: 12px; line-height: 20px; font-family: arial; color: #333333;">The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B. The workshop covers the essentials of Blackboard Collaborate, a synchronous virtual classroom tool, beginning with a general geography of the user interface and ending with a practice session. Participants will leave the workshop with hands-on experience in features such as text and voice chat, PowerPoint slideshow delivery, student polling, and web tours. Given extra time and interest, participants will also view demonstrations of more advanced features, such as video broadcast, group breakout rooms, and desktop sharing. To register for this workshop, please click&nbsp;</span><a href="http://itl.gwu.edu/workshops.asp" style="color: #2a72a7; text-decoration: none; font-family: arial; font-size: 12px; line-height: 20px;">here</a><span style="font-size: 12px; line-height: 20px; font-family: arial; color: #333333;">.</span></span><span class="dtstart"><span class="value-title" title="2013-5-30T10:30-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-5-30T12:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Tuesday, July 23, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">Start Day </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Summer Intensive Workshop Institute (SIWI): July 23-July 25 (Multi-Day Event)</a><span class="listtext"><span class="description"><br><strong><span style="font-size: 18px;">Tuesday, July 23</span></strong><br>
+<br>
+Join us for a day of hands-on Blackboard activities and discussions of best practices for course design settings!<br>
+<br>
+<strong>9:00am - 9:30am: Continental Breakfast<br>
+<br>
+9:30am - 12:00pm: You Are The Student!</strong><br>
+<br>
+In this unique SIWI simulation, faculty participants will navigate through a fully formed Blackboard course and participate in a variety of assessment activities as students. In groups, participants will suggest valuable improvements to the course. Then all will engage as a collective to generate a definitive set of powerful best practices and models for online teaching success.<br>
+<br>
+<strong>12:00pm - 1:00pm Lunch<br>
+<br>
+1:00pm - 2:00pm: Inside The Learning Mind, a Student Panel</strong><br>
+<br>
+To kick off our afternoon session, participants will hear from a panel of GW students who will share their experiences using Blackboard. The students will open up a question and answer period after their short presentations, during which participants will gain even further insight into the learning mind.<br>
+<br>
+<strong>2:15pm - 3:30pm Reports From The Field, Faculty Show and Share</strong><br>
+<br>
+To end our day, participants will learn from some of their faculty colleagues who have moved well beyond the point and click of Blackboard to engage students. From technologies such as classroom clickers to grading rubrics, our presenters will share their experiences with mediated student success.<br>
+<br>
+<span style="font-size: 18px;"><strong>Wednesday, July 24</strong></span><br>
+<br>
+SIWI Day 2 is as diverse as it is energizing. Join us as we discuss making healthy technology choices both in Blackboard and in the classroom!<br>
+<br>
+<strong>9:00am - 9:30am: Continental Breakfast<br>
+<br>
+9:30am - 12:00pm: Decisions, Decisions!</strong><br>
+<br>
+Our Colleagues from GW's Teaching &amp; Learning Collaborative (TLC) join in the event to facilitate a healthy discussion of the choices that one faces when confronted with teaching online or when using Blackboard as an extension of brick and mortar. Asynchronous vs. Synchronous? Discussion board vs. Blog? The list goes on. We will end the morning chatting with our friends from Disability Support Services (DSS) about increasing the accessibility of courses online.<br>
+<strong><br>
+12:00pm - 1:00pm Lunch</strong><br>
+<br>
+<strong>1:00pm - 3:00pm: This Classroom Can Do What?</strong><br>
+<br>
+We'll visit one of GW's smart classrooms so that participants can get a first-hand look and experience all there is to offer. From Colonial Cast to clickers, these spaces inspire student involvement in their own learning experience. Participants will also see multimedia in action, both in Blackboard and on the big screen.<br>
+<br>
+<strong><span style="font-size: 18px;">Thursday, July 25</span></strong><br>
+<br>
+SIWI Day 3 is an Open Lab Day in the ITL. Come for the hands-on staff consultation on specific topics in Blackboard and beyond. Stick around to help us break in our new space in Gelman Library's B-Level. A new, expanded ITL has spaces for small group conferencing, informal digital presentations, as well as state of the art media editing stations. Coffee will be served!</span><span class="dtstart"><span class="value-title" title="2013-7-23T0:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-7-23T0:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Wednesday, July 24, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">All Day </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Summer Intensive Workshop Institute (SIWI): July 23-July 25 (Multi-Day Event)</a><span class="listtext"><span class="description"><br><strong><span style="font-size: 18px;">Tuesday, July 23</span></strong><br>
+<br>
+Join us for a day of hands-on Blackboard activities and discussions of best practices for course design settings!<br>
+<br>
+<strong>9:00am - 9:30am: Continental Breakfast<br>
+<br>
+9:30am - 12:00pm: You Are The Student!</strong><br>
+<br>
+In this unique SIWI simulation, faculty participants will navigate through a fully formed Blackboard course and participate in a variety of assessment activities as students. In groups, participants will suggest valuable improvements to the course. Then all will engage as a collective to generate a definitive set of powerful best practices and models for online teaching success.<br>
+<br>
+<strong>12:00pm - 1:00pm Lunch<br>
+<br>
+1:00pm - 2:00pm: Inside The Learning Mind, a Student Panel</strong><br>
+<br>
+To kick off our afternoon session, participants will hear from a panel of GW students who will share their experiences using Blackboard. The students will open up a question and answer period after their short presentations, during which participants will gain even further insight into the learning mind.<br>
+<br>
+<strong>2:15pm - 3:30pm Reports From The Field, Faculty Show and Share</strong><br>
+<br>
+To end our day, participants will learn from some of their faculty colleagues who have moved well beyond the point and click of Blackboard to engage students. From technologies such as classroom clickers to grading rubrics, our presenters will share their experiences with mediated student success.<br>
+<br>
+<span style="font-size: 18px;"><strong>Wednesday, July 24</strong></span><br>
+<br>
+SIWI Day 2 is as diverse as it is energizing. Join us as we discuss making healthy technology choices both in Blackboard and in the classroom!<br>
+<br>
+<strong>9:00am - 9:30am: Continental Breakfast<br>
+<br>
+9:30am - 12:00pm: Decisions, Decisions!</strong><br>
+<br>
+Our Colleagues from GW's Teaching &amp; Learning Collaborative (TLC) join in the event to facilitate a healthy discussion of the choices that one faces when confronted with teaching online or when using Blackboard as an extension of brick and mortar. Asynchronous vs. Synchronous? Discussion board vs. Blog? The list goes on. We will end the morning chatting with our friends from Disability Support Services (DSS) about increasing the accessibility of courses online.<br>
+<strong><br>
+12:00pm - 1:00pm Lunch</strong><br>
+<br>
+<strong>1:00pm - 3:00pm: This Classroom Can Do What?</strong><br>
+<br>
+We'll visit one of GW's smart classrooms so that participants can get a first-hand look and experience all there is to offer. From Colonial Cast to clickers, these spaces inspire student involvement in their own learning experience. Participants will also see multimedia in action, both in Blackboard and on the big screen.<br>
+<br>
+<strong><span style="font-size: 18px;">Thursday, July 25</span></strong><br>
+<br>
+SIWI Day 3 is an Open Lab Day in the ITL. Come for the hands-on staff consultation on specific topics in Blackboard and beyond. Stick around to help us break in our new space in Gelman Library's B-Level. A new, expanded ITL has spaces for small group conferencing, informal digital presentations, as well as state of the art media editing stations. Coffee will be served!</span><span class="dtstart"><span class="value-title" title="2013-7-24T0:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-7-24T0:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Thursday, July 25, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">End Day </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Summer Intensive Workshop Institute (SIWI): July 23-July 25 (Multi-Day Event)</a><span class="listtext"><span class="description"><br><strong><span style="font-size: 18px;">Tuesday, July 23</span></strong><br>
+<br>
+Join us for a day of hands-on Blackboard activities and discussions of best practices for course design settings!<br>
+<br>
+<strong>9:00am - 9:30am: Continental Breakfast<br>
+<br>
+9:30am - 12:00pm: You Are The Student!</strong><br>
+<br>
+In this unique SIWI simulation, faculty participants will navigate through a fully formed Blackboard course and participate in a variety of assessment activities as students. In groups, participants will suggest valuable improvements to the course. Then all will engage as a collective to generate a definitive set of powerful best practices and models for online teaching success.<br>
+<br>
+<strong>12:00pm - 1:00pm Lunch<br>
+<br>
+1:00pm - 2:00pm: Inside The Learning Mind, a Student Panel</strong><br>
+<br>
+To kick off our afternoon session, participants will hear from a panel of GW students who will share their experiences using Blackboard. The students will open up a question and answer period after their short presentations, during which participants will gain even further insight into the learning mind.<br>
+<br>
+<strong>2:15pm - 3:30pm Reports From The Field, Faculty Show and Share</strong><br>
+<br>
+To end our day, participants will learn from some of their faculty colleagues who have moved well beyond the point and click of Blackboard to engage students. From technologies such as classroom clickers to grading rubrics, our presenters will share their experiences with mediated student success.<br>
+<br>
+<span style="font-size: 18px;"><strong>Wednesday, July 24</strong></span><br>
+<br>
+SIWI Day 2 is as diverse as it is energizing. Join us as we discuss making healthy technology choices both in Blackboard and in the classroom!<br>
+<br>
+<strong>9:00am - 9:30am: Continental Breakfast<br>
+<br>
+9:30am - 12:00pm: Decisions, Decisions!</strong><br>
+<br>
+Our Colleagues from GW's Teaching &amp; Learning Collaborative (TLC) join in the event to facilitate a healthy discussion of the choices that one faces when confronted with teaching online or when using Blackboard as an extension of brick and mortar. Asynchronous vs. Synchronous? Discussion board vs. Blog? The list goes on. We will end the morning chatting with our friends from Disability Support Services (DSS) about increasing the accessibility of courses online.<br>
+<strong><br>
+12:00pm - 1:00pm Lunch</strong><br>
+<br>
+<strong>1:00pm - 3:00pm: This Classroom Can Do What?</strong><br>
+<br>
+We'll visit one of GW's smart classrooms so that participants can get a first-hand look and experience all there is to offer. From Colonial Cast to clickers, these spaces inspire student involvement in their own learning experience. Participants will also see multimedia in action, both in Blackboard and on the big screen.<br>
+<br>
+<strong><span style="font-size: 18px;">Thursday, July 25</span></strong><br>
+<br>
+SIWI Day 3 is an Open Lab Day in the ITL. Come for the hands-on staff consultation on specific topics in Blackboard and beyond. Stick around to help us break in our new space in Gelman Library's B-Level. A new, expanded ITL has spaces for small group conferencing, informal digital presentations, as well as state of the art media editing stations. Coffee will be served!</span><span class="dtstart"><span class="value-title" title="2013-7-25T0:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-7-25T0:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Tuesday, August 13, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">11:00 AM - 11:45 AM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Getting Started with Blackboard in 45 minutes</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B. This workshop covers the best that Blackboard has to offer. From uploading course materials to engaging a discussion board and grading student assignments, participants will watch click-by-click demonstrations and explore diverse ways faculty use Blackboard at GW. To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-8-13T11:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-8-13T11:45-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Monday, August 19, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">3:00 PM - 4:00 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard: Posting Course Materials</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B.&nbsp;This 60 minute session focuses exclusively on uploading content for students to consume. We will cover every major format of course material. From Microsoft Word docs to rich multimedia presentations, we'll show you where to find materials and how to best incorporate them in a Blackboard course.&nbsp;To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-8-19T15:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-8-19T16:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Tuesday, August 20, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">1:30 PM - 2:30 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard: Assignments and Tests</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B.&nbsp;Blackboard offers a variety of ways to help your students to succeed. This 60 minute workshop will primarily cover how to create Assignments and develop tests that make the best of both your time and your students efforts. Participants will also discuss test settings and how they impact the student experience of taking a test online.&nbsp;To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-8-20T13:30-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-8-20T14:30-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listbodytextalt" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">3:00 PM - 4:00 PM </a></td><td class="listbodytextalt" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard: Grading Your Students</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B.&nbsp;The Blackboard Grade Center can be used simply as storage table for graded items you receive in class, or it can be a fully dynamic way to closely survey your students' success. It also helps your students remain focused on your course! In this 60 minute workshop, we share how to quickly build a powerful assessment dashboard, a nerve-center that is the Grade Center.&nbsp;To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-8-20T15:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-8-20T16:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Wednesday, August 21, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">11:00 AM - 12:00 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard: Blogs, Wikis and Discussions</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B.&nbsp;There are a number of communication features in Blackboard. This 60 minute session will briefly discuss blogs, journals and wikis, but the main theme is good practices within the Blackboard Discussion Boards. From informal inquiries to graded topical interactions, we will explore the diverse ways in which you can enhance the student experience outside of the traditional classroom.&nbsp;To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-8-21T11:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-8-21T12:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Thursday, August 22, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">11:00 AM - 11:45 AM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Getting Started with Blackboard in 45 minutes</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B.&nbsp;This workshop covers the best that Blackboard has to offer. From uploading course materials to engaging a discussion board and grading student assignments, participants will watch click-by-click demonstrations and explore diverse ways faculty use Blackboard at GW. To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-8-22T11:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-8-22T11:45-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Tuesday, August 27, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">2:00 PM - 2:45 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Getting Started with Blackboard in 45 minutes</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B.&nbsp;This workshop covers the best that Blackboard has to offer. From uploading course materials to engaging a discussion board and grading student assignments, participants will watch click-by-click demonstrations and explore diverse ways faculty use Blackboard at GW. To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-8-27T14:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-8-27T14:45-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Wednesday, August 28, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">2:00 PM - 3:00 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard: Posting Course Materials</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B.&nbsp;This 60 minute session focuses exclusively on uploading content for students to consume. We will cover every major format of course material. From Microsoft Word docs to rich multimedia presentations, we'll show you where to find materials and how to best incorporate them in a Blackboard course.&nbsp;To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-8-28T14:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-8-28T15:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listbodytextalt" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">6:30 PM - 7:15 PM </a></td><td class="listbodytextalt" align="left" valign="top" colspan="1" style="width:70%;"><a>Getting Started with Blackboard in 45 minutes</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B.&nbsp;This workshop covers the best that Blackboard has to offer. From uploading course materials to engaging a discussion board and grading student assignments, participants will watch click-by-click demonstrations and explore diverse ways faculty use Blackboard at GW. To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-8-28T18:30-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-8-28T19:15-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Thursday, August 29, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">11:00 AM - 12:00 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard: Assignments and Tests</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B.&nbsp;Blackboard offers a variety of ways to help your students to succeed. This 60 minute workshop will primarily cover how to create Assignments and develop tests that make the best of both your time and your students efforts. Participants will also discuss test settings and how they impact the student experience of taking a test online.&nbsp;To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-8-29T11:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-8-29T12:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Tuesday, September 03, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">11:00 AM - 12:00 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard: Grading Your Students</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B.&nbsp;The Blackboard Grade Center can be used simply as storage table for graded items you receive in class, or it can be a fully dynamic way to closely survey your students' success. It also helps your students remain focused on your course! In this 60 minute workshop, we share how to quickly build a powerful assessment dashboard, a nerve-center that is the Grade Center.&nbsp;To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-9-3T11:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-9-3T12:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listbodytextalt" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">6:00 PM - 6:45 PM </a></td><td class="listbodytextalt" align="left" valign="top" colspan="1" style="width:70%;"><a>Getting Started with Blackboard in 45 minutes (Webinar)</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B.&nbsp;This workshop covers the best that Blackboard has to offer. From uploading course materials to engaging a discussion board and grading student assignments, participants will watch click-by-click demonstrations and explore diverse ways faculty use Blackboard at GW. To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.<br>
+<a href="https://blackboard.gwu.edu/webapps/bb-collaborate-bb_bb60/external.guest.session.launch.event?uid=6e55cecd-f25b-4475-b923-f48213b51998">Link to Webinar</a></span><span class="dtstart"><span class="value-title" title="2013-9-3T18:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-9-3T18:45-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Wednesday, September 04, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">11:00 AM - 12:00 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard: Blogs, Wikis and Discussions</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B.&nbsp;<br>
+There are a number of communication features in Blackboard. This 60 minute session will briefly discuss blogs, journals and wikis, but the main theme is good practices within the Blackboard Discussion Boards. From informal inquiries to graded topical interactions, we will explore the diverse ways in which you can enhance the student experience outside of the traditional classroom.&nbsp;To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-9-4T11:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-9-4T12:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listbodytextalt" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">3:00 PM - 4:00 PM </a></td><td class="listbodytextalt" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard: Posting Course Materials</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B06B.&nbsp;This 60 minute session focuses exclusively on uploading content for students to consume. We will cover every major format of course material. From Microsoft Word docs to rich multimedia presentations, we'll show you where to find materials and how to best incorporate them in a Blackboard course.&nbsp;To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-9-4T15:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-9-4T16:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Wednesday, October 09, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">4:15 PM - 6:30 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>ITL Open House</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab (ITL) is excited to invite you to a special&nbsp;Open House showcasing our newly designed technology lab, which features a&nbsp;training lab and multipurpose collaborative spaces equipped with the latest&nbsp;technology to support seamless sharing and communication.<br>
+<br>
+This is a unique opportunity to learn about new and innovative instructional&nbsp;technologies, demonstrated by our staff, to enhance your classroom&nbsp;experience. Explore tools such as lecture capture, student response systems,&nbsp;PowerPoint conversion tools, tablet utilization, and more.<br>
+<br>
+The Provost will be making opening remarks and light refreshments, including&nbsp;wine and cheese, will be served while you discover, explore, and connect&nbsp;with fellow colleagues.</span><span class="dtstart"><span class="value-title" title="2013-10-9T16:15-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-10-9T18:30-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Thursday, October 24, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">11:00 AM - 12:00 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Student Response System: Getting Started with Clickers</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B05.&nbsp;The TurningPoint Audience Response System can engage students and give you real-time feedback on comprehension during class. This workshop will cover the most commonly-used features of TurningPoint, including creating questions, conducting polling, and saving results.&nbsp;To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp" target="_blank" title="Register at itl.gwu.edu">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-10-24T11:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-10-24T12:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Tuesday, October 29, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">3:00 PM - 4:00 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard: Assignments and Tests</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B05. Blackboard offers a variety of ways to help your students to succeed. This 60 minute workshop will primarily cover how to create Assignments and develop tests that make the best of both your time and your students efforts. Participants will also discuss test settings and how they impact the student experience of taking a test online. To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp" target="_blank">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-10-29T15:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-10-29T16:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Wednesday, November 06, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">3:00 PM - 4:00 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard: Grading Your Students</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B05. The Blackboard Grade Center can be used simply as storage table for graded items you receive in class, or it can be a fully dynamic way to closely survey your students' success. It also helps your students remain focused on your course! In this 60 minute workshop, we share how to quickly build a powerful assessment dashboard, a nerve-center that is the Grade Center. To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp" target="_blank">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-11-6T15:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-11-6T16:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Thursday, November 07, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">2:00 PM - 3:00 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard Collaborate Virtual Classroom Workshop</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers how-to workshops on Blackboard in the Gelman Library basement, room B05. The workshop covers the essentials of Blackboard Collaborate, a synchronous virtual classroom tool, beginning with a general geography of the user interface and ending with a practice session.&nbsp;<br>
+<br>
+Participants will leave the workshop with hands-on experience in features such as text and voice chat, PowerPoint slideshow delivery, student polling, and web tours. Given extra time and interest, participants will also view demonstrations of more advanced features, such as video broadcast, group breakout rooms, and desktop sharing. To register for this workshop, click <a href="http://itl.gwu.edu/workshops.asp" target="_blank">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-11-7T14:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-11-7T15:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Wednesday, November 13, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">2:00 PM - 3:00 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Creating Online Lectures</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops in the Gelman Library basement, room B05.&nbsp;Enhance your online lectures with rich media. This workshop will cover the basics of online lecture creation using Powerpoint narration, iSpring, Echo Personal Capture as tools to bring audio, video and screen captures to lectures. Participants will also learn how to make such lectures available to students on Blackboard.&nbsp;To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp" target="_blank">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-11-13T14:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-11-13T15:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Thursday, November 14, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">11:00 AM - 12:00 PM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Student Response System: Getting Started with Clickers</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B05.&nbsp;The TurningPoint Audience Response System can engage students and give you real-time feedback on comprehension during class. This workshop will cover the most commonly-used features of TurningPoint, including creating questions, conducting polling, and saving results.&nbsp;To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp" target="_blank" title="Register at itl.gwu.edu">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-11-14T11:00-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-11-14T12:00-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listheadtext" align="left" colspan="2" style="border-color:Black;border-width:1px;border-style:solid;width:100%;">Tuesday, November 19, 2013</td>
+	</tr><tr>
+		<td class="listbodytext" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">10:30 AM - 11:30 AM </a></td><td class="listbodytext" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard: Assignments and Tests</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B05. Blackboard offers a variety of ways to help your students to succeed. This 60 minute workshop will primarily cover how to create Assignments and develop tests that make the best of both your time and your students efforts. Participants will also discuss test settings and how they impact the student experience of taking a test online. To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp" target="_blank">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-11-19T10:30-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-11-19T11:30-5:00"></span></span></span></td>
+	</tr><tr>
+		<td class="listbodytextalt" align="left" valign="top" colspan="1" style="width:30%;"><a class="listtext">11:30 AM - 12:30 PM </a></td><td class="listbodytextalt" align="left" valign="top" colspan="1" style="width:70%;"><a>Blackboard: Grading Your Students</a><span class="listtext"><span class="description"><br>The Instructional Technology Lab offers workshops on Blackboard in the Gelman Library basement, room B05. The Blackboard Grade Center can be used simply as storage table for graded items you receive in class, or it can be a fully dynamic way to closely survey your students' success. It also helps your students remain focused on your course! In this 60 minute workshop, we share how to quickly build a powerful assessment dashboard, a nerve-center that is the Grade Center. To register for this workshop, please click <a href="http://itl.gwu.edu/workshops.asp" target="_blank">here</a>.</span><span class="dtstart"><span class="value-title" title="2013-11-19T11:30-5:00"></span></span><span class="dtend"><span class="value-title" title="2013-11-19T12:30-5:00"></span></span></span></td>
+	</tr>
+</tbody></table></div>
+						<br>
+						
+					</td>
+				</tr>
+			</tbody></table>
+			
+			
+			
+		</div>
+		    <div id="pnlModalPopupSection">
+	
+                <div id="divlayer1" class="divlayer divlayerborder divlayerbackground" style="display: none;">
+		            <div>
+			            <div style="height:200px;width:355px;overflow:scroll;background-color:#F5F5F5;">
+				            <span id="lblWTS_1" style="font-weight:bold;">Select item(s) to Search</span>
+				            <div id="divCF_1" class="divCF_1">
+					            <table id="cblCustomField_1" border="0">
+		<tbody><tr>
+			<td><input id="cblCustomField_1_0" type="checkbox" name="cblCustomField_1$0"><label for="cblCustomField_1_0">Asian Pacific Islander American Heritage Month</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_1_1" type="checkbox" name="cblCustomField_1$1"><label for="cblCustomField_1_1">Black Heritage Month</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_1_2" type="checkbox" name="cblCustomField_1$2"><label for="cblCustomField_1_2">Breast Cancer Awareness Month</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_1_3" type="checkbox" name="cblCustomField_1$3"><label for="cblCustomField_1_3">Colonial Inauguration</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_1_4" type="checkbox" name="cblCustomField_1$4"><label for="cblCustomField_1_4">Commencement</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_1_5" type="checkbox" name="cblCustomField_1$5"><label for="cblCustomField_1_5">Earth Month</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_1_6" type="checkbox" name="cblCustomField_1$6"><label for="cblCustomField_1_6">Flu Shots</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_1_7" type="checkbox" name="cblCustomField_1$7"><label for="cblCustomField_1_7">Grad Week</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_1_8" type="checkbox" name="cblCustomField_1$8"><label for="cblCustomField_1_8">Hispanic Heritage Month</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_1_9" type="checkbox" name="cblCustomField_1$9"><label for="cblCustomField_1_9">Hunger &amp; Homelessness Awareness Week</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_1_10" type="checkbox" name="cblCustomField_1$10"><label for="cblCustomField_1_10">Open Enrollment</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_1_11" type="checkbox" name="cblCustomField_1$11"><label for="cblCustomField_1_11">Welcome Week</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_1_12" type="checkbox" name="cblCustomField_1$12"><label for="cblCustomField_1_12">Welcome Back Week</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_1_13" type="checkbox" name="cblCustomField_1$13"><label for="cblCustomField_1_13">Women's History Month</label></td>
+		</tr>
+	</tbody></table>
+				            </div>
+			            </div>
+			            <div class="divlayerclosebar" style="width:355px;">
+				            <div>
+				            <input type="hidden" name="hfSelectedItems1" id="hfSelectedItems1">
+					            <a class="divlayercloseaction" href="javascript:closeLayer('divlayer1');" style="text-decoration:none;">Close</a>
+					            <a class="divlayernoneaction" href="javascript:selectNone('1');" style="text-decoration:none;">Select None</a>
+					            <a class="divlayerallaction" href="javascript:selectAll('1');" style="text-decoration:none;">Select All</a>
+					            <a class="divlayersaveaction" href="javascript:saveSelectionToSession('CF1');" style="text-decoration:none;">Save</a>
+				            </div>
+			            </div>
+		            </div>
+	            </div>
+                <div id="divlayer2" class="divlayer divlayerborder divlayerbackground" style="display: none;">
+		            <div>
+			            <div style="height:200px;width:355px;overflow:scroll;background-color:#F5F5F5;">
+				            <span id="lblWTS_2" style="font-weight:bold;">Select item(s) to Search</span>
+				            <div id="divCF_2" class="divCF_2">
+					            
+				            </div>
+			            </div>
+			            <div class="divlayerclosebar" style="width:355px;">
+				            <div>
+				            <input type="hidden" name="hfSelectedItems2" id="hfSelectedItems2">
+					            <a class="divlayercloseaction" href="javascript:closeLayer('divlayer2');" style="text-decoration:none;">Close</a>
+					            <a class="divlayernoneaction" href="javascript:selectNone('2');" style="text-decoration:none;">Select None</a>
+					            <a class="divlayerallaction" href="javascript:selectAll('2');" style="text-decoration:none;">Select All</a>
+					            <a class="divlayersaveaction" href="javascript:saveSelectionToSession('CF2');" style="text-decoration:none;">Save</a>
+				            </div>
+			            </div>
+		            </div>
+	            </div>
+	            <div id="divlayer3" class="divlayer divlayerborder divlayerbackground" style="display: none;">
+		            <div>
+			            <div style="height:200px;width:355px;overflow:scroll;background-color:#F5F5F5;">
+				            <span id="lblWTS_3" style="font-weight:bold;">Select item(s) to Search</span>
+				            <div id="divCF_3" class="divCF_3">
+					            <table id="cblCustomField_3" border="0">
+		<tbody><tr>
+			<td><input id="cblCustomField_3_0" type="checkbox" name="cblCustomField_3$0"><label for="cblCustomField_3_0">Alumni</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_3_1" type="checkbox" name="cblCustomField_3$1"><label for="cblCustomField_3_1">Community</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_3_2" type="checkbox" name="cblCustomField_3$2"><label for="cblCustomField_3_2">Employees - All</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_3_3" type="checkbox" name="cblCustomField_3$3"><label for="cblCustomField_3_3">Employees - Faculty</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_3_4" type="checkbox" name="cblCustomField_3$4"><label for="cblCustomField_3_4">Employees - Staff</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_3_5" type="checkbox" name="cblCustomField_3$5"><label for="cblCustomField_3_5">Employees - Research</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_3_6" type="checkbox" name="cblCustomField_3$6"><label for="cblCustomField_3_6">Employees - Student</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_3_7" type="checkbox" name="cblCustomField_3$7"><label for="cblCustomField_3_7">Employees - New</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_3_8" type="checkbox" name="cblCustomField_3$8"><label for="cblCustomField_3_8">General Public</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_3_9" type="checkbox" name="cblCustomField_3$9"><label for="cblCustomField_3_9">Media</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_3_10" type="checkbox" name="cblCustomField_3$10"><label for="cblCustomField_3_10">Parents</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_3_11" type="checkbox" name="cblCustomField_3$11"><label for="cblCustomField_3_11">Researchers</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_3_12" type="checkbox" name="cblCustomField_3$12"><label for="cblCustomField_3_12">Students - All</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_3_13" type="checkbox" name="cblCustomField_3$13"><label for="cblCustomField_3_13">Students - Undergraduate</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_3_14" type="checkbox" name="cblCustomField_3$14"><label for="cblCustomField_3_14">Students - Graduate</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_3_15" type="checkbox" name="cblCustomField_3$15"><label for="cblCustomField_3_15">Students - International</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_3_16" type="checkbox" name="cblCustomField_3$16"><label for="cblCustomField_3_16">Students - Prospective</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_3_17" type="checkbox" name="cblCustomField_3$17"><label for="cblCustomField_3_17">By Invitation Only</label></td>
+		</tr>
+	</tbody></table>
+				            </div>
+			            </div>
+			            <div class="divlayerclosebar" style="width:355px;">
+				            <div>
+				                <input type="hidden" name="hfSelectedItems3" id="hfSelectedItems3">
+					            <a class="divlayercloseaction" href="javascript:closeLayer('divlayer3');" style="text-decoration:none;">Close</a>
+					            <a class="divlayernoneaction" href="javascript:selectNone('3');" style="text-decoration:none;">Select None</a>
+					            <a class="divlayerallaction" href="javascript:selectAll('3');" style="text-decoration:none;">Select All</a>
+					            <a class="divlayersaveaction" href="javascript:saveSelectionToSession('CF3');" style="text-decoration:none;">Save</a>
+				            </div>
+			            </div>
+		            </div>
+	            </div>
+                <div id="divlayer4" class="divlayer divlayerborder divlayerbackground" style="display: none;">
+		            <div>
+			            <div style="height:200px;width:355px;overflow:scroll;background-color:#F5F5F5;">
+				            <span id="lblWTS_4" style="font-weight:bold;">Select item(s) to Search</span>
+				            <div id="divCF_4" class="divCF_4">
+					            <table id="cblCustomField_4" border="0">
+		<tbody><tr>
+			<td><input id="cblCustomField_4_0" type="checkbox" name="cblCustomField_4$0"><label for="cblCustomField_4_0">Awards &amp; Recognition</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_4_1" type="checkbox" name="cblCustomField_4$1"><label for="cblCustomField_4_1">Broadcast or Live Taping</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_4_2" type="checkbox" name="cblCustomField_4$2"><label for="cblCustomField_4_2">Deadline</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_4_3" type="checkbox" name="cblCustomField_4$3"><label for="cblCustomField_4_3">Discussion</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_4_4" type="checkbox" name="cblCustomField_4$4"><label for="cblCustomField_4_4">Exhibit</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_4_5" type="checkbox" name="cblCustomField_4$5"><label for="cblCustomField_4_5">Fair</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_4_6" type="checkbox" name="cblCustomField_4$6"><label for="cblCustomField_4_6">Free Food</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_4_7" type="checkbox" name="cblCustomField_4$7"><label for="cblCustomField_4_7">Happy Hour</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_4_8" type="checkbox" name="cblCustomField_4$8"><label for="cblCustomField_4_8">Information Session</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_4_9" type="checkbox" name="cblCustomField_4$9"><label for="cblCustomField_4_9">Lecture</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_4_10" type="checkbox" name="cblCustomField_4$10"><label for="cblCustomField_4_10">Meeting</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_4_11" type="checkbox" name="cblCustomField_4$11"><label for="cblCustomField_4_11">Networking</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_4_12" type="checkbox" name="cblCustomField_4$12"><label for="cblCustomField_4_12">Open House</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_4_13" type="checkbox" name="cblCustomField_4$13"><label for="cblCustomField_4_13">Orientation</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_4_14" type="checkbox" name="cblCustomField_4$14"><label for="cblCustomField_4_14">Performance, Concert or Recital</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_4_15" type="checkbox" name="cblCustomField_4$15"><label for="cblCustomField_4_15">Tour</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_4_16" type="checkbox" name="cblCustomField_4$16"><label for="cblCustomField_4_16">Training</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_4_17" type="checkbox" name="cblCustomField_4$17"><label for="cblCustomField_4_17">Webinar</label></td>
+		</tr><tr>
+			<td><input id="cblCustomField_4_18" type="checkbox" name="cblCustomField_4$18"><label for="cblCustomField_4_18">Workshop, Seminar or Conference</label></td>
+		</tr>
+	</tbody></table>
+				            </div>
+			            </div>
+			            <div class="divlayerclosebar" style="width:355px;">
+				            <div>
+				                <input type="hidden" name="hfSelectedItems4" id="hfSelectedItems4">
+					            <a class="divlayercloseaction" href="javascript:closeLayer('divlayer4');" style="text-decoration:none;">Close</a>
+					            <a class="divlayernoneaction" href="javascript:selectNone('4');" style="text-decoration:none;">Select None</a>
+					            <a class="divlayerallaction" href="javascript:selectAll('4');" style="text-decoration:none;">Select All</a>
+					            <a class="divlayersaveaction" href="javascript:saveSelectionToSession('CF4');" style="text-decoration:none;">Save</a>
+				            </div>
+			            </div>
+		            </div>
+	            </div>
+            
+</div>
+		
+
+<script type="text/javascript">
+//<![CDATA[
+
+theForm.oldSubmit = theForm.submit;
+theForm.submit = WebForm_SaveScrollPositionSubmit;
+
+theForm.oldOnSubmit = theForm.onsubmit;
+theForm.onsubmit = WebForm_SaveScrollPositionOnSubmit;
+//]]>
+</script>
+</form>
+		
+	
+
+</body></html>
