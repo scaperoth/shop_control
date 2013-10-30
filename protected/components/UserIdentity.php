@@ -92,7 +92,7 @@ class UserIdentity extends CUserIdentity {
 
                 $cn = ldap_get_values($ldapConn, $firstEntry, "cn");
 //				$username = $cn[0];
-
+                
                 foreach ($memberOf as $key => $value) {
 
                     $membership = explode(",", $value);
@@ -117,7 +117,7 @@ class UserIdentity extends CUserIdentity {
                         $ADvalue = 'AT-AVO';
                     }
                     if (in_array($member_group, $checkSCusergroup)) {
-
+                        $this->setState('role', 'user');
                         $ADvalue = 'AT-SC';
                     }
                     if (in_array($member_group, $checkSCAdmingroup)) {

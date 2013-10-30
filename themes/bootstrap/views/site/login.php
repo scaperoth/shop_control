@@ -68,7 +68,7 @@ $this->pageTitle = Yii::app()->name . ' - Login';
             <div class="controls">
                 <div class="input-prepend">
                     <span class="add-on"><i class="icon-user"></i></span>
-                    <?php echo $form->textField($model, 'username', array('placeholder' => 'Enter NedID', 'class' => 'span3')); ?>
+                    <?php echo $form->textField($model, 'username', array('placeholder' => 'Enter NetID', 'class' => 'span3')); ?>
                 </div>
                 <?php echo $form->error($model, 'username'); ?>
 

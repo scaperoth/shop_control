@@ -2797,3 +2797,33 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/themes/bootstrap/img/gw_logo.ico
 ---
+2013/10/30 11:59:29 [error] [php] Undefined index: mail (C:\xampp\htdocs\shop_control\protected\components\UserIdentity.php:71)
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\validators\CValidator.php(213): CInlineValidator->validateAttribute()
+#1 C:\xampp\htdocs\shop_control\framework\base\CModel.php(159): CInlineValidator->validate()
+#2 C:\xampp\htdocs\shop_control\protected\controllers\SiteController.php(152): LoginForm->validate()
+#3 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(133): SiteController->runAction()
+#6 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#7 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#8 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): SiteController->filterAccessControl()
+#9 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#10 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#11 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#12 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): SiteController->run()
+#13 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#14 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#15 C:\xampp\htdocs\shop_control\index.php(17): CWebApplication->run()
+REQUEST_URI=/
+in C:\xampp\htdocs\shop_control\protected\components\UserIdentity.php (71)
+in C:\xampp\htdocs\shop_control\protected\models\LoginForm.php (52)
+in C:\xampp\htdocs\shop_control\protected\controllers\SiteController.php (152)
+2013/10/30 11:59:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "favicon.ico".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
