@@ -230,7 +230,7 @@ class ApiController extends Controller {
             $openDateTime = new DateTime($time_upper_bound);
             $difference = $currdatetime->diff($openDateTime, True);
             $early_or_late =  'late';
-            $message = $username . " " . ($action == 'open' ? 'opened' : 'closed') . " the $location Support Center $early_or_late. Latest closing time is " . date('H:ia', $openorcloseHrsTime + 600) . ". " . ucfirst($early_or_late) . " by: " . $difference->h . " hours " . $difference->i . " minutes and " . $difference->s . " seconds";
+            $message = $username . " " . ($action == 'open' ? 'opened' : 'closed') . " the $location Support Center $early_or_late. Latest ($action == 'open' ? 'opening' : 'closing') time is " . date('H:ia', $openorcloseHrsTime + 600) . ". " . ucfirst($early_or_late) . " by: " . $difference->h . " hours " . $difference->i . " minutes and " . $difference->s . " seconds";
 
             Yii::app()->user->setFlash('error', "The $location Support Center has been " . ($action == 'open' ? 'opened' : 'closed') . " " . $early_or_late . " by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds');
         }

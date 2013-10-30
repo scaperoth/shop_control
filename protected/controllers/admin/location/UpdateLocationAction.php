@@ -3,9 +3,11 @@
 class UpdateLocationAction extends CAction {
 
     public function run() {
+        
         $vars = $_POST['UpdateLocation'];
         $loc_id = $vars['locationnameupdate'];
         $ip_address = $_POST['ipaddressupdate'];
+        $ip_address2 = '';
         $ip_address2= $_POST['ipaddressupdate2'];
         $comp_name = $vars['computernameupdate'];
 
