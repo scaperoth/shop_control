@@ -117,7 +117,7 @@ class UserIdentity extends CUserIdentity {
                         $ADvalue = 'AT-AVO';
                     }
                     if (in_array($member_group, $checkSCusergroup)) {
-                        $this->setState('role', 'user');
+                        
                         $ADvalue = 'AT-SC';
                     }
                     if (in_array($member_group, $checkSCAdmingroup)) {
