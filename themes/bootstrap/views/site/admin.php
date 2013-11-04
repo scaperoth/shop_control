@@ -1,7 +1,7 @@
 <?php
 /* @var $this HomeController */
 ?>
-<script src="<?php echo Yii::app()->theme->baseUrl;?>/assets/js/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/jquery-validation/dist/jquery.validate.min.js"></script>
 <?php
 $this->pageTitle = Yii::app()->name;
 ?>
@@ -84,9 +84,9 @@ $this->pageTitle = Yii::app()->name;
                              * shortened (3 chars) version to use in the db call 
                              */
                             ?>
-                            <?php foreach ($days_of_week as $day):?>
+                            <?php foreach ($days_of_week as $day): ?>
 
-                                <td class="date_hover" id="<?php echo $day;?>">
+                                <td class="date_hover" id="<?php echo $day; ?>">
                                     <?php
                                     /**
                                      * this code gets the times for each day and formats them the same as the timepicker
@@ -127,201 +127,223 @@ $this->pageTitle = Yii::app()->name;
                     ?>
                 </table>
                 <input id="time_submit" class="btn btn-primary" type="Submit" value="Submit Changes"/>
-                <a data-toggle="modal" id="add_location_btn" class="btn btn-info" href="#AddLocationDialog">Create a New Location</a>
-                <a data-toggle="modal" id="add_location_btn" class="btn" href="#UpdateLocationDialog">Edit a Location</a>
-                <a data-toggle="modal" id="delete_location_btn" class="btn btn-danger pull-right" href="#DeleteLocationDialog">Delete a Location</a>
+                <?php
+                echo TbHtml::button('Create a New Location', array(
+                    'style' => TbHtml::BUTTON_COLOR_INFO,
+                    'class' => 'btn btn-info',
+                    'id' => 'add_location_btn',
+                    'data-toggle' => 'modal',
+                    'data-target' => '#AddLocationDialog',
+                ));
+                ?>
+                <?php
+                echo TbHtml::button('Edit a Location', array(
+                    'style' => TbHtml::BUTTON_COLOR_DEFAULT,
+                    'id' => 'update_location_btn',
+                    'data-toggle' => 'modal',
+                    'data-target' => '#UpdateLocationDialog',
+                ));
+                ?>
+                <?php
+                echo TbHtml::button('Delete a Location', array(
+                    'style' => TbHtml::BUTTON_COLOR_DANGER,
+                    'id' => 'delete_location_btn',
+                    'class' => 'btn-danger pull-right',
+                    'data-toggle' => 'modal',
+                    'data-target' => '#DeleteLocationDialog',
+                ));
+                ?>
             </fieldset>
         </form>
-
         <!---add location dialog start-->
-        <?php $this->beginWidget('bootstrap.widgets.TbModal', array('id' => 'AddLocationDialog')); ?>
-        <div class="form">
-            <form class="form-horizontal" id="addLocationForm" method="post" >       
-                <div class="modal-header">
-                    <a href="#" class="close" data-dismiss="modal">&times;</a>
-                    <h3>Add a new support center location.</h3>
-                </div>
-                <div class="modal-body">
-                    <div class="divDialogElements">
-
-                        <!--new row-->
-                        <div class="row">
-                            <div class="control-group">
-                                <label class="control-label" for="locationname">Location Name:<span class="required">*</span></label>
-                                <div class="controls">
-                                    <div class="input-prepend">
-                                        <span class="add-on"><i class="icon-globe"></i></span>
-                                        <input placeholder="Example: Funger" required class="span3" name="AddLocation[locationname]" id="locationname" type="text">
-                                    </div>
-                                </div><!--end controls-->
-                            </div><!--end control group-->
-                        </div><!--end row-->
-
-                        <!--new row-->
-                        <div class="row">
-                            <div class="control-group">
-                                <label class="control-label" for="ipaddress">IP Address:<span class="required">*</span></label>
-                                <div class="controls">
-                                    <div class="input-prepend">
-                                        <span class="add-on"><i class="icon-barcode"></i></span>
-                                        <input placeholder="Example: 127.0.0.1" required class="span3" name="ipaddress" id="ipaddress" type="text">
-                                    </div>
-                                </div><!--end controls-->
-                            </div><!--end control group-->
-                        </div><!--end row-->
-
-                        <!--new row-->
-                        <div class="row">
-                            <div class="control-group">
-                                <label class="control-label" for="ipaddress2">Second IP Address (optional):</label>
-                                <div class="controls">
-                                    <div class="input-prepend">
-                                        <span class="add-on"><i class="icon-barcode"></i></span>
-                                        <input placeholder="Example: 127.0.0.1" class="span3" name="ipaddress2" id="ip2" type="text">
-                                    </div>
-                                </div><!--end controls-->
-                            </div><!--end control group-->
-                        </div><!--end row-->
-
-                        <!--new row-->
-                        <div class="row">
-                            <div class="control-group">
-                                <label class="control-label" for="computername">Computer Name:<span class="required">*</span></label>
-                                <div class="controls">
-                                    <div class="input-prepend">
-                                        <span class="add-on"><i class="icon-tag"></i></span>
-                                        <input placeholder="Example: est00211w01" required class="span3" name="AddLocation[computername]" id="computername" type="text">
-                                    </div>
-                                </div><!--end controls-->
-                            </div><!--end control group-->
-                        </div><!--end row-->
-
+        <div id="AddLocationDialog" role="dialog" class="modal hide fade" aria-hidden="true" style="display:none;">
+            <div class="form">
+                <form class="form-horizontal" id="addLocationForm" method="post" >       
+                    <div class="modal-header">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h3>Add a new support center location.</h3>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn small" data-dismiss="modal" value="Cancel">
-                    <input class="btn btn-primary" type="Submit" value="OK">
-                </div>
-            </form>
-        </div>
-        <?php $this->endWidget(); ?><!--end modal window-->
+                    <div class="modal-body">
+                        <div class="divDialogElements">
+
+                            <!--new row-->
+                            <div class="row">
+                                <div class="control-group">
+                                    <label class="control-label" for="locationname">Location Name:<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on"><i class="icon-globe"></i></span>
+                                            <input placeholder="Example: Funger" required class="span3" name="AddLocation[locationname]" id="locationname" type="text">
+                                        </div>
+                                    </div><!--end controls-->
+                                </div><!--end control group-->
+                            </div><!--end row-->
+
+                            <!--new row-->
+                            <div class="row">
+                                <div class="control-group">
+                                    <label class="control-label" for="ipaddress">IP Address:<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on"><i class="icon-barcode"></i></span>
+                                            <input placeholder="Example: 127.0.0.1" required class="span3" name="ipaddress" id="ipaddress" type="text">
+                                        </div>
+                                    </div><!--end controls-->
+                                </div><!--end control group-->
+                            </div><!--end row-->
+
+                            <!--new row-->
+                            <div class="row">
+                                <div class="control-group">
+                                    <label class="control-label" for="ipaddress2">Second IP Address (optional):</label>
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on"><i class="icon-barcode"></i></span>
+                                            <input placeholder="Example: 127.0.0.1" class="span3" name="ipaddress2" id="ip2" type="text">
+                                        </div>
+                                    </div><!--end controls-->
+                                </div><!--end control group-->
+                            </div><!--end row-->
+
+                            <!--new row-->
+                            <div class="row">
+                                <div class="control-group">
+                                    <label class="control-label" for="computername">Computer Name:<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on"><i class="icon-tag"></i></span>
+                                            <input placeholder="Example: est00211w01" required class="span3" name="AddLocation[computername]" id="computername" type="text">
+                                        </div>
+                                    </div><!--end controls-->
+                                </div><!--end control group-->
+                            </div><!--end row-->
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn small" data-dismiss="modal" value="Cancel">
+                        <input class="btn btn-primary" type="Submit" value="OK">
+                    </div>
+                </form>
+            </div>
+        </div><!--end modal window-->
         <!--add location dialog end-->
 
         <!---update location dialog start-->
-        <?php $this->beginWidget('bootstrap.widgets.TbModal', array('id' => 'UpdateLocationDialog')); ?>
-        <div class="form">
-            <form class="form-horizontal" id="updateLocationForm" method="post">       
-                <div class="modal-header">
-                    <a href="#" class="close" data-dismiss="modal">&times;</a>
-                    <h3>Edit a support center location.</h3>
-                </div>
-                <div class="modal-body">
-                    <div class="divDialogElements">
-
-                        <!--new row-->
-                        <div class="row">
-                            <div class="control-group">
-                                <label class="control-label" for="locationselectupdate">Location Name:</label>
-                                <div class="controls">
-                                    <div class="input-prepend">
-                                        <span class="add-on"><i class="icon-globe"></i></span>
-                                        <select id='locationselectupdate' name='UpdateLocation[locationnameupdate]'>
-                                            <?php foreach ($locations as $location): ?>
-                                                <option value='<?php echo md5($location['loc_id']); ?>'><?php echo $location['loc_name']; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                </div><!--end controls-->
-                            </div><!--end control group-->
-                        </div><!--end row--> 
-
-                        <!--new row-->
-                        <div class="row">
-                            <div class="control-group">
-                                <label class="control-label" for="ipaddressupdate">IP Address:<span class="required">*</span></label>
-                                <div class="controls">
-                                    <div class="input-prepend">
-                                        <span class="add-on"><i class="icon-barcode"></i></span>
-                                        <input placeholder="Example: 127.0.0.1" required class="span3" name="ipaddressupdate" id="ipaddressupdate" type="text">
-                                    </div>
-                                </div><!--end controls-->
-                            </div><!--end control group-->
-                        </div><!--end row-->
-                        
-                        <!--new row-->
-                        <div class="row">
-                            <div class="control-group">
-                                <label class="control-label" for="ipaddressupdate2">IP Address:</label>
-                                <div class="controls">
-                                    <div class="input-prepend">
-                                        <span class="add-on"><i class="icon-barcode"></i></span>
-                                        <input placeholder="Example: 127.0.0.1" class="span3" name="ipaddressupdate2" id="ipaddressupdate2" type="text">
-                                    </div>
-                                </div><!--end controls-->
-                            </div><!--end control group-->
-                        </div><!--end row-->
-
-                        <!--new row-->
-                        <div class="row">
-                            <div class="control-group">
-                                <label class="control-label" for="computernameupdate">Computer Name:<span class="required">*</span></label>
-                                <div class="controls">
-                                    <div class="input-prepend">
-                                        <span class="add-on"><i class="icon-tag"></i></span>
-                                        <input placeholder="Example: est00211w01" required class="span3" name="UpdateLocation[computernameupdate]" id="computernameupdate" type="text">
-                                    </div>
-                                </div><!--end controls-->
-                            </div><!--end control group-->
-                        </div><!--end row-->
-
+        <div id="UpdateLocationDialog" role="dialog" class="modal hide fade" aria-hidden="true" style="display:none;">
+            <div class="form">
+                <form class="form-horizontal" id="updateLocationForm" method="post">       
+                    <div class="modal-header">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h3>Edit a support center location.</h3>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn small" data-dismiss="modal" value="Cancel">
-                    <input class="btn btn-primary" type="Submit" value="OK">
-                </div>
-            </form>
-        </div>
-        <?php $this->endWidget(); ?><!--end modal window-->
+                    <div class="modal-body">
+                        <div class="divDialogElements">
+
+                            <!--new row-->
+                            <div class="row">
+                                <div class="control-group">
+                                    <label class="control-label" for="locationselectupdate">Location Name:</label>
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on"><i class="icon-globe"></i></span>
+                                            <select id='locationselectupdate' name='UpdateLocation[locationnameupdate]'>
+                                                <?php foreach ($locations as $location): ?>
+                                                    <option value='<?php echo md5($location['loc_id']); ?>'><?php echo $location['loc_name']; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div><!--end controls-->
+                                </div><!--end control group-->
+                            </div><!--end row--> 
+
+                            <!--new row-->
+                            <div class="row">
+                                <div class="control-group">
+                                    <label class="control-label" for="ipaddressupdate">IP Address:<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on"><i class="icon-barcode"></i></span>
+                                            <input placeholder="Example: 127.0.0.1" required class="span3" name="ipaddressupdate" id="ipaddressupdate" type="text">
+                                        </div>
+                                    </div><!--end controls-->
+                                </div><!--end control group-->
+                            </div><!--end row-->
+
+                            <!--new row-->
+                            <div class="row">
+                                <div class="control-group">
+                                    <label class="control-label" for="ipaddressupdate2">IP Address:</label>
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on"><i class="icon-barcode"></i></span>
+                                            <input placeholder="Example: 127.0.0.1" class="span3" name="ipaddressupdate2" id="ipaddressupdate2" type="text">
+                                        </div>
+                                    </div><!--end controls-->
+                                </div><!--end control group-->
+                            </div><!--end row-->
+
+                            <!--new row-->
+                            <div class="row">
+                                <div class="control-group">
+                                    <label class="control-label" for="computernameupdate">Computer Name:<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on"><i class="icon-tag"></i></span>
+                                            <input placeholder="Example: est00211w01" required class="span3" name="UpdateLocation[computernameupdate]" id="computernameupdate" type="text">
+                                        </div>
+                                    </div><!--end controls-->
+                                </div><!--end control group-->
+                            </div><!--end row-->
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn small" data-dismiss="modal" value="Cancel">
+                        <input class="btn btn-primary" type="Submit" value="OK">
+                    </div>
+                </form>
+            </div>
+        </div><!--end modal window-->
         <!---update location dialog end-->
 
         <!---delete location dialog start-->
-        <?php $this->beginWidget('bootstrap.widgets.TbModal', array('id' => 'DeleteLocationDialog')); ?>
-        <div class="form">
-            <form class="form-horizontal" id="deleteLocationForm" method="post">       
-                <div class="modal-header">
-                    <a href="#" class="close" data-dismiss="modal">&times;</a>
-                    <h3>Delete a location.</h3>
-                </div>
-                <div class="modal-body">
-                    <div class="divDialogElements">
-
-                        <!--new row-->
-                        <div class="row">
-                            <div class="control-group">
-                                <label class="control-label" for="locationselect">Location Name:</label>
-                                <div class="controls">
-                                    <div class="input-prepend">
-                                        <span class="add-on"><i class="icon-globe"></i></span>
-                                        <select id='locationselect' name='DeleteLocation[locationname]'>
-                                            <?php foreach ($locations as $location): ?>
-                                                <option value='<?php echo md5($location['loc_id']); ?>'><?php echo $location['loc_name']; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                </div><!--end controls-->
-                            </div><!--end control group-->
-                        </div><!--end row-->
-
+        <div id="DeleteLocationDialog" role="dialog" class="modal hide fade" aria-hidden="true" style="display:none;">
+            <div class="form">
+                <form class="form-horizontal" id="deleteLocationForm" method="post">       
+                    <div class="modal-header">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h3>Delete a location.</h3>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn small" data-dismiss="modal" value="Cancel">
-                    <input class="btn btn-primary" type="Submit" value="OK">
-                </div>
-            </form>
-        </div>
-        <?php $this->endWidget(); ?><!--end modal window-->
+                    <div class="modal-body">
+                        <div class="divDialogElements">
+
+                            <!--new row-->
+                            <div class="row">
+                                <div class="control-group">
+                                    <label class="control-label" for="locationselect">Location Name:</label>
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on"><i class="icon-globe"></i></span>
+                                            <select id='locationselect' name='DeleteLocation[locationname]'>
+                                                <?php foreach ($locations as $location): ?>
+                                                    <option value='<?php echo md5($location['loc_id']); ?>'><?php echo $location['loc_name']; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div><!--end controls-->
+                                </div><!--end control group-->
+                            </div><!--end row-->
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn small" data-dismiss="modal" value="Cancel">
+                        <input class="btn btn-primary" type="Submit" value="OK">
+                    </div>
+                </form>
+            </div>
+        </div><!--end modal window-->
         <!--delete location dialog end-->
 
     </div>
@@ -330,8 +352,8 @@ $this->pageTitle = Yii::app()->name;
     <div id='holiday_flash'></div>
     <div id="holidayForm" class="admin-form">
         <h3 class="section-title">Closures</h3>
-        <form id='shopHolidayForm'>
-            <fieldset>
+        <form id='shopHolidayForm' >
+            <fieldset >
                 <table id="timeTable" align="center" border="1">
                     <thead>
                     <td>Selected Suport Centers</td>
@@ -397,118 +419,127 @@ $this->pageTitle = Yii::app()->name;
                     ?>
 
                 </table>
+                <div class="row-fluid span12">
                 <input id="time_submit" class="btn btn-primary" type="Submit" value="Submit Changes"/>
-                <a data-toggle="modal" id="add_holiday_btn" class="btn btn-info" href="#AddHolidayDialog">Create a New Holiday</a>
-                <a data-toggle="modal" id="delete_holiday_btn" class="btn btn-danger pull-right" href="#DeleteHolidayDialog">Delete a Holiday</a>
+                <?php
+                echo TbHtml::button('Create a New Holiday', array(
+                    'style' => TbHtml::BUTTON_COLOR_INFO,
+                    'class' => 'btn btn-info',
+                    'id' => 'add_holiday_btn',
+                    'data-toggle' => 'modal',
+                    'data-target' => '#AddHolidayDialog',
+                ));
+                ?>
+                <?php
+                echo TbHtml::button('Delete a Holiday', array(
+                    'style' => TbHtml::BUTTON_COLOR_DANGER,
+                    'id' => 'delete_holiday_btn ',
+                    'class' => 'btn-danger pull-right',
+                    'data-toggle' => 'modal',
+                    'data-target' => '#DeleteHolidayDialog',
+                ));
+                ?>
+                </div>
             </fieldset>
         </form>
 
         <!--add holiday dialog start-->
-        <?php $this->beginWidget('bootstrap.widgets.TbModal', array('id' => 'AddHolidayDialog')); ?>
-        <div class="form">
-            <form class="form-horizontal" id="addHolidayForm" method="post" action="../phpactions/addholiday">       
-                <div class="modal-header">
-                    <a href="#" class="close" data-dismiss="modal">&times;</a>
-                    <h3>Add a new holiday.</h3>
-                </div>
-                <div class="modal-body">
-                    <div class="divDialogElements">
-
-                        <!--new row-->
-                        <div class="row">
-                            <div class="control-group">
-                                <label class="control-label" for="holidayname">Holiday Name:<span class="required">*</span></label>
-                                <div class="controls">
-                                    <div class="input-prepend">
-                                        <span class="add-on"><i class="icon-briefcase"></i></span>
-                                        <input placeholder="Example: New Year's Day" required class="span3" name="AddHoliday[holidayname]" id="holidayname" type="text">
-                                    </div>
-                                </div><!--end controls-->
-                            </div><!--end control group-->
-                        </div><!--end row-->
-
-                        <!--new row-->
-                        <div class="row">
-                            <div class="control-group">
-                                <label class="control-label" for="hoildaydate">Holiday Date:<span class="required">*</span></label>
-                                <div class="controls">
-                                    <div class="input-prepend">
-                                        <span class="add-on"><i class="icon-th"></i></span>
-                                        <input class='datepicker' required placeholder="Example: Jan 01" class="span3" name="AddHoliday[holidaydate]" id="hoildaydate" type="text">
-                                    </div>
-                                </div><!--end controls-->
-                            </div><!--end control group-->
-                        </div><!--end row-->
-
-                        <!--new row-->
-                        <div class="row">
-                            <div class="control-group">
-                                <label class="control-label" for="holidaydescription">Holiday Description:</label>
-                                <div class="controls">
-                                    <div class="input-prepend">
-                                        <span class="add-on"><i class="icon-comment"></i></span>
-                                        <input placeholder="Example: Federal holiday" class="span3" name="AddHoliday[holidaydescription]" id="holidaydescription" type="text">
-                                    </div>
-                                </div><!--end controls-->
-                            </div><!--end control group-->
-                        </div><!--end row-->
-
+        <div id="AddHolidayDialog" role="dialog" class="modal hide fade" aria-hidden="true" style="display:none;">
+            <div class="form">
+                <form class="form-horizontal" id="addHolidayForm" method="post" action="../phpactions/addholiday">       
+                    <div class="modal-header">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h3>Add a new holiday.</h3>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn small" data-dismiss="modal" value="Cancel">
-                    <input class="btn btn-primary" type="Submit" value="OK">
-                </div>
-            </form>
-        </div>
-        <?php $this->endWidget(); ?><!--end modal window-->
+                    <div class="modal-body">
+                        <div class="divDialogElements">
+
+                            <!--new row-->
+                            <div class="row">
+                                <div class="control-group">
+                                    <label class="control-label" for="holidayname">Holiday Name:<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on"><i class="icon-briefcase"></i></span>
+                                            <input placeholder="Example: New Year's Day" required class="span3" name="AddHoliday[holidayname]" id="holidayname" type="text">
+                                        </div>
+                                    </div><!--end controls-->
+                                </div><!--end control group-->
+                            </div><!--end row-->
+
+                            <!--new row-->
+                            <div class="row">
+                                <div class="control-group">
+                                    <label class="control-label" for="hoildaydate">Holiday Date:<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on"><i class="icon-th"></i></span>
+                                            <input class='datepicker' required placeholder="Example: Jan 01" class="span3" name="AddHoliday[holidaydate]" id="hoildaydate" type="text">
+                                        </div>
+                                    </div><!--end controls-->
+                                </div><!--end control group-->
+                            </div><!--end row-->
+
+                            <!--new row-->
+                            <div class="row">
+                                <div class="control-group">
+                                    <label class="control-label" for="holidaydescription">Holiday Description:</label>
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on"><i class="icon-comment"></i></span>
+                                            <input placeholder="Example: Federal holiday" class="span3" name="AddHoliday[holidaydescription]" id="holidaydescription" type="text">
+                                        </div>
+                                    </div><!--end controls-->
+                                </div><!--end control group-->
+                            </div><!--end row-->
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn small" data-dismiss="modal" value="Cancel">
+                        <input class="btn btn-primary" type="Submit" value="OK">
+                    </div>
+                </form>
+            </div>
+        </div><!--end modal window-->
         <!---add holiday dialog end-->
 
         <!---delete location dialog start-->
-        <?php $this->beginWidget('bootstrap.widgets.TbModal', array('id' => 'DeleteHolidayDialog')); ?>
-        <div class="form">
-            <form class="form-horizontal" id="deleteHolidayForm" method="post">       
-                <div class="modal-header">
-                    <a href="#" class="close" data-dismiss="modal">&times;</a>
-                    <h3>Delete a holiday.</h3>
-                </div>
-                <div class="modal-body">
-                    <div class="divDialogElements">
-
-                        <!--new row-->
-                        <div class="row">
-                            <div class="control-group">
-                                <label class="control-label" for="holidayselect">Holiday Name:</label>
-                                <div class="controls">
-                                    <div class="input-prepend">
-                                        <span class="add-on"><i class="icon-briefcase"></i></span>
-                                        <select id='holidayselect' name='DeleteHoliday[holidayselect]'>
-                                            <?php foreach ($holidays as $holiday): ?>
-                                                <option value='<?php echo md5($holiday['hol_id']); ?>'><?php echo $holiday['hol_name']; ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                </div><!--end controls-->
-                            </div><!--end control group-->
-                        </div><!--end row-->
-
+        <div id="DeleteHolidayDialog" role="dialog" class="modal hide fade" aria-hidden="true" style="display:none;">
+            <div class="form">
+                <form class="form-horizontal" id="deleteHolidayForm" method="post">       
+                    <div class="modal-header">
+                        <a href="#" class="close" data-dismiss="modal">&times;</a>
+                        <h3>Delete a holiday.</h3>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn small" data-dismiss="modal" value="Cancel">
-                    <input class="btn btn-primary" type="Submit" value="OK">
-                </div>
-            </form>
-        </div>
-        <?php $this->endWidget(); ?><!--end modal window-->
+                    <div class="modal-body">
+                        <div class="divDialogElements">
+
+                            <!--new row-->
+                            <div class="row">
+                                <div class="control-group">
+                                    <label class="control-label" for="holidayselect">Holiday Name:</label>
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on"><i class="icon-briefcase"></i></span>
+                                            <select id='holidayselect' name='DeleteHoliday[holidayselect]'>
+                                                <?php foreach ($holidays as $holiday): ?>
+                                                    <option value='<?php echo md5($holiday['hol_id']); ?>'><?php echo $holiday['hol_name']; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div><!--end controls-->
+                                </div><!--end control group-->
+                            </div><!--end row-->
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn small" data-dismiss="modal" value="Cancel">
+                        <input class="btn btn-primary" type="Submit" value="OK">
+                    </div>
+                </form>
+            </div>
+        </div><!--end modal window-->
         <!---delete location dialog end-->
     </div>
-    
-    <script>
-
-        function closeDialog() {
-            $('.modal').modal('hide');
-        }
-        
-
-    </script>

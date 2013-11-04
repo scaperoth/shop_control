@@ -1,12 +1,14 @@
 <?php
 /**
  * TbCollapse class file.
- * @author Christoffer Niska <ChristofferNiska@gmail.com>
- * @copyright Copyright &copy; Christoffer Niska 2012-
+ * @author Christoffer Niska <christoffer.niska@gmail.com>
+ * @copyright Copyright &copy; Christoffer Niska 2013-
  * @license http://www.opensource.org/licenses/bsd-license.php New BSD License
  * @package bootstrap.widgets
- * @since 1.0.0
  */
+
+Yii::import('bootstrap.behaviors.TbWidget');
+Yii::import('bootstrap.helpers.TbHtml');
 
 /**
  * Bootstrap collapse widget.
@@ -14,81 +16,70 @@
  */
 class TbCollapse extends CWidget
 {
-	const CONTAINER_PREFIX = 'yii_bootstrap_collapse_';
+    /**
+     * @var string the HTML tag for the container.
+     */
+    public $tagName = 'div';
+    /**
+     * @var string the content text.
+     */
+    public $content;
+    /**
+     * @var string the path to a partial view.
+     */
+    public $view;
+    /**
+     * @var string the CSS selector for the parent element.
+     */
+    public $parent;
+    /**
+     * @var boolean whether to be collapsed on invocation.
+     */
+    public $toggle;
+    /**
+     * @var string[] $events the JavaScript event configuration (name=>handler).
+     */
+    public $events = array();
+    /**
+     * @var array the HTML attributes for the container.
+     */
+    public $htmlOptions = array();
+    /**
+     * @var array additional data to be passed to the view.
+     */
+    public $viewData = array();
 
-	/**
-	 * @var string the name of the collapse element. Defaults to 'div'.
-	 */
-	public $tagName = 'div';
-	/**
-	 * @var boolean the CSS selector for element to collapse. Defaults to 'false'.
-	 */
-	public $parent = false;
-	/**
-	 * @var boolean indicates whether to toggle the collapsible element on invocation.
-	 */
-	public $toggle = true;
-	/**
-	 * @var array the options for the Bootstrap Javascript plugin.
-	 */
-	public $options = array();
-	/**
-	 * @var string[] the Javascript event handlers.
-	 */
-	public $events = array();
-	/**
-	* @var array the HTML attributes for the widget container.
-	*/
-	public $htmlOptions = array();
+    /**
+     * Initializes the widget.
+     */
+    public function init()
+    {
+        $this->attachBehavior('TbWidget', new TbWidget);
+        $this->copyId();
+        TbHtml::addCssClass('collapse', $this->htmlOptions);
+        if (isset($this->parent)) {
+            TbArray::defaultValue('data-parent', $this->parent, $this->htmlOptions);
+        }
+        if (isset($this->toggle) && $this->toggle) {
+            TbHtml::addCssClass('in', $this->htmlOptions);
+        }
+        if (isset($this->view)) {
+            $controller = $this->getController();
+            if (isset($controller) && $controller->getViewFile($this->view) !== false) {
+                $this->content = $this->controller->renderPartial($this->view, $this->viewData, true);
+            }
+        }
+        echo TbHtml::openTag($this->tagName, $this->htmlOptions);
+        echo $this->content;
+    }
 
-	private static $_containerId = 0;
-
-	/**
-	 * Initializes the widget.
-	 */
-	public function init()
-	{
-		if (!isset($this->htmlOptions['id']))
-			$this->htmlOptions['id'] = $this->getId();
-
-		if (isset($this->parent) && !isset($this->options['parent']))
-			$this->options['parent'] = $this->parent;
-
-		if (isset($this->toggle) && !isset($this->options['toggle']))
-			$this->options['toggle'] = $this->toggle;
-
-		echo CHtml::openTag($this->tagName, $this->htmlOptions);
-	}
-
-	/**
-	 * Runs the widget.
-	 */
-	public function run()
-	{
-		$id = $this->htmlOptions['id'];
-
-		echo CHtml::closeTag($this->tagName);
-
-		/** @var CClientScript $cs */
-		$cs = Yii::app()->getClientScript();
-		$options = !empty($this->options) ? CJavaScript::encode($this->options) : '';
-		$cs->registerScript(__CLASS__.'#'.$id, "jQuery('#{$id}').collapse({$options});");
-
-		foreach ($this->events as $name => $handler)
-		{
-			$handler = CJavaScript::encode($handler);
-			$cs->registerScript(__CLASS__.'#'.$id.'_'.$name, "jQuery('#{$id}').on('{$name}', {$handler});");
-		}
-	}
-
-	/**
-	 * Returns the next collapse container ID.
-	 * @return string the id
-	 * @static
-	 */
-	public static function getNextContainerId()
-	{
-		return self::CONTAINER_PREFIX.self::$_containerId++;
-	}
+    /**
+     * Runs the widget.
+     */
+    public function run()
+    {
+        echo CHtml::closeTag($this->tagName);
+        $selector = '#' . $this->htmlOptions['id'];
+        $this->registerEvents($selector, $this->events);
+    }
 }
-

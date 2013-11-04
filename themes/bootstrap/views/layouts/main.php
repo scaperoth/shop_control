@@ -43,10 +43,8 @@ $display_location = (($this->location) ?  ucfirst($this->location) : '');
             if (Yii::app()->user->checkAccess('admin'))
                 $separator = '---';
             $this->widget('bootstrap.widgets.TbNavbar', array(
-                'type' => 'null', // null or 'inverse'\
-                'brand' => '<img src="' . Yii::app()->theme->baseUrl . '/assets/img/at_logo.png" alt="Academic Technologies\"/>',
+                'brandLabel' => '<img src="' . Yii::app()->theme->baseUrl . '/assets/img/at_logo.png" alt="Academic Technologies\"/>',
                 'brandUrl' => array('/site/index'),
-                'collapse' => true, // requires bootstrap-responsive.css
                 'items' => array(
                     array(
                         'class' => 'bootstrap.widgets.TbMenu',

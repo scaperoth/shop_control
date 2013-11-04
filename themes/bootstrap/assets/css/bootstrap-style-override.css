@@ -112,6 +112,10 @@ CUSTOM CSS
     margin:20px auto;
 }
 
+.error{
+    color:#d00;
+}
+
 .muted img{
     position:absolute;
 
