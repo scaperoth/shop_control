@@ -13,6 +13,7 @@ class ApiController extends Controller {
      * either 'json' or 'xml'
      */
     private $format = 'json';
+    public $shop_time_threshold = 900;
 
     /**
      * @return array action filters
@@ -132,7 +133,7 @@ class ApiController extends Controller {
      * @throws CHttpException
      */
     private function _ProcessShopStatusChange($which_shop, $status_to_change_to) {
-        
+
         if ($status_to_change_to) {
             switch ($status_to_change_to) {
                 case 'open':
@@ -159,7 +160,7 @@ class ApiController extends Controller {
      * @return string|null
      */
     private function _CloseOrOpenShop($action, $which_shop = 'mylocation') {
-        $threshhold = 900;
+
         $this->__checkUserAuth();
         //administrative emails
         $admin_emails = $this->admin_emails;
@@ -216,20 +217,20 @@ class ApiController extends Controller {
 
 
 //get upper deviation of time. +- 10 minutes from db shop closed time
-        $time_upper_bound = date('d-m-Y H:i:s', $openorcloseHrsTime + $threshhold);
-        $time_lower_bound = date('d-m-Y H:i:s', $openorcloseHrsTime - $threshhold);
-        
-        
+        $time_upper_bound = date('d-m-Y H:i:s', $openorcloseHrsTime + $this->shop_time_threshold);
+        $time_lower_bound = date('d-m-Y H:i:s', $openorcloseHrsTime - $this->shop_time_threshold);
+
+
         //get current time
         $currtime = date('d-m-Y H:i:s');
         $currdatetime = new DateTime($currtime);
 //if current time is later than the open + 10 minutes
 //shop was opened late
         if ($currtime > $time_upper_bound) {
-            
+
             $openDateTime = new DateTime($time_upper_bound);
             $difference = $currdatetime->diff($openDateTime, True);
-            $early_or_late =  'late';
+            $early_or_late = 'late';
             $message = $username . " " . ($action == 'open' ? 'opened' : 'closed') . " the $location Support Center $early_or_late. Latest ($action == 'open' ? 'opening' : 'closing') time is " . date('H:ia', $openorcloseHrsTime + 600) . ". " . ucfirst($early_or_late) . " by: " . $difference->h . " hours " . $difference->i . " minutes and " . $difference->s . " seconds";
 
             Yii::app()->user->setFlash('error', "The $location Support Center has been " . ($action == 'open' ? 'opened' : 'closed') . " " . $early_or_late . " by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds');
@@ -298,77 +299,79 @@ class ApiController extends Controller {
         $message = NULL;
         $locations = Locations::model()->findAll();
         foreach ($locations as $curr_location) {
-            $location = $curr_location['loc_name'];
-            $isopen = Locations::model()->findByAttributes(array('loc_name' => $location), 'loc_status');
-            $shouldbeopen = FALSE;
-            $isholiday = FALSE;
-            /*
-              echo '<h3>' . $location . '</h3>';
-              if (!$isopen) {
-              echo'<pre class="well">closed</pre>';
-              } else {
-              echo'<pre>open</pre>';
-              }
-             * 
-             */
+            if ($openHrsTime != $closedHrsTime) {
+                $location = $curr_location['loc_name'];
+                $isopen = Locations::model()->findByAttributes(array('loc_name' => $location), 'loc_status');
+                $shouldbeopen = FALSE;
+                $isholiday = FALSE;
+                /*
+                  echo '<h3>' . $location . '</h3>';
+                  if (!$isopen) {
+                  echo'<pre class="well">closed</pre>';
+                  } else {
+                  echo'<pre>open</pre>';
+                  }
+                 * 
+                 */
 
-            $dayofweek = strtolower(date('D'));
-            $table_col_open = 'loc_' . $dayofweek . '_open_hrs';
-            $table_col_closed = 'loc_' . $dayofweek . '_closed_hrs';
+                $dayofweek = strtolower(date('D'));
+                $table_col_open = 'loc_' . $dayofweek . '_open_hrs';
+                $table_col_closed = 'loc_' . $dayofweek . '_closed_hrs';
 //check open hours
-            $check_query = Yii::app()->db->createCommand()
-                    ->select($table_col_open . ',' . $table_col_closed)
-                    ->from('locations l')
-                    ->where('l.loc_name=:name', array(':name' => $location))
-                    ->queryRow();
-            $openHrsTime = strtotime($check_query[$table_col_open]);
-            $closedHrsTime = strtotime($check_query[$table_col_closed]);
+                $check_query = Yii::app()->db->createCommand()
+                        ->select($table_col_open . ',' . $table_col_closed)
+                        ->from('locations l')
+                        ->where('l.loc_name=:name', array(':name' => $location))
+                        ->queryRow();
+                $openHrsTime = strtotime($check_query[$table_col_open]);
+                $closedHrsTime = strtotime($check_query[$table_col_closed]);
 
-            $open_upper_bound = date('d-m-Y H:i:s', $openHrsTime + 600);
-            $closed_lower_bound = date('d-m-Y H:i:s', $closedHrsTime - 600);
+                $open_upper_bound = date('d-m-Y H:i:s', $openHrsTime + $this->shop_time_threshold);
+                $closed_lower_bound = date('d-m-Y H:i:s', $closedHrsTime - $this->shop_time_threshold);
 
-            $currtime = date('d-m-Y H:i:s');
-            $currDay = date('M d');
+                $currtime = date('d-m-Y H:i:s');
+                $currDay = date('M d');
 
 
-            foreach ($holidays_query as $holiday) {
-                if ($holiday['hol_date'] == $currDay) {
-                    if ($holiday['loc_id'] == $curr_location['loc_id']) {
-                        //echo "Don't worry! it's a holiday";
-                        $isholiday = TRUE;
+                foreach ($holidays_query as $holiday) {
+                    if ($holiday['hol_date'] == $currDay) {
+                        if ($holiday['loc_id'] == $curr_location['loc_id']) {
+                            //echo "Don't worry! it's a holiday";
+                            $isholiday = TRUE;
+                        }
                     }
                 }
-            }
 
-            if ($currtime < $closed_lower_bound && $currtime > $open_upper_bound) {
-                $shouldbeopen = TRUE;
-            }
-
-
-
-            /*             * EMAIL LOGIC FOR CRON JOB* */
-            if (!$isholiday) {
-                //it"s not a holiday...
-                if (!$isopen) {
-                    //it's not open
-                    if ($shouldbeopen) {
-                        //it should be open
-                        $message .= "$location should have been opened by $open_upper_bound. Not yet opened.\n";
-                        $send_locations[] = $location;
-                    } else {
-                        //but that's ok
-                    }
-                } else {
-                    //it's open
-                    if ($shouldbeopen) {
-                        //but it should be, and that's ok
-                    } else {
-                        //this means no one has closed it
-                        $message .= "$location should have been closed by $closed_lower_bound. Not yet closed.\n";
-                        $send_locations[] = $location;
-                    }
+                if ($currtime < $closed_lower_bound && $currtime > $open_upper_bound) {
+                    $shouldbeopen = TRUE;
                 }
-            }//end !isholiday
+
+
+
+                /*                 * EMAIL LOGIC FOR CRON JOB* */
+                if (!$isholiday) {
+                    //it"s not a holiday...
+                    if (!$isopen) {
+                        //it's not open
+                        if ($shouldbeopen) {
+                            //it should be open
+                            $message .= "$location should have been opened by $open_upper_bound. Not yet opened.\n";
+                            $send_locations[] = $location;
+                        } else {
+                            //but that's ok
+                        }
+                    } else {
+                        //it's open
+                        if ($shouldbeopen) {
+                            //but it should be, and that's ok
+                        } else {
+                            //this means no one has closed it
+                            $message .= "$location should have been closed by $closed_lower_bound. Not yet closed.\n";
+                            $send_locations[] = $location;
+                        }
+                    }
+                }//end !isholiday
+            }//end first check
         }//end foreach
 
         $to = $admin_emails;

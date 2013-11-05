@@ -312,7 +312,6 @@ $this->pageTitle = Yii::app()->name;
                                 </div><!--end controls-->
                             </div><!--end control group-->
                         </div><!--end row-->
-
                     </div>
                 </div>
                 <div class="modal-footer">
