@@ -231,7 +231,7 @@ class ApiController extends Controller {
             $openDateTime = new DateTime($time_upper_bound);
             $difference = $currdatetime->diff($openDateTime, True);
             $early_or_late = 'late';
-            $message = $username . " " . ($action == 'open' ? 'opened' : 'closed') . " the $location Support Center $early_or_late. Latest ".($action == 'open' ? 'opening' : 'closing')." time is " . date('H:ia', $openorcloseHrsTime + $this->shop_time_threshold) . ". " . ucfirst($early_or_late) . " by: " . $difference->h . " hours " . $difference->i . " minutes and " . $difference->s . " seconds";
+            $message = $username . " " . ($action == 'open' ? 'opened' : 'closed') . " the $location Support Center $early_or_late. Latest " . ($action == 'open' ? 'opening' : 'closing') . " time is " . date('H:ia', $openorcloseHrsTime + $this->shop_time_threshold) . ". " . ucfirst($early_or_late) . " by: " . $difference->h . " hours " . $difference->i . " minutes and " . $difference->s . " seconds";
 
             Yii::app()->user->setFlash('error', "The $location Support Center has been " . ($action == 'open' ? 'opened' : 'closed') . " " . $early_or_late . " by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds');
         }
@@ -299,33 +299,34 @@ class ApiController extends Controller {
         $message = NULL;
         $locations = Locations::model()->findAll();
         foreach ($locations as $curr_location) {
-            if ($openHrsTime != $closedHrsTime) {
-                $location = $curr_location['loc_name'];
-                $isopen = Locations::model()->findByAttributes(array('loc_name' => $location), 'loc_status');
-                $shouldbeopen = FALSE;
-                $isholiday = FALSE;
-                /*
-                  echo '<h3>' . $location . '</h3>';
-                  if (!$isopen) {
-                  echo'<pre class="well">closed</pre>';
-                  } else {
-                  echo'<pre>open</pre>';
-                  }
-                 * 
-                 */
 
-                $dayofweek = strtolower(date('D'));
-                $table_col_open = 'loc_' . $dayofweek . '_open_hrs';
-                $table_col_closed = 'loc_' . $dayofweek . '_closed_hrs';
+            $location = $curr_location['loc_name'];
+            $isopen = Locations::model()->findByAttributes(array('loc_name' => $location), 'loc_status');
+            $shouldbeopen = FALSE;
+            $isholiday = FALSE;
+            /*
+              echo '<h3>' . $location . '</h3>';
+              if (!$isopen) {
+              echo'<pre class="well">closed</pre>';
+              } else {
+              echo'<pre>open</pre>';
+              }
+             * 
+             */
+
+            $dayofweek = strtolower(date('D'));
+            $table_col_open = 'loc_' . $dayofweek . '_open_hrs';
+            $table_col_closed = 'loc_' . $dayofweek . '_closed_hrs';
 //check open hours
-                $check_query = Yii::app()->db->createCommand()
-                        ->select($table_col_open . ',' . $table_col_closed)
-                        ->from('locations l')
-                        ->where('l.loc_name=:name', array(':name' => $location))
-                        ->queryRow();
-                $openHrsTime = strtotime($check_query[$table_col_open]);
-                $closedHrsTime = strtotime($check_query[$table_col_closed]);
-
+            $check_query = Yii::app()->db->createCommand()
+                    ->select($table_col_open . ',' . $table_col_closed)
+                    ->from('locations l')
+                    ->where('l.loc_name=:name', array(':name' => $location))
+                    ->queryRow();
+            $openHrsTime = strtotime($check_query[$table_col_open]);
+            $closedHrsTime = strtotime($check_query[$table_col_closed]);
+            
+            if ($openHrsTime != $closedHrsTime) {
                 $open_upper_bound = date('d-m-Y H:i:s', $openHrsTime + $this->shop_time_threshold);
                 $closed_lower_bound = date('d-m-Y H:i:s', $closedHrsTime - $this->shop_time_threshold);
 
