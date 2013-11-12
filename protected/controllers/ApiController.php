@@ -343,7 +343,7 @@ class ApiController extends Controller {
                     }
                 }
 
-                if ($currtime < $closed_lower_bound && $currtime > $open_upper_bound) {
+                if ($currtime < $closedHrsTime && $currtime > $openHrsTime) {
                     $shouldbeopen = TRUE;
                 }
 
