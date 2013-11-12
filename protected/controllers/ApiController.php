@@ -343,18 +343,20 @@ class ApiController extends Controller {
                     }
                 }
 
-                if ($currtime < $closedHrsTime && $currtime > $openHrsTime) {
-                    $shouldbeopen = TRUE;
+                if ($open_upper_bound < $currtime  && $currtime < $closed_lower_bound ) {
+                    $shouldbe_open_with_threshold = TRUE;
                 }
-
-
+                
+                if ($openHrsTime < $currtime  && $currtime < $closedHrsTime ) {
+                    $shouldbe_open_without_threshold = TRUE;
+                }
 
                 /*                 * EMAIL LOGIC FOR CRON JOB* */
                 if (!$isholiday) {
                     //it"s not a holiday...
                     if (!$isopen) {
                         //it's not open
-                        if ($shouldbeopen) {
+                        if ($shouldbe_open_with_threshold) {
                             //it should be open
                             $message .= "$location should have been opened by $open_upper_bound. Not yet opened.\n";
                             $send_locations[] = $location;
@@ -363,7 +365,7 @@ class ApiController extends Controller {
                         }
                     } else {
                         //it's open
-                        if ($shouldbeopen) {
+                        if ($shouldbe_open_without_threshold) {
                             //but it should be, and that's ok
                         } else {
                             //this means no one has closed it
