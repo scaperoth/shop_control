@@ -303,6 +303,7 @@ class ApiController extends Controller {
             $location = $curr_location['loc_name'];
             $isopen = Locations::model()->findByAttributes(array('loc_name' => $location), 'loc_status');
             $shouldbeopen = FALSE;
+            $shouldbeclosed = TRUE;
             $isholiday = FALSE;
             /*
               echo '<h3>' . $location . '</h3>';
@@ -327,9 +328,11 @@ class ApiController extends Controller {
             $closedHrsTime = strtotime($check_query[$table_col_closed]);
             
             if ($openHrsTime != $closedHrsTime) {
+                $open_lower_bound = date('d-m-Y H:i:s', $openHrsTime - $this->shop_time_threshold);
                 $open_upper_bound = date('d-m-Y H:i:s', $openHrsTime + $this->shop_time_threshold);
                 $closed_lower_bound = date('d-m-Y H:i:s', $closedHrsTime - $this->shop_time_threshold);
-
+                $closed_upper_bound = date('d-m-Y H:i:s', $closedHrsTime + $this->shop_time_threshold);
+                
                 $currtime = date('d-m-Y H:i:s');
                 $currDay = date('M d');
 
@@ -344,19 +347,18 @@ class ApiController extends Controller {
                 }
 
                 if ($open_upper_bound < $currtime  && $currtime < $closed_lower_bound ) {
-                    $shouldbe_open_with_threshold = TRUE;
+                    $shouldbeopen = TRUE;
                 }
-                
-                if ($openHrsTime < $currtime  && $currtime < $closedHrsTime ) {
-                    $shouldbe_open_without_threshold = TRUE;
+
+                if ( $closed_upper_bound < $currtime &&  $currtime < $open_lower_bound) {
+                    $shouldbeclosed = TRUE;
                 }
 
                 /*                 * EMAIL LOGIC FOR CRON JOB* */
                 if (!$isholiday) {
                     //it"s not a holiday...
-                    if (!$isopen) {
-                        //it's not open
-                        if ($shouldbe_open_with_threshold) {
+                    if (!$isopen) { //it is closed
+                        if ($shouldbeopen) {
                             //it should be open
                             $message .= "$location should have been opened by $open_upper_bound. Not yet opened.\n";
                             $send_locations[] = $location;
@@ -365,12 +367,12 @@ class ApiController extends Controller {
                         }
                     } else {
                         //it's open
-                        if ($shouldbe_open_without_threshold) {
-                            //but it should be, and that's ok
-                        } else {
+                        if ($shouldbeclosed) {
                             //this means no one has closed it
                             $message .= "$location should have been closed by $closed_lower_bound. Not yet closed.\n";
                             $send_locations[] = $location;
+                        } else {
+                            //this should be ok
                         }
                     }
                 }//end !isholiday
