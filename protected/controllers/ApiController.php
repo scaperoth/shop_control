@@ -303,7 +303,7 @@ class ApiController extends Controller {
             $location = $curr_location['loc_name'];
             $isopen = Locations::model()->findByAttributes(array('loc_name' => $location), 'loc_status');
             $shouldbeopen = FALSE;
-            $shouldbeclosed = TRUE;
+            $shouldbeclosed = FALSE;
             $isholiday = FALSE;
             /*
               echo '<h3>' . $location . '</h3>';
