@@ -445,7 +445,20 @@ $this->pageTitle = Yii::app()->name;
                                 </div><!--end controls-->
                             </div><!--end control group-->
                         </div><!--end row-->
-
+                        
+                        <!--new row-->
+                        <div class="row">
+                            <div class="control-group">
+                                <label class="control-label" for="holidayenddate">Holiday Date:<span class="required">*</span></label>
+                                <div class="controls">
+                                    <div class="input-prepend">
+                                        <span class="add-on"><i class="icon-th"></i></span>
+                                        <input class='datepicker' required placeholder="Example: Jan 01" class="span3" name="AddHoliday[holidayenddate]" id="holidayenddate" type="text">
+                                    </div>
+                                </div><!--end controls-->
+                            </div><!--end control group-->
+                        </div><!--end row-->
+                        
                         <!--new row-->
                         <div class="row">
                             <div class="control-group">

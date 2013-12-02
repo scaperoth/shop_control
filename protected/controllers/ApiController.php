@@ -34,20 +34,20 @@ class ApiController extends Controller {
         // Check if id was submitted via GET
         $JSON_array = array();
         $locations_query = $this->_getLocationsData();
-        foreach ($locations_query as $curr_location) {
-            $location = $curr_location['loc_name'];
-            $isopen = Locations::model()->findByAttributes(array('loc_name' => $location), 'loc_status');
+        foreach ($locations_query as $location) {
+            $location_name = $location['loc_name'];
+            $isopen = Locations::model()->findByAttributes(array('loc_name' => $location_name), 'loc_status');
 
             $isholiday = $this->_IsShopHoliday($location);
 
             if (!$isopen) {
-                $JSON_array[$location] = 'closed';
+                $JSON_array[$location_name] = 'closed';
             } else {
                 if ($isholiday) {
-                    $JSON_array[$location] = 'closed';
+                    $JSON_array[$location_name] = 'closed';
                 }
                 else
-                    $JSON_array[$location] = 'open';
+                    $JSON_array[$location_name] = 'open';
             }
         }
         $this->_sendResponse(200, CJSON::encode($JSON_array));
@@ -263,14 +263,14 @@ class ApiController extends Controller {
         $locations = Locations::model()->findAll();
         foreach ($locations as $curr_location) {
 
-            $location = $curr_location['loc_name'];
-            $status_query = Locations::model()->findByAttributes(array('loc_name' => $location), 'loc_status');
+            $location_name = $curr_location['loc_name'];
+            $status_query = Locations::model()->findByAttributes(array('loc_name' => $location_name), 'loc_status');
             $isopen = $status_query['loc_status'];
             $shouldbeopen = FALSE;
             $shouldbeclosed = FALSE;
             $isholiday = FALSE;
             /*
-              echo '<h3>' . $location . '</h3>';
+              echo '<h3>' . $location_name . '</h3>';
               if (!$isopen) {
               echo'<pre class="well">closed</pre>';
               } else {
@@ -286,7 +286,7 @@ class ApiController extends Controller {
             $check_query = Yii::app()->db->createCommand()
                     ->select($table_col_open . ',' . $table_col_closed)
                     ->from('locations l')
-                    ->where('l.loc_name=:name', array(':name' => $location))
+                    ->where('l.loc_name=:name', array(':name' => $location_name))
                     ->queryRow();
             $openHrsTime = strtotime($check_query[$table_col_open]);
             $closedHrsTime = strtotime($check_query[$table_col_closed]);
@@ -317,8 +317,8 @@ class ApiController extends Controller {
                     if (!$isopen) { //it is closed
                         if ($shouldbeopen) {
                             //it should be open
-                            $message .= "$location should have been opened by $open_upper_bound. Not yet opened.\n";
-                            $send_locations[] = $location;
+                            $message .= "$location_name should have been opened by $open_upper_bound. Not yet opened.\n";
+                            $send_locations[] = $location_name;
                         } else {
                             //but that's ok
                         }
@@ -326,8 +326,8 @@ class ApiController extends Controller {
                         //it's open
                         if ($shouldbeclosed) {
                             //this means no one has closed it
-                            $message .= "$location should have been closed by $closed_lower_bound. Not yet closed.\n";
-                            $send_locations[] = $location;
+                            $message .= "$location_name should have been closed by $closed_lower_bound. Not yet closed.\n";
+                            $send_locations[] = $location_name;
                         } else {
                             //this should be ok
                         }

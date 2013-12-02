@@ -11,12 +11,14 @@ class AddHolidayAction extends CAction {
         $vars = $_POST['AddHoliday'];
         //print_r($vars);
         $hol_name = $vars['holidayname'];
-        $hol_date = $vars['holidaystartdate'];
+        $hol_start_date = $vars['holidaystartdate'];
+        $hol_end_date = $vars['holidayenddate'];
         $hol_description = $vars['holidaydescription'];
 
         $new_holiday = new Holidays();
         $new_holiday->hol_name = $hol_name;
         $new_holiday->hol_start_date = $hol_start_date;
+        $new_holiday->hol_end_date = $hol_end_date;
         $new_holiday->hol_description = $hol_description;
         $new_holiday->save();
 
