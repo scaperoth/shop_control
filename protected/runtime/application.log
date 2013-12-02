@@ -2827,3 +2827,150 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/favicon.ico
 ---
+2013/12/02 06:48:13 [error] [system.db.CDbCommand] Error in preparing SQL: DELETE FROM 'YiiSession' WHERE expire<:expire
+in C:\xampp\htdocs\shop_control\index.php (17)
+2013/12/02 06:48:13 [error] [system.db.CDbCommand] CDbCommand::execute() failed: CDbCommand failed to prepare the SQL statement: SQLSTATE[HY000]: General error: 1 no such table: YiiSession. The SQL statement executed was: DELETE FROM 'YiiSession' WHERE expire<:expire.
+in C:\xampp\htdocs\shop_control\index.php (17)
+2013/12/02 06:48:22 [error] [exception.CException] exception 'CException' with message 'Property "Holidays.hol_date" is not defined.' in C:\xampp\htdocs\shop_control\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\db\ar\CActiveRecord.php(143): CComponent->__get('hol_date')
+#1 C:\xampp\htdocs\shop_control\framework\base\CModel.php(595): CActiveRecord->__get('hol_date')
+#2 C:\xampp\htdocs\shop_control\themes\bootstrap\views\site\admin.php(385): CModel->offsetGet('hol_date')
+#3 C:\xampp\htdocs\shop_control\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#4 C:\xampp\htdocs\shop_control\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', NULL, true)
+#5 C:\xampp\htdocs\shop_control\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', NULL, true)
+#6 C:\xampp\htdocs\shop_control\framework\web\CController.php(782): CController->renderPartial('admin', NULL, true)
+#7 C:\xampp\htdocs\shop_control\protected\controllers\SiteController.php(84): CController->render('admin')
+#8 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): SiteController->actionAdmin()
+#9 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('admin')
+#18 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/admin')
+#19 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#21 {main}
+REQUEST_URI=/index.php/site/admin
+HTTP_REFERER=http://shopcontrol.com/index.php/site/index
+---
+2013/12/02 06:49:01 [error] [exception.CException] exception 'CException' with message 'Property "Holidays.hol_date" is not defined.' in C:\xampp\htdocs\shop_control\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\db\ar\CActiveRecord.php(143): CComponent->__get('hol_date')
+#1 C:\xampp\htdocs\shop_control\framework\base\CModel.php(595): CActiveRecord->__get('hol_date')
+#2 C:\xampp\htdocs\shop_control\themes\bootstrap\views\site\admin.php(385): CModel->offsetGet('hol_date')
+#3 C:\xampp\htdocs\shop_control\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#4 C:\xampp\htdocs\shop_control\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', NULL, true)
+#5 C:\xampp\htdocs\shop_control\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', NULL, true)
+#6 C:\xampp\htdocs\shop_control\framework\web\CController.php(782): CController->renderPartial('admin', NULL, true)
+#7 C:\xampp\htdocs\shop_control\protected\controllers\SiteController.php(84): CController->render('admin')
+#8 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): SiteController->actionAdmin()
+#9 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('admin')
+#18 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/admin')
+#19 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#21 {main}
+REQUEST_URI=/index.php/site/admin
+HTTP_REFERER=http://shopcontrol.com/index.php/site/index
+---
+2013/12/02 06:49:02 [error] [exception.CException] exception 'CException' with message 'Property "Holidays.hol_date" is not defined.' in C:\xampp\htdocs\shop_control\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\db\ar\CActiveRecord.php(143): CComponent->__get('hol_date')
+#1 C:\xampp\htdocs\shop_control\framework\base\CModel.php(595): CActiveRecord->__get('hol_date')
+#2 C:\xampp\htdocs\shop_control\themes\bootstrap\views\site\admin.php(385): CModel->offsetGet('hol_date')
+#3 C:\xampp\htdocs\shop_control\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#4 C:\xampp\htdocs\shop_control\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', NULL, true)
+#5 C:\xampp\htdocs\shop_control\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', NULL, true)
+#6 C:\xampp\htdocs\shop_control\framework\web\CController.php(782): CController->renderPartial('admin', NULL, true)
+#7 C:\xampp\htdocs\shop_control\protected\controllers\SiteController.php(84): CController->render('admin')
+#8 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): SiteController->actionAdmin()
+#9 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#10 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#11 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#12 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#13 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#15 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#16 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('admin')
+#18 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/admin')
+#19 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#20 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#21 {main}
+REQUEST_URI=/index.php/site/admin
+HTTP_REFERER=http://shopcontrol.com/index.php/site/index
+---
+2013/12/02 06:49:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "phpactions/getlocationinfo".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('phpactions/getl...')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/phpactions/getlocationinfo
+HTTP_REFERER=http://shopcontrol.com/index.php/site/admin
+---
+2013/12/02 06:49:45 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'hol_date' in 'field list'. The SQL statement executed was: SELECT `sh`.`hol_id`, `loc_id`, `hol_date`
+FROM `shop_holidays` `sh`, `Holidays` `h`
+WHERE sh.hol_id = h.hol_id.
+in C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php (476)
+in C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php (454)
+in C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php (41)
+2013/12/02 06:49:45 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'hol_date' in 'field list'. The SQL statement executed was: SELECT `sh`.`hol_id`, `loc_id`, `hol_date`
+FROM `shop_holidays` `sh`, `Holidays` `h`
+WHERE sh.hol_id = h.hol_id' in C:\xampp\htdocs\shop_control\framework\db\CDbCommand.php:541
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\db\CDbCommand.php(395): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(476): CDbCommand->queryAll()
+#2 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(454): ApiController->_getHolidaysData()
+#3 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(41): ApiController->_IsShopHoliday('Funger')
+#4 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionShopstatus()
+#5 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#7 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('shopstatus')
+#9 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/shopstatus')
+#10 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#12 {main}
+REQUEST_URI=/index.php/api/shopstatus
+HTTP_REFERER=http://shopcontrol.com/index.php/site/admin
+---
+2013/12/02 06:52:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "phpactions/getlocationinfo".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('phpactions/getl...')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/phpactions/getlocationinfo
+HTTP_REFERER=http://shopcontrol.com/index.php/site/admin
+---
+2013/12/02 06:52:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "phpactions/getlocationinfo".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('phpactions/getl...')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/phpactions/getlocationinfo
+HTTP_REFERER=http://shopcontrol.com/index.php/site/admin
+---
+2013/12/02 06:55:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "phpactions/getlocationinfo".' in C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('phpactions/getl...')
+#1 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php/phpactions/getlocationinfo
+HTTP_REFERER=http://shopcontrol.com/index.php/site/admin
+---

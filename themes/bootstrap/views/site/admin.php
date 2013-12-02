@@ -1,7 +1,7 @@
 <?php
 /* @var $this HomeController */
 ?>
-<script src="<?php echo Yii::app()->theme->baseUrl;?>/assets/js/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="<?php echo Yii::app()->theme->baseUrl; ?>/assets/js/jquery-validation/dist/jquery.validate.min.js"></script>
 <?php
 $this->pageTitle = Yii::app()->name;
 ?>
@@ -84,9 +84,9 @@ $this->pageTitle = Yii::app()->name;
                              * shortened (3 chars) version to use in the db call 
                              */
                             ?>
-                            <?php foreach ($days_of_week as $day):?>
+                            <?php foreach ($days_of_week as $day): ?>
 
-                                <td class="date_hover" id="<?php echo $day;?>">
+                                <td class="date_hover" id="<?php echo $day; ?>">
                                     <?php
                                     /**
                                      * this code gets the times for each day and formats them the same as the timepicker
@@ -247,7 +247,7 @@ $this->pageTitle = Yii::app()->name;
                                 </div><!--end controls-->
                             </div><!--end control group-->
                         </div><!--end row-->
-                        
+
                         <!--new row-->
                         <div class="row">
                             <div class="control-group">
@@ -312,7 +312,6 @@ $this->pageTitle = Yii::app()->name;
                                 </div><!--end controls-->
                             </div><!--end control group-->
                         </div><!--end row-->
-
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -336,7 +335,8 @@ $this->pageTitle = Yii::app()->name;
                     <thead>
                     <td>Selected Suport Centers</td>
                     <td>Holiday</td>
-                    <td>Date</td>
+                    <td>Start Date</td>
+                    <td>End Date</td>
                     <td>Description (optional)</td>
                     </thead>
 
@@ -382,8 +382,14 @@ $this->pageTitle = Yii::app()->name;
                             </td>
                             <td>
                                 <?php
-                                $hol_date = strtotime($holiday['hol_date']);
-                                echo date('M d', $hol_date);
+                                $hol_start_date = strtotime($holiday['hol_start_date']);
+                                echo date('M d', $hol_start_date);
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                $hol_end_date = strtotime($holiday['hol_end_date']);
+                                echo date('M d', $hol_end_date);
                                 ?>
                             </td>
                             <td>
@@ -430,11 +436,11 @@ $this->pageTitle = Yii::app()->name;
                         <!--new row-->
                         <div class="row">
                             <div class="control-group">
-                                <label class="control-label" for="hoildaydate">Holiday Date:<span class="required">*</span></label>
+                                <label class="control-label" for="holidaystartdate">Holiday Date:<span class="required">*</span></label>
                                 <div class="controls">
                                     <div class="input-prepend">
                                         <span class="add-on"><i class="icon-th"></i></span>
-                                        <input class='datepicker' required placeholder="Example: Jan 01" class="span3" name="AddHoliday[holidaydate]" id="hoildaydate" type="text">
+                                        <input class='datepicker' required placeholder="Example: Jan 01" class="span3" name="AddHoliday[holidaystartdate]" id="holidaystartdate" type="text">
                                     </div>
                                 </div><!--end controls-->
                             </div><!--end control group-->
@@ -503,12 +509,12 @@ $this->pageTitle = Yii::app()->name;
         <?php $this->endWidget(); ?><!--end modal window-->
         <!---delete location dialog end-->
     </div>
-    
+
     <script>
 
         function closeDialog() {
             $('.modal').modal('hide');
         }
-        
+
 
     </script>
