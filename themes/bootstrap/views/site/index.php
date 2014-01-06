@@ -4,6 +4,7 @@
 <?php
 $this->pageTitle = Yii::app()->name;
 $open_or_closed = (($this->current_state) ? 'open' : 'closed');
+
 ?>
 
 <?php if ($this->current_state != ''): ?>

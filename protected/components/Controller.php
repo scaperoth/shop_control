@@ -10,6 +10,7 @@ class Controller extends CController {
     public $loc_id;
     public $current_state;
     public $admin_emails;
+    public $is_my_location_on_holiday;
 
     /**
      * set up globals for all actions
@@ -25,6 +26,9 @@ class Controller extends CController {
             $admin_emails.=$amail['email'] . ';';
         }
         $this->admin_emails = "$admin_emails";
+        
+        
+        
         //
         //query location using current ip address <--(found in protected/config/main.php under params)
         $location = Yii::app()->db->createCommand()
@@ -36,6 +40,11 @@ class Controller extends CController {
         $this->current_state = $location['loc_status'];
         $this->location = $location['loc_name'];
         $this->loc_id = $location['loc_id'];
+        $this->is_my_location_on_holiday = FALSE;
+        
+        if(ApiHelper::_toggleLocationStatusifHoliday($this->loc_id))
+            $this->is_my_location_on_holiday = TRUE;
+        
         return parent::beforeAction($action);
     }
 
