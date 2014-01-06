@@ -31,6 +31,7 @@ class ConfigController extends Controller {
         try{
         $post = AdminEmails::model()->findByPk($id); // assuming there is a post whose ID is 10
         $post->delete(); // delete the row from the database table
+        
         }  catch (ErrorException $e){
             
         }

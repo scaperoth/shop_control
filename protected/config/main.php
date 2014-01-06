@@ -65,7 +65,7 @@ return array(
                 'api/shopstatus' => 'api/shopstatus',
                 'api/shopstatus/<location:[^a-zA-Z]>' => 'api/shopstatus',
                 'api/cron/<action:\w+>' => 'api/cron',
-                'api/changeshopstatus/<whichshop:[\w\s]+>/<changeto:[\w]+>' => 'api/changeshopstatus',
+                'api/changeshopstatus/<whichshop:[\w\-*\s]+>/<changeto:[\w]+>' => 'api/changeshopstatus',
                 
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',

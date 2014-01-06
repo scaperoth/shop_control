@@ -290,7 +290,6 @@ class ApiController extends Controller {
                     ->queryRow();
             $openHrsTime = strtotime($check_query[$table_col_open]);
             $closedHrsTime = strtotime($check_query[$table_col_closed]);
-
             if ($openHrsTime != $closedHrsTime) {
                 $open_lower_bound = date('d-m-Y H:i:s', $openHrsTime - $this->shop_time_threshold);
                 $open_upper_bound = date('d-m-Y H:i:s', $openHrsTime + $this->shop_time_threshold);
@@ -317,7 +316,7 @@ class ApiController extends Controller {
                     if (!$isopen) { //it is closed
                         if ($shouldbeopen) {
                             //it should be open
-                            $message .= "$location_name should have been opened by $open_upper_bound. Not yet opened.\n";
+                            $message .= "$location_name should have been opened by $open_upper_bound. Not opened yet ('.$currtime.').\n";
                             $send_locations[] = $location_name;
                         } else {
                             //but that's ok
@@ -326,7 +325,7 @@ class ApiController extends Controller {
                         //it's open
                         if ($shouldbeclosed) {
                             //this means no one has closed it
-                            $message .= "$location_name should have been closed by $closed_lower_bound. Not yet closed.\n";
+                            $message .= "$location_name should have been closed by $closed_lower_bound. Not closed yet ('.$currtime.').\n";
                             $send_locations[] = $location_name;
                         } else {
                             //this should be ok
@@ -335,7 +334,8 @@ class ApiController extends Controller {
                 }//end !isholiday
             }//end first check
         }//end foreach
-
+        
+        
         $to = $admin_emails;
         $subject = "Support Center Status Error(s): ";
         $i = 0;
@@ -350,10 +350,10 @@ class ApiController extends Controller {
         if ($message) {
             mail($to, $subject, $message, $headers, '-facadtech.gwu.edu');
 
-            return 'Mail sent';
+            return 'Mail sent: '.$message;
         }
 
-
+        
         return 'No mail sent';
     }
 
@@ -462,6 +462,36 @@ class ApiController extends Controller {
     }
 
     /**
+     * 
+     * @param type $start_date
+     * @param type $end_date
+     * @param type $date_from_user
+     * @return type
+     */
+    private function _check_in_range($start_date, $end_date, $date_from_user) {
+        // Convert to timestamp
+        $return;
+        
+        $start_ts = strtotime($start_date);
+        $end_ts = strtotime($end_date);
+        $user_ts = strtotime($date_from_user);
+        
+        /*>= and <= to start and end respectively*/
+        $gte_lte_start_end = (($user_ts <= $start_ts) && ($user_ts >= $end_ts));
+        /*> and < to end and start respectively*/
+        $gt_lt_end_start = (($user_ts < $start_ts) && ($user_ts > $end_ts));
+        
+        /*if the range wraps around the year*/
+        if ($end_ts < $start_ts) {
+            $return = !$gt_lt_end_start; /*not end---today---start*/
+        }
+        else
+            $return = $gte_lte_start_end;
+        // Check that user date is between start & end
+        return ($return);
+    }
+
+    /**
      * returns $model of holiday data
      * usage: $return = _getHolidaysData()
      *        $return["hol_id"]
@@ -474,16 +504,6 @@ class ApiController extends Controller {
                         ->from('shop_holidays sh, Holidays h')
                         ->where('sh.hol_id = h.hol_id')
                         ->queryAll();
-    }
-
-    private function _check_in_range($start_date, $end_date, $date_from_user) {
-        // Convert to timestamp
-        $start_ts = strtotime($start_date);
-        $end_ts = strtotime($end_date);
-        $user_ts = strtotime($date_from_user);
-
-        // Check that user date is between start & end
-        return (($user_ts >= $start_ts) && ($user_ts <= $end_ts));
     }
 
     private function _getLocationsData() {
