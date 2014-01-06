@@ -18,7 +18,7 @@ class ApiHelper extends CHtml{
      * either 'json' or 'xml'
      */
     private $format = 'json';
-    public $shop_time_threshold = 900;
+    Const SHOP_TIME_THRESHOLD = 900;
     
     
    
@@ -120,8 +120,8 @@ class ApiHelper extends CHtml{
 
 
 //get upper deviation of time. +- 10 minutes from db shop closed time
-        $time_upper_bound = date('d-m-Y H:i:s', $openorcloseHrsTime + self::shop_time_threshold);
-        $time_lower_bound = date('d-m-Y H:i:s', $openorcloseHrsTime - self::shop_time_threshold);
+        $time_upper_bound = date('d-m-Y H:i:s', $openorcloseHrsTime + ApiHelper::SHOP_TIME_THRESHOLD);
+        $time_lower_bound = date('d-m-Y H:i:s', $openorcloseHrsTime - ApiHelper::SHOP_TIME_THRESHOLD);
 
 
         //get current time
@@ -134,7 +134,7 @@ class ApiHelper extends CHtml{
             $openDateTime = new DateTime($time_upper_bound);
             $difference = $currdatetime->diff($openDateTime, True);
             $early_or_late = 'late';
-            $message = $username . " " . ($action == 'open' ? 'opened' : 'closed') . " the $location Support Center $early_or_late. Latest " . ($action == 'open' ? 'opening' : 'closing') . " time is " . date('H:ia', $openorcloseHrsTime + self::shop_time_threshold) . ". " . ucfirst($early_or_late) . " by: " . $difference->h . " hours " . $difference->i . " minutes and " . $difference->s . " seconds";
+            $message = $username . " " . ($action == 'open' ? 'opened' : 'closed') . " the $location Support Center $early_or_late. Latest " . ($action == 'open' ? 'opening' : 'closing') . " time is " . date('H:ia', $openorcloseHrsTime + ApiHelper::SHOP_TIME_THRESHOLD) . ". " . ucfirst($early_or_late) . " by: " . $difference->h . " hours " . $difference->i . " minutes and " . $difference->s . " seconds";
 
             Yii::app()->user->setFlash('error', "The $location Support Center has been " . ($action == 'open' ? 'opened' : 'closed') . " " . $early_or_late . " by " . $difference->h . ' hours ' . $difference->i . ' minutes and ' . $difference->s . ' seconds');
         }
@@ -232,10 +232,10 @@ class ApiHelper extends CHtml{
             $openHrsTime = strtotime($check_query[$table_col_open]);
             $closedHrsTime = strtotime($check_query[$table_col_closed]);
             if ($openHrsTime != $closedHrsTime) {
-                $open_lower_bound = date('d-m-Y H:i:s', $openHrsTime - self::shop_time_threshold);
-                $open_upper_bound = date('d-m-Y H:i:s', $openHrsTime + self::shop_time_threshold);
-                $closed_lower_bound = date('d-m-Y H:i:s', $closedHrsTime - self::shop_time_threshold);
-                $closed_upper_bound = date('d-m-Y H:i:s', $closedHrsTime + self::shop_time_threshold);
+                $open_lower_bound = date('d-m-Y H:i:s', $openHrsTime - ApiHelper::SHOP_TIME_THRESHOLD);
+                $open_upper_bound = date('d-m-Y H:i:s', $openHrsTime + ApiHelper::SHOP_TIME_THRESHOLD);
+                $closed_lower_bound = date('d-m-Y H:i:s', $closedHrsTime - ApiHelper::SHOP_TIME_THRESHOLD);
+                $closed_upper_bound = date('d-m-Y H:i:s', $closedHrsTime + ApiHelper::SHOP_TIME_THRESHOLD);
 
                 $currtime = date('d-m-Y H:i:s');
                 $currDay = date('M d');
