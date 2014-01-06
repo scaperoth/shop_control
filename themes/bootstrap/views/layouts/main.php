@@ -5,7 +5,7 @@
 //echo gethostbyname($hostname);
 
 $display_location = (($this->location) ?  ucfirst($this->location) : '');
-$is_holiday = (($this->is_my_location_on_holiday)?' (On Holiday)':'');
+$is_holiday = (($this->is_my_location_on_holiday)?' (Closure)':'');
 ?>
 <!DOCTYPE html>
 <html lang="en">

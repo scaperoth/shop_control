@@ -3550,3 +3550,470 @@ Stack trace:
 REQUEST_URI=/index.php/site/index
 in C:\xampp\htdocs\shop_control\protected\components\Controller.php (43)
 in C:\xampp\htdocs\shop_control\index.php (17)
+2014/01/06 13:31:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(53): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+---
+2014/01/06 13:32:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(53): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+HTTP_REFERER=http://shopcontrol.com/index.php/site/index
+---
+2014/01/06 13:32:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(53): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+HTTP_REFERER=http://shopcontrol.com/index.php/site/index
+---
+2014/01/06 13:32:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(53): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+HTTP_REFERER=http://shopcontrol.com/index.php/site/index
+---
+2014/01/06 13:34:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(53): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+HTTP_REFERER=http://shopcontrol.com/index.php/site/index
+---
+2014/01/06 13:36:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(53): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+HTTP_REFERER=http://shopcontrol.com/index.php/site/index
+---
+2014/01/06 13:36:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(53): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+HTTP_REFERER=http://shopcontrol.com/index.php/site/index
+---
+2014/01/06 13:36:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(53): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+HTTP_REFERER=http://shopcontrol.com/index.php/site/index
+---
+2014/01/06 13:38:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(52): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+---
+2014/01/06 13:38:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(52): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+---
+2014/01/06 13:38:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(52): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+---
+2014/01/06 13:38:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(52): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+---
+2014/01/06 13:38:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(52): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+---
+2014/01/06 13:38:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(52): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+---
+2014/01/06 13:38:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(52): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+---
+2014/01/06 13:38:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(52): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+---
+2014/01/06 13:38:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(52): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+---
+2014/01/06 13:38:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(52): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+---
+2014/01/06 13:38:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(52): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+---
+2014/01/06 13:38:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(52): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+---
+2014/01/06 13:38:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(52): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+---
+2014/01/06 13:38:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The API for '../api/changeshopstatus/mylocation/login' cannot be found.' in C:\xampp\htdocs\shop_control\protected\components\ApiHelper.php:44
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\protected\controllers\ApiController.php(52): ApiHelper::_ProcessShopStatusChange('mylocation', 'login')
+#1 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): ApiController->actionChangeshopstatus()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#4 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('changeshopstatu...')
+#6 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/changeshops...')
+#7 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#8 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php/api/changeshopstatus/mylocation/login
+---
+2014/01/06 13:43:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "login".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(270): CController->missingAction('login')
+#1 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('login')
+#2 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/login')
+#3 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/api/login
+---
+2014/01/06 13:44:12 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "login".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(270): CController->missingAction('login')
+#1 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('login')
+#2 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/login')
+#3 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/api/login
+---
+2014/01/06 13:44:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "login".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(270): CController->missingAction('login')
+#1 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('login')
+#2 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/login')
+#3 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/api/login
+---
+2014/01/06 13:44:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "login".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(270): CController->missingAction('login')
+#1 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('login')
+#2 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/login')
+#3 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/api/login
+---
+2014/01/06 13:44:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "login".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(270): CController->missingAction('login')
+#1 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('login')
+#2 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/login')
+#3 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/api/login
+---
+2014/01/06 13:45:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "login".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(270): CController->missingAction('login')
+#1 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('login')
+#2 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/login')
+#3 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/api/login
+---
+2014/01/06 13:45:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "login".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(270): CController->missingAction('login')
+#1 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('login')
+#2 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('api/login')
+#3 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php/api/login
+---
+2014/01/06 13:48:10 [error] [php] strpos() expects parameter 1 to be string, array given (C:\xampp\htdocs\shop_control\framework\web\CController.php:706)
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(586): CTheme->getViewFile()
+#1 C:\xampp\htdocs\shop_control\framework\web\CController.php(867): SiteController->getViewFile()
+#2 C:\xampp\htdocs\shop_control\framework\web\CController.php(782): SiteController->renderPartial()
+#3 C:\xampp\htdocs\shop_control\protected\controllers\SiteController.php(136): SiteController->render()
+#4 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#5 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(133): SiteController->runAction()
+#7 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#8 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#9 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): SiteController->filterAccessControl()
+#10 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#11 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#12 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#13 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): SiteController->run()
+#14 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#16 C:\xampp\htdocs\shop_control\index.php(17): CWebApplication->run()
+REQUEST_URI=/index.php/site/login
+in C:\xampp\htdocs\shop_control\protected\controllers\SiteController.php (136)
+in C:\xampp\htdocs\shop_control\index.php (17)
+2014/01/06 13:48:16 [error] [exception.CException] exception 'CException' with message 'SiteController cannot find the requested view "site/index".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(782): CController->renderPartial('site/index', NULL, true)
+#1 C:\xampp\htdocs\shop_control\protected\controllers\SiteController.php(136): CController->render('site/index')
+#2 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('login')
+#12 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#13 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php/site/login
+---
+2014/01/06 13:48:17 [error] [exception.CException] exception 'CException' with message 'SiteController cannot find the requested view "site/index".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(782): CController->renderPartial('site/index', NULL, true)
+#1 C:\xampp\htdocs\shop_control\protected\controllers\SiteController.php(136): CController->render('site/index')
+#2 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('login')
+#12 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#13 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php/site/login
+---
+2014/01/06 13:48:17 [error] [exception.CException] exception 'CException' with message 'SiteController cannot find the requested view "site/index".' in C:\xampp\htdocs\shop_control\framework\web\CController.php:878
+Stack trace:
+#0 C:\xampp\htdocs\shop_control\framework\web\CController.php(782): CController->renderPartial('site/index', NULL, true)
+#1 C:\xampp\htdocs\shop_control\protected\controllers\SiteController.php(136): CController->render('site/index')
+#2 C:\xampp\htdocs\shop_control\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#3 C:\xampp\htdocs\shop_control\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\shop_control\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\shop_control\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\shop_control\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\shop_control\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\shop_control\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\shop_control\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(282): CController->run('login')
+#12 C:\xampp\htdocs\shop_control\framework\web\CWebApplication.php(141): CWebApplication->runController('site/login')
+#13 C:\xampp\htdocs\shop_control\framework\base\CApplication.php(169): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\shop_control\index.php(17): CApplication->run()
+#15 {main}
+REQUEST_URI=/index.php/site/login
+---

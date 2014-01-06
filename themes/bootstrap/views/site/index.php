@@ -4,14 +4,12 @@
 <?php
 $this->pageTitle = Yii::app()->name;
 $open_or_closed = (($this->current_state) ? 'open' : 'closed');
-
 ?>
 
 <?php if ($this->current_state != ''): ?>
     <div>
         <h3 id="statusUpdate">This Support Center is now:</h3>
     </div>
-
 
     <div class="center" id="buttonControl">
         <form class="form-horizontal" data-status ='<?php echo $open_or_closed;?>' id='toggleShopForm' action='<?php echo (($open_or_closed=='open')?'../api/changeshopstatus/mylocation/close':'../api/changeshopstatus/mylocation/open');?>' method='POST'>

@@ -10,7 +10,7 @@ class ApiHelper extends CHtml{
     /**
      * Key which has to be in HTTP USERNAME and PASSWORD headers 
      */
-
+    
     Const APPLICATION_ID = 'ASCCPE';
 
     /**
@@ -19,7 +19,7 @@ class ApiHelper extends CHtml{
      */
     private $format = 'json';
     Const SHOP_TIME_THRESHOLD = 900;
-    
+    const LOGIN_ERROR = "You have insufficient permissions to continue";
     
    
     /**
@@ -72,11 +72,18 @@ class ApiHelper extends CHtml{
         $on_time = 0;
 
         $message = NULL;
-        if ($which_shop == 'mylocation') {
+        
+        /*
+         * if the user is changing the state of a shop other than their own
+         * then check to make sure they are an admin. 
+         */
+        if($which_shop!='mylocation')
+            self::__checkAdminAuth();
+        else {
             $which_shop = substr(Yii::app()->controller->location, 0, 4);
             $loc_id = Yii::app()->controller->loc_id;
         }
-        self::__checkAdminAuth();
+        
         $which_shop = addcslashes(strtoupper($which_shop), '%_'); // escape LIKE's special characters
         $q = new CDbCriteria(array(
             'condition' => "UPPER(SUBSTRING(loc_name,1,4)) = :match", // no quotes around :match
@@ -94,7 +101,8 @@ class ApiHelper extends CHtml{
 
         //show flash message if state is being changed on a holiday
         if ($isholiday) {
-            Yii::app()->user->setFlash('error', "The $location support center is set to be closed today. (See \"Closures\")");
+            $closure_message = self::_isadmin()?"(See \"Closures\")":"";
+            Yii::app()->user->setFlash('error', "The $location support center is set to be closed today. $closure_message");
             return $message;
         }
 //get current day of the week
@@ -472,16 +480,21 @@ class ApiHelper extends CHtml{
 
     public static function __checkUserAuth() {
         if (Yii::app()->user->isGuest) {
-            Yii::app()->user->setFlash('error', self::login_error);
-            self::redirect(array('/'));
+            Yii::app()->user->setFlash('error', self::LOGIN_ERROR);
+            Yii::app()->controller->redirect(array('/'));
         }
     }
 
     public static function __checkAdminAuth() {
-        if (!Yii::app()->user->checkAccess('admin')) {
-            Yii::app()->user->setFlash('error', self::login_error);
-            self::redirect(Yii::app()->homeUrl);
+        $isadmin = self::_isadmin();
+        if (!$isadmin) {
+            Yii::app()->user->setFlash('error', self::LOGIN_ERROR);
+            Yii::app()->controller->redirect(array(Yii::app()->getHomeUrl()));
         }
+    }
+    
+    public static function _isadmin(){
+        return Yii::app()->user->checkAccess('admin');
     }
     
 }

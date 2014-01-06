@@ -30,11 +30,11 @@ class ApiController extends Controller {
             
             if (!$isopen) {
                 if ($isholiday) {
-                    $JSON_array[$location_name] = 'closed (holiday)';
+                    $JSON_array[$location_name] = 'closed (closure)';
                 }else $JSON_array[$location_name] = 'closed';
             } else {
                 if ($isholiday) {
-                    $JSON_array[$location_name] = 'closed (holiday)';
+                    $JSON_array[$location_name] = 'closed (closure)';
                 }
                 else
                     $JSON_array[$location_name] = 'open';
@@ -49,7 +49,6 @@ class ApiController extends Controller {
      */
     public function actionChangeshopstatus() {
         if ($whichshop = CHttpRequest::getParam('whichshop')) {
-
             $JSON_array = ApiHelper::_ProcessShopStatusChange($whichshop, CHttpRequest::getParam('changeto'));
         }
         else

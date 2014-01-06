@@ -8,7 +8,7 @@ Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'name' => 'Classroom Support Center Control',
-    'homeurl' => 'login',
+    'homeurl' => 'site/login',
     'defaultController' => 'site/login',
     'theme' => 'bootstrap',
     // preloading 'log' component
