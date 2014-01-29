@@ -194,7 +194,7 @@ class ApiHelper extends CHtml{
     }
 
     public static function _CronJob() {
-        $admin_emails = self::admin_emails;
+        $admin_emails = Yii::app()->controller->admin_emails;
         //check if "action" == md5(go);
 
         $holidays_query = Yii::app()->db->createCommand()
